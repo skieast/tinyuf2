@@ -118,4 +118,3 @@ void board_flash_write (uint32_t dst, void const *src, uint32_t len)
 
   memcpy(_fl_buf + (dst & (FLASH_CACHE_SIZE - 1)), src, len);
 }
-

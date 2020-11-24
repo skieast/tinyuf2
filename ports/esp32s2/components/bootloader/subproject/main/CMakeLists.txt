@@ -7,4 +7,3 @@ set(scripts "ld/${target}/bootloader.ld"
             "ld/${target}/bootloader.rom.ld")
 
 target_linker_script(${COMPONENT_LIB} INTERFACE "${scripts}")
-

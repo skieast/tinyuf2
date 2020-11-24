@@ -11,14 +11,14 @@ spi_device_interface_config_t devcfg;
 struct led_strip_spi_apa102 led;
 
 void initAPA(unsigned char globalBrightness)
-{  
+{
   led._numLEDs = totalPixels;
   led._bytesPerLED = bytesPerPixel;
   led._endFrameLength = 1;//round( (numLEDs/2)/8 );
   led._frameLength = (1+led._numLEDs+led._endFrameLength)*led._bytesPerLED;
   led._globalBrightness = globalBrightness;
-  led.LEDs = (unsigned char *)malloc(led._frameLength*sizeof(unsigned char)); 
-  
+  led.LEDs = (unsigned char *)malloc(led._frameLength*sizeof(unsigned char));
+
   //Start Frame
   led.LEDs[0] = 0;
   led.LEDs[1] = 0;
@@ -71,16 +71,16 @@ int setupSPI(int pin_data, int pin_clock)
 	buscfg.quadwp_io_num=-1;
 	buscfg.quadhd_io_num=-1;
 	buscfg.max_transfer_sz=maxSPIFrameInBytes;
-	
+
 	//Set up the SPI Device Configuration Struct
 	devcfg.clock_speed_hz=maxSPIFrequency;
-	devcfg.mode=0;                        
-	devcfg.spics_io_num=-1;             
+	devcfg.mode=0;
+	devcfg.spics_io_num=-1;
 	devcfg.queue_size=1;
 
 	//Initialize the SPI driver
 	ret=spi_bus_initialize(SPI2_HOST, &buscfg, 1);
-    ESP_ERROR_CHECK(ret);	
+    ESP_ERROR_CHECK(ret);
 	//Add SPI port to bus
 	ret=spi_bus_add_device(SPI2_HOST, &devcfg, &spi);
 	ESP_ERROR_CHECK(ret);

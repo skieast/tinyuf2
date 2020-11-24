@@ -51,7 +51,7 @@
  + (__DATE__ [5u] - '0')                                   )
 
 // __TIME__ expands to an eight-character string constant
-// "23:59:01", or (if cannot determine time) "??:??:??" 
+// "23:59:01", or (if cannot determine time) "??:??:??"
 #define __HOUR_INT__ ( \
    (__TIME__ [0u] == '?' ? 0 : __TIME__ [0u] - '0') * 10u \
  + (__TIME__ [1u] == '?' ? 0 : __TIME__ [1u] - '0')       )
@@ -76,4 +76,3 @@
 	( __SECONDS_INT__ <<  0u) )
 
 #endif // COMPILE_DATE_H
-

@@ -8,10 +8,10 @@ This repo is cross-platform UF2 Bootloader projects for MCUs based on [TinyUSB](
 .
 ├── lib               # Sources from 3rd party such as tinyusb, mcu drivers ...
 ├── ports             # Port/family specific sources
-│   ├── esp32s2       
+│   ├── esp32s2
 │   │   └── boards/   # Board specific sources
 │   │   └── Makefile  # Makefile for this port
-│   └── mimxrt10xx         
+│   └── mimxrt10xx
 ├── src               # Cross-platform bootloader sources files
 ```
 
@@ -26,9 +26,9 @@ TODO more docs later
 
 ## How to build
 
-Firstly clone this repo and its submodules with 
+Firstly clone this repo and its submodules with
 
-``` 
+```
 $ git clone --recurse-submodules https://github.com/adafruit/uf2-esp32s
 ```
 
@@ -64,7 +64,7 @@ $ make BOARD=feather_stm32f405_express DEBUG=1 all
 
 #### Log
 
-Should you have an issue running example and/or submitting an bug report. You could enable TinyUSB built-in debug logging with optional `LOG=`. LOG=1 will print out only message from bootloader project, while LOG=2 print more information with TinyUSB stack information events as well (note: it is quite a bit). LOG=3 or higher is not used yet. 
+Should you have an issue running example and/or submitting an bug report. You could enable TinyUSB built-in debug logging with optional `LOG=`. LOG=1 will print out only message from bootloader project, while LOG=2 print more information with TinyUSB stack information events as well (note: it is quite a bit). LOG=3 or higher is not used yet.
 
 ```
 $ make BOARD=feather_stm32f405_express LOG=1 all
@@ -72,9 +72,9 @@ $ make BOARD=feather_stm32f405_express LOG=1 all
 
 #### Logger
 
-By default log message is printed via on-board UART which is slow and take lots of CPU time comparing to USB speed. If your board support on-board/external debugger, it would be more efficient to use it for logging. There are 2 protocols: 
+By default log message is printed via on-board UART which is slow and take lots of CPU time comparing to USB speed. If your board support on-board/external debugger, it would be more efficient to use it for logging. There are 2 protocols:
 
-- `LOGGER=rtt`: use [Segger RTT protocol](https://www.segger.com/products/debug-probes/j-link/technology/about-real-time-transfer/)   
+- `LOGGER=rtt`: use [Segger RTT protocol](https://www.segger.com/products/debug-probes/j-link/technology/about-real-time-transfer/)
   - Cons: requires jlink as the debugger.
   - Pros: work with most if not all MCUs
   - Software viewer is JLink RTT Viewer/Client/Logger which is bundled with JLink driver package.

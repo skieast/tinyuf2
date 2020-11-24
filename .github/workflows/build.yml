@@ -84,7 +84,7 @@ jobs:
         asset_name: uf2-${{ matrix.board }}-${{ github.event.release.tag_name }}.bin
         asset_content_type: application/octet-stream
       if: ${{ github.event_name == 'release' }}
-  
+
   ARM:
     runs-on: ubuntu-latest
     strategy:

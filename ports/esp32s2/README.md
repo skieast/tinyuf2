@@ -44,7 +44,7 @@ uf2conv.py firmware.bin -c -b 0x00 -f 0xbfdd4eee
 
 ## 2nd Stage Bootloader
 
-After 1st stage ROM bootloader runs, which mostly checks GPIO0 to determine whether it should go into ROM DFU, 2nd stage bootloader is loaded. It is responsible for determining and loading either UF2 or user application (OTA0, OTA1). This is the place where we added detection code for entering UF2 mode mentioned by above methods. 
+After 1st stage ROM bootloader runs, which mostly checks GPIO0 to determine whether it should go into ROM DFU, 2nd stage bootloader is loaded. It is responsible for determining and loading either UF2 or user application (OTA0, OTA1). This is the place where we added detection code for entering UF2 mode mentioned by above methods.
 
 Unfortunately ESP32S2 doesn't have a dedicated reset pin, but rather using [power pin (CHIP_PU) as way to reset](https://github.com/espressif/esp-idf/issues/494#issuecomment-291921540). This makes it impossible to use any RAM (internal and PSRAM) to store the temporary double reset magic. However, using an resistor and capacitor attached to a GPIO, we can implement a 1-bit memory to hold pin value long enough for double reset detection.
 
