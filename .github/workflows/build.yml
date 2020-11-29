@@ -20,6 +20,7 @@ jobs:
         - 'espressif_saola_1_wrover'
         - 'microdev_micro_s2'
         - 'unexpectedmaker_feathers2'
+        - 'adafruit_magtag_29gray'
     steps:
     - name: Setup Python
       uses: actions/setup-python@v2
