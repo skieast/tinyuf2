@@ -39,3 +39,4 @@ copy-artifact: $(BIN)
 	@cp $(BUILD)/partition_table/partition-table.bin $<
 	@cp $(BUILD)/ota_data_initial.bin $<
 	@cp $(BUILD)/tinyuf2.bin $<
+	@cp $(BUILD)/flash_args $<
