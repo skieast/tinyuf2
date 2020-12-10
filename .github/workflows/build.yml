@@ -19,6 +19,8 @@ jobs:
         - 'espressif_saola_1_wroom'
         - 'espressif_saola_1_wrover'
         - 'microdev_micro_s2'
+        - 'targett_mcb_wroom'
+        - 'targett_mcb_wrover'
         - 'unexpectedmaker_feathers2'
         - 'adafruit_magtag_29gray'
     steps:
@@ -57,7 +59,7 @@ jobs:
     - name: Build
       run: |
         source $IDF_PATH/export.sh
-        make -C ports/esp32s2/ BOARD=${{ matrix.board }} all copy-artifact
+        make -C ports/esp32s2/ BOARD=${{ matrix.board }} all self-update copy-artifact
       env:
         IDF_PATH: ${{ github.workspace }}/lib/esp-idf
         IDF_TOOLS_PATH: ${{ github.workspace }}/.idf_tools
