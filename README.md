@@ -20,11 +20,18 @@ This repo is cross-platform UF2 Bootloader projects for MCUs based on [TinyUSB](
 TODO more docs later
 
 - Support ESP32-S2, iMXRT10xx, STM32F4
+- Self update with update file in uf2 format
 - Indicator: LED, RGB
 - Debug log with uart/swd
 - Double tap to enter DFU, reboot to DFU and quick reboot from application
 
-## How to build
+## Build and Flash
+
+### Requirements
+
+- GCC cross compiler and Make
+
+### Compile
 
 Firstly clone this repo and its submodules with
 
