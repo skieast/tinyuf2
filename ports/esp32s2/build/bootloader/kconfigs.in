@@ -1,0 +1,5 @@
+source "/home/bsegal/Projects/circuitpython/ports/esp32s2/esp-idf/components/efuse/Kconfig"
+source "/home/bsegal/Projects/circuitpython/ports/esp32s2/esp-idf/components/esp32s2/Kconfig"
+source "/home/bsegal/Projects/circuitpython/ports/esp32s2/esp-idf/components/esp_common/Kconfig"
+source "/home/bsegal/Projects/circuitpython/ports/esp32s2/esp-idf/components/log/Kconfig"
+source "/home/bsegal/Projects/circuitpython/ports/esp32s2/esp-idf/components/spi_flash/Kconfig"

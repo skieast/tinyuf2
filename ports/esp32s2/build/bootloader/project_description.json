@@ -1,0 +1,20 @@
+{
+    "project_name":       "bootloader",
+    "project_path":       "/home/bsegal/Projects/tinyuf2/ports/esp32s2/components/bootloader/subproject",
+    "build_dir":          "/home/bsegal/Projects/tinyuf2/ports/esp32s2/build/bootloader",
+    "config_file":        "/home/bsegal/Projects/tinyuf2/ports/esp32s2/build/sdkconfig",
+    "config_defaults":    "",
+    "app_elf":            "bootloader.elf",
+    "app_bin":            "bootloader.bin",
+    "git_revision":       "v4.3-dev-1198-gd06744f5e",
+    "target":             "esp32s2",
+    "phy_data_partition": "",
+    "monitor_baud" :      "115200",
+    "monitor_toolprefix": "xtensa-esp32s2-elf-",
+    "config_environment" : {
+        "COMPONENT_KCONFIGS" : "/home/bsegal/Projects/circuitpython/ports/esp32s2/esp-idf/components/efuse/Kconfig;/home/bsegal/Projects/circuitpython/ports/esp32s2/esp-idf/components/esp32s2/Kconfig;/home/bsegal/Projects/circuitpython/ports/esp32s2/esp-idf/components/esp_common/Kconfig;/home/bsegal/Projects/circuitpython/ports/esp32s2/esp-idf/components/log/Kconfig;/home/bsegal/Projects/circuitpython/ports/esp32s2/esp-idf/components/spi_flash/Kconfig",
+        "COMPONENT_KCONFIGS_PROJBUILD" : "/home/bsegal/Projects/tinyuf2/ports/esp32s2/components/bootloader/Kconfig.projbuild;/home/bsegal/Projects/circuitpython/ports/esp32s2/esp-idf/components/esptool_py/Kconfig.projbuild;/home/bsegal/Projects/circuitpython/ports/esp32s2/esp-idf/components/partition_table/Kconfig.projbuild"
+    },
+    "build_components" : [ "bootloader", "bootloader_support", "efuse", "esp32s2", "esp_common", "esp_rom", "esptool_py", "hal", "log", "main", "micro-ecc", "partition_table", "soc", "spi_flash", "xtensa", "" ],
+    "build_component_paths" : [ "/home/bsegal/Projects/tinyuf2/ports/esp32s2/components/bootloader", "/home/bsegal/Projects/circuitpython/ports/esp32s2/esp-idf/components/bootloader_support", "/home/bsegal/Projects/circuitpython/ports/esp32s2/esp-idf/components/efuse", "/home/bsegal/Projects/circuitpython/ports/esp32s2/esp-idf/components/esp32s2", "/home/bsegal/Projects/circuitpython/ports/esp32s2/esp-idf/components/esp_common", "/home/bsegal/Projects/circuitpython/ports/esp32s2/esp-idf/components/esp_rom", "/home/bsegal/Projects/circuitpython/ports/esp32s2/esp-idf/components/esptool_py", "/home/bsegal/Projects/circuitpython/ports/esp32s2/esp-idf/components/hal", "/home/bsegal/Projects/circuitpython/ports/esp32s2/esp-idf/components/log", "/home/bsegal/Projects/tinyuf2/ports/esp32s2/components/bootloader/subproject/main", "/home/bsegal/Projects/tinyuf2/ports/esp32s2/components/bootloader/subproject/components/micro-ecc", "/home/bsegal/Projects/circuitpython/ports/esp32s2/esp-idf/components/partition_table", "/home/bsegal/Projects/circuitpython/ports/esp32s2/esp-idf/components/soc", "/home/bsegal/Projects/circuitpython/ports/esp32s2/esp-idf/components/spi_flash", "/home/bsegal/Projects/circuitpython/ports/esp32s2/esp-idf/components/xtensa", "" ]
+}

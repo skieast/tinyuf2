@@ -55,8 +55,8 @@
 
 void board_init(void);
 
-// Turn on or off the LED
-void board_led_write(uint32_t state);
+// Write PWM duty value to LED
+void board_led_write(uint32_t value);
 
 // Write color to rgb strip
 void board_rgb_write(uint8_t const rgb[]);
@@ -107,6 +107,8 @@ void     board_flash_flush(void);
   #define USE_SCREEN 0
 #endif
 
+// perform self-update on bootloader
+void board_self_update(const uint8_t * bootloader_bin, uint32_t bootloader_len);
 
 //--------------------------------------------------------------------+
 // not part of board API, move to its own file later
@@ -121,5 +123,13 @@ enum {
 };
 
 void indicator_set(uint32_t state);
+
+static inline void rgb_brightness(uint8_t out[3], uint8_t const in[3], uint8_t brightness)
+{
+  for(uint32_t i=0; i<3; i++ )
+  {
+    out[i] = (in[i]*brightness) >> 8;
+  }
+}
 
 #endif

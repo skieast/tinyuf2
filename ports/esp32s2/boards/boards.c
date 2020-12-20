@@ -37,34 +37,56 @@
 #include "esp_partition.h"
 #include "esp_ota_ops.h"
 #include "board_api.h"
+
+#ifndef TINYUF2_SELF_UPDATE
 #include "tusb.h"
+#endif
 
 //--------------------------------------------------------------------+
 // MACRO TYPEDEF CONSTANT ENUM DECLARATION
 //--------------------------------------------------------------------+
 
-static TimerHandle_t timer_hdl = NULL;
+static esp_timer_handle_t timer_hdl;
 
-#ifdef PIN_NEOPIXEL
+#ifdef NEOPIXEL_PIN
 #include "led_strip.h"
 static led_strip_t *strip;
 #endif
 
-#ifdef PIN_APA102_SCK
+#ifdef DOTSTAR_PIN_SCK
 #include "led_strip_spi_apa102.h"
 #endif
 
-#ifdef USE_DISPLAY
-#include "lcd.h"
+#ifdef LED_PIN
+#include "driver/ledc.h"
+ledc_channel_config_t ledc_channel =
+{
+  .channel    = LEDC_CHANNEL_0,
+  .duty       = 0,
+  .gpio_num   = LED_PIN,
+  .speed_mode = LEDC_LOW_SPEED_MODE,
+  .hpoint     = 0,
+  .timer_sel  = LEDC_TIMER_0
+};
 #endif
+
 
 extern int main(void);
 static void configure_pins(usb_hal_context_t *usb);
-static void _board_timer_cb(TimerHandle_t xTimer);
+static void internal_timer_cb(void* arg);
 
 //--------------------------------------------------------------------+
 // TinyUSB thread
 //--------------------------------------------------------------------+
+
+#ifdef TINYUF2_SELF_UPDATE
+
+void app_main(void)
+{
+  main();
+}
+
+#else
 
 // static task for usbd
 // Increase stack size when debug log is enabled
@@ -94,24 +116,36 @@ void app_main(void)
   (void) xTaskCreateStatic( usb_device_task, "usbd", USBD_STACK_SIZE, NULL, configMAX_PRIORITIES-2, usb_device_stack, &usb_device_taskdef);
 }
 
+#endif
+
 //--------------------------------------------------------------------+
 // Board API
 //--------------------------------------------------------------------+
 
 void board_init(void)
 {
-
-#ifdef PIN_LED
-//#define BLINK_GPIO 26
-//  gpio_pad_select_gpio(BLINK_GPIO);
-//  gpio_set_direction(BLINK_GPIO, GPIO_MODE_OUTPUT);
-//  gpio_set_drive_capability(BLINK_GPIO, GPIO_DRIVE_CAP_3);
-//  gpio_set_level(BLINK_GPIO, 1);
+#ifdef LED_PIN
+  ledc_timer_config_t ledc_timer =
+  {
+    .duty_resolution = LEDC_TIMER_8_BIT      , // resolution of PWM duty
+    .freq_hz         = 5000                  , // frequency of PWM signal
+    .speed_mode      = LEDC_LOW_SPEED_MODE   , // timer mode
+    .timer_num       = ledc_channel.timer_sel, // timer index
+    .clk_cfg         = LEDC_AUTO_CLK         , // Auto select the source clock
+  };
+  ledc_timer_config(&ledc_timer);
+  ledc_channel_config(&ledc_channel);
 #endif
 
-#ifdef PIN_NEOPIXEL
+#ifdef NEOPIXEL_PIN
+  #ifdef NEOPIXEL_POWER_PIN
+  gpio_reset_pin(NEOPIXEL_POWER_PIN);
+  gpio_set_direction(NEOPIXEL_POWER_PIN, GPIO_MODE_OUTPUT);
+  gpio_set_level(NEOPIXEL_POWER_PIN, NEOPIXEL_POWER_STATE);
+  #endif
+
   // WS2812 Neopixel driver with RMT peripheral
-  rmt_config_t config = RMT_DEFAULT_CONFIG_TX(PIN_NEOPIXEL, RMT_CHANNEL_0);
+  rmt_config_t config = RMT_DEFAULT_CONFIG_TX(NEOPIXEL_PIN, RMT_CHANNEL_0);
   config.clk_div = 2; // set counter clock to 40MHz
 
   rmt_config(&config);
@@ -123,36 +157,29 @@ void board_init(void)
   strip->set_brightness(strip, NEOPIXEL_BRIGHTNESS);
 #endif
 
-#ifdef PIN_APA102_SCK
-    // Setup the IO for the APA DATA and CLK
-    gpio_pad_select_gpio(PIN_APA102_DATA);
-    gpio_ll_input_disable(&GPIO, PIN_APA102_DATA);
-    gpio_ll_output_enable(&GPIO, PIN_APA102_DATA);
+#ifdef DOTSTAR_PIN_SCK
+  // Setup the IO for the APA DATA and CLK
+  gpio_pad_select_gpio(DOTSTAR_PIN_DATA);
+  gpio_pad_select_gpio(DOTSTAR_PIN_SCK);
+  gpio_ll_input_disable(&GPIO, DOTSTAR_PIN_DATA);
+  gpio_ll_input_disable(&GPIO, DOTSTAR_PIN_SCK);
+  gpio_ll_output_enable(&GPIO, DOTSTAR_PIN_DATA);
+  gpio_ll_output_enable(&GPIO, DOTSTAR_PIN_SCK);
 
-    gpio_pad_select_gpio(PIN_APA102_SCK);
-    gpio_ll_input_disable(&GPIO, PIN_APA102_SCK);
-    gpio_ll_output_enable(&GPIO, PIN_APA102_SCK);
+  // Initialise SPI
+  setupSPI(DOTSTAR_PIN_DATA, DOTSTAR_PIN_SCK);
 
-    // Initialise SPI
-    setupSPI(PIN_APA102_DATA, PIN_APA102_SCK);
-
-    // Initialise the APA
-    initAPA(APA102_BRIGHTNESS);
+  // Initialise the APA
+  initAPA(DOTSTAR_BRIGHTNESS);
 #endif
 
-#ifdef USE_DISPLAY
-//Put anything board specific for the display here
-#endif
+  // Set up timer
+  const esp_timer_create_args_t periodic_timer_args = { .callback = internal_timer_cb };
+  esp_timer_create(&periodic_timer_args, &timer_hdl);
+}
 
-#ifdef PIN_POWER
-    gpio_pad_select_gpio(PIN_POWER);
-    gpio_ll_input_disable(&GPIO, PIN_POWER);
-    gpio_ll_output_enable(&GPIO, PIN_POWER);
-    gpio_ll_set_level(&GPIO,PIN_POWER, 1);
-#endif
-
-  timer_hdl = xTimerCreate(NULL, pdMS_TO_TICKS(1000), true, NULL, _board_timer_cb);
-
+void board_dfu_init(void)
+{
   // USB Controller Hal init
   periph_module_reset(PERIPH_USB_MODULE);
   periph_module_enable(PERIPH_USB_MODULE);
@@ -162,11 +189,6 @@ void board_init(void)
   };
   usb_hal_init(&hal);
   configure_pins(&hal);
-}
-
-void board_dfu_init(void)
-{
-  // nothing to do since DFU is always entered
 }
 
 void board_dfu_complete(void)
@@ -194,19 +216,27 @@ uint8_t board_usb_get_serial(uint8_t serial_id[16])
   return 6;
 }
 
-void board_led_write(uint32_t state)
+void board_led_write(uint32_t value)
 {
-  (void) state;
+  (void) value;
+
+#ifdef LED_PIN
+  ledc_set_duty(ledc_channel.speed_mode, ledc_channel.channel, value);
+  ledc_update_duty(ledc_channel.speed_mode, ledc_channel.channel);
+#endif
 }
 
 void board_rgb_write(uint8_t const rgb[])
 {
-#ifdef PIN_NEOPIXEL
-  strip->set_pixel(strip, 0, rgb[0], rgb[1], rgb[2]);
+#ifdef NEOPIXEL_PIN
+  for(uint32_t i=0; i<NEOPIXEL_NUMBER; i++)
+  {
+    strip->set_pixel(strip, i, rgb[0], rgb[1], rgb[2]);
+  }
   strip->refresh(strip, 100);
 #endif
 
-#ifdef PIN_APA102_SCK
+#ifdef DOTSTAR_PIN_SCK
     setAPA(rgb[0], rgb[1], rgb[2]);
 #endif
 }
@@ -215,22 +245,26 @@ void board_rgb_write(uint8_t const rgb[])
 // Timer
 //--------------------------------------------------------------------+
 
-static void _board_timer_cb(TimerHandle_t xTimer)
+static void internal_timer_cb(void*  arg)
 {
-  (void) xTimer;
+  (void) arg;
   board_timer_handler();
 }
 
 void board_timer_start(uint32_t ms)
 {
-  xTimerChangePeriod(timer_hdl, pdMS_TO_TICKS(ms), 0);
+  esp_timer_stop(timer_hdl);
+  esp_timer_start_periodic(timer_hdl, ms*1000);
 }
 
 void board_timer_stop(void)
 {
-  xTimerStop(timer_hdl, 0);
+  esp_timer_stop(timer_hdl);
 }
 
+//--------------------------------------------------------------------+
+// Helper
+//--------------------------------------------------------------------+
 static void configure_pins(usb_hal_context_t *usb)
 {
   /* usb_periph_iopins currently configures USB_OTG as USB Device.

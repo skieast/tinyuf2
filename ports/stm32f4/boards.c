@@ -175,7 +175,6 @@ void board_led_write(uint32_t state)
   HAL_GPIO_WritePin(LED_PORT, LED_PIN, state ? LED_STATE_ON : (1-LED_STATE_ON));
 }
 
-
 #if NEOPIXEL_NUMBER
 #define MAGIC_800_INT   900000  // ~1.11 us -> 1.2  field
 #define MAGIC_800_T0H  2800000  // ~0.36 us -> 0.44 field
@@ -273,12 +272,15 @@ int board_uart_write(void const * buf, int len)
 #endif
 }
 
+#ifndef TINYUF2_SELF_UPDATE
 
 // Forward USB interrupt events to TinyUSB IRQ Handler
 void OTG_FS_IRQHandler(void)
 {
   tud_int_handler(0);
 }
+
+#endif
 
 // Required by __libc_init_array in startup code if we are compiling using
 // -nostdlib/-nostartfiles.

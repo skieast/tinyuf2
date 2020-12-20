@@ -40,6 +40,11 @@
 #define LED_PIN               3
 #define LED_STATE_ON          1
 
+#define LED_PWM_PINMUX        IOMUXC_GPIO_03_FLEXPWM1_PWM1_B
+#define LED_PWM_BASE          PWM1
+#define LED_PWM_MODULE        kPWM_Module_1
+#define LED_PWM_CHANNEL       kPWM_PwmB
+
 //--------------------------------------------------------------------+
 // Neopixel
 //--------------------------------------------------------------------+
@@ -78,7 +83,7 @@
 // UART
 //--------------------------------------------------------------------+
 
-#define UART_PORT             LPUART1
+#define UART_DEV              LPUART1
 #define UART_RX_PINMUX        IOMUXC_GPIO_09_LPUART1_RXD
 #define UART_TX_PINMUX        IOMUXC_GPIO_10_LPUART1_TXD
 
