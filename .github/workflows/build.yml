@@ -25,6 +25,7 @@ jobs:
         - 'targett_mcb_wroom'
         - 'targett_mcb_wrover'
         - 'unexpectedmaker_feathers2'
+        - 'lilygo_ttgo_t8_s2_st7789'
     steps:
     - name: Setup Python
       uses: actions/setup-python@v2
@@ -89,7 +90,7 @@ jobs:
         asset_name: uf2-${{ matrix.board }}-${{ github.event.release.tag_name }}.bin
         asset_content_type: application/octet-stream
       if: ${{ github.event_name == 'release' }}
-  
+
   ARM:
     runs-on: ubuntu-latest
     strategy:
