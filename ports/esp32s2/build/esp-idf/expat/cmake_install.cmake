@@ -1,4 +1,4 @@
-# Install script for directory: /home/bsegal/Projects/circuitpython/ports/esp32s2/esp-idf/components/expat
+# Install script for directory: /home/bsegal/Projects/tinyuf2/lib/esp-idf/components/expat
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -5,10 +5,10 @@
 /home/bsegal/Projects/tinyuf2/ports/esp32s2/build/CMakeFiles/size-components.dir
 /home/bsegal/Projects/tinyuf2/ports/esp32s2/build/CMakeFiles/menuconfig.dir
 /home/bsegal/Projects/tinyuf2/ports/esp32s2/build/CMakeFiles/flash.dir
+/home/bsegal/Projects/tinyuf2/ports/esp32s2/build/CMakeFiles/confserver.dir
 /home/bsegal/Projects/tinyuf2/ports/esp32s2/build/CMakeFiles/rebuild_cache.dir
 /home/bsegal/Projects/tinyuf2/ports/esp32s2/build/CMakeFiles/edit_cache.dir
-/home/bsegal/Projects/tinyuf2/ports/esp32s2/build/CMakeFiles/uf2-esp32s.elf.dir
-/home/bsegal/Projects/tinyuf2/ports/esp32s2/build/CMakeFiles/confserver.dir
+/home/bsegal/Projects/tinyuf2/ports/esp32s2/build/CMakeFiles/tinyuf2.elf.dir
 /home/bsegal/Projects/tinyuf2/ports/esp32s2/build/CMakeFiles/install.dir
 /home/bsegal/Projects/tinyuf2/ports/esp32s2/build/CMakeFiles/bootloader.dir
 /home/bsegal/Projects/tinyuf2/ports/esp32s2/build/CMakeFiles/list_install_components.dir
