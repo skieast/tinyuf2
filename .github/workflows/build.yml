@@ -26,6 +26,7 @@ jobs:
         - 'targett_mcb_wrover'
         - 'unexpectedmaker_feathers2'
         - 'adafruit_magtag_29gray'
+        - 'lilygo_ttgo_t8_s2_st7789'
     steps:
     - name: Setup Python
       uses: actions/setup-python@v2

@@ -1,0 +1,5 @@
+source "/home/bsegal/Projects/tinyuf2/lib/esp-idf/components/efuse/Kconfig"
+source "/home/bsegal/Projects/tinyuf2/lib/esp-idf/components/esp32s2/Kconfig"
+source "/home/bsegal/Projects/tinyuf2/lib/esp-idf/components/esp_common/Kconfig"
+source "/home/bsegal/Projects/tinyuf2/lib/esp-idf/components/log/Kconfig"
+source "/home/bsegal/Projects/tinyuf2/lib/esp-idf/components/spi_flash/Kconfig"
