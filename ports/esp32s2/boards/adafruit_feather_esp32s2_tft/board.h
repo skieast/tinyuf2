@@ -1,4 +1,4 @@
-/*
+/* 
  * The MIT License (MIT)
  *
  * Copyright (c) 2020 Ha Thach (tinyusb.org) for Adafruit Industries
@@ -21,7 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-#pragma once
+
+#ifndef ADAFRUIT_FEATHER_ESP32S2_TFT_H_
+#define ADAFRUIT_FEATHER_ESP32S2_TFT_H_
 
 //--------------------------------------------------------------------+
 // Button
@@ -30,39 +32,72 @@
 // Enter UF2 mode if GPIO is pressed while 2nd stage bootloader indicator
 // is on e.g RGB = Purple. If it is GPIO0, user should not hold this while
 // reset since that will instead run the 1st stage ROM bootloader
-#define PIN_BUTTON_UF2       0
+#define PIN_BUTTON_UF2        0
+
+// GPIO that implement 1-bit memory with RC components which hold the
+// pin value long enough for double reset detection.
+#define PIN_DOUBLE_RESET_RC   34
 
 //--------------------------------------------------------------------+
-// TFT Display ST7789
+// LED
 //--------------------------------------------------------------------+
-#undef  CONFIG_LCD_TYPE_AUTO
+
+// GPIO connected to Neopixel data
+#define NEOPIXEL_PIN          33
+
+#define NEOPIXEL_POWER_PIN    21
+#define NEOPIXEL_POWER_STATE  1
+
+// Brightness percentage from 1 to 255
+#define NEOPIXEL_BRIGHTNESS   0x10
+
+// Number of neopixels
+#define NEOPIXEL_NUMBER       1
+
+// LED for indicator and writing flash
+// If not defined neopixel will be use for flash writing instead
+#define LED_PIN               13
+#define LED_STATE_ON          1
+
+//--------------------------------------------------------------------+
+// TFT
+//--------------------------------------------------------------------+
+
 #define CONFIG_LCD_TYPE_ST7789V
 
-#define PIN_DISPLAY_MISO    -1              //No MISO connected to display.
-#define PIN_DISPLAY_MOSI    35
-#define PIN_DISPLAY_SCK     36
-#define PIN_DISPLAY_CS      34
-#define PIN_DISPLAY_DC      37
-#define PIN_DISPLAY_RST     38
-#define PIN_DISPLAY_BL      33
-#define PIN_POWER           14
+#define DISPLAY_PIN_MISO      -1 // required if use CONFIG_LCD_TYPE_AUTO
+#define DISPLAY_PIN_MOSI      35
+#define DISPLAY_PIN_SCK       36
 
-#define DISPLAY_BL_STATE        1  // GPIO state to enable back light
-#define DISPLAY_WIDTH           240
-#define DISPLAY_HEIGHT          135
-// #define DISPLAY_MADCTL          0x36     //Display Memory Access Control ST7789
-#define DISPLAY_MADCTL          (TFT_MADCTL_MX)     //Display Memory Access Control ST7789
-#define DISPLAY_ROTATION        1
+#define DISPLAY_PIN_CS        42
+#define DISPLAY_PIN_DC        40
+#define DISPLAY_PIN_RST       41
+
+#define DISPLAY_PIN_BL        7
+#define DISPLAY_BL_ON         1  // GPIO state to enable back light
+
+#define DISPLAY_WIDTH         240
+#define DISPLAY_HEIGHT        135
+
+#define DISPLAY_COL_OFFSET    53
+#define DISPLAY_ROW_OFFSET    40
+
+#define DISPLAY_MADCTL        (TFT_MADCTL_MX)
+
+#define DISPLAY_TITLE         "Feather TFT"
+
 //--------------------------------------------------------------------+
 // USB UF2
 //--------------------------------------------------------------------+
 
-#define USB_VID           0x303A            // Espressif VID
-#define USB_PID           0x0002            // Default PID (not used for any production boards as this will conflict)
-#define USB_MANUFACTURER  "Espressif"
-#define USB_PRODUCT       "TTGO_T8_S2_ST7789"
+#define USB_VID           0x239A
+#define USB_PID           0x00ED
+#define USB_MANUFACTURER  "Adafruit"
+#define USB_PRODUCT       "Feather ESP32-S2 Reverse TFT"
 
 #define UF2_PRODUCT_NAME  USB_MANUFACTURER " " USB_PRODUCT
-#define UF2_BOARD_ID      "LilyGO-TTGO-T8-S2-ST7789"
-#define UF2_VOLUME_LABEL  "TTGOS2BOOT"
-#define UF2_INDEX_URL     "http://www.lilygo.cn/prod_view.aspx?TypeId=50033&Id=1321&FId=t3:50033:3"
+#define UF2_BOARD_ID      "ESP32S2-FeatherTFT-revA"
+#define UF2_VOLUME_LABEL  "FTHRS2BOOT"
+#define UF2_INDEX_URL     "https://www.adafruit.com/product/pid" // TODO update link
+
+#endif
