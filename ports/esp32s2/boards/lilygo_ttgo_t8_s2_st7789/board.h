@@ -50,15 +50,15 @@
 #define DISPLAY_BL_STATE        1  // GPIO state to enable back light
 #define DISPLAY_WIDTH           240
 #define DISPLAY_HEIGHT          135
-// #define DISPLAY_MADCTL          0x36     //Display Memory Access Control ST7789
-#define DISPLAY_MADCTL          (TFT_MADCTL_MX)     //Display Memory Access Control ST7789
+#define DISPLAY_MADCTL          0x36     //Display Memory Access Control ST7789
+// #define DISPLAY_MADCTL          (TFT_MADCTL_MX)     //Display Memory Access Control ST7789
 #define DISPLAY_ROTATION        1
 //--------------------------------------------------------------------+
 // USB UF2
 //--------------------------------------------------------------------+
 
 #define USB_VID           0x303A            // Espressif VID
-#define USB_PID           0x0002            // Default PID (not used for any production boards as this will conflict)
+#define USB_PID           0x8008            // Espressif assigned PID
 #define USB_MANUFACTURER  "Espressif"
 #define USB_PRODUCT       "TTGO_T8_S2_ST7789"
 

@@ -42,7 +42,7 @@
 //--------------------------------------------------------------------+
 
 #define USB_VID           0x303A            // Espressif VID
-#define USB_PID           0x0002            // Default PID (not used for any production boards as this will conflict)
+#define USB_PID           0x8008            // Espressif assigned PID
 #define USB_MANUFACTURER  "Espressif"
 #define USB_PRODUCT       "TTGO_T8_S2"
 
