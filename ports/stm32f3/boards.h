@@ -29,26 +29,20 @@
  extern "C" {
 #endif
 
-#define SEQUENCE(first, second, third, fourth) first, second, third, fourth
-#define TWO_EMPTY_STEPS 0x00000000
-#define EMPTY_SEQUENCE SEQUENCE(TWO_EMPTY_STEPS, TWO_EMPTY_STEPS, TWO_EMPTY_STEPS, TWO_EMPTY_STEPS)
+#include "stm32f3xx.h"
+#include "stm32f3xx_hal_conf.h"
 
-#include "fsl_device_registers.h"
 #include "board.h"
 
-// _ivt_origin is defined in linker script
-// The FCFB has different offsets, but the IVT is consistent within the family
-extern uint32_t _ivt_origin[];
-#define BOARD_BOOT_START        (((uint32_t) _ivt_origin) - 0x1000)
-
-#define BOARD_BOOT_LENGTH       (0x8800)
-
-// Flash Start Address of Application, typically 0x6000C000
-#define BOARD_FLASH_APP_START   (FlexSPI_AMBA_BASE + 0xC000)
+// Flash Start Address of Application
+#define BOARD_FLASH_APP_START   0x08004000
+#define BOARD_RAM_START 0x20000000
+#define BOARD_RAM_SIZE 0x9FFF
 
 // Double Reset tap to enter DFU
-#define TINYUF2_DFU_DOUBLE_TAP  1
-#define DBL_TAP_REG              SNVS->LPGPR[3]
+#define TINYUF2_DFU_DOUBLE_TAP      1
+
+//#define USE_RGB                 NEOPIXEL_NUMBER
 
 // Brightness percentage from 1 to 255
 #ifndef NEOPIXEL_BRIGHTNESS
@@ -56,7 +50,7 @@ extern uint32_t _ivt_origin[];
 #endif
 
 #ifdef LED_PIN
-#define TINYUF2_LED           1
+#define TINYUF2_LED 1
 #endif
 
 #ifdef __cplusplus

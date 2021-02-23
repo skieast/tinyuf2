@@ -23,8 +23,10 @@ jobs:
         - 'espressif_kaluga_1'
         - 'espressif_saola_1_wroom'
         - 'espressif_saola_1_wrover'
+        - 'gravitech_cucumberRIS_v1.1'
         - 'lilygo_ttgo_t8_s2_st7789'
         - 'microdev_micro_s2'
+        - 'olimex_esp32s2_devkit_lipo_vB1'
         - 'targett_mcb_wroom'
         - 'targett_mcb_wrover'
         - 'unexpectedmaker_feathers2'
@@ -118,6 +120,8 @@ jobs:
         - 'imxrt1020_evk'
         - 'imxrt1060_evk'
         - 'metro_m7_1011'
+        #stm32f3
+        - 'stm32f303disco'
         # stm32f4
         - 'feather_stm32f405_express'
         - 'stm32f411ve_discovery'
