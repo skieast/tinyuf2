@@ -1,3 +1,0 @@
-source "/home/bsegal/Projects/tinyuf2/ports/esp32s2/components/bootloader/Kconfig.projbuild"
-source "/home/bsegal/Projects/tinyuf2/lib/esp-idf/components/esptool_py/Kconfig.projbuild"
-source "/home/bsegal/Projects/tinyuf2/lib/esp-idf/components/partition_table/Kconfig.projbuild"
