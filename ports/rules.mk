@@ -8,9 +8,6 @@ SED = sed
 CP = cp
 RM = rm
 
-# libc
-LIBS += -lgcc -lm -lnosys -lc
-
 CFLAGS  += $(addprefix -I,$(INC))
 LDFLAGS += $(CFLAGS)
 ASFLAGS += $(CFLAGS)

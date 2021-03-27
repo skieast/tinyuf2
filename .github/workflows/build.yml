@@ -9,6 +9,55 @@ on:
       - created
 
 jobs:
+
+  GHOSTFAT:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        board:
+          # Alphabetical order
+          # test_ghostfat
+          - 'test_4k_cluster'
+          - 'test_32k_cluster'
+          - 'test_base'
+          - 'test_huge'
+
+    steps:
+    - name: Setup Python
+      uses: actions/setup-python@v2
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build
+      run: |
+        make --directory ports/test_ghostfat/ BOARD=${{ matrix.board }} all
+
+    - name: Copy known good filesystem image
+      # NOTE: test_huge's knowngood.img file starts as 1.5 GiB
+      #       Compressing once with GZip results gives 85 MiB
+      #       Compressing it a second time gives 10 MiB ...
+      #       Therefore, store known good images double-compressed...
+      run: |
+        pushd ./ports/test_ghostfat/
+        cp ./boards/${{ matrix.board }}/knowngood.img.gz.gz  ./_build/${{ matrix.board }}/
+        popd
+
+    - name: Decompress known good filesystem image
+      run: |
+        pushd ./ports/test_ghostfat/
+        gzip --decompress  ./_build/${{ matrix.board }}/knowngood.img.gz.gz
+        gzip --decompress  ./_build/${{ matrix.board }}/knowngood.img.gz
+        popd
+
+    - name: Execute native self-test
+      run: |
+        pushd ./ports/test_ghostfat/_build/${{ matrix.board }}/
+        chmod +x ./tinyuf2-${{ matrix.board }}.elf
+        ./tinyuf2-${{ matrix.board }}.elf
+        popd
+
   ESP32-S2:
     runs-on: ubuntu-latest
     strategy:
@@ -155,24 +204,26 @@ jobs:
 
     - name: Find Port
       run: |
-        PORT=`echo ports/*/boards/${{ matrix.board }}`
-        PORT=`dirname $PORT`
-        PORT=`dirname $PORT`
-        echo PORT=$PORT >> $GITHUB_ENV
+        ENV_PORT=`echo ports/*/boards/${{ matrix.board }}`
+        ENV_PORT=`dirname $ENV_PORT`
+        ENV_PORT=`dirname $ENV_PORT`
+        echo ENV_PORT=$ENV_PORT >> $GITHUB_ENV
 
     - name: Build
-      run: make -C $PORT BOARD=${{ matrix.board }} all copy-artifact
+      run: |
+        make -C $ENV_PORT BOARD=${{ matrix.board }} all copy-artifact
+        make -C $ENV_PORT/erase_firmware BOARD=${{ matrix.board }} all
 
     - uses: actions/upload-artifact@v2
       with:
         name: ${{ matrix.board }}
-        path: ${{ env.PORT }}/_bin/${{ matrix.board }}
+        path: ${{ env.ENV_PORT }}/_bin/${{ matrix.board }}
 
     - name: Create Release Asset
       if: ${{ github.event_name == 'release' }}
       run: |
-        for f in ${{ env.PORT }}/_bin/${{ matrix.board }}/*; do mv $f ${f%.*}-${{ github.event.release.tag_name }}."${f#*.}"; done
-        zip -jr tinyuf2-${{ matrix.board }}-${{ github.event.release.tag_name }}.zip ${{ env.PORT }}/_bin/${{ matrix.board }}
+        for f in ${{ env.ENV_PORT }}/_bin/${{ matrix.board }}/*; do mv $f ${f%.*}-${{ github.event.release.tag_name }}."${f#*.}"; done
+        zip -jr tinyuf2-${{ matrix.board }}-${{ github.event.release.tag_name }}.zip ${{ env.ENV_PORT }}/_bin/${{ matrix.board }}
 
     - name: Upload Release Asset
       uses: actions/upload-release-asset@v1
@@ -192,6 +243,6 @@ jobs:
       if: ${{ github.event_name == 'release' }}
       with:
         upload_url: ${{ github.event.release.upload_url }}
-        asset_path: ${{ env.PORT }}/_bin/${{ matrix.board }}/update-tinyuf2-${{ matrix.board }}-${{ github.event.release.tag_name }}.uf2
+        asset_path: ${{ env.ENV_PORT }}/_bin/${{ matrix.board }}/update-tinyuf2-${{ matrix.board }}-${{ github.event.release.tag_name }}.uf2
         asset_name: update-tinyuf2-${{ matrix.board }}-${{ github.event.release.tag_name }}.uf2
         asset_content_type: application/x-binary

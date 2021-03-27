@@ -124,7 +124,7 @@ char infoUf2File[] =
     "TinyUF2 Bootloader " UF2_VERSION "\r\n"
     "Model: " UF2_PRODUCT_NAME "\r\n"
     "Board-ID: " UF2_BOARD_ID "\r\n"
-    "Date: " __DATE__ "\r\n";
+    "Date: " COMPILE_DATE "\r\n";
 
 const char indexFile[] =
     "<!doctype html>\n"
@@ -226,6 +226,7 @@ static inline bool is_uf2_block (UF2_Block const *bl)
 
 void uf2_init(void)
 {
+  // TODO maybe limit to application size only if possible board_flash_app_size()
   _flash_size = board_flash_size();
 }
 
