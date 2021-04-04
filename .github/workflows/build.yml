@@ -70,6 +70,7 @@ jobs:
         - 'adafruit_funhouse_esp32s2'
         - 'adafruit_magtag_29gray'
         - 'adafruit_metro_esp32s2'
+        - 'artisense_rd00'
         - 'espressif_kaluga_1'
         - 'espressif_saola_1_wroom'
         - 'espressif_saola_1_wrover'
@@ -212,7 +213,7 @@ jobs:
     - name: Build
       run: |
         make -C $ENV_PORT BOARD=${{ matrix.board }} all copy-artifact
-        make -C $ENV_PORT/erase_firmware BOARD=${{ matrix.board }} all
+        for app in ${{ env.ENV_PORT }}/apps/*/; do make -C $app BOARD=${{ matrix.board }} all; done
 
     - uses: actions/upload-artifact@v2
       with:

@@ -28,44 +28,30 @@
 #include <string.h>
 
 #include "board_api.h"
-#include "bl_flexspi.h"
-#include "flexspi_nor_flash.h"
-#include "fsl_cache.h"
+
+/* This is an application that erases whole application firmware by
+ * writing the erase magic and reset to let bootloader do its work
+ */
+
+#ifndef DBL_TAP_REG
+// defined by linker script
+extern uint32_t _board_dfu_dbl_tap[];
+#define DBL_TAP_REG   _board_dfu_dbl_tap[0]
+#endif
 
 //--------------------------------------------------------------------+
 // MACRO TYPEDEF CONSTANT ENUM DECLARATION
 //--------------------------------------------------------------------+
 
-uint8_t const RGB_WRITING[]       = { 0xcc, 0x66, 0x00 };
-uint8_t const RGB_OFF[]           = { 0x00, 0x00, 0x00 };
-
-static volatile uint32_t _timer_count = 0;
-
-#define FLEXSPI_INSTANCE 0
-
-// Mask off lower 12 bits to get FCFB offset
-#define FCFB_START_ADDRESS    (FlexSPI_AMBA_BASE + (((uint32_t) &qspiflash_config) & 0xFFF))
-
-// Flash Configuration Structure
-extern flexspi_nor_config_t const qspiflash_config;
-
 int main(void)
 {
   board_init();
+  printf("Erase Application Firmware\r\n");
 
-  TUF2_LOG1("Nuking Flash\r\n");
+  // set magic then reset
+  DBL_TAP_REG = DBL_TAP_MAGIC_ERASE_APP;
 
-  // Set indicator similar to WRITING
-  board_timer_start(25);
-
-  flexspi_nor_flash_init(FLEXSPI_INSTANCE, (flexspi_nor_config_t*) &qspiflash_config);
-  flexspi_nor_flash_erase_all(FLEXSPI_INSTANCE, (flexspi_nor_config_t*) &qspiflash_config);
-
-  board_timer_stop();
-  board_led_write(0x000);
-  board_rgb_write(RGB_OFF);
-
-  NVIC_SystemReset();
+  board_reset();
 
   while(1)
   {
@@ -75,16 +61,7 @@ int main(void)
 
 void board_timer_handler(void)
 {
-  _timer_count++;
 
-  // Fast toggle with both LED and RGB
-  bool is_on = _timer_count & 0x01;
-
-  // fast blink LED if available
-  board_led_write(is_on ? 0xff : 0x000);
-
-  // blink RGB if available
-  board_rgb_write(is_on ? RGB_WRITING : RGB_OFF);
 }
 
 //--------------------------------------------------------------------+
@@ -92,7 +69,7 @@ void board_timer_handler(void)
 //--------------------------------------------------------------------+
 
 // Enable only with LOG is enabled (Note: ESP32-S2 has built-in support already)
-#if TUF2_LOG
+#if TUF2_LOG // && (CFG_TUSB_MCU != OPT_MCU_ESP32S2)
 
 #if defined(LOGGER_RTT)
 #include "SEGGER_RTT.h"

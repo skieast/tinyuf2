@@ -1,4 +1,4 @@
-/*
+/* 
  * The MIT License (MIT)
  *
  * Copyright (c) 2020 Ha Thach (tinyusb.org) for Adafruit Industries
@@ -22,69 +22,54 @@
  * THE SOFTWARE.
  */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdbool.h>
-#include <string.h>
-
-#include "board_api.h"
-
-/* This is an application that erases whole application firmware by
- * writing the erase magic and reset to let bootloader do its work
- */
-
-#ifndef DBL_TAP_REG
-// defined by linker script
-extern uint32_t _board_dfu_dbl_tap[];
-#define DBL_TAP_REG   _board_dfu_dbl_tap[0]
-#endif
+#ifndef ARTISENSE_TIMEREF_H_
+#define ARTISENSE_TIMEREF_H_
 
 //--------------------------------------------------------------------+
-// MACRO TYPEDEF CONSTANT ENUM DECLARATION
+// Button
 //--------------------------------------------------------------------+
 
-int main(void)
-{
-  board_init();
-  printf("TinyUF2: Erase Application Firmware\r\n");
+// Enter UF2 mode if GPIO is pressed while 2nd stage bootloader indicator
+// is on e.g RGB = Purple. If it is GPIO0, user should not hold this while
+// reset since that will instead run the 1st stage ROM bootloader
+#define PIN_BUTTON_UF2        0
 
-  // set magic then reset
-  DBL_TAP_REG = DBL_TAP_MAGIC_ERASE_APP;
-
-  board_reset();
-
-  while(1)
-  {
-
-  }
-}
-
-void board_timer_handler(void)
-{
-
-}
+// GPIO that implement 1-bit memory with RC components which hold the
+// pin value long enough for double reset detection.
+// #define PIN_DOUBLE_RESET_RC
 
 //--------------------------------------------------------------------+
-// Logger newlib retarget
+// LED
 //--------------------------------------------------------------------+
 
-// Enable only with LOG is enabled (Note: ESP32-S2 has built-in support already)
-#if TUF2_LOG // && (CFG_TUSB_MCU != OPT_MCU_ESP32S2)
+// GPIO connected to Neopixel data
+// Note: On the production version Saola (v1.2) it is GPIO 18,
+// however on earlier revision v1.1 it is GPIO 17
+#define NEOPIXEL_PIN          45
 
-#if defined(LOGGER_RTT)
-#include "SEGGER_RTT.h"
-#endif
+// Brightness percentage from 1 to 255
+#define NEOPIXEL_BRIGHTNESS   0x10
 
-__attribute__ ((used)) int _write (int fhdl, const void *buf, size_t count)
-{
-  (void) fhdl;
+// Number of neopixels
+#define NEOPIXEL_NUMBER       1
 
-#if defined(LOGGER_RTT)
-  SEGGER_RTT_Write(0, (char*) buf, (int) count);
-  return count;
-#else
-  return board_uart_write(buf, count);
-#endif
-}
+// LED for indicator
+// If not defined neopixel will be use for flash writing instead
+// #define LED_PIN               42
+// #define LED_STATE_ON          0
+
+//--------------------------------------------------------------------+
+// USB UF2
+//--------------------------------------------------------------------+
+
+#define USB_VID           0x303A
+#define USB_PID           0x80B0
+#define USB_MANUFACTURER  "Artisense"
+#define USB_PRODUCT       "Reference Design RD00"
+
+#define UF2_PRODUCT_NAME  USB_MANUFACTURER " " USB_PRODUCT
+#define UF2_BOARD_ID      "ESP32S2-RD00-rev1"
+#define UF2_VOLUME_LABEL  "RD00RBOOT"
+#define UF2_INDEX_URL     "https://artisense.ai/"
 
 #endif
