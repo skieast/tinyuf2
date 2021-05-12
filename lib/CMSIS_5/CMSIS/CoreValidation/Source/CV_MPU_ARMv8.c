@@ -1,5 +1,5 @@
 /*-----------------------------------------------------------------------------
- *      Name:         CV_MPU_ARMv7.c 
+ *      Name:         CV_MPU_ARMv7.c
  *      Purpose:      CMSIS CORE validation tests implementation
  *-----------------------------------------------------------------------------
  *      Copyright (c) 2017 ARM Limited. All rights reserved.
@@ -39,29 +39,29 @@ void TC_MPU_SetClear(void)
     { .RBAR = 0U, .RLAR = 0U },
     { .RBAR = ARM_MPU_RBAR(0x30000000U, 0U, 1U, 1U, 1U), .RLAR = ARM_MPU_RLAR(0x38000000U, 0U) }
   };
-  
+
   #define ASSERT_MPU_REGION(rnr, region) \
     MPU->RNR = rnr; \
     ASSERT_TRUE(MPU->RBAR == region.RBAR); \
     ASSERT_TRUE(MPU->RLAR == region.RLAR)
-  
+
   ClearMpu();
-    
+
   ARM_MPU_SetRegion(2U, table[1].RBAR, table[1].RLAR);
-  
+
   ASSERT_MPU_REGION(1U, table[0]);
   ASSERT_MPU_REGION(2U, table[1]);
   ASSERT_MPU_REGION(3U, table[0]);
-  
+
   ARM_MPU_ClrRegion(2U);
-  
+
   MPU->RNR = 2U;
   ASSERT_TRUE((MPU->RLAR & MPU_RLAR_EN_Msk) == 0U);
-  
+
   #undef ASSERT_MPU_REGION
 #endif
 }
-  
+
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
 \brief Test case: TC_MPU_Load
@@ -81,18 +81,18 @@ void TC_MPU_Load(void)
     { .RBAR = ARM_MPU_RBAR(0x70000000U, 0U, 1U, 1U, 1U), .RLAR = ARM_MPU_RLAR(0x72000000U, 0U) },
     { .RBAR = ARM_MPU_RBAR(0x80000000U, 0U, 1U, 1U, 1U), .RLAR = ARM_MPU_RLAR(0x31000000U, 0U) }
   };
-  
+
   #define ASSERT_MPU_REGION(rnr, table) \
     MPU->RNR = rnr; \
     ASSERT_TRUE(MPU->RBAR == table[rnr].RBAR); \
     ASSERT_TRUE(MPU->RLAR == table[rnr].RLAR)
 
   ClearMpu();
-  
+
   ARM_MPU_Load(0U, &(table[0]), 1U);
-  
+
   ASSERT_MPU_REGION(0U, table);
-  
+
   ARM_MPU_Load(1U, &(table[1]), 5U);
 
   ASSERT_MPU_REGION(0U, table);
@@ -109,5 +109,5 @@ void TC_MPU_Load(void)
   ASSERT_MPU_REGION(7U, table);
 
   #undef ASSERT_MPU_REGION
-#endif 
+#endif
 }

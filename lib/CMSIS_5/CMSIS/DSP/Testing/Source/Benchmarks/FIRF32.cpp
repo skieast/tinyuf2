@@ -1,24 +1,24 @@
 #include "FIRF32.h"
 #include "Error.h"
 
-   
+
     void FIRF32::test_fir_f32()
     {
        arm_fir_f32(&instFir, this->pSrc, this->pDst, this->nbSamples);
-    } 
+    }
 
     void FIRF32::test_lms_f32()
     {
-      arm_lms_f32(&instLms, this->pSrc, (float32_t*)this->pRef, this->pDst, this->pErr,this->nbSamples); 
-    } 
+      arm_lms_f32(&instLms, this->pSrc, (float32_t*)this->pRef, this->pDst, this->pErr,this->nbSamples);
+    }
 
     void FIRF32::test_lms_norm_f32()
     {
        arm_lms_norm_f32(&instLmsNorm, this->pSrc, (float32_t*)this->pRef, this->pDst, this->pErr,this->nbSamples);
-    } 
+    }
 
-   
-    
+
+
     void FIRF32::setUp(Testing::testID_t id,std::vector<Testing::param_t>& params,Client::PatternMgr *mgr)
     {
 
@@ -50,7 +50,7 @@
 
               this->pSrc=samples.ptr();
               this->pRef=refs.ptr();
-      
+
               this->pDst=output.ptr();
               this->pErr=error.ptr();
            break;
@@ -62,12 +62,12 @@
 
               this->pSrc=samples.ptr();
               this->pRef=refs.ptr();
-      
+
               this->pDst=output.ptr();
               this->pErr=error.ptr();
            break;
        }
-       
+
     }
 
     void FIRF32::tearDown(Testing::testID_t id,Client::PatternMgr *mgr)

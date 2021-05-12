@@ -23,7 +23,7 @@ Used Debugger:
 Memory Settings:
   IoT Kit:
     ROM: 0x10000000
-    RAM: 0x38000000    
+    RAM: 0x38000000
   other:
     ROM: 0x00000000
     RAM: 0x20000000

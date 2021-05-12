@@ -34,16 +34,16 @@ function(set_platform_core)
 
   if(EXPERIMENTAL)
      experimental_set_platform_core()
-     SET(CORE ${CORE} PARENT_SCOPE) 
+     SET(CORE ${CORE} PARENT_SCOPE)
   endif()
   ###################
   #
   # Cortex cortex-m7
   #
   if (ARM_CPU MATCHES "^[cC]ortex-[mM]7([^0-9].*)?$")
-    SET(CORE ARMCM7 PARENT_SCOPE)    
+    SET(CORE ARMCM7 PARENT_SCOPE)
   endif()
-  
+
   ###################
   #
   # Cortex cortex-m4
@@ -51,23 +51,23 @@ function(set_platform_core)
   if (ARM_CPU MATCHES "^[cC]ortex-[mM]4([^0-9].*)?$")
       SET(CORE ARMCM4 PARENT_SCOPE)
   endif()
-  
+
   ###################
   #
   # Cortex cortex-m35p
   #
   if (ARM_CPU MATCHES "^[cC]ortex-[mM]35([^0-9].*)?$")
       SET(CORE ARMCM35P PARENT_SCOPE)
-      
+
   endif()
-  
+
   ###################
   #
   # Cortex cortex-m33
   #
   if (ARM_CPU MATCHES "^[cC]ortex-[mM]33([^0-9].*)?$")
       SET(CORE ARMCM33 PARENT_SCOPE)
-      
+
   endif()
 
   ###################
@@ -75,16 +75,16 @@ function(set_platform_core)
   # Cortex cortex-m55
   #
   if (ARM_CPU MATCHES "^[cC]ortex-[mM]55([^0-9].*)?$")
-    SET(CORE ARMv81MML PARENT_SCOPE)    
+    SET(CORE ARMv81MML PARENT_SCOPE)
   endif()
-  
+
   ###################
   #
   # Cortex cortex-m23
   #
   if (ARM_CPU  MATCHES "^[cC]ortex-[mM]23([^0-9].*)?$")
       SET(CORE ARMCM23 PARENT_SCOPE)
-     
+
   endif()
 
   ###################
@@ -93,7 +93,7 @@ function(set_platform_core)
   #
   if (ARM_CPU MATCHES "^[cC]ortex-[mM]0p([^0-9].*)?$")
       SET(CORE ARMCM0plus PARENT_SCOPE)
-      
+
   endif()
 
   ###################
@@ -102,7 +102,7 @@ function(set_platform_core)
   #
   if (ARM_CPU MATCHES "^[cC]ortex-[mM]0([^0-9].*)?$")
       SET(CORE ARMCM0 PARENT_SCOPE)
-      
+
   endif()
 
   ###################
@@ -111,16 +111,16 @@ function(set_platform_core)
   #
   if (ARM_CPU MATCHES "^[cC]ortex-[aA]32([^0-9].*)?$")
     SET(CORE ARMCA32 PARENT_SCOPE)
-    
+
   endif()
-  
+
   ###################
   #
   # Cortex cortex-a5
   #
   if (ARM_CPU MATCHES "^[cC]ortex-[aA]5([^0-9].*)?$")
     SET(CORE ARMCA5 PARENT_SCOPE)
-    
+
   endif()
 
   ###################
@@ -129,7 +129,7 @@ function(set_platform_core)
   #
   if (ARM_CPU MATCHES "^[cC]ortex-[aA]7([^0-9].*)?$")
     SET(CORE ARMCA7 PARENT_SCOPE)
-    
+
   endif()
 
   ###################
@@ -138,7 +138,7 @@ function(set_platform_core)
   #
   if (ARM_CPU MATCHES "^[cC]ortex-[aA]9([^0-9].*)?$")
     SET(CORE ARMCA9 PARENT_SCOPE)
-    
+
   endif()
 
   ###################
@@ -205,7 +205,7 @@ function (configplatformForApp PROJECTNAME ROOT CORE PLATFORMFOLDER)
 
   configure_platform(${PROJECTNAME} ${ROOT} ${CORE} ${PLATFORMFOLDER})
   SET(PLATFORMID ${PLATFORMID} PARENT_SCOPE)
-  
+
   if (CORTEXM)
     compilerSpecificPlatformConfigAppForM(${PROJECTNAME} ${ROOT} )
   elseif(CORTEXA)

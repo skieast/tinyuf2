@@ -5,8 +5,8 @@
  *      Copyright (c) 2017 ARM Limited. All rights reserved.
  *----------------------------------------------------------------------------*/
 #include "CV_Framework.h"
-#include "cmsis_cv.h" 
-  
+#include "cmsis_cv.h"
+
 /* Prototypes */
 void ts_cmsis_cv(void);
 void closeDebug(void);
@@ -82,7 +82,7 @@ Program flow:
   -# Main thread is initialized
 */
 void cmsis_cv (void) {
-  
+
   /* Init test suite */
   if (ts.Init != NULL) {
     ts.Init();                           /* Init hardware                    */
@@ -100,5 +100,5 @@ void cmsis_cv_abort (const char *fn, uint32_t ln, char *desc) {
 
 /**
 @}
-*/ 
+*/
 // end of group framework_funcs

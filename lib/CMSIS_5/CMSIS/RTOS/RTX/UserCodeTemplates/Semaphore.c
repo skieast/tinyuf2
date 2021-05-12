@@ -4,7 +4,7 @@
 /*----------------------------------------------------------------------------
  *      Semaphore creation & usage
  *---------------------------------------------------------------------------*/
- 
+
 void Thread_Semaphore (void const *argument);                   // thread function
 osThreadId tid_Thread_Semaphore;                                // thread id
 osThreadDef (Thread_Semaphore, osPriorityNormal, 1, 0);         // thread object
@@ -19,10 +19,10 @@ int Init_Semaphore (void) {
   if (!sid_Thread_Semaphore) {
     ; // Semaphore object not created, handle failure
   }
-  
+
   tid_Thread_Semaphore = osThreadCreate (osThread(Thread_Semaphore), NULL);
   if (!tid_Thread_Semaphore) return(-1);
-  
+
   return(0);
 }
 

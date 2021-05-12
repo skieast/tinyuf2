@@ -87,7 +87,7 @@ __attribute__((always_inline)) static inline void __DMB(void)
 __attribute__(( always_inline)) static inline U8 __clz(U32 value)
 {
   U8 result;
-  
+
   __asm volatile ("clz %0, %1" : "=r" (result) : "r" (value));
   return(result);
 }
@@ -116,7 +116,7 @@ static inline void __enable_irq(void)
 static inline U32 __disable_irq(void)
 {
   U32 result;
-  
+
   __asm volatile ("mrs %0, primask" : "=r" (result));
   __asm volatile ("cpsid i");
   return(result & 1);
@@ -127,7 +127,7 @@ static inline U32 __disable_irq(void)
 static inline U8 __clz(U32 value)
 {
   U8 result;
-  
+
   __asm volatile ("clz %0, %1" : "=r" (result) : "r" (value));
   return(result);
 }
@@ -211,7 +211,7 @@ __inline static U32 rt_inc_qi (U32 size, U8 *count, U8 *first) {
     *count = (U8)(cnt+1U);
     c2 = (cnt = *first) + 1U;
     if (c2 == size) { c2 = 0U; }
-    *first = (U8)c2; 
+    *first = (U8)c2;
   }
   __enable_irq ();
 #endif

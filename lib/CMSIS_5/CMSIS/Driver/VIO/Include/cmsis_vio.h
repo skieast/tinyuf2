@@ -31,8 +31,8 @@
  * Generic I/O mapping recommended for CMSIS-VIO
  * Note: not every I/O must be physically available
  */
- 
-// vioSetSignal: mask values 
+
+// vioSetSignal: mask values
 #define vioLED0             (1U << 0)   ///< \ref vioSetSignal \a mask parameter: LED 0 (for 3-color: red)
 #define vioLED1             (1U << 1)   ///< \ref vioSetSignal \a mask parameter: LED 1 (for 3-color: green)
 #define vioLED2             (1U << 2)   ///< \ref vioSetSignal \a mask parameter: LED 2 (for 3-color: blue)
@@ -89,7 +89,7 @@ typedef struct {
 
 /// IPv4 Internet Address
 typedef struct {
-  uint8_t   addr[4];                    ///< IPv4 address value used in \ref vioSetIPv4 / \ref vioGetIPv4 
+  uint8_t   addr[4];                    ///< IPv4 address value used in \ref vioSetIPv4 / \ref vioGetIPv4
 } vioAddrIPv4_t;
 
 /// IPv6 Internet Address

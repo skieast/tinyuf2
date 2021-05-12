@@ -29,8 +29,8 @@ f.closed
 sig = 1.0*sig / (1 << 12)
 
 
-p0 = np.exp(1j*0.05) * 0.98 
-p1 = np.exp(1j*0.25) * 0.9 
+p0 = np.exp(1j*0.05) * 0.98
+p1 = np.exp(1j*0.25) * 0.9
 p2 = np.exp(1j*0.45) * 0.97
 
 z0 = np.exp(1j*0.02)
@@ -61,7 +61,7 @@ state=np.zeros(numStages*4)
 # For use in CMSIS, denominator coefs must be negated
 # and first a0 coef wihich is always 1 must be removed
 coefs=np.reshape(np.hstack((sos[:,:3],-sos[:,4:])),15)
-coefs = coefs / 4.0 
+coefs = coefs / 4.0
 coefsQ31 = toQ31(coefs)
 postshift = 2
 dsp.arm_biquad_cascade_df1_init_q31(biquadQ31,numStages,coefsQ31,state,postshift)

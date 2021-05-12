@@ -6,14 +6,14 @@ Introduction
 The CMSIS System View Description format(CMSIS-SVD) formalizes the description of the system
 contained in Arm Cortex-M processor-based microcontrollers, in particular, the memory mapped
 registers of peripherals.
-The detail contained in system view descriptions is comparable to the data in device 
-reference manuals. The information ranges from high level functional 
+The detail contained in system view descriptions is comparable to the data in device
+reference manuals. The information ranges from high level functional
 descriptions of a peripheral all the way down to the definition and purpose of an individual bit
-field in a memory mapped register. 
+field in a memory mapped register.
 
 CMSIS-SVD files are developed and maintained by silicon vendors.
 Silicon vendors distribute their descriptions as part of CMSIS Device Family Packs.
-Tool vendors use CMSIS-SVD files for providing device-specific debug views of peripherals in 
+Tool vendors use CMSIS-SVD files for providing device-specific debug views of peripherals in
 their debugger. Last but not least, CMSIS-compliant device header files are generated from CMSIS-SVD
 files.
 
@@ -21,7 +21,7 @@ CMSIS-SVD Benefits
 ------------------
 - For Software Developers:
   - Consistency between device header file and what is being displayed by the debugger.
-  - Detailed information about peripherals, registers, fields, and bit values as well as named 
+  - Detailed information about peripherals, registers, fields, and bit values as well as named
     interrupts from within the debugger, without the need to reference device documentation.
   - Convenient access to new and updated descriptions as part of the silicon vendor's CMSIS Device
     Family Packs as the packs are made availabl by silicon vendors.
@@ -35,7 +35,7 @@ CMSIS-SVD Benefits
   - Full control throughout the life cycle of the CMSIS-SVD files from creation to maintenance.
 
 - For Tool Vendors:
-  - Unified file format across silicon vendors helps the efficiency of supporting a wide range of 
+  - Unified file format across silicon vendors helps the efficiency of supporting a wide range of
     devices in a timely manner.
   - Silicon vendors can provide early review access to the device support via restricted access to
     CMSIS Device Family Packs.
@@ -51,9 +51,9 @@ CMSIS-SVD in ARM::CMSIS Pack
 
 The following files relevant to CMSIS-SVD are present in the <b>ARM::CMSIS</b> Pack directories:
 
-|File/Folder                   |Content                                                                
+|File/Folder                   |Content
 |------------------------------|-----------------------------------------------------------------------
-|\b CMSIS\\Documentation\\SVD  | This documentation                                                    
+|\b CMSIS\\Documentation\\SVD  | This documentation
 |\b CMSIS\\Utilities           | Exemplary SVD file (\ref svd_Example_pg "ARM_Example.svd") and generated header file (ARM_Example.h).
 <p>&nbsp;</p>
 <hr>
@@ -64,7 +64,7 @@ The following files relevant to CMSIS-SVD are present in the <b>ARM::CMSIS</b> P
 \page svd_revisionHistory Revision History
 
 From a schema perspective, CMSIS-SVD Version 1.1, 1.2 and 1.3 are fully backward compatible to
-version 1.0. 
+version 1.0.
 
 <table class="cmtable" summary="Revision History table">
 <tr>
@@ -73,40 +73,40 @@ version 1.0.
 </tr>
 <tr>
   <td>V1.3.6</td>
-  <td> 
+  <td>
        - Added ARMV81MML as enumeration value for \ref elem_cpu_sc "cpuNameType".</td>
 </tr>
 <tr>
   <td>V1.3.5</td>
-  <td> 
+  <td>
        - Added CM35P as enumeration value for \ref elem_cpu_sc "cpuNameType".</td>
 </tr>
 <tr>
   <td>V1.3.4</td>
-  <td> 
+  <td>
        - Added information about the Linux version of \ref svd_SVDConv_pg. </td>
 </tr>
 <tr>
   <td>V1.3.3</td>
-  <td> 
+  <td>
        - Updated file header to Apache 2.0 License.
        - Added \em dimableIdentifierType, as a copy of previous \em identifierType adding "%s".
        - Updated \em identifierType to only allow names without "%s" included.
        - Removed \em enumerationNameType.
-       - Added \tagem{headerEnumName} to \refelem{enumeratedValues} and to \refelem{dimArrayIndex} for \refelem{peripheral} 
+       - Added \tagem{headerEnumName} to \refelem{enumeratedValues} and to \refelem{dimArrayIndex} for \refelem{peripheral}
          arrays, overwriting hierarchically generated names.
        - Added \tagem{dimName} to \ref dimElementGroup_gr "dimElementGroup". Only valid in \refelem{cluster} context, ignored otherwise.</td>
 </tr>
 <tr>
   <td>V1.3.2</td>
-  <td> 
+  <td>
        - Extended command line of \ref svd_SVDConv_pg for partition.h file generation.
-       - added \refelem{dimArrayIndex} to \refelem{peripheral}, \refelem{cluster}, and \refelem{register} 
+       - added \refelem{dimArrayIndex} to \refelem{peripheral}, \refelem{cluster}, and \refelem{register}
          to describe enumeration of array indices.</td>
 </tr>
 <tr>
   <td>V1.3.1</td>
-  <td> 
+  <td>
        - Added \refelem{protection} element; extended with protection option \token{p=privileged}.
        - Added \refelem{protection} element to \refelem{addressBlock}.
        - Fixed \refelem{peripheral} name type to \em identifierType to support "%s" for peripheral arrays.
@@ -115,15 +115,15 @@ version 1.0.
 </tr>
 <tr>
   <td>V1.3</td>
-  <td> 
-       - Extended \refelem{peripheral} with \tagem{dim} to support arrays. 
+  <td>
+       - Extended \refelem{peripheral} with \tagem{dim} to support arrays.
        - Added nesting of \refelem{cluster} to support hierarchical register structures.
        - Extended \refelem{cpu} with description of the \refelem{sauRegionsConfig} (Secure Attribution Unit).
        - Extended \ref registerPropertiesGroup_gr "register properties" with  \refelem{protection} to reflect security aspects.</td>
 </tr>
 <tr>
   <td>V1.2</td>
-  <td>Added optional elements for Cortex-M7 in \ref elem_cpu "CPU": 
+  <td>Added optional elements for Cortex-M7 in \ref elem_cpu "CPU":
         - \tagem{fpuDP}
         - \tagem{icachePresent}
         - \tagem{dcachePresent}
@@ -132,7 +132,7 @@ version 1.0.
 </tr>
 <tr>
   <td>V1.1</td>
-  <td>Many of the features added in version 1.1 are required for generating CMSIS-Core device header files from a CMSIS SVD description. 
+  <td>Many of the features added in version 1.1 are required for generating CMSIS-Core device header files from a CMSIS SVD description.
       It is expected that all CMSIS-SVD descriptions will comply with version 1.1 by now.</td>
 </tr>
 <tr>
@@ -160,13 +160,13 @@ quality are:
 <div class="title">Validation</div>
 Automated validations are done on two levels:
 
--# <b>The CMSIS-SVD Schema File</b>: 
+-# <b>The CMSIS-SVD Schema File</b>:
 XML tools use the schema file for checking the syntactical and structural correctness of an XML file that
-claims compliance with a certain format. The schema file <em>CMSIS-SVD.xsd</em> is located in 
-the folder <b>.\\CMSIS\\Utilities</b> of the \b ARM::CMSIS Pack. 
+claims compliance with a certain format. The schema file <em>CMSIS-SVD.xsd</em> is located in
+the folder <b>.\\CMSIS\\Utilities</b> of the \b ARM::CMSIS Pack.
 \n\n
--# <b>SVD Conversion Utility:</b> The conversion utility \ref svd_SVDConv_pg checks the semantics and consistency of the data contained in a CMSIS-SVD file. 
-\b SVDConv is included in the CMSIS distribution. 
+-# <b>SVD Conversion Utility:</b> The conversion utility \ref svd_SVDConv_pg checks the semantics and consistency of the data contained in a CMSIS-SVD file.
+\b SVDConv is included in the CMSIS distribution.
 
 <div class="title">Usage</div>
 CMSIS-SVD files can be used to generate:
@@ -174,7 +174,7 @@ CMSIS-SVD files can be used to generate:
   CMSIS device header files are developed and maintained by the silicon vendors. Therefore, the expectation is that this conversion is only of interest to
   these parties.
  -# Debug dialogs that communicate with a debugger. See below.
- 
+
 <b>System Views</b>
 \n\n A number of tool vendors support the CMSIS-SVD format with their products.
   Refer to the tools documentation to find out how to use CMSIS-SVD descriptions with the debugger of your choice.
@@ -183,7 +183,7 @@ CMSIS-SVD files can be used to generate:
   \n \n
   <b>Generated Debug Dialog:</b>
   \image html "SystemViewer_Generated.png" "uVision Debug Window generated from ARM_Example.svd"
-\n 
+\n
 
 */
 
@@ -198,14 +198,14 @@ CMSIS-SVD files can be used to generate:
 \page svd_SVDConv_pg SVDConv utility
 
 \b SVDConv is a command-line utility to validate CMSIS-SVD files and to generate CMSIS-compliant device header files.
-\b SVDConv is distributed with the \b ARM::CMSIS Pack (in the CMSIS\\Utilities directory) together with the \b CMSIS-SVD.xsd schema file. 
+\b SVDConv is distributed with the \b ARM::CMSIS Pack (in the CMSIS\\Utilities directory) together with the \b CMSIS-SVD.xsd schema file.
 \b SVDConv is available for Windows and Linux operating systems.
 
 \b SVDConv performs the following operations:
   - Checks the syntactical and structural compliance with the specified CMSIS-SVD format.
   - Checks the consistency, correctness, and completeness of the CMSIS-SVD file against the CMSIS-SVD schema file.
   - Generates CMSIS-compliant device header files, which can be used for software development.
-  
+
 \note Consider using \-\-strict option to receive all pedantic warnings. Some rules are skipped by default due to
   backward compatibility reasons. All newly developed/updated SVD files should rather respect all rules.
 
@@ -246,7 +246,7 @@ SVDConv.exe <SVD_file> <options>
   <tr>
     <td> \-\-generate=header </td>
     <td>Generate Device Header File</td>
-    <td>Generates the device header file. The name of the generated file is derived from the value of the tag \<devicename\> in the CMSIS-SVD file. 
+    <td>Generates the device header file. The name of the generated file is derived from the value of the tag \<devicename\> in the CMSIS-SVD file.
     Refer to \refelem{device}.
     </td>
   </tr>
@@ -255,25 +255,25 @@ SVDConv.exe <SVD_file> <options>
     <td>Generate Partition file for Cortex-M Security Extensions (Armv8-M)</td>
     <td>Generates the device partition file. The name of the generated file is composed of <em>partition_</em> and the value of the device <em>\<name\></em>
     (for example, <em>partition_CMSDK_ARMv8MBL.h</em>).
-    Refer to \ref elem_device. The content of the file uses Configuration Wizard annotations and is derived 
+    Refer to \ref elem_device. The content of the file uses Configuration Wizard annotations and is derived
     from the SAU-specific information of the \ref elem_sauRegionsConfig and the interrupts specified in the \ref elem_peripherals.</td>
   </tr>
   <tr>
     <td> \-\-fields=enum </td>
     <td>Bit-field Enums</td>
-    <td>Generates enum lists for each field value description contained in the CMSIS-SVD input file. 
+    <td>Generates enum lists for each field value description contained in the CMSIS-SVD input file.
         Must be used in combination with <i>\-\-generate=header</i>.</td>
   </tr>
   <tr>
     <td> \-\-fields=macro </td>
     <td>Bit-field Macros</td>
-    <td>Generates position and mask C-Macros for each field description contained in the CMSIS-SVD input file. 
+    <td>Generates position and mask C-Macros for each field description contained in the CMSIS-SVD input file.
     Must be used in combination with <i>\-\-generate=header</i>.</td>
   </tr>
   <tr>
     <td> \-\-fields=struct </td>
     <td>Bit-field Structs</td>
-    <td>Generates bit fields for each field description contained in the CMSIS-SVD input file. 
+    <td>Generates bit fields for each field description contained in the CMSIS-SVD input file.
         Must be used in combination with <i>\-\-generate=header</i>.</td>
   </tr>
   <tr>
@@ -303,13 +303,13 @@ Code | Description             | Action
 
 <b>Examples</b> \n
 -# Retrieve help information on screen.
-   \code 
-     SVDConv 
+   \code
+     SVDConv
    \endcode
    \n
--# Perform a consistency check by passing only the SVD file name. Errors and warnings are printed on screen. 
-   \code 
-     SVDConv ARM_Example.svd 
+-# Perform a consistency check by passing only the SVD file name. Errors and warnings are printed on screen.
+   \code
+     SVDConv ARM_Example.svd
    \endcode
    \n
    The result is printed on screen:
@@ -326,8 +326,8 @@ Code | Description             | Action
    Return Code: 1 (WARNINGS)
    \endverbatim
    \n
--# Generate the header file. Performs a consistency check. Errors and warnings are printed on screen. 
-   \code 
+-# Generate the header file. Performs a consistency check. Errors and warnings are printed on screen.
+   \code
      SVDConv ARM_Example.svd --generate=header
    \endcode
    \n
@@ -335,8 +335,8 @@ Code | Description             | Action
    \n
    \include "ARM_ExampleT0.h"
    \n
--# Generate the header file containing bit fields. Performs a consistency check. Errors and warnings are printed on screen. 
-   \code 
+-# Generate the header file containing bit fields. Performs a consistency check. Errors and warnings are printed on screen.
+   \code
      SVDConv ARM_Example.svd --generate=header --fields=struct
    \endcode
    \n
@@ -359,10 +359,10 @@ Help messages
     <th>Details/Action</th>
   </tr>
   <tr><td>M020</td> <td>TEXT</td><td>\em SVD_STRING_OPTIONS</td><td>Displays programm help.</td></tr>
-  <tr><td>M021</td> <td>TEXT</td><td>\em 'DESCR' \em 'VER' \n 
+  <tr><td>M021</td> <td>TEXT</td><td>\em 'DESCR' \em 'VER' \n
                                      \em 'COPYRIGHT'</td><td>Displays module name 'DESCR', version 'VER' and copyright information 'COPYRIGHT'.</td></tr>
   <tr><td>M022</td> <td>TEXT</td><td>Found \em 'ERR' Error(s) and \em 'WARN' Warning(s).</td><td>Displays the number of errors/warnings.</td></tr>
-  <tr><td>M023</td> <td>TEXT</td><td>Phase \em 'CHECK'</td><td>Information about the check phase.</td></tr>    
+  <tr><td>M023</td> <td>TEXT</td><td>Phase \em 'CHECK'</td><td>Information about the check phase.</td></tr>
   <tr><td>M024</td> <td>TEXT</td><td>Arguments: \em 'OPTS'</td><td>Specify arguments.</td></tr>
 </table>
 
@@ -487,57 +487,57 @@ Data Check Errors
     <th>Action</th>
   </tr>
   <tr><td>M301</td> <td>ERROR</td><td>Interrupt number \em 'NUM' : \em 'NAME' already defined: \em 'NAME2' \em 'LINE'</td><td></td></tr>
-  <tr><td>M302</td> <td>ERROR</td><td>Size of Register \em 'NAME':\em 'NUM' must be 8, 16 or 32 Bits</td><td></td></tr>         
+  <tr><td>M302</td> <td>ERROR</td><td>Size of Register \em 'NAME':\em 'NUM' must be 8, 16 or 32 Bits</td><td></td></tr>
   <tr><td>M303</td> <td>WARNING</td><td>Register name \em 'NAME' is prefixed with Peripheral name \em 'NAME2'</td><td>RegName = USART_CR ==> USART->USART_CR</td></tr>
-  <tr><td>M304</td> <td>WARNING</td><td>Interrupt number overwrite: \em 'NUM' : \em 'NAME' \em 'LINE'</td><td></td></tr>              
-  <tr><td>M305</td> <td>ERROR</td><td>Name not C compliant: \em 'NAME' : \em 'HEX', replaced by '_'</td><td></td></tr>            
-  <tr><td>M306</td> <td>ERROR</td><td>Schema Version not set for \<device>.</td><td></td></tr>                               
-  <tr><td>M307</td> <td>ERROR</td><td>Name is equal to Value: \em 'NAME'</td><td></td></tr>                                   
+  <tr><td>M304</td> <td>WARNING</td><td>Interrupt number overwrite: \em 'NUM' : \em 'NAME' \em 'LINE'</td><td></td></tr>
+  <tr><td>M305</td> <td>ERROR</td><td>Name not C compliant: \em 'NAME' : \em 'HEX', replaced by '_'</td><td></td></tr>
+  <tr><td>M306</td> <td>ERROR</td><td>Schema Version not set for \<device>.</td><td></td></tr>
+  <tr><td>M307</td> <td>ERROR</td><td>Name is equal to Value: \em 'NAME'</td><td></td></tr>
   <tr><td>M308</td> <td>ERROR</td><td>Number of \<dimIndex> Elements \em 'NUM' is different to number of \<dim> instances \em 'NUM2'</td><td></td></tr>
-  <tr><td>M309</td> <td>ERROR</td><td>Field \em 'NAME': Offset error: \em 'NUM'</td><td></td></tr>                   
-  <tr><td>M310</td> <td>ERROR</td><td>Field \em 'NAME': BitWidth error: \em 'NUM'</td><td></td></tr>                 
-  <tr><td>M311</td> <td>ERROR</td><td>Field \em 'NAME': Calculation: MSB or LSB == -1</td><td></td></tr>         
-  <tr><td>M312</td> <td>ERROR</td><td>Address Block missing for Peripheral \em 'NAME'</td><td></td></tr>         
+  <tr><td>M309</td> <td>ERROR</td><td>Field \em 'NAME': Offset error: \em 'NUM'</td><td></td></tr>
+  <tr><td>M310</td> <td>ERROR</td><td>Field \em 'NAME': BitWidth error: \em 'NUM'</td><td></td></tr>
+  <tr><td>M311</td> <td>ERROR</td><td>Field \em 'NAME': Calculation: MSB or LSB == -1</td><td></td></tr>
+  <tr><td>M312</td> <td>ERROR</td><td>Address Block missing for Peripheral \em 'NAME'</td><td></td></tr>
   <tr><td>M313</td> <td>ERROR</td><td>Field \em 'NAME': LSB > MSB: BitWith calculates to \em 'NUM'</td><td></td></tr>
-  <tr><td>M314</td> <td>ERROR</td><td>Address Block: \<offset> or \<size> not set.</td><td></td></tr>            
-  <tr><td>M315</td> <td>ERROR</td><td>Address Block: \<size> is zero.</td><td></td></tr>                        
-  <tr><td>M316</td> <td>ERROR</td><td>\em 'LEVEL' \<name> not set.</td><td></td></tr>             
-  <tr><td>M317</td> <td>WARNING</td><td>\em 'LEVEL' \<description> not set.</td><td></td></tr>                                
-  <tr><td>M318</td> <td>WARNING</td><td>\em 'LEVEL' \em 'NAME' \<\em 'TAG'> is equal to \<name></td><td></td></tr>                   
-  <tr><td>M319</td> <td>WARNING</td><td>\em 'LEVEL' \<\em 'TAG'> \em 'NAME' ends with newline, is this intended?</td><td></td></tr> 
-  <tr><td>M320</td> <td>WARNING</td><td>\em 'LEVEL' \<description> \em 'NAME' is not very descriptive</td><td></td></tr>       
-  <tr><td>M321</td> <td>WARNING</td><td>\em 'LEVEL' \<\em 'ITEM'> \em 'NAME' starts with '_', is this intended?</td><td></td></tr> 
-  <tr><td>M322</td> <td>ERROR</td><td>\em 'LEVEL' \em 'ITEM' \em 'NAME' is meaningless text. Deleted.</td><td></td></tr>          
-  <tr><td>M323</td> <td>WARNING</td><td>\em 'LEVEL' \<\em 'ITEM'> \em 'NAME' contains text \em 'TEXT'</td><td></td></tr>             
+  <tr><td>M314</td> <td>ERROR</td><td>Address Block: \<offset> or \<size> not set.</td><td></td></tr>
+  <tr><td>M315</td> <td>ERROR</td><td>Address Block: \<size> is zero.</td><td></td></tr>
+  <tr><td>M316</td> <td>ERROR</td><td>\em 'LEVEL' \<name> not set.</td><td></td></tr>
+  <tr><td>M317</td> <td>WARNING</td><td>\em 'LEVEL' \<description> not set.</td><td></td></tr>
+  <tr><td>M318</td> <td>WARNING</td><td>\em 'LEVEL' \em 'NAME' \<\em 'TAG'> is equal to \<name></td><td></td></tr>
+  <tr><td>M319</td> <td>WARNING</td><td>\em 'LEVEL' \<\em 'TAG'> \em 'NAME' ends with newline, is this intended?</td><td></td></tr>
+  <tr><td>M320</td> <td>WARNING</td><td>\em 'LEVEL' \<description> \em 'NAME' is not very descriptive</td><td></td></tr>
+  <tr><td>M321</td> <td>WARNING</td><td>\em 'LEVEL' \<\em 'ITEM'> \em 'NAME' starts with '_', is this intended?</td><td></td></tr>
+  <tr><td>M322</td> <td>ERROR</td><td>\em 'LEVEL' \em 'ITEM' \em 'NAME' is meaningless text. Deleted.</td><td></td></tr>
+  <tr><td>M323</td> <td>WARNING</td><td>\em 'LEVEL' \<\em 'ITEM'> \em 'NAME' contains text \em 'TEXT'</td><td></td></tr>
   <tr><td>M324</td> <td>ERROR</td><td>Field \em 'NAME' \em 'BITRANGE' does not fit into Register \em 'NAME2':\em 'NUM' \em 'LINE'</td><td></td></tr>
-  <tr><td>M325</td> <td>ERROR</td><td>CPU Revision is not set"</td><td></td></tr>                                                   
-  <tr><td>M326</td> <td>ERROR</td><td>Endianess is not set, using default (little)</td><td></td></tr>                         
+  <tr><td>M325</td> <td>ERROR</td><td>CPU Revision is not set"</td><td></td></tr>
+  <tr><td>M326</td> <td>ERROR</td><td>Endianess is not set, using default (little)</td><td></td></tr>
   <tr><td>M327</td> <td>ERROR</td><td>NVIC Prio Bits not set or wrong value, must be 2..8. Using default (4)</td><td></td></tr>
-  <tr><td>M328</td> <td>WARNING</td><td>\em 'LEVEL' \em 'NAME' has no Registers, ignoring \em 'LEVEL'.</td><td></td></tr>                 
-  <tr><td>M329</td> <td>ERROR</td><td>CPU Type is not set, using default (Cortex-M3)</td><td></td></tr>                         
-  <tr><td>M330</td> <td>ERROR</td><td>Interrupt \em 'NAME' Number not set.</td><td></td></tr>                                     
-  <tr><td>M331</td> <td>ERROR</td><td>Interrupt \em 'NAME' Number \em 'NUM' greater 239.</td><td></td></tr>                         
-  <tr><td>M332</td> <td>WARNING</td><td>\em 'LEVEL' \em 'NAME' has only one Register.</td><td></td></tr>                              
+  <tr><td>M328</td> <td>WARNING</td><td>\em 'LEVEL' \em 'NAME' has no Registers, ignoring \em 'LEVEL'.</td><td></td></tr>
+  <tr><td>M329</td> <td>ERROR</td><td>CPU Type is not set, using default (Cortex-M3)</td><td></td></tr>
+  <tr><td>M330</td> <td>ERROR</td><td>Interrupt \em 'NAME' Number not set.</td><td></td></tr>
+  <tr><td>M331</td> <td>ERROR</td><td>Interrupt \em 'NAME' Number \em 'NUM' greater 239.</td><td></td></tr>
+  <tr><td>M332</td> <td>WARNING</td><td>\em 'LEVEL' \em 'NAME' has only one Register.</td><td></td></tr>
   <tr><td>M333</td> <td>ERROR</td><td>Duplicate \<enumeratedValue> \em 'NUM': \em 'NAME' (\em 'USAGE'), already used by \em 'NAME2' (\em 'USAGE2') \em 'LINE'</td><td></td></tr>
   <tr><td>M334</td> <td>WARNING</td><td>\em 'LEVEL' \<\em 'ITEM'> \em 'NAME' is very long, use \<description> and a shorter \<name></td><td></td></tr>
   <tr><td>M335</td> <td>ERROR</td><td>Value \em 'NAME':\em 'NUM' does not fit into field \em 'NAME2' \em 'BITRANGE'.</td><td></td></tr>
-  <tr><td>M336</td> <td>ERROR</td><td>\em 'LEVEL' \em 'NAME' already defined \em 'LINE'</td><td></td></tr>                           
-  <tr><td>M337</td> <td>ERROR</td><td>\em 'LEVEL' \em 'NAME' already defined \em 'LINE'</td><td></td></tr>                           
+  <tr><td>M336</td> <td>ERROR</td><td>\em 'LEVEL' \em 'NAME' already defined \em 'LINE'</td><td></td></tr>
+  <tr><td>M337</td> <td>ERROR</td><td>\em 'LEVEL' \em 'NAME' already defined \em 'LINE'</td><td></td></tr>
   <tr><td>M338</td> <td>ERROR</td><td>Field \em 'NAME' \em 'BITRANGE' (\em 'ACCESS') overlaps \em 'NAME2' \em 'BITRANGE2' (\em 'ACCESS2') \em 'LINE'</td><td></td></tr>
   <tr><td>M339</td> <td>ERROR</td><td>Register \em 'NAME' (\em 'ACCESS') (\@\em 'ADDRSIZE') has same address or overlaps \em 'NAME2' (\em 'ACCESS2') (\@\em 'ADDRSIZE2') \em 'LINE'</td><td></td></tr>
-  <tr><td>M340</td> <td>ERROR</td><td>No Devices found.</td><td></td></tr>                                              
-  <tr><td>M341</td> <td>ERROR</td><td>More than one devices found, only one is allowed per SVD File.</td><td></td></tr> 
-  <tr><td>M342</td> <td>ERROR</td><td>Dim-extended \em 'LEVEL' \em 'NAME' must not have \<headerStructName></td><td></td></tr> 
-  <tr><td>M343</td> <td>ERROR</td><td>\em 'LEVEL' \em 'NAME' (\@\em 'ADDR') has same address as \em 'NAME2' \em 'LINE'</td><td></td></tr> 
+  <tr><td>M340</td> <td>ERROR</td><td>No Devices found.</td><td></td></tr>
+  <tr><td>M341</td> <td>ERROR</td><td>More than one devices found, only one is allowed per SVD File.</td><td></td></tr>
+  <tr><td>M342</td> <td>ERROR</td><td>Dim-extended \em 'LEVEL' \em 'NAME' must not have \<headerStructName></td><td></td></tr>
+  <tr><td>M343</td> <td>ERROR</td><td>\em 'LEVEL' \em 'NAME' (\@\em 'ADDR') has same address as \em 'NAME2' \em 'LINE'</td><td></td></tr>
   <tr><td>M344</td> <td>ERROR</td><td>Register \em 'NAME' (\@\em 'ADDRSIZE') is outside or does not fit any \<addressBlock> specified for Peripheral \em 'NAME2' \n
                                       \em 'TEXT'</td><td></td></tr>
   <tr><td>M345</td> <td>ERROR</td><td>Field \em 'NAME' \em 'BITRANGE' does not fit into Register \em 'NAME2':\em 'NUM'</td><td></td></tr>
   <tr><td>M346</td> <td>WARNING</td><td>Register \em 'NAME' (\@\em 'ADDR') offset is equal or is greater than it's Peripheral base address \em 'NAME2' (\@\em 'ADDR2'), is this intended?</td><td></td></tr>
-  <tr><td>M347</td> <td>WARNING</td><td>Field \em 'NAME' (width \< 6Bit) without any \<enumeratedValue> found.</td><td></td></tr>  
+  <tr><td>M347</td> <td>WARNING</td><td>Field \em 'NAME' (width \< 6Bit) without any \<enumeratedValue> found.</td><td></td></tr>
   <tr><td>M348</td> <td>ERROR</td><td>Alternate \em 'LEVEL' \em 'NAME' does not exist at \em 'LEVEL' address (\@\em 'ADDR')</td><td></td></tr>
-  <tr><td>M349</td> <td>ERROR</td><td>Alternate \em 'LEVEL' \em 'NAME' is equal to \em 'LEVEL' name \em 'NAME2'</td><td></td></tr>         
-  <tr><td>M350</td> <td>WARNING</td><td>Peripheral \em 'NAME' (\@\em 'ADDR') is not 4Byte-aligned.</td><td></td></tr>                 
-  <tr><td>M351</td> <td>WARNING</td><td>Peripheral \em 'TYPE' \em 'NAME' is equal to Peripheral name.</td><td></td></tr>             
+  <tr><td>M349</td> <td>ERROR</td><td>Alternate \em 'LEVEL' \em 'NAME' is equal to \em 'LEVEL' name \em 'NAME2'</td><td></td></tr>
+  <tr><td>M350</td> <td>WARNING</td><td>Peripheral \em 'NAME' (\@\em 'ADDR') is not 4Byte-aligned.</td><td></td></tr>
+  <tr><td>M351</td> <td>WARNING</td><td>Peripheral \em 'TYPE' \em 'NAME' is equal to Peripheral name.</td><td></td></tr>
   <tr><td>M352</td> <td>WARNING</td><td>AddressBlock of Peripheral \em 'NAME' (\@\em 'ADDR') \em 'TEXT' overlaps \em 'NAME2' (\@\em 'ADDR2') \em 'TEXT2' \em 'LINE'</td><td></td></tr>
   <tr><td>M353</td> <td>WARNING</td><td>Peripheral group name \em 'NAME' should not end with '_'</td><td></td></tr>
   <tr><td>M354</td> <td>ERROR</td><td>Interrupt '\em 'NUM':\em 'NAME' specifies a Core Interrupt. Core Interrupts must not be defined, they are set through \<cpu>\<name>.</td><td></td></tr>
@@ -545,21 +545,21 @@ Data Check Errors
   <tr><td>M356</td> <td>WARNING</td><td>No Interrupt definitions found.</td><td></td></tr>
   <tr><td>M357</td> <td>ERROR</td><td>Core Interrupts found. Interrupt Numbers are wrong. Internal Interrupts must not be described, External Interrupts must start at 0.</td><td></td></tr>
   <tr><td>M358</td> <td>ERROR</td><td>AddressBlock of Peripheral \em 'NAME' \em 'TEXT' overlaps AddressBlock \em 'TEXT2' in same peripheral \em 'LINE'</td><td></td></tr>
-  <tr><td>M359</td> <td>ERROR</td><td>Address Block: \<usage> not set.</td><td></td></tr>                                      
-  <tr><td>M360</td> <td>ERROR</td><td>Address Block: found \<\em 'TAG'> (\em 'HEXNUM') > \em 'HEXNUM2'.</td><td></td></tr>                 
-  <tr><td>M361</td> <td>ERROR</td><td>\em 'LEVEL' \em 'ITEM' \em 'NAME': 'RESERVED' items must not be defined.</td><td></td></tr>       
-  <tr><td>M362</td> <td>WARNING</td><td>\em 'LEVEL' \em 'ITEM' \em 'NAME': 'RESERVED' items must not be defined.</td><td></td></tr>     
-  <tr><td>M363</td> <td>ERROR</td><td>CPU: \<sauNumRegions> not set.</td><td></td></tr>                                        
+  <tr><td>M359</td> <td>ERROR</td><td>Address Block: \<usage> not set.</td><td></td></tr>
+  <tr><td>M360</td> <td>ERROR</td><td>Address Block: found \<\em 'TAG'> (\em 'HEXNUM') > \em 'HEXNUM2'.</td><td></td></tr>
+  <tr><td>M361</td> <td>ERROR</td><td>\em 'LEVEL' \em 'ITEM' \em 'NAME': 'RESERVED' items must not be defined.</td><td></td></tr>
+  <tr><td>M362</td> <td>WARNING</td><td>\em 'LEVEL' \em 'ITEM' \em 'NAME': 'RESERVED' items must not be defined.</td><td></td></tr>
+  <tr><td>M363</td> <td>ERROR</td><td>CPU: \<sauNumRegions> not set.</td><td></td></tr>
   <tr><td>M364</td> <td>ERROR</td><td>CPU: \<sauNumRegions> value \em 'NUM' greater than SAU max num (\em 'NUM2')</td><td></td></tr>
   <tr><td>M365</td> <td>WARNING</td><td>Register \em 'NAME' (\em 'ACCESS') (\@\em 'ADDRSIZE') has same address or overlaps \em 'NAME2' (\em 'ACCESS2') (\@\em 'ADDRSIZE2') \em 'LINE'</td><td></td></tr>
   <tr><td>M366</td> <td>ERROR</td><td>Register \em 'NAME' size (\em 'NUM'Bit) is greater than \<dimIncrement> * \<addressBitsUnits> (\em 'NUM2'Bit).</td><td></td></tr>
   <tr><td>M367</td> <td>WARNING</td><td>Access Type: Field \em 'NAME' (\em 'ACCESS') does not match Register \em 'NAME2' (\em 'ACCESS2')</td><td></td></tr>
   <tr><td>M368</td> <td>WARNING</td><td>\em 'LEVEL' \em 'NAME' (\@\em 'ADDR') has same address as \em 'NAME2' \em 'LINE'</td><td></td></tr>
-  <tr><td>M369</td> <td>ERROR</td><td>Enumerated Value \em 'NAME': \<value> not set.</td><td></td></tr>                      
-  <tr><td>M370</td> <td>ERROR</td><td>\em 'LEVEL' \em 'NAME': \<offset> not set.</td><td></td></tr>                              
-  <tr><td>M371</td> <td>ERROR</td><td>\em 'LEVEL' \em 'NAME' \<headerStructName> is equal to hirachical name</td><td></td></tr>  
-  <tr><td>M372</td> <td>ERROR</td><td>\em 'LEVEL' \<\em 'TAG'> \em 'NAME' already defined \em 'LINE'</td><td></td></tr>                  
-  <tr><td>M373</td> <td>ERROR</td><td>\em 'LEVEL' \<\em 'TAG'> \em 'NAME' already defined \em 'LINE'</td><td></td></tr>                  
+  <tr><td>M369</td> <td>ERROR</td><td>Enumerated Value \em 'NAME': \<value> not set.</td><td></td></tr>
+  <tr><td>M370</td> <td>ERROR</td><td>\em 'LEVEL' \em 'NAME': \<offset> not set.</td><td></td></tr>
+  <tr><td>M371</td> <td>ERROR</td><td>\em 'LEVEL' \em 'NAME' \<headerStructName> is equal to hirachical name</td><td></td></tr>
+  <tr><td>M372</td> <td>ERROR</td><td>\em 'LEVEL' \<\em 'TAG'> \em 'NAME' already defined \em 'LINE'</td><td></td></tr>
+  <tr><td>M373</td> <td>ERROR</td><td>\em 'LEVEL' \<\em 'TAG'> \em 'NAME' already defined \em 'LINE'</td><td></td></tr>
   <tr><td>M374</td> <td>WARNING</td><td>\<enumeratedValues\> can be one \<enumeratedValues> container for all \<enumeratedValue\>s, where \<usage> can be read, write, or read-write or two \<enumeratedValues> containers, where one is set to \<usage> read and the other is set to \<usage> write</td><td></td></tr>
   <tr><td>M375</td> <td>ERROR</td><td>\em 'LEVEL' \em 'NAME' (\<enumeratedValues\> \em 'NAME2'): Too many \<enumeratedValues> container specified.</td><td></td></tr>
   <tr><td>M376</td> <td>ERROR</td><td>\em 'LEVEL' \em 'NAME' (\<enumeratedValues\> \em 'NAME2'): \em 'USAGE' container already defined in \em 'LINE'.</td><td></td></tr>
@@ -593,7 +593,7 @@ Data modification errors
 \page svd_Format_pg SVD Description (*.svd) Format
 
 The CMSIS-SVD format is based on XML and was influenced by IP-XACT.
-Due to the much wider scope and complexity of IP-XACT, it was decided to specify a separate 
+Due to the much wider scope and complexity of IP-XACT, it was decided to specify a separate
 format focused and tailored towards the description of the programmer's view of a device.
 
 <strong>CMSIS-SVD XML Hierarchy</strong>
@@ -607,15 +607,15 @@ The range of values for a field may be further described with enumerated values.
 - \subpage svd_xml_conventions_gr "File Conventions:"
 Outlines the main conventions for writing an SVD description file.
 \n\n
-- \subpage svd_Example_pg 
+- \subpage svd_Example_pg
 Provides an example outlining the SVD XML structure.
 \n\n
 - \subpage elem_device "Device Level:"
-The top level of a System View Description is the device. On this level, information is captured that 
-is specific to the device as a whole. For example, the device name, description, or version. The minimal 
+The top level of a System View Description is the device. On this level, information is captured that
+is specific to the device as a whole. For example, the device name, description, or version. The minimal
 addressable unit as well as the bit-width of the data bus are required by the debugger to perform the
 correct target accesses. \n
-Default values for register attributes like register size, reset value, and access permissions can be set for the 
+Default values for register attributes like register size, reset value, and access permissions can be set for the
 whole device on this level and are implicitly inherited by the lower levels of the description. If however specified
 on a lower level, the default setting from a higher level will get overruled.
 \n\n
@@ -624,15 +624,15 @@ The CPU section describes the processor included in the microcontroller device.
 This section is mandatory if the SVD file is used to generate the device header file.
 \n\n
 - \subpage elem_peripherals "Peripherals Level:"
-A peripheral is a named collection of registers. A peripheral is mapped to a defined <em>base address</em> within the 
-device's address space. A peripheral allocates one or more exclusive address blocks relative to its base address, 
+A peripheral is a named collection of registers. A peripheral is mapped to a defined <em>base address</em> within the
+device's address space. A peripheral allocates one or more exclusive address blocks relative to its base address,
 such that all described registers fit into the allocated address blocks. Allocated addresses without an associated
 register description are automatically considered reserved. The peripheral can be assigned to a group of
 peripherals and may be associated with one or more interrupts.
 \n\n
 - \subpage elem_registers "Registers Level:"
 A register is a named, programmable resource that belongs to a peripheral. Registers are mapped to a defined address in
-the address space of the device. An address is specified relative to the peripheral base address. 
+the address space of the device. An address is specified relative to the peripheral base address.
 The description of a register documents the purpose and function of the resource. A debugger requires information
 about the permitted access to a resource as well as side effects triggered by read and write accesses respectively.
 \n\n
@@ -651,7 +651,7 @@ provide more instructive information to the programmer, avoiding a lookup in the
 \n\n
 - \subpage elem_special "Special Elements:"
 Specific elements that occur in various other elements are described in this section.
-\n\n 
+\n\n
 - <b>Vendor Extensions:</b>
 The CMSIS-SVD format includes a section named \tagem{vendorExtensions} positioned after the closing tag \tagem{/peripherals}.
 This allows silicon vendors and tool partners to extend the description beyond the current specification.
@@ -661,25 +661,25 @@ This allows silicon vendors and tool partners to extend the description beyond t
 
 CMSIS-SVD supports the reuse of whole sections of the description. The attribute \em derivedFrom for
 \refelem{peripheral}, \refelem{register}, and \refelem{field} specifies the source of the section to be copied from.
-Individual tags can be used to redefine specific elements within a copied section. 
+Individual tags can be used to redefine specific elements within a copied section.
 
 <b>Array of Elements</b>
 
-A powerfull construct in data structures of the C programming language is the array. An 
+A powerfull construct in data structures of the C programming language is the array. An
 array is a series of data elements of the same type selected via an index. CMSIS-SVD supports arrays
 for \refelem{peripheral}, \refelem{cluster}, and \refelem{register}.
 
 <b>Peripheral Grouping</b>
 
-Peripherals that provide similar functionality (Simple Timer, Complex Timer) can be grouped with the element \tagem{groupName}. 
+Peripherals that provide similar functionality (Simple Timer, Complex Timer) can be grouped with the element \tagem{groupName}.
 Peripheral groups help structuring the list of peripherals in the debugger.
-All peripherals associated with the same group name are collectively listed under this group 
-in the order they were specified in the SVD file. 
+All peripherals associated with the same group name are collectively listed under this group
+in the order they were specified in the SVD file.
 
 <b>Descriptions</b>
 
-On each level, the tag \tagem{description} provides verbose information about the respective element. 
-The description field plays an important part in improving software development productivity as it gives 
+On each level, the tag \tagem{description} provides verbose information about the respective element.
+The description field plays an important part in improving software development productivity as it gives
 instant access to information that otherwise would need to be looked up in the device documentation.
 
 All multiple whitespace characters (space, tab, linefeed, carriage return) may be removed from the description
@@ -688,4 +688,3 @@ use the linefeed escape sequence (i.e. \\n).
 
 &nbsp;
 */
-

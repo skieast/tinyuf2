@@ -12,7 +12,7 @@ CREATE TABLE PLATFORM (
 CREATE INDEX platform_index ON PLATFORM(platform);
 
 CREATE TABLE COMPILERKIND (
-    compilerkindid INTEGER PRIMARY KEY, 
+    compilerkindid INTEGER PRIMARY KEY,
     compiler text);
 
 CREATE INDEX compilerkind_index ON COMPILERKIND(compiler);
@@ -125,4 +125,3 @@ INSERT INTO CORE VALUES(25,"'m55 autovec","M55AUTOVEC");
 
 
 .quit
-

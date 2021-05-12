@@ -4,7 +4,7 @@
 
 #define SNR_THRESHOLD 20
 
-/* 
+/*
 
 Reference patterns are generated with
 a double precision computation.
@@ -51,10 +51,10 @@ a double precision computation.
       out.pData = outp;
 
 
-      
+
 
     void BinaryTestsQ7::test_mat_mult_q7()
-    {     
+    {
       LOADDATA2();
 
       for(i=0;i < nbMatrixes ; i ++)
@@ -64,7 +64,7 @@ a double precision computation.
           columns = *dimsp++;
 
           PREPAREDATA2();
-          
+
           arm_mat_mult_q7(&this->in1,&this->in2,&this->out,tmpPtr);
 
           outp += (rows * columns);
@@ -77,7 +77,7 @@ a double precision computation.
 
       ASSERT_NEAR_EQ(output,ref,ABS_ERROR_Q7);
 
-    } 
+    }
 
 
 
@@ -104,11 +104,11 @@ a double precision computation.
          break;
 
 
-    
-      }
-       
 
-    
+      }
+
+
+
     }
 
     void BinaryTestsQ7::tearDown(Testing::testID_t id,Client::PatternMgr *mgr)

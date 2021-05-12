@@ -65,14 +65,14 @@ Upgrade to RTX Version 5 from any 4.x version using the API v1 compatibility lay
 \code
 #include "RTE_Components.h"
 #include CMSIS_device_header
- 
+
 /* Renamed main() function */
 void app_main (void const *argument) {
   // contents of old "main"
 }
- 
+
 osThreadDef(app_main, osPriorityNormal, 1, 0);
- 
+
 int main (void) {
   // System Initialization
   SystemCoreClockUpdate();
@@ -95,7 +95,7 @@ component into your project.
 
 Implementing new features in your project is ideally done using the new API. Both API versions are offered in RTX5 and can
 exist along-side.
- 
+
 The component selection is identical to Migration Level 1.
 
 Include "cmsis_os2.h" in all modules where access to API v2 functions is required.
@@ -119,7 +119,7 @@ void phaseD (void *argument) {
     Switch_Off(LED_D);
   }
 }
- 
+
 /*----------------------------------------------------------------------------
  *      Thread 5 'clock': Signal Clock  - API v1 thread
  *---------------------------------------------------------------------------*/
@@ -131,10 +131,10 @@ void clock (void const *argument) {
     Switch_Off(LED_CLK);
   }
 }
- 
+
 /* Define the API v1 thread */
 osThreadDef(clock,  osPriorityNormal, 1, 0);
- 
+
 /*----------------------------------------------------------------------------
  *      Main: Initialize and start RTX Kernel
  *---------------------------------------------------------------------------*/
@@ -145,14 +145,14 @@ void app_main (void *argument) {
   tid_phaseD = osThreadNew(phaseD, NULL, NULL);
   /* Create the API v1 thread */
   tid_clock  = osThreadCreate(osThread(clock),  NULL);
- 
+
   osThreadFlagsSet(tid_phaseA, 0x0001);          /* set signal to phaseA thread   */
- 
+
   osDelay(osWaitForever);
   while(1);
 }
 \endcode
- 
+
 The full example "RTX5 Migration" is part of the CMSIS5 pack and available from the pack installer.
 
 
@@ -166,22 +166,22 @@ The following steps are recommended as a rough guide-line:
 - Click OK
 - Exchange all occurrences of
   \code
-  #include "cmsis_os.h"  
+  #include "cmsis_os.h"
   \endcode
   with
   \code
-  #include "cmsis_os2.h"  
+  #include "cmsis_os2.h"
   \endcode
 - Identify all references to the API v1 and replace with the appropriate calls in v2. You might want to use the Error List
-  window in uVision to identify the related code passages quickly. 
+  window in uVision to identify the related code passages quickly.
 
 \note See \ref os2MigrationFunctions for details in differences.
 
-Generally there are no longer os*Def macros to declare OS objects. 
+Generally there are no longer os*Def macros to declare OS objects.
 
 \note
-- Signal Events have been replaced. Use the functions listed under Thread Flags and Event Flags instead. 
+- Signal Events have been replaced. Use the functions listed under Thread Flags and Event Flags instead.
 - The Mail Queue RTOS v1 functions have been deprecated. Use the functionality of the Message Queue instead. Differences are
   listed under \ref mig_msgQueue.
 */
- 
+

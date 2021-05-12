@@ -14,6 +14,3 @@ configDsp(CMSISNNPooling ${ROOT})
 ### Includes
 target_include_directories(CMSISNNPooling PUBLIC "${NN}/Include")
 target_include_directories(CMSISNNPooling PUBLIC "${ROOT}/CMSIS/DSP/Include")
-
-
-

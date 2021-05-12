@@ -33,7 +33,7 @@ void ref_lms_f32(
 
     /* Set the accumulator to zero */
     sum = 0.0f;
-		
+
 		for(i=0;i<numTaps;i++)
 		{ /* Perform the multiply-accumulate */
       sum += pState[i] * pCoeffs[i];
@@ -49,7 +49,7 @@ void ref_lms_f32(
 
     /* Weighting factor for the LMS version */
     w = e * mu;
-		
+
 		for(i=0;i<numTaps;i++)
 		{ /* Perform the multiply-accumulate */
       pCoeffs[i] += w * pState[i];
@@ -62,8 +62,8 @@ void ref_lms_f32(
     blkCnt--;
   }
 
-  /* Processing is complete. Now copy the last numTaps - 1 samples to the        
-   * start of the state buffer. This prepares the state buffer for the        
+  /* Processing is complete. Now copy the last numTaps - 1 samples to the
+   * start of the state buffer. This prepares the state buffer for the
    * next function call. */
 	for(i=0;i<numTaps-1;i++)
   {
@@ -115,7 +115,7 @@ void ref_lms_norm_f32(
 
     /* Set the accumulator to zero */
     sum = 0.0f;
-		
+
 		for(i=0;i<numTaps;i++)
 		{ /* Perform the multiply-accumulate */
       sum += pState[i] * pCoeffs[i];
@@ -148,8 +148,8 @@ void ref_lms_norm_f32(
   S->energy = energy;
   S->x0 = x0;
 
-  /* Processing is complete. Now copy the last numTaps - 1 samples to the        
-   * start of the state buffer. This prepares the state buffer for the        
+  /* Processing is complete. Now copy the last numTaps - 1 samples to the
+   * start of the state buffer. This prepares the state buffer for the
    * next function call. */
 	for(i=0;i<numTaps-1;i++)
   {
@@ -253,8 +253,8 @@ void ref_lms_q31(
     }
   }
 
-  /* Processing is complete. Now copy the last numTaps - 1 samples to the     
-     start of the state buffer. This prepares the state buffer for the   
+  /* Processing is complete. Now copy the last numTaps - 1 samples to the
+     start of the state buffer. This prepares the state buffer for the
      next function call. */
 
   /* Points to the start of the pState buffer */
@@ -292,7 +292,7 @@ void ref_lms_norm_q31(
   q63_t acc;                                     /* Accumulator */
   q31_t e = 0, d = 0;                            /* error, reference data sample */
   q31_t w = 0, in;                               /* weight factor and state */
-  q31_t x0;                                      /* temporary variable to hold input sample */   
+  q31_t x0;                                      /* temporary variable to hold input sample */
   q63_t errorXmu;                   				 /* Temporary variables to store error and mu product and reciprocal of energy */
   q31_t coef;                                    /* Temporary variable for coef */
   q31_t acc_l, acc_h;                            /*  temporary input */
@@ -397,8 +397,8 @@ void ref_lms_norm_q31(
   S->energy = (q31_t)energy;
   S->x0 = x0;
 
-  /* Processing is complete. Now copy the last numTaps - 1 samples to the     
-     start of the state buffer. This prepares the state buffer for the        
+  /* Processing is complete. Now copy the last numTaps - 1 samples to the
+     start of the state buffer. This prepares the state buffer for the
      next function call. */
 
   /* Points to the start of the pState buffer */
@@ -515,8 +515,8 @@ void ref_lms_q15(
     }
   }
 
-  /* Processing is complete. Now copy the last numTaps - 1 samples to the        
-     start of the state buffer. This prepares the state buffer for the   
+  /* Processing is complete. Now copy the last numTaps - 1 samples to the
+     start of the state buffer. This prepares the state buffer for the
      next function call. */
 
   /* Points to the start of the pState buffer */
@@ -622,7 +622,7 @@ void ref_lms_norm_q15(
     d = *pRef++;
     e = d - (q15_t) acc;
     *pErr++ = e;
-    
+
 #if 0
     /* Calculation of e * mu value */
     errorXmu = (q31_t) e * mu;
@@ -640,7 +640,7 @@ void ref_lms_norm_q15(
 
     /* Calculation of (e * mu) * (1/energy) value */
     acc = (((q31_t) errorXmu * oneByEnergy) >> (15 - postShift));
-    
+
     /* Weighting factor for the normalized version */
     w = ref_sat_q15((q31_t)acc);
 
@@ -674,8 +674,8 @@ void ref_lms_norm_q15(
   S->energy = (q15_t)energy;
   S->x0 = x0;
 
-  /* Processing is complete. Now copy the last numTaps - 1 samples to the        
-     satrt of the state buffer. This prepares the state buffer for the        
+  /* Processing is complete. Now copy the last numTaps - 1 samples to the
+     satrt of the state buffer. This prepares the state buffer for the
      next function call. */
 
   /* Points to the start of the pState buffer */

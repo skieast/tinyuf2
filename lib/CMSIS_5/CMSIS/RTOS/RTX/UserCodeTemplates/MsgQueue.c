@@ -4,7 +4,7 @@
 /*----------------------------------------------------------------------------
  *      Message Queue creation & usage
  *---------------------------------------------------------------------------*/
- 
+
 void Thread_MsgQueue1 (void const *argument);                   // thread function 1
 void Thread_MsgQueue2 (void const *argument);                   // thread function 2
 osThreadId tid_Thread_MsgQueue1;                                // thread id 1
@@ -26,7 +26,7 @@ typedef struct {                                                // object data t
 
 osPoolId mpid_MemPool2;                                         // memory pool id
 osPoolDef (MemPool2, MSGQUEUE_OBJECTS, MEM_BLOCK_t);            // memory pool object
-  
+
 osMessageQId mid_MsgQueue;                                      // message queue id
 osMessageQDef (MsgQueue, MSGQUEUE_OBJECTS, MSGQUEUE_OBJ_t);     // message queue object
 
@@ -37,17 +37,17 @@ int Init_MsgQueue (void) {
   if (!mpid_MemPool2) {
     ; // MemPool object not created, handle failure
   }
-  
+
   mid_MsgQueue = osMessageCreate (osMessageQ(MsgQueue), NULL);  // create msg queue
   if (!mid_MsgQueue) {
     ; // Message Queue object not created, handle failure
   }
-  
+
   tid_Thread_MsgQueue1 = osThreadCreate (osThread(Thread_MsgQueue1), NULL);
   if (!tid_Thread_MsgQueue1) return(-1);
   tid_Thread_MsgQueue2 = osThreadCreate (osThread(Thread_MsgQueue2), NULL);
   if (!tid_Thread_MsgQueue2) return(-1);
-  
+
   return(0);
 }
 

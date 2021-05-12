@@ -79,7 +79,7 @@ U32 rt_suspend (void) {
 #endif
 
   rt_tsk_lock();
-  
+
   if (os_dly.p_dlnk) {
     delta = os_dly.delta_time;
   }
@@ -305,7 +305,7 @@ void rt_systick (void) {
 
 __weak void rt_stk_check (void) {
   /* Check for stack overflow. */
-  if ((os_tsk.run->tsk_stack < (U32)os_tsk.run->stack) || 
+  if ((os_tsk.run->tsk_stack < (U32)os_tsk.run->stack) ||
       (os_tsk.run->stack[0] != MAGIC_WORD)) {
     os_error (OS_ERR_STK_OVF);
   }

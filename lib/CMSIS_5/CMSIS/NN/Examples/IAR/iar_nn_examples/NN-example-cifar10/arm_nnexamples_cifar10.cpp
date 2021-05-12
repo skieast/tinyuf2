@@ -50,12 +50,12 @@
  *
  * \par Model definition:
  * \par
- * The CNN used in this example is based on CIFAR-10 example from Caffe [1]. 
+ * The CNN used in this example is based on CIFAR-10 example from Caffe [1].
  * The neural network consists
- * of 3 convolution layers interspersed by ReLU activation and max pooling layers, followed by a 
- * fully-connected layer at the end. The input to the network is a 32x32 pixel color image, which will 
- * be classified into one of the 10 output classes. 
- * This example model implementation needs 32.3 KB to store weights, 40 KB for activations and 
+ * of 3 convolution layers interspersed by ReLU activation and max pooling layers, followed by a
+ * fully-connected layer at the end. The input to the network is a 32x32 pixel color image, which will
+ * be classified into one of the 10 output classes.
+ * This example model implementation needs 32.3 KB to store weights, 40 KB for activations and
  * 3.1 KB for storing the \c im2col data.
  *
  * \image html CIFAR10_CNN.gif "Neural Network model definition"
@@ -148,7 +148,7 @@ int main()
     img_buffer2[i+2] = (q7_t)__SSAT( ((((int)image_data[i+2] - mean_data[2])<<7) + (0x1<<(scale_data[2]-1)))
                              >> scale_data[2], 8);
   }
-  
+
   // conv1 img_buffer2 -> img_buffer1
   arm_convolve_HWC_q7_RGB(img_buffer2, CONV1_IM_DIM, CONV1_IM_CH, conv1_wt, CONV1_OUT_CH, CONV1_KER_DIM, CONV1_PADDING,
                           CONV1_STRIDE, conv1_bias, CONV1_BIAS_LSHIFT, CONV1_OUT_RSHIFT, img_buffer1, CONV1_OUT_DIM,

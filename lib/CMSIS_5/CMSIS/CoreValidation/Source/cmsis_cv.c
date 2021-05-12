@@ -164,7 +164,7 @@ static TEST_CASE TC_LIST[] = {
     TCD ( TC_CAL1Cache_InvalidateDCacheAll,          TC_CAL1CACHE_INVALIDATEDCACHEALL       ),
     TCD ( TC_CAL1Cache_CleanDCacheAll,               TC_CAL1CACHE_CLEANDCACHEALL            ),
     TCD ( TC_CAL1Cache_CleanInvalidateDCacheAll,     TC_CAL1CACHE_CLEANINVALIDATEDCACHEALL  ),
-  #endif 
+  #endif
 #endif /* RTE_CV_L1CACHE */
 };
 

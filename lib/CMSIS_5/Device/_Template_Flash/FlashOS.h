@@ -21,7 +21,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 #define VERS       1           // Interface Version 1.01
 
 #define UNKNOWN    0           // Unknown

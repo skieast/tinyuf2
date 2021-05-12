@@ -65,7 +65,7 @@ void ref_fir_interpolate_f32(
       i--;
     }
 
-    /* Advance the state pointer by 1           
+    /* Advance the state pointer by 1
      * to process the next group of interpolation factor number samples */
     pState = pState + 1;
 
@@ -73,8 +73,8 @@ void ref_fir_interpolate_f32(
     blkCnt--;
   }
 
-  /* Processing is complete.         
-   ** Now copy the last phaseLen - 1 samples to the start of the state buffer.       
+  /* Processing is complete.
+   ** Now copy the last phaseLen - 1 samples to the start of the state buffer.
    ** This prepares the state buffer for the next function call. */
 
   /* Points to the start of the state buffer */
@@ -163,7 +163,7 @@ void ref_fir_interpolate_q31(
       i--;
     }
 
-    /* Advance the state pointer by 1           
+    /* Advance the state pointer by 1
      * to process the next group of interpolation factor number samples */
     pState = pState + 1;
 
@@ -171,8 +171,8 @@ void ref_fir_interpolate_q31(
     blkCnt--;
   }
 
-  /* Processing is complete.         
-   ** Now copy the last phaseLen - 1 samples to the satrt of the state buffer.       
+  /* Processing is complete.
+   ** Now copy the last phaseLen - 1 samples to the satrt of the state buffer.
    ** This prepares the state buffer for the next function call. */
 
   /* Points to the start of the state buffer */
@@ -263,7 +263,7 @@ void ref_fir_interpolate_q15(
       i--;
     }
 
-    /* Advance the state pointer by 1           
+    /* Advance the state pointer by 1
      * to process the next group of interpolation factor number samples */
     pState = pState + 1;
 
@@ -271,8 +271,8 @@ void ref_fir_interpolate_q15(
     blkCnt--;
   }
 
-  /* Processing is complete.         
-   ** Now copy the last phaseLen - 1 samples to the start of the state buffer.       
+  /* Processing is complete.
+   ** Now copy the last phaseLen - 1 samples to the start of the state buffer.
    ** This prepares the state buffer for the next function call. */
 
   /* Points to the start of the state buffer */

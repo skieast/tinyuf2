@@ -1,6 +1,6 @@
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
-\page GenDataModel Generator Data Model 
+\page GenDataModel Generator Data Model
 
 The <b>Generator Data Model</b> defines the resource and partition data structure for code generators.
 This data structure is connected to a FreeMarker template engine and file templates allow to generate
@@ -10,7 +10,7 @@ various files that can be used to configure development tools or hardware compon
 
 \section fp_toplevel FreeMarker top-level format
 
-\subpage fm_system provides memory layout and TrustZone configuration of the complete system. 
+\subpage fm_system provides memory layout and TrustZone configuration of the complete system.
 \subpage fm_zone setup information of a zone (or system partition) along with related peripherals.
 
 \section fm_basics FreeMarker basics
@@ -54,7 +54,7 @@ Printing a sorted list of all available memory entries by start address
 
 \page fm_system system element
 
-The \ref fm_system provides the memory layout and the TrustZone configuration of the complete system. 
+The \ref fm_system provides the memory layout and the TrustZone configuration of the complete system.
 This information can be used for example, to create a linker script that defines the memory setup of the SoC system.
 
 <table class="cmtable" summary="Element: system">
@@ -99,7 +99,7 @@ This information can be used for example, to create a linker script that defines
     <td>sequence</td>
   </tr>
 </table>
-  
+
 \page fm_zone zone element
 
 The \ref fm_zone provides the setup information of a zone (or system partition) along with related peripherals.
@@ -771,7 +771,7 @@ The \ref fm_mpu_setup contains the configuration information for the Memory Prot
     <td>Only for v7M: Subregion disable value for v7M register MPU_RASR.</td>
     <td>xs:string</td>
   </tr>
-  
-  
+
+
 </table>
 */

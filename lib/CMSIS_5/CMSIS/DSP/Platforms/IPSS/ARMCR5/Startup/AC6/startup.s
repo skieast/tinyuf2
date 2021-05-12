@@ -174,7 +174,7 @@ Reset_Handler:
 // TCM Configuration
 //----------------------------------------------------------------
 
-// Cortex-R8 optionally provides two Tightly-Coupled Memory (TCM) blocks (ITCM and DTCM) 
+// Cortex-R8 optionally provides two Tightly-Coupled Memory (TCM) blocks (ITCM and DTCM)
 //    for fast access to code or data.
 // ITCM typically holds interrupt or exception code that must be accessed at high speed,
 //    without any potential delay resulting from a cache miss.
@@ -235,7 +235,7 @@ Reset_Handler:
         LDR     r2, =0x1  |  (Region_512K << 1)  |  Region_Enable
         MCR     p15, 0, r2, c6, c1, 2       // Set region size & enable register
         LDR     r2, =0x0  | (Full_Access  << 8)  |  Normal_nShared
-        BIC     r2, r2, #Execute_Never 
+        BIC     r2, r2, #Execute_Never
         MCR     p15, 0, r2, c6, c1, 4       // Set region access control register
 
         // Region 1 - Data
@@ -338,8 +338,8 @@ regions_done:
         MCR     p15, 0, r0, c1, c0, 0       // Write System Control Register
         ISB                                 // Ensure subsequent insts execute wrt new MPU settings
 
-      
-      
+
+
     .global     __main
         B       __main
 
@@ -378,4 +378,3 @@ enable_caches:
 
 message1:        .asciz "Test1\n"
 message2:        .asciz "Test2\n"
-

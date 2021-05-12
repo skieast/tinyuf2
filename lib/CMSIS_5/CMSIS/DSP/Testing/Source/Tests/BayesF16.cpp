@@ -12,11 +12,11 @@
        float16_t *bufp = outputProbas.ptr();
        int16_t *p = outputPredicts.ptr();
 
-       
+
        for(int i=0; i < this->nbPatterns ; i ++)
        {
-          *p = arm_gaussian_naive_bayes_predict_f16(&bayes, 
-                inp, 
+          *p = arm_gaussian_naive_bayes_predict_f16(&bayes,
+                inp,
                 bufp);
 
           inp += this->vecDim;
@@ -26,9 +26,9 @@
 
         ASSERT_REL_ERROR(outputProbas,probas,REL_ERROR);
         ASSERT_EQ(outputPredicts,predicts);
-    } 
+    }
 
-  
+
     void BayesF16::setUp(Testing::testID_t id,std::vector<Testing::param_t>& paramsArgs,Client::PatternMgr *mgr)
     {
 
@@ -38,7 +38,7 @@
        switch(id)
        {
           case BayesF16::TEST_GAUSSIAN_NAIVE_BAYES_PREDICT_F16_1:
-            
+
 
             input.reload(BayesF16::INPUTS1_F16_ID,mgr);
             params.reload(BayesF16::PARAMS1_F16_ID,mgr);
@@ -69,12 +69,12 @@
             bayes.theta=this->theta;
             bayes.sigma=this->sigma;
             bayes.classPriors=this->classPrior;
-            bayes.epsilon=this->epsilon; 
+            bayes.epsilon=this->epsilon;
 
           break;
 
        }
-       
+
 
 
     }

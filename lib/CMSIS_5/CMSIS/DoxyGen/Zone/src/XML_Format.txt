@@ -1,24 +1,24 @@
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
-\page zoneFormat Zone Description Format 
+\page zoneFormat Zone Description Format
 
 The <b>Zone Description Format</b> is a tool agnostic storage format and is split into:
 
- - <b>Resource File (*.rzone)</b> that describes the system resources available. 
+ - <b>Resource File (*.rzone)</b> that describes the system resources available.
  - <b>Assignment File (*.azone)</b> that describes the resource partitioning.
 
 The combination of both <b>Resource File</b> and <b>Assignment File</b> can be used to create a new derived <b>Resource File</b> that only
 contains the resources available for this project. It is therefore possible to split the resources incrementally as needed.
 
-A <b>Resource File (*.rzone)</b> can therefore describe: 
+A <b>Resource File (*.rzone)</b> can therefore describe:
  - A complete embedded system including device with one or more processors, external memory and/or external peripheral components.
  - TrustZone definition and initial setting for Secure Attribute Unit
  - A resource partition for an independent software project (i.e. boot loader, user application, secure partition) that implement the application for the system.
 
 An <b>Assignment File (*.azone)</b> allows to specify either:
  - The partitioning of a system into multiple independent software projects.
- - The configuration of a Memory Protection Unit (MPU) for functional segregation of a software project. 
- 
+ - The configuration of a Memory Protection Unit (MPU) for functional segregation of a software project.
+
 \note It is impossible to use a single <b>Assignment File</b> for both, partitioning of software projects and MPU configuration.
 
 
@@ -55,22 +55,22 @@ Structure of .rzone XML file
 \code
 <rzone>                  // root element of system zone file
   <creator>              // describes how this rzone file was created
-  
+
   <device>               // device information
     <package/>           // software pack that defines device
     <processor/>         // processor information
   </device>
-  
-  <resources>            // physical resources off-chip 
+
+  <resources>            // physical resources off-chip
     <sau_init>           // fixed SAU settings required for system
       <region/>          // region setting for SAU
     </sau_init>
-	
-    <memories>           // memories section  
+
+    <memories>           // memories section
       <memory>           // memory resource
       <mpc>              // memory protection controller information
     </memories>
-    
+
     <peripherals>        // peripheral resources off-chip
       { <group> }        // peripheral group (optional)
       <peripheral>       // peripheral description
@@ -99,11 +99,11 @@ Top-level .azone XML elements
 <azone>
   <rzone>                // Refers related .rzone file
   <configure>            // CMSIS-Zone utility UI behavior
-  
+
   <partition>            // memory partition information
-    <memory>             // memory split information 
+    <memory>             // memory split information
   </partition>
-  
+
   <zones>                // zone assignments
     <zone>               // project zone name
       <assign>           // used peripheral or memory
@@ -119,17 +119,17 @@ Security Type
 =============
 The attribute \em security defines the security setting for a memory or peripheral region.
 Only one of the settings is allow:
- - \<empty\> security not defined (default) 
+ - \<empty\> security not defined (default)
  - 'n'  non-secure
- - 'c'  secure on non-secure callable  
+ - 'c'  secure on non-secure callable
  - 's'  secure
- 
+
 \anchor access
 Access Type
 ===========
 The attribute \em access defines the access permission for a memory or peripheral region.
 Multiple settings are allow:
- - 'r'  read  
+ - 'r'  read
  - 'w'  write
  - 'x'  execute
  - 'p'  peripheral</td>
@@ -306,7 +306,7 @@ The \ref xml_device specifies the device of the system that integrates the proce
     <td>Brief description of the device.</td>
     <td>xs:string</td>
     <td>optional</td>
-  </tr>  
+  </tr>
   <tr>
     <th>Child Elements</th>
     <th>Description</th>
@@ -330,7 +330,7 @@ The \ref xml_device specifies the device of the system that integrates the proce
 
 \section xml_package /rzone/device/package element
 
-The \ref xml_package refers to the Software Pack that provides the Device Family Pack (DFP) for the \ref xml_device "device". 
+The \ref xml_package refers to the Software Pack that provides the Device Family Pack (DFP) for the \ref xml_device "device".
 
 <table class="cmtable" summary="Element: package">
   <tr>
@@ -376,7 +376,7 @@ The \ref xml_package refers to the Software Pack that provides the Device Family
     <td>Brief description of the Software Pack.</td>
     <td>xs:string</td>
     <td>optional</td>
-  </tr>    
+  </tr>
 </table>
 
 
@@ -402,7 +402,7 @@ The information in this element is identical with CMSIS-Pack, except that it pro
   </tr>
   <tr>
     <td>Pname</td>
-    <td>Processor identifier. This attribute <b>is mandatory for devices that embed multiple processors</b>. 
+    <td>Processor identifier. This attribute <b>is mandatory for devices that embed multiple processors</b>.
     </td>
     <td>RestrictedString</td>
     <td>required for all multi-core devices</td>
@@ -484,7 +484,7 @@ The information in this element is identical with CMSIS-Pack, except that it pro
     <td>Brief description of the processor.</td>
     <td>xs:string</td>
     <td>optional</td>
-  </tr>  
+  </tr>
 </table>
 
 */
@@ -565,7 +565,7 @@ The \ref xml_sau_init specifies fixed Secure Attribute Unit (SAU) settings requi
 
 \section xml_si_region /rzone/sau_init/region element
 
-The \ref xml_si_region contains the region setting for SAU initialization. 
+The \ref xml_si_region contains the region setting for SAU initialization.
 
 <table class="cmtable" summary="Element: region">
   <tr>
@@ -611,7 +611,7 @@ The \ref xml_si_region contains the region setting for SAU initialization.
     <td>Brief description of region setting (for comments in source code).</td>
     <td>xs:string</td>
     <td>optional</td>
-  </tr>  
+  </tr>
 </table>
 
 */
@@ -622,7 +622,7 @@ The \ref xml_si_region contains the region setting for SAU initialization.
 
 The \ref xml_memories contains:
   - a list of all memory regions available in this system.
-  - a list of all Memory Protection Controllers (MPC) in this system.  
+  - a list of all Memory Protection Controllers (MPC) in this system.
 Some memory region or MPC might restrict the availability to specific processors.
 
 
@@ -784,13 +784,13 @@ The \ref xml_rmemory lists a logical memory region with physical mapping. Memory
     <td>Brief description of the memory region.</td>
     <td>xs:string</td>
     <td>optional</td>
-  </tr>  
+  </tr>
 </table>
 
 
 \section xml_rmpc /rzone/resources/memories/mpc element
 
-The \ref xml_rmpc element specifies a Memory Protection Controller (MPC) for a physical memory address region.  
+The \ref xml_rmpc element specifies a Memory Protection Controller (MPC) for a physical memory address region.
 The MPC region must not necessarily overlap a physical memory space which means it can be larger or smaller.
 
 <table class="cmtable" summary="Element: mpc">
@@ -847,7 +847,7 @@ The MPC region must not necessarily overlap a physical memory space which means 
     <td>Brief description of the memory region.</td>
     <td>xs:string</td>
     <td>optional</td>
-  </tr>  
+  </tr>
 </table>
 
 */
@@ -1006,7 +1006,7 @@ The \ref xml_group can be used to logically group peripherals according to funct
     <td>Brief description of the peripheral group.</td>
     <td>xs:string</td>
     <td>optional</td>
-  </tr>  
+  </tr>
   <tr>
     <th>Child Elements</th>
     <th>Description</th>
@@ -1133,13 +1133,13 @@ The \ref xml_peripheral is used to define an address mapping for one peripheral.
     <td>Brief description of the peripheral.</td>
     <td>xs:string</td>
     <td>optional</td>
-  </tr>  
+  </tr>
   <tr>
     <td>slot_name</td>
     <td>Attribute name of the slot (i.e. Pins or Channels). Used in context menu or dialog heading.</td>
     <td>xs:string</td>
     <td>optional</td>
-  </tr>  
+  </tr>
   <tr>
     <td>slot_type</td>
     <td>Specifies the values that are configured for the slots:\n
@@ -1270,7 +1270,7 @@ The \ref xml_interrupt defines the interrupts that are generated by a peripheral
     <td>Brief description of the peripheral.</td>
     <td>xs:string</td>
     <td>optional</td>
-  </tr>  
+  </tr>
 </table>
 
 \section xml_p_setup /rzone/resources/peripherals/.../setup element
@@ -1332,7 +1332,7 @@ When the peripheral is specified for on the the conditions, the \em value is ass
     <td>Brief description of the setup value.</td>
     <td>xs:string</td>
     <td>optional</td>
-  </tr>  
+  </tr>
 </table>
 
 */
@@ -1681,7 +1681,7 @@ The \ref xml_amemory defines a new memory sub-region that is related to a parent
     <td>Brief description of the memory block.</td>
     <td>xs:string</td>
     <td>optional</td>
-  </tr>  
+  </tr>
 </table>
 
 \section xml_aperipheral /azone/partition/peripheral element
@@ -2049,7 +2049,7 @@ The \ref xml_ainterrupt defines the interrupt execution for a peripheral.
     <td>Brief description for this setting.</td>
     <td>xs:string</td>
     <td>optional</td>
-  </tr>  
+  </tr>
   <tr>
     <td>security</td>
     <td>\ref security "Security" setting for the interrupt.</td>
@@ -2065,4 +2065,3 @@ The \ref xml_ainterrupt defines the interrupt execution for a peripheral.
 </table>
 
 */
-

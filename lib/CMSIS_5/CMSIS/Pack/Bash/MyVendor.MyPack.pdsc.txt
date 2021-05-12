@@ -16,7 +16,7 @@
     <condition id="MyComponent-CM3">
     <description>This ensures that MyComponent is only available for Cortex-M3</description>
     <require Dcore="Cortex-M3"/>
-    </condition>	
+    </condition>
   </conditions>
 
   <components>

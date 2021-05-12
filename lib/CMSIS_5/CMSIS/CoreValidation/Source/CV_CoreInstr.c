@@ -756,19 +756,19 @@ Checks macro functions to access unaligned uint16_t values:
 void TC_CoreInstr_UnalignedUint16(void) {
   uint8_t buffer[3] = { 0U, 0U, 0U };
   uint16_t val;
-  
+
   for(int i=0; i<2; i++) {
     __UNALIGNED_UINT16_WRITE(&(buffer[i]), 0x4711U);
     ASSERT_TRUE(buffer[i]       == 0x11U);
     ASSERT_TRUE(buffer[i+1]     == 0x47U);
     ASSERT_TRUE(buffer[(i+2)%3] == 0x00U);
-  
+
     buffer[i] = 0x12U;
     buffer[i+1] = 0x46U;
-  
+
     val = __UNALIGNED_UINT16_READ(&(buffer[i]));
     ASSERT_TRUE(val == 0x4612U);
-  
+
     buffer[i]   = 0x00U;
     buffer[i+1] = 0x00U;
   }
@@ -785,7 +785,7 @@ Checks macro functions to access unaligned uint32_t values:
 void TC_CoreInstr_UnalignedUint32(void) {
   uint8_t buffer[7] = { 0U, 0U, 0U, 0U, 0U, 0U, 0U };
   uint32_t val;
-  
+
   for(int i=0; i<4; i++) {
     __UNALIGNED_UINT32_WRITE(&(buffer[i]), 0x08154711UL);
     ASSERT_TRUE(buffer[i+0]     == 0x11U);
@@ -795,15 +795,15 @@ void TC_CoreInstr_UnalignedUint32(void) {
     ASSERT_TRUE(buffer[(i+4)%7] == 0x00U);
     ASSERT_TRUE(buffer[(i+5)%7] == 0x00U);
     ASSERT_TRUE(buffer[(i+6)%7] == 0x00U);
-  
+
     buffer[i+0] = 0x12U;
     buffer[i+1] = 0x46U;
     buffer[i+2] = 0x14U;
     buffer[i+3] = 0x09U;
-  
+
     val = __UNALIGNED_UINT32_READ(&(buffer[i]));
     ASSERT_TRUE(val == 0x09144612UL);
-  
+
     buffer[i+0] = 0x00U;
     buffer[i+1] = 0x00U;
     buffer[i+2] = 0x00U;

@@ -48,12 +48,11 @@ LR_ROM1 __RAM1_BASE __RAM1_SIZE  {                             ; load region siz
 
   	ARM_LIB_STACK __RAM2_BASE ALIGN 8 EMPTY __STACK_SIZE {   ; Reserve empty region for stack
 	}
-	
+
 	RW_RAM2 +0 RW_RAM2_SIZE  {
     	* (+RW +ZI)
   	}
-  	
-  	
+
+
 
 }
-

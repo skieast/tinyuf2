@@ -1,6 +1,6 @@
 /******************************************************************************
  * @file     ARMCA32.h
- * @brief    CMSIS Cortex-A32 Core Peripheral Access Layer Header File 
+ * @brief    CMSIS Cortex-A32 Core Peripheral Access Layer Header File
  * @version  V1.1.0
  * @date     15. May 2019
  *
@@ -48,7 +48,7 @@ extern "C" {
 /* Peripheral and RAM base address */
 #define VE_A32_NORMAL                  (0x00000000UL)                                /*!< (FLASH0     ) Base Address */
 #define VE_A32_PERIPH                  (0x13000000UL)                                /*!< (FLASH0     ) Base Address */
-#define VE_A32_NORMAL2                 (0x14000000UL) 
+#define VE_A32_NORMAL2                 (0x14000000UL)
 
 /* --------  Configuration of the Cortex-A32 Processor and Core Peripherals  ------- */
 #define __CA_REV        0x0000U    /*!< Core revision r0p0                          */

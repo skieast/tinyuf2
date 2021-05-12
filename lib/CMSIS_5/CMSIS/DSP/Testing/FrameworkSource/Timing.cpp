@@ -18,7 +18,7 @@ static uint32_t startCycles=0;
 #elif defined ARMCM4_FP
   #include "ARMCM4_FP.h"
 #elif defined ARMCM7
-  #include "ARMCM7.h" 
+  #include "ARMCM7.h"
 #elif defined ARMCM7_SP
   #include "ARMCM7_SP.h"
 #elif defined ARMCM7_DP
@@ -59,12 +59,12 @@ static uint32_t startCycles=0;
 unsigned int startCycles;
 
 #define DO_RESET 1
-#define ENABLE_DIVIDER 0 
+#define ENABLE_DIVIDER 0
 #endif
 
 #ifdef EXTBENCH
 unsigned long sectionCounter=0;
-#endif 
+#endif
 
 void initCycleMeasurement()
 {
@@ -72,7 +72,7 @@ void initCycleMeasurement()
     SysTick->LOAD = SYSTICK_INITIAL_VALUE;
     SysTick->VAL = 0;
     SysTick->CTRL = 0;
-#endif 
+#endif
 
 #if defined(CORTEXA) || defined(CORTEXR)
 
@@ -113,20 +113,20 @@ void cycleMeasurementStart()
 {
 #ifndef EXTBENCH
 #ifdef CORTEXM
-   
+
     SysTick->CTRL = 0;
     SysTick->LOAD = SYSTICK_INITIAL_VALUE;
     SysTick->VAL = 0;
 
-    SysTick->CTRL = SysTick_CTRL_ENABLE_Msk | SysTick_CTRL_CLKSOURCE_Msk;  
+    SysTick->CTRL = SysTick_CTRL_ENABLE_Msk | SysTick_CTRL_CLKSOURCE_Msk;
 
     while(SysTick->VAL == 0);
-    
+
 
     startCycles = SysTick->VAL;
 
 
-    
+
 #endif
 
 #if defined(CORTEXA) || defined(CORTEXR)
@@ -135,7 +135,7 @@ void cycleMeasurementStart()
     __get_CP(15, 0, value, 9, 13, 0);
     startCycles =  value;
 #endif
-#endif 
+#endif
 
 }
 
@@ -163,7 +163,7 @@ Testing::cycles_t getCycles()
       result = SYSTICK_INITIAL_VALUE - (v - startCycles);
     }
     return(result);
-#endif 
+#endif
 
 #if defined(CORTEXA) || defined(CORTEXR)
     unsigned int value;

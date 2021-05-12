@@ -265,7 +265,7 @@ OS_RESULT rt_tsk_delete (OS_TID task_id) {
 #ifdef __CMSIS_RTOS
         rt_ret_val (p_TCB, 0U/*osOK*/);
 #else
-        rt_ret_val (p_TCB, OS_R_MUT); 
+        rt_ret_val (p_TCB, OS_R_MUT);
 #endif
         rt_rmv_dly (p_TCB);
         p_TCB->state = READY;
@@ -275,7 +275,7 @@ OS_RESULT rt_tsk_delete (OS_TID task_id) {
         p_MCB->level  = 1U;
         p_MCB->owner  = p_TCB;
         p_MCB->p_mlnk = p_TCB->p_mlnk;
-        p_TCB->p_mlnk = p_MCB; 
+        p_TCB->p_mlnk = p_MCB;
         p_MCB = p_MCB0;
       }
       else {
@@ -313,7 +313,7 @@ OS_RESULT rt_tsk_delete (OS_TID task_id) {
 #ifdef __CMSIS_RTOS
         rt_ret_val (p_TCB, 0U/*osOK*/);
 #else
-        rt_ret_val (p_TCB, OS_R_MUT); 
+        rt_ret_val (p_TCB, OS_R_MUT);
 #endif
         rt_rmv_dly (p_TCB);
         p_TCB->state = READY;
@@ -323,7 +323,7 @@ OS_RESULT rt_tsk_delete (OS_TID task_id) {
         p_MCB->level  = 1U;
         p_MCB->owner  = p_TCB;
         p_MCB->p_mlnk = p_TCB->p_mlnk;
-        p_TCB->p_mlnk = p_MCB; 
+        p_TCB->p_mlnk = p_MCB;
         p_MCB = p_MCB0;
       }
       else {

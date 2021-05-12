@@ -58,9 +58,9 @@ JTEST_DEFINE_TEST(arm_mat_scale_f32_test, arm_mat_scale_f32)
 
         for(i=0;i<MATRIX_MAX_COEFFS_LEN;i++)
         {
-            JTEST_DUMP_STRF("Matrix Dimensions: %dx%d\n",                
-                         (int)mat_ptr->numRows,                         
-                         (int)mat_ptr->numCols);                        
+            JTEST_DUMP_STRF("Matrix Dimensions: %dx%d\n",
+                         (int)mat_ptr->numRows,
+                         (int)mat_ptr->numCols);
             JTEST_COUNT_CYCLES(arm_mat_scale_f32(mat_ptr, matrix_f32_scale_values[i], &matrix_output_fut));
 
             ref_mat_scale_f32(mat_ptr, matrix_f32_scale_values[i], &matrix_output_ref);

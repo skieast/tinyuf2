@@ -20,7 +20,7 @@
 ; * ARM SHALL NOT, IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR
 ; * CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
 ; *
-; * <<< Use Configuration Wizard in Context Menu >>>   
+; * <<< Use Configuration Wizard in Context Menu >>>
 ; ******************************************************************************/
 
 ; <h> Stack Configuration

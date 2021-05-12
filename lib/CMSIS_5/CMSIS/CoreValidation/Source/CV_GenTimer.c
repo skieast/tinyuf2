@@ -1,5 +1,5 @@
 /*-----------------------------------------------------------------------------
- *      Name:         CV_GenTimer.c 
+ *      Name:         CV_GenTimer.c
  *      Purpose:      CMSIS CORE validation tests implementation
  *-----------------------------------------------------------------------------
  *      Copyright (c) 2017 ARM Limited. All rights reserved.
@@ -16,7 +16,7 @@
  *      Test cases
  *----------------------------------------------------------------------------*/
 
- 
+
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 void TC_GenTimer_CNTFRQ(void) {
   const uint32_t cntfrq1 = __get_CNTFRQ();
@@ -24,7 +24,7 @@ void TC_GenTimer_CNTFRQ(void) {
   const uint32_t cntfrq2 = __get_CNTFRQ();
 
   ASSERT_TRUE((cntfrq1 + 1U) == cntfrq2);
-  
+
   __set_CNTFRQ(cntfrq1);
 }
 
@@ -47,7 +47,7 @@ void TC_GenTimer_CNTP_CTL(void) {
   const uint32_t cntp_ctl_new = __get_CNTP_CTL();
 
   ASSERT_TRUE((cntp_ctl_toggled & CNTP_CTL_ENABLE) == (cntp_ctl_new & CNTP_CTL_ENABLE));
-  
+
   __set_CNTP_CTL(cntp_ctl);
 }
 

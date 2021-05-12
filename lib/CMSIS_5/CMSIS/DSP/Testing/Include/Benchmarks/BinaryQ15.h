@@ -25,5 +25,5 @@ class BinaryQ15:public Client::Suite
             arm_matrix_instance_q15 out;
 
             q15_t *pState;
-            
+
     };

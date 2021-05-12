@@ -71,20 +71,20 @@ typedef enum IRQn
   SGI13_IRQn                         = 13,      /*!< Software Generated Interrupt 13                                           */
   SGI14_IRQn                         = 14,      /*!< Software Generated Interrupt 14                                           */
   SGI15_IRQn                         = 15,      /*!< Software Generated Interrupt 15                                           */
-  
+
   /* Private Peripheral Interrupts */
   VirtualMaintenanceInterrupt_IRQn   = 25,      /*!< Virtual Maintenance Interrupt                                             */
   HypervisorTimer_IRQn               = 26,      /*!< Hypervisor Timer Interrupt                                                */
-  VirtualTimer_IRQn                  = 27,      /*!< Virtual Timer Interrupt                                                   */ 
+  VirtualTimer_IRQn                  = 27,      /*!< Virtual Timer Interrupt                                                   */
   Legacy_nFIQ_IRQn                   = 28,      /*!< Legacy nFIQ Interrupt                                                     */
   SecurePhyTimer_IRQn                = 29,      /*!< Secure Physical Timer Interrupt                                           */
   NonSecurePhyTimer_IRQn             = 30,      /*!< Non-Secure Physical Timer Interrupt                                       */
-  Legacy_nIRQ_IRQn                   = 31,      /*!< Legacy nIRQ Interrupt                                                     */ 
+  Legacy_nIRQ_IRQn                   = 31,      /*!< Legacy nIRQ Interrupt                                                     */
 
  /* Shared Peripheral Interrupts */
  /* ToDo: add here your device specific external interrupt numbers */
   <DeviceInterrupt>_IRQn    = 0,                /*!< Device Interrupt                                                          */
-  
+
 } IRQn_Type;
 
 
@@ -94,7 +94,7 @@ typedef enum IRQn
 
 /* ===========================  Configuration of the Arm Cortex-A Processor and Core Peripherals  ============================ */
 /* ToDo: set the defines according your Device */
-/* ToDo: define the correct core revision              
+/* ToDo: define the correct core revision
          5U if your device is a CORTEX-A5 device
          7U if your device is a CORTEX-A7 device
          9U if your device is a CORTEX-A9 device */

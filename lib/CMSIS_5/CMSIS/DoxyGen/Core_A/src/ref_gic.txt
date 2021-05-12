@@ -9,49 +9,49 @@ Reference: <a href="http://infocenter.arm.com/help/topic/com.arm.doc.ihi0069c/in
 
 The following table shows the register naming of CMSIS in correlation with various technical reference manuals.
 
-| CMSIS Register Name                                                  | Cortex-A5 TRM  | Cortex-A7 TRM    | Cortex-A9 TRM  | 
-| :------------------------------------------------------------------- | :------------- | :--------------- | :------------- | 
+| CMSIS Register Name                                                  | Cortex-A5 TRM  | Cortex-A7 TRM    | Cortex-A9 TRM  |
+| :------------------------------------------------------------------- | :------------- | :--------------- | :------------- |
 | <b>GIC Distributor</b>                                               |                |                  |                |
-| \ref GICDistributor_Type::CTLR "GICDistributor->CTLR"                | ICDDCR         | GICD_CTLR        | ICDDCR         | 
-| \ref GICDistributor_Type::TYPER "GICDistributor->TYPER"              | ICDICTR        | GICD_TYPER       | ICDICTR        | 
-| \ref GICDistributor_Type::IIDR "GICDistributor->IIDR"                | ICDIIDR        | GICD_IIDR        | ICDIIDR        | 
-| \ref GICDistributor_Type::STATUSR "GICDistributor->STATUSR"          |                |                  |                | 
-| \ref GICDistributor_Type::SETSPI_NSR "GICDistributor->SETSPI_NSR"    |                |                  |                | 
-| \ref GICDistributor_Type::CLRSPI_NSR "GICDistributor->CLRSPI_NSR"    |                |                  |                | 
-| \ref GICDistributor_Type::IGROUPR "GICDistributor->IGROUPR[]"        | ICDISR         | GICD_IGROUPRn    | ICDISRn        | 
-| \ref GICDistributor_Type::ISENABLER "GICDistributor->ISENABLER[]"    | ICDISER        | GICD_ISENABLERn  | ICDISERn       | 
-| \ref GICDistributor_Type::ICENABLER "GICDistributor->ICENABLER[]"    | ICDICER        | GICD_ICENABLERn  | ICDICERn       | 
-| \ref GICDistributor_Type::ISPENDR "GICDistributor->ISPENDR[]"        | ICDISPR        | GICD_ISPENDRn    | ICDISPRn       | 
-| \ref GICDistributor_Type::ICPENDR "GICDistributor->ICPENDR[]"        | ICDICPR        | GICD_ICPENDRn    | ICDICPRn       | 
-| \ref GICDistributor_Type::ISACTIVER "GICDistributor->ISACTIVER[]"    | ICDABR         | GICD_ISACTIVERn  | ICDABRn        | 
-| \ref GICDistributor_Type::ICACTIVER "GICDistributor->ICACTIVER[]"    |                | GICD_ICACTIVERn  |                | 
-| \ref GICDistributor_Type::IPRIORITYR "GICDistributor->IPRIORITYR[]"  | ICDIPR         | GICD_IPRIORITYRn | ICDIPRn        | 
-| \ref GICDistributor_Type::ITARGETSR "GICDistributor->ITARGETSR[]"    | ICDIPTR        | GICD_ITARGETSRn  | ICDIPTRn       | 
-| \ref GICDistributor_Type::ICFGR "GICDistributor->ICFGR[]"            | ICDICFR        | GICD_ICFGRn      | ICDICFRn       | 
-| \ref GICDistributor_Type::IGRPMODR "GICDistributor->IGRPMODR[0]"     | ICDPPIS        | GICD_PPISR       | ppi_status     | 
-| \ref GICDistributor_Type::IGRPMODR "GICDistributor->IGRPMODR[31:1]"  | ICDSPIS        | GICD_SPISRn      | spi_status     | 
-| \ref GICDistributor_Type::NSACR "GICDistributor->NSACR[]"            |                |                  |                | 
+| \ref GICDistributor_Type::CTLR "GICDistributor->CTLR"                | ICDDCR         | GICD_CTLR        | ICDDCR         |
+| \ref GICDistributor_Type::TYPER "GICDistributor->TYPER"              | ICDICTR        | GICD_TYPER       | ICDICTR        |
+| \ref GICDistributor_Type::IIDR "GICDistributor->IIDR"                | ICDIIDR        | GICD_IIDR        | ICDIIDR        |
+| \ref GICDistributor_Type::STATUSR "GICDistributor->STATUSR"          |                |                  |                |
+| \ref GICDistributor_Type::SETSPI_NSR "GICDistributor->SETSPI_NSR"    |                |                  |                |
+| \ref GICDistributor_Type::CLRSPI_NSR "GICDistributor->CLRSPI_NSR"    |                |                  |                |
+| \ref GICDistributor_Type::IGROUPR "GICDistributor->IGROUPR[]"        | ICDISR         | GICD_IGROUPRn    | ICDISRn        |
+| \ref GICDistributor_Type::ISENABLER "GICDistributor->ISENABLER[]"    | ICDISER        | GICD_ISENABLERn  | ICDISERn       |
+| \ref GICDistributor_Type::ICENABLER "GICDistributor->ICENABLER[]"    | ICDICER        | GICD_ICENABLERn  | ICDICERn       |
+| \ref GICDistributor_Type::ISPENDR "GICDistributor->ISPENDR[]"        | ICDISPR        | GICD_ISPENDRn    | ICDISPRn       |
+| \ref GICDistributor_Type::ICPENDR "GICDistributor->ICPENDR[]"        | ICDICPR        | GICD_ICPENDRn    | ICDICPRn       |
+| \ref GICDistributor_Type::ISACTIVER "GICDistributor->ISACTIVER[]"    | ICDABR         | GICD_ISACTIVERn  | ICDABRn        |
+| \ref GICDistributor_Type::ICACTIVER "GICDistributor->ICACTIVER[]"    |                | GICD_ICACTIVERn  |                |
+| \ref GICDistributor_Type::IPRIORITYR "GICDistributor->IPRIORITYR[]"  | ICDIPR         | GICD_IPRIORITYRn | ICDIPRn        |
+| \ref GICDistributor_Type::ITARGETSR "GICDistributor->ITARGETSR[]"    | ICDIPTR        | GICD_ITARGETSRn  | ICDIPTRn       |
+| \ref GICDistributor_Type::ICFGR "GICDistributor->ICFGR[]"            | ICDICFR        | GICD_ICFGRn      | ICDICFRn       |
+| \ref GICDistributor_Type::IGRPMODR "GICDistributor->IGRPMODR[0]"     | ICDPPIS        | GICD_PPISR       | ppi_status     |
+| \ref GICDistributor_Type::IGRPMODR "GICDistributor->IGRPMODR[31:1]"  | ICDSPIS        | GICD_SPISRn      | spi_status     |
+| \ref GICDistributor_Type::NSACR "GICDistributor->NSACR[]"            |                |                  |                |
 | \ref GICDistributor_Type::SGIR "GICDistributor->SGIR"                | ICDSGIR        | GICD_SGIR        | ICDSGIR        |
-| \ref GICDistributor_Type::CPENDSGIR "GICDistributor->CPENDSGIR[]"    |                | GICD_CPENDSGIRn  |                | 
-| \ref GICDistributor_Type::SPENDSGIR "GICDistributor->SPENDSGIR[]"    |                | GICD_SPENDSGIRn  |                | 
-| \ref GICDistributor_Type::IROUTER "GICDistributor->IROUTER[]"        |                |                  |                | 
+| \ref GICDistributor_Type::CPENDSGIR "GICDistributor->CPENDSGIR[]"    |                | GICD_CPENDSGIRn  |                |
+| \ref GICDistributor_Type::SPENDSGIR "GICDistributor->SPENDSGIR[]"    |                | GICD_SPENDSGIRn  |                |
+| \ref GICDistributor_Type::IROUTER "GICDistributor->IROUTER[]"        |                |                  |                |
 | <b>GIC Interface</b>                                                 |                |                  |                |
-| \ref GICInterface_Type::CTLR "GICInterface->CTLR"                    | ICPICR         | GICC_CTLR        | ICCICR         | 
-| \ref GICInterface_Type::PMR "GICInterface->PMR"                      | ICCIPMR        | GICC_PMRn        | ICCPMR         | 
-| \ref GICInterface_Type::BPR "GICInterface->BPR"                      | ICCBPR         | GICC_BPR         | ICCBPR         | 
-| \ref GICInterface_Type::IAR "GICInterface->IAR"                      | ICCIAR         | GICC_IAR         | ICCIAR         | 
-| \ref GICInterface_Type::EOIR "GICInterface->EOIR"                    | ICCEOIR        | GICC_EOIR        | ICCEOIR        | 
-| \ref GICInterface_Type::RPR "GICInterface->RPR"                      | ICCRPR         | GICC_RPR         | ICCRPR         | 
-| \ref GICInterface_Type::HPPIR "GICInterface->HPPIR"                  | ICCHPIR        | GICC_HPPIR       | ICCHPIR        | 
-| \ref GICInterface_Type::ABPR "GICInterface->ABPR"                    | ICCABPR        | GICC_ABPR        | ICCABPR        | 
-| \ref GICInterface_Type::AIAR "GICInterface->AIAR"                    |                | GICC_AIAR        |                | 
-| \ref GICInterface_Type::AEOIR "GICInterface->AEOIR"                  |                | GICC_AEOIR       |                | 
-| \ref GICInterface_Type::AHPPIR "GICInterface->AHPPIR"                |                | GICC_AHPPIR      |                | 
-| \ref GICInterface_Type::STATUSR "GICInterface->STATUSR"              |                |                  |                | 
-| \ref GICInterface_Type::APR "GICInterface->APR[]"                    |                | GICC_APR0        |                | 
-| \ref GICInterface_Type::NSAPR "GICInterface->NSAPR[]"                |                | GICC_NSAPR0      |                | 
-| \ref GICInterface_Type::IIDR "GICInterface->IIDR"                    | ICCIIDR        | GICC_IIDR        | ICCIDR         | 
-| \ref GICInterface_Type::DIR "GICInterface->DIR"                      |                | GICC_DIR         |                | 
+| \ref GICInterface_Type::CTLR "GICInterface->CTLR"                    | ICPICR         | GICC_CTLR        | ICCICR         |
+| \ref GICInterface_Type::PMR "GICInterface->PMR"                      | ICCIPMR        | GICC_PMRn        | ICCPMR         |
+| \ref GICInterface_Type::BPR "GICInterface->BPR"                      | ICCBPR         | GICC_BPR         | ICCBPR         |
+| \ref GICInterface_Type::IAR "GICInterface->IAR"                      | ICCIAR         | GICC_IAR         | ICCIAR         |
+| \ref GICInterface_Type::EOIR "GICInterface->EOIR"                    | ICCEOIR        | GICC_EOIR        | ICCEOIR        |
+| \ref GICInterface_Type::RPR "GICInterface->RPR"                      | ICCRPR         | GICC_RPR         | ICCRPR         |
+| \ref GICInterface_Type::HPPIR "GICInterface->HPPIR"                  | ICCHPIR        | GICC_HPPIR       | ICCHPIR        |
+| \ref GICInterface_Type::ABPR "GICInterface->ABPR"                    | ICCABPR        | GICC_ABPR        | ICCABPR        |
+| \ref GICInterface_Type::AIAR "GICInterface->AIAR"                    |                | GICC_AIAR        |                |
+| \ref GICInterface_Type::AEOIR "GICInterface->AEOIR"                  |                | GICC_AEOIR       |                |
+| \ref GICInterface_Type::AHPPIR "GICInterface->AHPPIR"                |                | GICC_AHPPIR      |                |
+| \ref GICInterface_Type::STATUSR "GICInterface->STATUSR"              |                |                  |                |
+| \ref GICInterface_Type::APR "GICInterface->APR[]"                    |                | GICC_APR0        |                |
+| \ref GICInterface_Type::NSAPR "GICInterface->NSAPR[]"                |                | GICC_NSAPR0      |                |
+| \ref GICInterface_Type::IIDR "GICInterface->IIDR"                    | ICCIIDR        | GICC_IIDR        | ICCIDR         |
+| \ref GICInterface_Type::DIR "GICInterface->DIR"                      |                | GICC_DIR         |                |
 
 */
 
@@ -66,7 +66,7 @@ The following table shows the register naming of CMSIS in correlation with vario
 \see GIC_EnableDistributor
 
 \fn __STATIC_INLINE uint32_t GIC_DistributorInfo(void)
-\details 
+\details
 Provides information about the configuration of the GIC. It indicates:
  - whether the GIC implements the Security Extensions
  - the maximum number of interrupt IDs that the GIC supports
@@ -79,7 +79,7 @@ implemented Lockable Shared Peripheral Interrupts (LSPIs).
 Provides information about the implementer and revision of the Distributor.
 
 \fn __STATIC_INLINE void GIC_SetTarget(IRQn_Type IRQn, uint32_t cpu_target)
-\details 
+\details
 The \ref GICDistributor_Type.ITARGETSR "ITARGETSR" registers provide an 8-bit CPU targets field
 for each interrupt supported by the GIC. This field stores the list of target processors for the
 interrupt. That is, it holds the list of CPU interfaces to which the Distributor forwards the
@@ -101,7 +101,7 @@ Resets the Enable bit in the local CPUs \ref GICInterface_Type.CTLR "CTLR" regis
 Only the CPU executing the call is affected.
 
 \fn __STATIC_INLINE IRQn_Type GIC_AcknowledgePending(void)
-\details 
+\details
 Provides the interrupt number of the highest priority interrupt pending.
 A read of this register acts as an acknowledge for the interrupt.
 
@@ -111,7 +111,7 @@ The read returns a spurious interrupt number of 1023 if any of the following app
  - There are no pending interrupts on the CPU interface with sufficient priority for the interface to signal it to the PE.
 
 \see GIC_EndInterrupt
- 
+
 \fn __STATIC_INLINE void GIC_EndInterrupt(IRQn_Type IRQn)
 A write to this register performs priority drop for the specified interrupt.
 
@@ -120,9 +120,9 @@ acknowledgement, i.e. calls to \ref GIC_AcknowledgePending. Behavior is UNPREDIC
  - This ordering constraint is not maintained.
  - The given interrupt number does not match an active interrupt, or the ID of a spurious interrupt.
  - The given interrupt number does not match the last valid interrupt value returned by \ref GIC_AcknowledgePending.
- 
+
 \fn __STATIC_INLINE void GIC_EnableIRQ(IRQn_Type IRQn)
-\details 
+\details
 Enables forwarding of the corresponding interrupt to the CPU interfaces.
 
 \fn __STATIC_INLINE void GIC_DisableIRQ(IRQn_Type IRQn)
@@ -138,11 +138,11 @@ Adds the pending state to the corresponding interrupt.
 Removes the pending state from the corresponding interrupt.
 
 \fn __STATIC_INLINE void GIC_SetPriority(IRQn_Type IRQn, uint32_t priority)
-\details 
+\details
 Configures the priority of the given interrupt.
 
 The available interrupt priorities are IMPLEMENTATION DEFINED. In order to
-query the actual priorities one can 
+query the actual priorities one can
 
 \code
 GIC_SetPriority(IRQn_TIM1, UINT32_MAX);       // try to configure lowest possible priority
@@ -150,7 +150,7 @@ uint32_t actual = GIC_GetPriority(IRQn_TIM1); // retrieve actual lowest priority
 \endcode
 
 \fn __STATIC_INLINE uint32_t GIC_GetPriority(IRQn_Type IRQn)
-\details 
+\details
 Can be used to retrieve the actual priority depending on the GIC implementation.
 \see GIC_SetPriority
 
@@ -176,15 +176,15 @@ multiple are pending at time.
 \see GIC_SetBinaryPoint
 
 \fn __STATIC_INLINE uint32_t GIC_GetIRQStatus(IRQn_Type IRQn)
-\details 
-The return value is a combination of GIC's \ref GICDistributor_Type::ISACTIVER "ISACTIVER" 
+\details
+The return value is a combination of GIC's \ref GICDistributor_Type::ISACTIVER "ISACTIVER"
 and \ref GICDistributor_Type::ISPENDR "ISPENDR" registers.
 
 Bit 0 denotes interrupts pending bit (interrupt should be handled) and bit 1 denotes interrupts
 active bit (interrupt is currently handled).
 
 \fn __STATIC_INLINE void GIC_SendSGI(IRQn_Type IRQn, uint32_t target_list, uint32_t filter_list)
-\fn __STATIC_INLINE uint32_t GIC_GetHighPendingIRQ(void) 
+\fn __STATIC_INLINE uint32_t GIC_GetHighPendingIRQ(void)
 \fn __STATIC_INLINE uint32_t GIC_GetInterfaceId(void)
 \fn __STATIC_INLINE void GIC_DistInit(void)
 \details
@@ -194,7 +194,7 @@ All shared peripheral interrupts (SPIs) are initialized to be
  - priority 0x7F
  - targeting CPU0
 and the distributor is enabled.
- 
+
 \see
 GIC_DisableIRQ\n
 GIC_SetLevelModel\n
@@ -210,7 +210,7 @@ All software generated (SGIs) and private peripheral interrupts (PPIs) are initi
  - priority 0x7F
 and the interrupt interface is enabled.
 
-The binary point is set to zero. 
+The binary point is set to zero.
 
 The interrupt priority mask is set to 0xFF.
 
@@ -290,7 +290,7 @@ includes control of the end of interrupt (EOI) behavior.
 | :------ | :------------ | :------------------------------------------------------------- |
 | [31:24] | -             | Reserved.                                                      |
 | [23:0]  | INTID         | The interrupt number of the finished interrupt.                |
- 
+
  \var __IM uint32_t GICInterface_Type::HPPIR
 \details CPU Interface Highest Priority Pending Interrupt Register
 
@@ -319,7 +319,7 @@ includes control of the end of interrupt (EOI) behavior.
 | [7:0]   | Priority      | The priority mask level for the CPU interface.                 |
 
 \note IMPLEMENTATION DEFINED unsupported priority bits might be RAZ/WI.
- 
+
 \var __IOM uint32_t GICInterface_Type::BPR
 \details CPU Interface Binary Point Register
 
@@ -478,18 +478,18 @@ to an unimplemented CPU interface is RAZ/WI.
 Each bit corresponds to one interrupt:
  - Register index is given by INTID/32
  - Bit number is given by INTID%32
- 
+
 And the value denotes:
 - 0 When \ref GICDistributor_Type::CTLR "CTLR".DS==1, the corresponding interrupt is Group 0\n
     When \ref GICDistributor_Type::CTLR "CTLR".DS==0, the corresponding interrupt is Secure.
 - 1 When \ref GICDistributor_Type::CTLR "CTLR".DS==1, the corresponding interrupt is Group 1.\n
     When \ref GICDistributor_Type::CTLR "CTLR".DS==0, the corresponding interrupt is Non-secure Group 1.
- 
+
 \var __IO uint32_t GICDistributor_Type::CLRSPI_NSR
 \details Clear Non-secure SPI Pending Register
 
 | Bits    | Name          | Function                                          |
-| :------ | :------------ | :------------------------------------------------ | 
+| :------ | :------------ | :------------------------------------------------ |
 | [31:10] | -             | Reserved.                                         |
 | [9:0]   | INTID         | The interrupt number to clear pending state from. |
 
@@ -497,7 +497,7 @@ And the value denotes:
 \details Clear Secure SPI Pending Register
 
 | Bits    | Name          | Function                                          |
-| :------ | :------------ | :------------------------------------------------ | 
+| :------ | :------------ | :------------------------------------------------ |
 | [31:10] | -             | Reserved.                                         |
 | [9:0]   | INTID         | The interrupt number to clear pending state from. |
 
@@ -507,17 +507,17 @@ And the value denotes:
 Each bit corresponds to one interrupt:
  - Register index is given by INTID/32
  - Bit number is given by INTID%32
- 
+
 \var __IOM uint64_t GICDistributor_Type::IROUTER[988]
 \details Interrupt Routing Registers
 
 | Bits    | Name          | Function                                                      |
-| :------ | :------------ | :------------------------------------------------------------ | 
+| :------ | :------------ | :------------------------------------------------------------ |
 | [63:40] | -             | Reserved.                                                     |
 | [39:32] | Aff3          | Affinity level 3, the least significant affinity level field. |
 | [31]    | IRM           | Interrupt Routing Mode. Defines how SPIs are routed in an affinity hierarchy. |
 | [30:24] | -             | Reserved.                                                     |
-| [23:16] | Aff2          | Affinity level 2, an intermediate affinity level field.       | 
+| [23:16] | Aff2          | Affinity level 2, an intermediate affinity level field.       |
 | [15:8]  | Aff1          | Affinity level 1, an intermediate affinity level field.       |
 | [7:0]   | Aff0          | Affinity level 0, the most significant affinity level field.  |
 
@@ -533,12 +533,12 @@ The possible values of each 2-bit field are:
  - 01 - Non-secure accesses are only permitted to requesting fields.
  - 10 - As 01, additionally accesses to clearing field are permitted.
  - 11 - As 10, additionally accesses to target and routing fields are permitted.
- 
+
 \var __IO uint32_t GICDistributor_Type::SETSPI_NSR
 \details Set Non-secure SPI Pending Register
 
 | Bits    | Name          | Function                                          |
-| :------ | :------------ | :------------------------------------------------ | 
+| :------ | :------------ | :------------------------------------------------ |
 | [31:10] | -             | Reserved.                                         |
 | [9:0]   | INTID         | The interrupt number to set pending state for.    |
 
@@ -546,7 +546,7 @@ The possible values of each 2-bit field are:
 \details Set Secure SPI Pending Register
 
 | Bits    | Name          | Function                                          |
-| :------ | :------------ | :------------------------------------------------ | 
+| :------ | :------------ | :------------------------------------------------ |
 | [31:10] | -             | Reserved.                                         |
 | [9:0]   | INTID         | The interrupt number to set pending state for.    |
 
@@ -557,11 +557,11 @@ Each register corresponds to one software generated interrupt (SGI).
 Reading from this register reveals
  - 0 - interrupt is not pending
  - 1 - interrupt is pending
- 
+
 Writing to this register causes
  - 0 - no effect
  - 1 - adds the pending state
- 
+
 \var __IOM uint8_t GICDistributor_Type::CPENDSGIR[16]
 \details SGI Clear-Pending Registers
 Each register corresponds to one software generated interrupt (SGI).
@@ -569,7 +569,7 @@ Each register corresponds to one software generated interrupt (SGI).
 Reading from this register reveals
  - 0 - interrupt is not pending
  - 1 - interrupt is pending
- 
+
 Writing to this register causes
  - 0 - no effect
  - 1 - removes the pending state
@@ -578,7 +578,7 @@ Writing to this register causes
 \details Error Reporting Status Register
 
 | Bits    | Name          | Function                                          |
-| :------ | :------------ | :------------------------------------------------ | 
+| :------ | :------------ | :------------------------------------------------ |
 | [31:4]  | -             | Reserved.                                         |
 | [3]     | WROD          | Write to an RO location.                          |
 | [2]     | RWOD          | Read of a WO location.                            |
@@ -618,7 +618,7 @@ Each bit corresponds to one interrupt:
 Each bit corresponds to one interrupt:
  - Register index is given by INTID/32
  - Bit number is given by INTID%32
- 
+
 \note Bits corresponding to unimplemented interrupts are RAZ/WI.
 
 \var __IOM uint32_t GICDistributor_Type::ICFGR[64]
@@ -645,7 +645,7 @@ field. In each field, unimplemented bits are RAZ/WI.
 Each bit corresponds to one interrupt:
  - Register index is given by INTID/32
  - Bit number is given by INTID%32
- 
+
 \note Bits corresponding to unimplemented interrupts are RAZ/WI.
 
 \var __IOM uint32_t GICDistributor_Type::ICACTIVER[32]

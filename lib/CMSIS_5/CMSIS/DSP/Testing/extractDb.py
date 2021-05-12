@@ -11,7 +11,7 @@ refCoreName=""
 
 runidCMD = "runid = ?"
 
-# Command to get last runid 
+# Command to get last runid
 lastID="""SELECT runid FROM RUN ORDER BY runid DESC LIMIT 1
 """
 
@@ -19,8 +19,8 @@ lastID="""SELECT runid FROM RUN ORDER BY runid DESC LIMIT 1
 lastIDAndDate="""SELECT date FROM RUN WHERE runid=?
 """
 
-# Command to get last runid 
-runIDDetails="""SELECT distinct core FROM %s 
+# Command to get last runid
+runIDDetails="""SELECT distinct core FROM %s
 INNER JOIN CORE USING(coreid)
 WHERE %s
 """
@@ -142,12 +142,12 @@ def getrunIDDetails():
   r=[]
   for table in tables:
       r += [x[0] for x in c.execute(runIDDetails % (table,runidCMD),runidval).fetchall()]
-  r=list(set(r)) 
+  r=list(set(r))
   print(r)
 
 if args.lastid:
    quit()
-   
+
 if args.details:
    getrunIDDetails()
    quit()
@@ -163,7 +163,7 @@ allCompilerForCore="""select distinct compilerid from %s WHERE coreid=?"""
 allCores="""select distinct coreid from %s WHERE typeid=? AND (%s)"""
 
 
-compilerDesc="""select compiler,version from COMPILER 
+compilerDesc="""select compiler,version from COMPILER
   INNER JOIN COMPILERKIND USING(compilerkindid) WHERE compilerid=?"""
 
 coreDesc="""select core from CORE WHERE coreid=?"""
@@ -200,14 +200,14 @@ def getCompilerDesc(compilerid):
 def getTypeName(typeid):
     r=c.execute("select type from TYPE where typeid=?",(typeid,)).fetchone()
     return(r[0])
- 
-# Diff of 2 lists 
+
+# Diff of 2 lists
 def diff(first, second):
         second = set(second)
         return [item for item in first if item not in second]
 
 
-# Command to get data for specific compiler 
+# Command to get data for specific compiler
 # and type
 benchCmdForCoreCompiler="""select %s from %s
   INNER JOIN CATEGORY USING(categoryid)
@@ -220,7 +220,7 @@ benchCmdForCoreCompiler="""select %s from %s
   WHERE coreid=? AND compilerid = ? AND (%s)
   """
 
-# Command to get data for specific core 
+# Command to get data for specific core
 # and type
 historyCmd="""select %s from %s
   INNER JOIN CATEGORY USING(categoryid)
@@ -239,7 +239,7 @@ compilersForHistory="""select distinct compilerid,compiler,version  from %s
   WHERE coreid=? AND typeid = ? AND ID = ? AND runid > (? - 10)
   """
 
-# Command to get data for specific core 
+# Command to get data for specific core
 # and type
 benchCmdForCore="""select %s from %s
   INNER JOIN CATEGORY USING(categoryid)
@@ -257,7 +257,7 @@ coresForHistory="""select distinct coreid,core from %s
   WHERE compilerid=? AND typeid = ? AND ID = ? AND runid > (? - 10)
   """
 
-# Command to get data for specific compiler 
+# Command to get data for specific compiler
 # and type
 benchCmdForCompiler="""select %s from %s
   INNER JOIN CATEGORY USING(categoryid)
@@ -270,7 +270,7 @@ benchCmdForCompiler="""select %s from %s
   WHERE compilerid=? AND typeid = ? AND (%s)
   """
 
-# Command to get test names for specific compiler 
+# Command to get test names for specific compiler
 # and type
 benchNamesForCore="""select distinct name from %s
   INNER JOIN COMPILER USING(compilerid)
@@ -280,7 +280,7 @@ benchNamesForCore="""select distinct name from %s
   WHERE coreid=? AND typeid = ? AND (%s)
   """
 
-# Command to get test names for specific core 
+# Command to get test names for specific core
 # and compiler
 benchNamesForCoreCompiler="""select distinct name from %s
   INNER JOIN COMPILER USING(compilerid)
@@ -290,7 +290,7 @@ benchNamesForCoreCompiler="""select distinct name from %s
   WHERE coreid=? AND compilerid = ? AND (%s)
   """
 
-# Command to get test names for specific compiler 
+# Command to get test names for specific compiler
 # and type
 benchNamesForCompiler="""select distinct name from %s
   INNER JOIN COMPILER USING(compilerid)
@@ -318,7 +318,7 @@ def joinit(iterable, delimiter):
         yield delimiter
         yield x
 
-# Is not a column name finishing by id 
+# Is not a column name finishing by id
 # (often primary key for thetable)
 def isNotIDColumn(col):
     if re.match(r'^.*id$',col):
@@ -350,19 +350,19 @@ def getTestNamesForCompiler(benchTable,comp,typeid):
     names=[x[0] for x in list(result)]
     return(names)
 
-# Command to get data for specific core 
+# Command to get data for specific core
 # and type
 nbElemsInBenchAndTypeAndCoreCmd="""select count(*) from %s
   WHERE coreid=? AND typeid = ? AND (%s)
   """
 
-# Command to get data for specific compiler 
+# Command to get data for specific compiler
 # and type
 nbElemsInBenchAndTypeAndCompilerCmd="""select count(*) from %s
   WHERE compilerid=? AND typeid = ? AND (%s)
   """
 
-# Command to get data for specific compiler 
+# Command to get data for specific compiler
 # and type
 nbElemsInBenchAndCoreAndCompilerCmd="""select count(*) from %s
   WHERE compilerid=? AND coreid = ? AND (%s)
@@ -484,11 +484,11 @@ def formatFloat(s):
 PARAMS=["NB","NumTaps", "NBA", "NBB", "Factor", "NumStages","VECDIM","NBR","NBC","NBI","IFFT", "BITREV"]
 
 def regressionTableFor(byname,name,section,ref,toSort,indexCols,field):
-    data=ref.pivot_table(index=indexCols, columns=byname, 
+    data=ref.pivot_table(index=indexCols, columns=byname,
     values=[field], aggfunc='first',fill_value="NA")
 
     data=data.sort_values(toSort)
-       
+
     cores = [c[1] for c in list(data.columns)]
     columns = diff(indexCols,['name'])
 
@@ -503,11 +503,11 @@ def regressionTableFor(byname,name,section,ref,toSort,indexCols,field):
            row=list(row)
            if type(row[0]) is int:
               row=[row[0]] + row[1:]
-           else: 
+           else:
               row=list(row[0]) + row[1:]
            if field=="MAXREGCOEF":
               newrow = row
-              newrow[len(columns):] = formatFloat(row[len(columns):]) 
+              newrow[len(columns):] = formatFloat(row[len(columns):])
               row=newrow
            dataTable.addRow(row)
            bars['data'].append(row)
@@ -580,7 +580,7 @@ def convertRowToInt(r):
 
   return(result)
 
-      
+
 def addSectionComment(section):
   if os.path.exists(args.comments):
      fileName=re.sub(r'[() :]','',section.name)
@@ -598,13 +598,13 @@ def addSectionComment(section):
                   para=""
         if para:
            commentSection.addContent(Text(para))
-        
+
 
 def formatTableBy(desc,byname,section,typeSection,testNames,cols,vals):
     if vals.size != 0:
        ref=pd.DataFrame(vals,columns=cols)
        toSort=["name"]
-       
+
        for param in PARAMS:
           if param in ref.columns:
              ref[param]=pd.to_numeric(ref[param])
@@ -613,7 +613,7 @@ def formatTableBy(desc,byname,section,typeSection,testNames,cols,vals):
          #  Regression table
          ref['MAX']=pd.to_numeric(ref['MAX'])
          ref['MAXREGCOEF']=pd.to_numeric(ref['MAXREGCOEF'])
-       
+
          indexCols=diff(cols,byname + ['Regression','MAXREGCOEF','MAX'] + section)
          valList = ['Regression']
 
@@ -622,8 +622,8 @@ def formatTableBy(desc,byname,section,typeSection,testNames,cols,vals):
 
          indexCols=diff(cols,byname + ['CYCLES'] + section)
          valList = ['CYCLES']
-      
-       
+
+
        for name in testNames:
            if args.r:
               testSection = Section(name)
@@ -660,14 +660,14 @@ def formatTableBy(desc,byname,section,typeSection,testNames,cols,vals):
               regressionSection = Section("Regression")
               testSection.addSection(regressionSection)
               regressionTableFor(byname,name,regressionSection,ref,toSort,indexCols,'Regression')
-              
-              
+
+
               maxRegCoefSection = Section("Max Reg Coef")
               testSection.addSection(maxRegCoefSection)
               regressionTableFor(byname,name,maxRegCoefSection,ref,toSort,indexCols,'MAXREGCOEF')
 
            else:
-              data=ref.pivot_table(index=indexCols, columns=byname, 
+              data=ref.pivot_table(index=indexCols, columns=byname,
               values=valList, aggfunc='first',fill_value="NA")
 
               data=data.sort_values(toSort)
@@ -693,13 +693,13 @@ def formatTableBy(desc,byname,section,typeSection,testNames,cols,vals):
                  for row in dataForFunc.itertuples():
                      if type(row[0]) is int:
                         row=list([row[0]] + list(row[1:]))
-                     else: 
+                     else:
                         row=list(row[0]) + list(row[1:])
                      dataTable.addRow(convertRowToInt(row))
               else:
                  dataTable.addRow(convertRowToInt(dataForFunc))
 
-referenceCoreID = None 
+referenceCoreID = None
 
 
 
@@ -729,19 +729,19 @@ select * from %s where (coreid = %s) and (typeid =  %s)
  and compilerid = %s"""
 
 refCoreAllTypes="""CREATE TEMP VIEW if not exists refCore AS
-select * from %s where (coreid = %s) 
+select * from %s where (coreid = %s)
  and %s
  and compilerid = %s"""
 
 otherCoreAllTypes="""CREATE TEMP VIEW if not exists otherCore AS
-select * from %s where (coreid = %s) 
+select * from %s where (coreid = %s)
  and %s
  and compilerid = %s"""
 
 
 ratioSQL="""select name,otherCore.compilerid as compilerid,CORE.core as core,%s(CAST(otherCore.MAX as FLOAT) / CAST(refCore.MAX AS FLOAT)) AS RATIO
  from otherCore
- INNER JOIN refCore ON (refCore.categoryid = otherCore.categoryid 
+ INNER JOIN refCore ON (refCore.categoryid = otherCore.categoryid
  AND refCore.testnameid = otherCore.testnameid
  AND refCore.typeid = otherCore.typeid
  AND refCore.runid = otherCore.runid
@@ -753,7 +753,7 @@ ratioSQL="""select name,otherCore.compilerid as compilerid,CORE.core as core,%s(
 
 ratioSQLAllTypes="""select name,otherCore.compilerid as compilerid,TYPE.type as type,%s(CAST(otherCore.MAX as FLOAT) / CAST(refCore.MAX AS FLOAT)) AS RATIO
  from otherCore
- INNER JOIN refCore ON (refCore.categoryid = otherCore.categoryid 
+ INNER JOIN refCore ON (refCore.categoryid = otherCore.categoryid
  AND refCore.testnameid = otherCore.testnameid
  AND refCore.typeid = otherCore.typeid
  AND refCore.runid = otherCore.runid
@@ -765,7 +765,7 @@ ratioSQLAllTypes="""select name,otherCore.compilerid as compilerid,TYPE.type as 
 
 ratioTestNamesSQL="""select distinct TESTNAME.name
  from otherCore
- INNER JOIN refCore ON (refCore.categoryid = otherCore.categoryid 
+ INNER JOIN refCore ON (refCore.categoryid = otherCore.categoryid
  AND refCore.testnameid = otherCore.testnameid
  AND refCore.typeid = otherCore.typeid
  AND refCore.runid = otherCore.runid
@@ -816,10 +816,10 @@ def computeRatio(benchName,viewParams,refMkViewCmd,otherMkViewCmd,byd):
   #print(dropViewsRef)
   #print(dropViewsOther)
   #quit()
-  
+
   c.execute(refMkViewCmd)
   c.execute(otherMkViewCmd)
-  
+
   ratio=c.execute(ratioCmd).fetchall()
   testNames=c.execute(ratioTestNames).fetchall()
   testNames=[x[0] for x in testNames]
@@ -844,7 +844,7 @@ def computeRatioTable(benchName,referenceCore,typeID,compiler):
     otherParams = (benchName,keepCoreID,typeID,runidVIEWcmd,compiler)
     otherMkViewCmd = otherCore % otherParams
   return(computeRatio(benchName,viewParams,refMkViewCmd,otherMkViewCmd,False))
-  
+
 
 def computeRatioTableForCore(benchName,referenceCore,otherCoreID,compiler):
   viewParams = (benchName,referenceCore,runidVIEWcmd,compiler)
@@ -888,17 +888,17 @@ def addRatioTable(cols,params,data,section,testNames,byd):
 
       ratioSection = Section("Ratios")
       testSection.addSection(ratioSection)
-      
+
       #print(toSort)
       #print(ref)
 
       if byd:
-        data=ref.pivot_table(index=toSort, columns=['type'], 
+        data=ref.pivot_table(index=toSort, columns=['type'],
            values=["ratio"], aggfunc='first',fill_value=-1.0)
       else:
-         data=ref.pivot_table(index=toSort, columns=['core'], 
+         data=ref.pivot_table(index=toSort, columns=['core'],
            values=["ratio"], aggfunc='first')
-       
+
       data=data.sort_values(toSort)
 
       #print(data)
@@ -925,15 +925,15 @@ def addRatioTable(cols,params,data,section,testNames,byd):
            row=list(row)
            if type(row[0]) is int:
               row=[row[0]] + formatPerfRatio(row[1:])
-           else: 
+           else:
               row=list(row[0]) + formatPerfRatio(row[1:])
            dataTable.addRow(row)
       else:
-         row=list(dataForFunc) 
+         row=list(dataForFunc)
          dataTable.addRow(formatPerfRatio(row))
-     
-      
-      
+
+
+
 # Add a report for each table
 def addReportFor(document,benchName):
     nbElems = getNbElemsInBenchCmd(benchName)
@@ -970,7 +970,7 @@ def addReportFor(document,benchName):
 
                  else:
                     nbElems = getNbElemsInBenchAndCoreAndCompilerCmd(benchName,compiler,aCoreID)
-                    
+
                     # Print test results for table, type, compiler
                     if nbElems > 0:
                        compilerName,version=getCompilerDesc(compiler)
@@ -979,9 +979,9 @@ def addReportFor(document,benchName):
                        cols,vals=getColNamesAndDataForCoreCompiler(benchName,compiler,aCoreID)
                        desc=(benchName,compiler,aCoreID)
                        names=getTestNamesForCoreCompiler(benchName,compiler,aCoreID)
-                      
+
                        formatTableBy(desc,['type'],['core','version','compiler'],compilerSection,names,cols,vals)
-                       
+
        else:
           allTypes = getExistingTypes(benchName)
           # Add report for each type
@@ -1034,24 +1034,24 @@ def addReportFor(document,benchName):
                           desc=(benchName,compiler,aTypeID)
                           names=getTestNamesForCompiler(benchName,compiler,aTypeID)
                           formatTableBy(desc,['core'],['version','compiler'],compilerSection,names,cols,vals)
-                       
 
 
 
-toc=[Hierarchy("BasicMathsBenchmarks"),    
+
+toc=[Hierarchy("BasicMathsBenchmarks"),
 Hierarchy("ComplexMathsBenchmarks"),
 Hierarchy("FastMath"),
 Hierarchy("Filters",
   [Hierarchy("FIR"),
    Hierarchy("BIQUAD"),
-   Hierarchy("DECIM"), 
+   Hierarchy("DECIM"),
    Hierarchy("MISC")]),
 
 Hierarchy("Support Functions",
   [Hierarchy("Support"),
    Hierarchy("SupportBar")]),
-        
-Hierarchy("Matrix Operations"    ,  
+
+Hierarchy("Matrix Operations"    ,
   [Hierarchy("Binary"),
    Hierarchy("Unary")]),
 Hierarchy("Transform"),
@@ -1094,7 +1094,7 @@ def addComments(document):
 
 def createDoc(document,sections,benchtables):
     global processed,referenceCoreID
-   
+
     for s in sections:
         if s.name in benchtables:
            addReportFor(document,s.name)
@@ -1120,7 +1120,7 @@ try:
 
 
       createDoc(document,toc,benchtables)
-      
+
       misc=Section("Miscellaneous")
       document.addSection(misc)
       remaining=diff(benchtables,processed)
@@ -1142,7 +1142,5 @@ try:
 
 finally:
      c.close()
-
-    
 
 

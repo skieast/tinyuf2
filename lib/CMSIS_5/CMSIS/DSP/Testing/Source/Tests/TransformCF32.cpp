@@ -14,21 +14,21 @@
         memcpy(outfftp,inp,sizeof(float32_t)*input.nbSamples());
 
         ASSERT_TRUE(status == ARM_MATH_SUCCESS);
-   
+
         arm_cfft_f32(
              &(this->varInstCfftF32),
              outfftp,
              this->ifft,
              1);
-       
 
-          
+
+
         ASSERT_SNR(outputfft,ref,(float32_t)SNR_THRESHOLD);
         ASSERT_EMPTY_TAIL(outputfft);
 
 
-        
-    } 
+
+    }
 
     void TransformCF32::setUp(Testing::testID_t id,std::vector<Testing::param_t>& paramsArgs,Client::PatternMgr *mgr)
     {
@@ -469,7 +469,7 @@
 
        }
         outputfft.create(ref.nbSamples(),TransformCF32::OUTPUT_CFFT_F32_ID,mgr);
-       
+
 
     }
 

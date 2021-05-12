@@ -1,15 +1,15 @@
 #include "FIRF16.h"
 #include "Error.h"
 
-   
+
     void FIRF16::test_fir_f16()
     {
        arm_fir_f16(&instFir, this->pSrc, this->pDst, this->nbSamples);
-    } 
+    }
 
 
-   
-    
+
+
     void FIRF16::setUp(Testing::testID_t id,std::vector<Testing::param_t>& params,Client::PatternMgr *mgr)
     {
 
@@ -34,11 +34,11 @@
               this->pDst=output.ptr();
            break;
 
-          
 
-           
+
+
        }
-       
+
     }
 
     void FIRF16::tearDown(Testing::testID_t id,Client::PatternMgr *mgr)

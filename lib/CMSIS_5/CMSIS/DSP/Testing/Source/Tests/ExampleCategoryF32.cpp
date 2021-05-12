@@ -15,7 +15,7 @@ CMSIS-DSP tests are using similar SNR values for different type (f32, q31, q15, 
 
 With thie threshold, the test will fail
 
-#define REL_ERROR (2.0e-6) 
+#define REL_ERROR (2.0e-6)
 
 */
 
@@ -45,10 +45,10 @@ With thie threshold, the test will fail
         /* Check relative error */
         ASSERT_REL_ERROR(output,ref,REL_ERROR);
 
-    } 
+    }
 
 
- 
+
     /*
 
      setUp function is used to load the patterns and create required buffers
@@ -56,12 +56,12 @@ With thie threshold, the test will fail
     */
     void ExampleCategoryF32::setUp(Testing::testID_t id,std::vector<Testing::param_t>& params,Client::PatternMgr *mgr)
     {
-      
-       Testing::nbSamples_t nb=MAX_NB_SAMPLES; 
+
+       Testing::nbSamples_t nb=MAX_NB_SAMPLES;
        (void)params;
-       
+
        /*
-         
+
          All IDs can be found in GeneratedInclude/ExampleCategoryF32_decl.h
 
        */
@@ -90,7 +90,7 @@ With thie threshold, the test will fail
           break;
 
        }
-    
+
        /* Create output buffer with same size as reference pattern */
        output.create(ref.nbSamples(),ExampleCategoryF32::OUT_F32_ID,mgr);
     }
@@ -98,7 +98,7 @@ With thie threshold, the test will fail
     void ExampleCategoryF32::tearDown(Testing::testID_t id,Client::PatternMgr *mgr)
     {
        (void)id;
-        /* 
+        /*
            Dump output buffer into a file.
 
            Location of the file is defined by Folder directives in desc.txt test

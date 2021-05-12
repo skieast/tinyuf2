@@ -1,6 +1,6 @@
 /*****************************************************************************
  * @file     ReadMe.txt
- * @brief    Explanation how to use the Device folder and template files 
+ * @brief    Explanation how to use the Device folder and template files
  * @version  V3.0.3
  * @date     10. January 2018
  *****************************************************************************/
@@ -12,11 +12,11 @@ Following directory structure and template files are given:
       +-- <Device>
             |
             +-- Include
-            |     +- <Device>.h                           header file 
-            |     +- system_Device.h                      system include file 
+            |     +- <Device>.h                           header file
+            |     +- system_Device.h                      system include file
             +-- Source
                   |
-                  +- system_<Device>.c                    system source file 
+                  +- system_<Device>.c                    system source file
                   |
                   +-- ARM                                 Arm RVCT toolchain
                   |    +- startup_<Device>.s              ASM startup file for ARMCC
@@ -27,9 +27,9 @@ Following directory structure and template files are given:
 
 
 Copy the complete folder including files and replace:
-  - folder name 'Vendor' with the abbreviation for the device vendor  e.g.: NXP. 
+  - folder name 'Vendor' with the abbreviation for the device vendor  e.g.: NXP.
   - folder name 'Device' with your specific device name e.g.: LPC17xx.
-  - in the filenames 'Device' with your specific device name e.g.: LPC17xx. 
+  - in the filenames 'Device' with your specific device name e.g.: LPC17xx.
 
 
 The template files contain comments starting with 'ToDo: '
@@ -41,7 +41,7 @@ The template files contain following placeholder:
   <Device>
   <Device> should be replaced with your specific device name.
    e.g.: LPC17xx
-  
+
   <DeviceInterrupt>
   <DeviceInterrupt> should be replaced with a specific device interrupt name.
   e.g.: TIM1 for Timer#1 interrupt.
@@ -60,4 +60,4 @@ Note:
   Template files (i.e. startup_Device.s, system_Device.c) are application
   specific and therefore expected to be copied into the application project
   folder prior to use!
-  
+

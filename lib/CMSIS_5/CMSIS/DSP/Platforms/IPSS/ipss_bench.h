@@ -1,5 +1,5 @@
 #ifndef IPSS_BENCH_H
-#define IPSS_BENCH_H 
+#define IPSS_BENCH_H
 
 #ifdef   __cplusplus
 extern "C"

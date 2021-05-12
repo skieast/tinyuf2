@@ -70,7 +70,7 @@ void ThreadA (void *argument)  {
 
 static int callbackB (int val)  {
   uint32_t flags;
-  
+
   flags = osThreadFlagsWait (1U, osFlagsWaitAny, osWaitForever);
   if (flags == 1U)  {
     return (val+1);
@@ -116,7 +116,7 @@ void thread_stack_overflow (void) {
   for (i=0; i<1024; i++)  {
     foo[i] = i+i;
   }
-}  
+}
 
 
 /*
@@ -139,12 +139,12 @@ void div_by_zero( void );
 void div_by_zero( void )
 {
   volatile unsigned int a, b, c;
-  
+
   SCB->CCR |= SCB_CCR_DIV_0_TRP_Msk;
   a = 1;
   b = 0;
   c = a / b;
-}  
+}
 
 
 /*
@@ -155,7 +155,7 @@ void getdata_attack (void);
 void getdata_attack (void) {
   /* provide pointer outsite of non-secure memory */
   GetIncidentLog_s ((IncidentLog_t *) (0x20200000 - 0x10));
-}  
+}
 
 
 /*
@@ -170,7 +170,7 @@ __NO_RETURN void play_dead( void )
   {
     __NOP( );
   }
-}  
+}
 
 
 typedef struct  {
@@ -204,7 +204,7 @@ __NO_RETURN void ThreadD (void *argument) {
 
   (void)argument;
 
-  TestCase = 0xFFFFFFFF;  
+  TestCase = 0xFFFFFFFF;
   WatchdogToken = StartWatchdog_s ();                 /* start watchdog in secure mode */
   GetIncidentLog_s (&IncidentLogCopy);                /* get incident log and draw the table */
 

@@ -1,6 +1,6 @@
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 //  ==== Thread Flags Management ====
-/** 
+/**
 \addtogroup CMSIS_RTOS_ThreadFlagsMgmt Thread Flags
 \ingroup CMSIS_RTOS
 \brief Synchronize threads using flags.
@@ -29,31 +29,31 @@ The behavior is the following:
 -	app_main enters delay
 -	execution switches to threadX
 -	statement B returns with flagsX = 0x07
- 
+
 \code
 #include "cmsis_os2.h"
- 
+
 osThreadId_t tid;
 uint32_t     flagsX;
 uint32_t     flags;
- 
+
 void threadX (void *argument) {
-  
+
   osDelay(1U);
   for (;;) {
     flagsX = osThreadFlagsWait(0x0001U, osFlagsWaitAny, osWaitForever); /* B */
   }
 }
- 
+
 void app_main (void *argument) {
- 
+
   tid = osThreadNew(threadX, NULL, NULL);
- 
+
   flags = osThreadFlagsSet(tid, 0x0002U); /* A */
   osDelay(2U);
   flags = osThreadFlagsSet(tid, 0x0005U); /* C */
   osDelay(2U);
- 
+
   for(;;);
 }
 \endcode
@@ -99,25 +99,25 @@ Thread1 returns the updated value immediately:
 \msc
  a [label="",    textcolor="indigo", linecolor="indigo", arclinecolor="red"],
  b [label="",    textcolor="blue",   linecolor="blue",   arclinecolor="blue"];
- 
+
  a note a [label="Thread1",       textbgcolour="#FFCCCF"],
  b note b [label="Thread2",       textbgcolour="#E0E0FF"];
- 
+
  a box a [label = "Flags == 1"];
  a<-b [label = "osThreadFlagsSet(2)"];
  a>>b [label = "return(3)"];
  a->a [label = "while(1)"];
 \endmsc
 
-Depending on thread scheduling, the flag status can be modified before returning: 
+Depending on thread scheduling, the flag status can be modified before returning:
 
 \msc
  a [label="",    textcolor="indigo", linecolor="indigo", arclinecolor="red"],
  b [label="",    textcolor="blue",   linecolor="blue",   arclinecolor="blue"];
- 
+
  a note a [label="Thread1",       textbgcolour="#FFCCCF"],
  b note b [label="Thread2",       textbgcolour="#E0E0FF"];
- 
+
  b box b [label = "Flags == 0"];
  b->b [label = "osThreadFlagsWait(1)"];
  b box b [label = "thread state = blocked"];
@@ -143,7 +143,7 @@ flags before clearing, or an error code if highest bit is set (refer to \ref fla
 
 Possible \ref flags_error_codes return values:
     - \em osFlagsErrorUnknown: unspecified error, i.e. not called from a running threads context.
-    - \em osFlagsErrorParameter: parameter \em flags has highest bit set. 
+    - \em osFlagsErrorParameter: parameter \em flags has highest bit set.
 
 \note This function \b cannot be called from \ref CMSIS_RTOS_ISR_Calls "Interrupt Service Routines".
 */
@@ -151,7 +151,7 @@ Possible \ref flags_error_codes return values:
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /** \fn uint32_t osThreadFlagsGet (void)
 \details
-The function \b osThreadFlagsGet returns the flags currently set for the currently running thread. 
+The function \b osThreadFlagsGet returns the flags currently set for the currently running thread.
 If called without a active and currently running thread \b osThreadFlagsGet return zero.
 
 \note This function \b cannot be called from \ref CMSIS_RTOS_ISR_Calls "Interrupt Service Routines".
@@ -174,7 +174,7 @@ If \c osFlagsNoClear is set in the options \ref osThreadFlagsClear can be used t
 Otherwise \b osThreadFlagsWait automatically clears the flags waited for.
 
 The parameter \ref CMSIS_RTOS_TimeOutValue "timeout" represents a number of timer ticks and is an upper bound. The
-exact time delay depends on the actual time elapsed since the last timer tick. 
+exact time delay depends on the actual time elapsed since the last timer tick.
 
 The function returns the flags before clearing, or an error code if highest bit is set (refer to \ref flags_error_codes).
 
@@ -189,7 +189,7 @@ Possible \ref flags_error_codes return values:
 <b>Code Example</b>
 \code
 #include "cmsis_os2.h"
- 
+
 void Thread (void* arg) {
   ;
   osThreadFlagsWait(0x00000001U, osFlagsWaitAny, osWaitForever); // Wait forever until thread flag 1 is set.

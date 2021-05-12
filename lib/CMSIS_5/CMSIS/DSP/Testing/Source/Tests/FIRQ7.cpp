@@ -8,7 +8,7 @@
 
 #if defined(ARM_MATH_MVEI) && !defined(ARM_MATH_AUTOVECTORIZE)
 static __ALIGNED(8) q7_t coeffArray[32];
-#endif 
+#endif
 
 void checkInnerTail(q7_t *b)
 {
@@ -20,7 +20,7 @@ void checkInnerTail(q7_t *b)
 
     void FIRQ7::test_fir_q7()
     {
-        
+
 
         const int16_t *configp = configs.ptr();
         q7_t *statep = state.ptr();
@@ -51,14 +51,14 @@ void checkInnerTail(q7_t *b)
            numTaps = configp[1];
 
 #if defined(ARM_MATH_MVEI) && !defined(ARM_MATH_AUTOVECTORIZE)
-           /* Copy coefficients and pad to zero 
+           /* Copy coefficients and pad to zero
            */
            memset(coeffArray,0,32);
            for(j=0;j < numTaps; j++)
            {
               coeffArray[j] = orgcoefsp[j];
            }
-   
+
            coefsp = coeffArray;
 #else
            coefsp = orgcoefsp;
@@ -79,7 +79,7 @@ void checkInnerTail(q7_t *b)
            inputp = inputs.ptr();
 
            /*
-           
+
            Python script is filtering a 2*blockSize number of samples.
            We do the same filtering in two pass to check (indirectly that
            the state management of the fir is working.)
@@ -105,21 +105,21 @@ void checkInnerTail(q7_t *b)
 
         ASSERT_NEAR_EQ(output,ref,ABS_ERROR_Q7);
 
-    } 
+    }
 
- 
+
     void FIRQ7::setUp(Testing::testID_t id,std::vector<Testing::param_t>& params,Client::PatternMgr *mgr)
     {
-      
+
        (void)params;
        switch(id)
        {
         case FIRQ7::TEST_FIR_Q7_1:
-          
+
         break;
 
        }
-      
+
 
        inputs.reload(FIRQ7::FIRINPUTS_Q7_ID,mgr);
        coefs.reload(FIRQ7::FIRCOEFS_Q7_ID,mgr);

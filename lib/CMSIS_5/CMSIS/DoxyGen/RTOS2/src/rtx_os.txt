@@ -1,5 +1,5 @@
 
-/** 
+/**
 \addtogroup rtx5_specific RTX v5 Specific API
 \brief RTX v5 implementation specific definitions and functions defined in <b>%rtx_os.h</b>.
 \details
@@ -8,10 +8,10 @@ The RTX5 kernel can be customized for different application requirements:
 
 - The function \ref osRtxIdleThread implements the idle thread and allows set the system into sleep modes for \ref lowPower or
   \ref TickLess for ultra-low power operation.
-  
+
 - The function \ref osRtxErrorNotify may be extended to handle system runtime errors.
 
-RTX5 interfaces to the <a href="https://www.keil.com/pack/doc/compiler/EventRecorder/html/index.html" target="_blank"><b>Event Recorder</b></a> 
+RTX5 interfaces to the <a href="https://www.keil.com/pack/doc/compiler/EventRecorder/html/index.html" target="_blank"><b>Event Recorder</b></a>
 and provides event information that helps to analyze the operation. Refer to \ref rtx_evr for more information.
 
 
@@ -142,13 +142,13 @@ Example:
 \code
 // Maximum number of objects
 #define OBJ_COUNT 8U
- 
+
 // Object type
 typedef struct {
    uint32_t value1;
    uint8_t  value2;
 } object_t;
- 
+
 // Used-defined memory for memory pool memory
 static uint32_t mempool_mem[osRtxMemoryPoolMemSize(OBJ_COUNT, sizeof(object_t))/4U];
 \endcode
@@ -166,13 +166,13 @@ Example:
 \code
 // Maximum number of messages
 #define MSG_COUNT 16U
- 
+
 // Message data type
 typedef struct {
    uint32_t value1;
    uint8_t  value2;
 } msg_item_t;
- 
+
 // Used-defined memory for message queue
 static uint32_t mq_mem[osRtxMessageQueueMemSize(MSG_COUNT, sizeof(msg_item_t))/4U];
 \endcode
@@ -189,7 +189,7 @@ The object_id announced along this error can be used to identify the affected th
 \ref threadConfig_watermark used together with larger stack sizes can help to figure out actual
 memory requirements for threads.
 
-\attention Whenever this error identifier is signaled memory corruption has already happened. 
+\attention Whenever this error identifier is signaled memory corruption has already happened.
 */
 
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
@@ -239,13 +239,13 @@ to lock global C/C++ library resources.
 
 /**
 \defgroup rtx5_specific_functions Functions
-\brief RTX5 functions 
+\brief RTX5 functions
 \details
 @{
 */
 
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
-/** 
+/**
 \fn uint32_t osRtxErrorNotify (uint32_t code, void *object_id);
 \param[in] code The code to identify the error condition.
 \param[in] object_id A reference to any RTX object to identify the object that caused the issue, can be \token{NULL}.
@@ -269,10 +269,10 @@ need to increase the size of the object causing an overflow.
 <b>Code Example</b>
 \code
 #include "rtx_os.h"
- 
+
 uint32_t osRtxErrorNotify (uint32_t code, void *object_id) {
   (void)object_id;
- 
+
   switch (code) {
     case osRtxErrorStackUnderflow:
       // Stack overflow detected for thread (thread_id=object_id)
@@ -299,7 +299,7 @@ uint32_t osRtxErrorNotify (uint32_t code, void *object_id) {
 */
 
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
-/** 
+/**
 \fn void osRtxIdleThread (void *argument);
 \param[in] argument Unused parameter, always set to \token{NULL}.
 \details
@@ -324,14 +324,14 @@ and <b>do not</b> return from this function when providing a user defined implem
 <b>Code Example</b>
 \code
 #include "rtx_os.h"
- 
+
 __NO_RETURN void osRtxIdleThread (void *argument) {
   (void)argument;
 
   for (;;) {}
 }
 \endcode
-*/ 
+*/
 
 /**
 @}

@@ -39,10 +39,10 @@
        ASSERT_SNR(outputfft,ref,(q31_t)SNR_THRESHOLD);
        ASSERT_EMPTY_TAIL(outputfft);
 
-        
-    } 
 
-  
+    }
+
+
     void TransformRQ31::setUp(Testing::testID_t id,std::vector<Testing::param_t>& paramsArgs,Client::PatternMgr *mgr)
     {
 
@@ -489,7 +489,7 @@
 
        }
 
-       
+
       outputfft.create(ref.nbSamples(),TransformRQ31::OUTPUT_RFFT_Q31_ID,mgr);
       /*
 

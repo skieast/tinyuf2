@@ -3,7 +3,7 @@ HowTo DSP_Lib_TestSuite  (Source Variant)   18.02.2019
 
 This file describes the folder structure, content, prerequisites and instructions to validate the
 build of the CMSIS-DSP library. This is done by processing input data sets using the DSP Library
-functions executing on a target simulator or hardware. The output data sets are then compared 
+functions executing on a target simulator or hardware. The output data sets are then compared
 with the reference data set produced by unoptimized DSP functions and a Signal to Noise Ratio (SNR)
 is computed. If the SNR is below a defined threshold the test is considered "passed".
 
@@ -50,11 +50,11 @@ a) running an individual test using uVision (MDK-ARM):
    Tests running on MPS2 requires additional steps to setup. See section 'MPS2'.
 
 d) parsing the test output log file
- - script: parseLog_SV.py 
+ - script: parseLog_SV.py
  - run:  parseLog_SV.py python script in a Windows command window in folder .\CMSIS\DSP\DSP_Lib_TestSuite
    command line options should match the invocation of the runTest executed before.
    e.g: runTest ARM cortexM4lf Simulator  ->  python parseLog.py ARM cortexM4lf Simulator
-   
+
  - check the test log
    depending on your test parameters change into the required folder
       .\DSP_Lib_TestSuite\DspLibTest_[FVP|MPS2|Simulator]\[ARM|GCC]\Logs
@@ -87,7 +87,7 @@ Setup 'MPS2'
  - load the appropriate FPGA image to the MPS2 board matching the CPU of the test builds prior to running the test
  - check if ULINKpro can connect with the configured debug connection (JTAG or SWD) as this must
    match the protocol implemented in the FPGA image.
- 
+
 
 How to select tests for "run all tests"
 ----------------------------------------
@@ -114,4 +114,4 @@ Notes
  - test data used for the tests is used as provided by DSP Concepts.
 
  - some tests run for a very long time before they finish. This is expected
- 
+

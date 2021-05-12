@@ -174,7 +174,7 @@ depends on its current mode:
 | Bits    | Name            | Function                                                       |
 | :------ | :-------------- | :------------------------------------------------------------- |
 | [31:1]  | -               | Reserved.                                                      |
-| [0]     | Reset Flag      | The reset flag is a sticky bit that is automatically set when the Counter Register reaches zero and a reset request is sent accordingly. (In watchdog mode) | 
+| [0]     | Reset Flag      | The reset flag is a sticky bit that is automatically set when the Counter Register reaches zero and a reset request is sent accordingly. (In watchdog mode) |
 
 \var __IM uint32_t Timer_Type::WDISABLE
 \details Watchdog Disable Register
@@ -195,7 +195,7 @@ Permitted values are:
  - 1 - Timer enabled.
 
 \var uint32_t CNTP_CTL_Type::IMASK
-\details Timer output signal mask bit. 
+\details Timer output signal mask bit.
 
 Permitted values are:
  - 0 - Timer output signal is not masked.

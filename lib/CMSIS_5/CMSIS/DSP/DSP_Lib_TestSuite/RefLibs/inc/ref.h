@@ -61,7 +61,7 @@ extern "C"
 
 #ifndef FLT_MAX
 #define FLT_MAX  3.40282347e+38F
-#endif 
+#endif
 
 #define DBL_MAX  1.79769313486231571e+308
 
@@ -493,13 +493,13 @@ void ref_biquad_cascade_df2T_f32(
 	float32_t * pSrc,
 	float32_t * pDst,
 	uint32_t blockSize);
-	
+
 void ref_biquad_cascade_stereo_df2T_f32(
 	const arm_biquad_cascade_stereo_df2T_instance_f32 * S,
 	float32_t * pSrc,
 	float32_t * pDst,
 	uint32_t blockSize);
-	
+
 void ref_biquad_cascade_df2T_f64(
 	const arm_biquad_cascade_df2T_instance_f64 * S,
 	float64_t * pSrc,
@@ -511,7 +511,7 @@ void ref_biquad_cascade_df1_f32(
   float32_t * pSrc,
   float32_t * pDst,
   uint32_t blockSize);
-  
+
 void ref_biquad_cas_df1_32x64_q31(
   const arm_biquad_cas_df1_32x64_ins_q31 * S,
   q31_t * pSrc,
@@ -607,7 +607,7 @@ void ref_conv_fast_q15(
   q15_t * pSrcB,
   uint32_t srcBLen,
   q15_t * pDst);
-  
+
 void ref_conv_fast_opt_q15(
   q15_t * pSrcA,
   uint32_t srcALen,
@@ -640,7 +640,7 @@ arm_status ref_conv_partial_fast_q15(
   q15_t * pDst,
   uint32_t firstIndex,
   uint32_t numPoints);
-  
+
 arm_status ref_conv_partial_fast_opt_q15(
   q15_t * pSrcA,
   uint32_t srcALen,
@@ -724,7 +724,7 @@ void ref_correlate_fast_opt_q15(
   uint32_t srcBLen,
   q15_t * pDst,
   q15_t * pScratch);
-    
+
 void ref_correlate_q7(
   q7_t * pSrcA,
   uint32_t srcALen,
@@ -1296,13 +1296,13 @@ void ref_cfft_f32(
    float32_t * p1,
    uint8_t ifftFlag,
    uint8_t bitReverseFlag);
-	 
+
 void ref_cfft_q31(
 	const arm_cfft_instance_q31 * S,
     q31_t * p1,
     uint8_t ifftFlag,
     uint8_t bitReverseFlag);
-	 
+
 void ref_cfft_q15(
 	const arm_cfft_instance_q15 * S,
     q15_t * p1,

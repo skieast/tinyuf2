@@ -59,7 +59,7 @@ void FIQ_Handler   (void) __attribute__ ((weak, alias("Default_Handler")));
  *----------------------------------------------------------------------------*/
 __ASM void Vectors(void) {
   PRESERVE8
-  
+
   IMPORT Undef_Handler
   IMPORT SVC_Handler
   IMPORT PAbt_Handler
@@ -83,7 +83,7 @@ __ASM void Reset_Handler(void) {
   PRESERVE8
 
   // Mask interrupts
-  CPSID  if                           
+  CPSID  if
 
   // Put any cores other than 0 to sleep
   MRC    p15, 0, R0, c0, c0, 5       // Read MPIDR

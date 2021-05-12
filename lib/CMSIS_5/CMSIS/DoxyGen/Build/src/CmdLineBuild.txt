@@ -1,11 +1,11 @@
 ﻿/*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
-\page CmdLineBuild Command Line Build 
+\page CmdLineBuild Command Line Build
 
 The following \b Bash scripts and command line tools can be used for managing the build of CMSIS Projects from the command line.
 These scripts can be easily adopted to specific environments and are intended as a minimal reference.
-CMSIS-Build tools are available for download as an asset of the respective 
-<a href="https://github.com/ARM-software/CMSIS_5/releases/" target="_blank"><b>CMSIS Release Version</b></a> 
+CMSIS-Build tools are available for download as an asset of the respective
+<a href="https://github.com/ARM-software/CMSIS_5/releases/" target="_blank"><b>CMSIS Release Version</b></a>
 (starting with 5.7.0).
 
 For command line build with software packs, the following tools and utilities are provided.
@@ -25,7 +25,7 @@ For command line build with software packs, the following tools and utilities ar
 - For the above command line build tools and scripts  a
   <a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)" target="_blank"><b>Bash</b></a> environment is required.  For
   Windows, install for example <a href="https://gitforwindows.org/" target="_blank"><b>git for Windows</b></a> which includes
-  <b>Git Bash</b>. 
+  <b>Git Bash</b>.
 - All Bash scripts show a reference implementation and can be easily adopted to the user's needs. They can also be replaced
   by other scripts written in Python for example. The only tools you still require are \ref cbuildgen "cbuildgen" and
   \ref ccmerge "ccmerge".
@@ -45,12 +45,12 @@ With most Linux distributions these tools are already available.  The installati
 <b>Required for Windows: Bash</b>
   - <a href="https://gitforwindows.org/" target="_blank"><b>git for Windows</b></a> includes <b>Git Bash</b> which is easy
     to download and install.
-  
+
 
 \section cbuild_install2 Invocation
 
-CMSIS-Build tools are available for download as an asset of the respective 
-<a href="https://github.com/ARM-software/CMSIS_5/releases/" target="_blank"><b>CMSIS Release Version</b></a> 
+CMSIS-Build tools are available for download as an asset of the respective
+<a href="https://github.com/ARM-software/CMSIS_5/releases/" target="_blank"><b>CMSIS Release Version</b></a>
 (starting with 5.7.0).
 
 To install the command line build environment start from the Bash prompt:
@@ -116,15 +116,15 @@ TOOLCHAIN_ROOT:=C:/Keil_v5/ARM/ARMCLANG
 ############ DO NOT EDIT BELOW ###########
 \endcode
 
-The toolchain for compilation is defined in project file <b>*.cprj</b> and used by \ref cbuildgen "cbuildgen". 
+The toolchain for compilation is defined in project file <b>*.cprj</b> and used by \ref cbuildgen "cbuildgen".
 \ref cbuildgen "cbuildgen" first searches for the toolchain specific <b>.mak file</b> in the project directory.
 If the toolchain specific <b>.mak file</b> is not present there, it uses the directory that is specified
 by the \b $CMSIS_BUILD_ROOT environment variable.
 
 \section libxml libxml (optional for Windows)
 
-For Windows the <a href="https://www.zlatkovic.com/pub/libxml/" target="_blank"><b>libxml</b></a> provides an XML processor that provides 
-the functionality of <b>xmllint</b>.  
+For Windows the <a href="https://www.zlatkovic.com/pub/libxml/" target="_blank"><b>libxml</b></a> provides an XML processor that provides
+the functionality of <b>xmllint</b>.
 
 \note The installation is optional and not required to run the command line build tools.
 
@@ -140,7 +140,7 @@ Extract the \b /bin directory of each ZIP file to a directory, for example \b C:
 \note Restart the <b>Git Bash</b> after changing the <b>PATH</b> environment variable.
 \note When <b>xmllint</b> is not installed, the XML schema verification is skipped by the \ref cbuild "cbuild.sh" script.
 
-xmllint is also provided by the xsltproc package that can be installed via <a href="https://chocolatey.org/packages/xsltproc" target="_blank"><b>Chocolatey</b></a>: 
+xmllint is also provided by the xsltproc package that can be installed via <a href="https://chocolatey.org/packages/xsltproc" target="_blank"><b>Chocolatey</b></a>:
 \code
 > choco install xsltproc
 \endcode
@@ -268,11 +268,11 @@ $ cbuild.sh <ProjectFile>.cprj [--toolchain=<Toolchain> --outdir=<OutDir> --intd
   </tr>
   <tr>
     <td>\--toolchain=\<Toolchain></td>
-    <td>Specifies the selected toolchain for projects that support multiple compilers.</td>    
+    <td>Specifies the selected toolchain for projects that support multiple compilers.</td>
   </tr>
   <tr>
     <td>\--outdir=\<OutDir></td>
-    <td>Specifies the output directory (for log files, binaries, and map files).</td>    
+    <td>Specifies the output directory (for log files, binaries, and map files).</td>
   </tr>
   <tr>
     <td>\--intdir=\<IntDir></td>
@@ -388,7 +388,7 @@ and environment variables.
 The \c \<ProjectFile>.mak file includes two additional makefiles:
  - include <tt>${CMSIS_BUILD_ROOT}/etc/Whitespace.mak</tt> for handling of white space characters in filenames.
  - include <tt>${CMSIS_COMPILER_ROOT}/\<name>.\<version>.mak</tt> that specifies default options for the toolchain.
- 
+
 
  \section cbuildgen_invocation Invocation
 
@@ -420,30 +420,30 @@ cbuildgen <ProjectFile>.cprj <command> [<args>]
   <tr>
     <td>packlist</td>
     <td></td>
-    <td>List missing packs.</td>    
+    <td>List missing packs.</td>
     <td>Check the current list of installed packs in the directory <tt>$CMSIS_PACK_ROOT</tt>. The URLs of missing packs are written to <tt>\<ProjectFile\>.cpinstall</tt> file.</td>
   </tr>
   <tr>
     <td rowspan="3"></td>
     <td>\--toolchain=&lt;Toolchain></td>
-    <td>Select the toolchain.</td>    
+    <td>Select the toolchain.</td>
     <td>For projects that can be built with multiple toolchains, it defines the toolchain for the build.</td>
   </tr>
   <tr>
     <td>\--intdir=&lt;IntDir></td>
     <td>Intermediate files output directory.</td>
-    <td>Output directory for the list of missing packs (cpinstall).</td>    
+    <td>Output directory for the list of missing packs (cpinstall).</td>
   </tr>
   <tr>
     <td>\--quiet</td>
-    <td>Suppress messages.</td>    
+    <td>Suppress messages.</td>
     <td>Suppresses all tool messages except build progress and result information.</td>
   </tr>
   <tr>
     <td>make</td>
     <td></td>
-    <td>Generate makefile(s).</td>    
-    <td>Generates <tt>\<ProjectFile\>.mak</tt> for \ref make "Make" required to build the project. 
+    <td>Generate makefile(s).</td>
+    <td>Generates <tt>\<ProjectFile\>.mak</tt> for \ref make "Make" required to build the project.
         This command also generates a ASCII log file <tt>\<ProjectFile\>.clog</tt> recording location and version of the selected toolchain,
         packs, components and config files.
     </td>
@@ -451,33 +451,33 @@ cbuildgen <ProjectFile>.cprj <command> [<args>]
   <tr>
     <td rowspan="6"></td>
     <td>\--toolchain=&lt;Toolchain></td>
-    <td>Select the toolchain.</td>    
+    <td>Select the toolchain.</td>
     <td>For projects that can be built with multiple toolchains, it defines the toolchain for the build.</td>
   </tr>
   <tr>
     <td>\--merge=&lt;MergeTool></td>
-    <td>Update configuration files.</td>    
+    <td>Update configuration files.</td>
     <td>When used with the command \c make, it generates also <tt>\<ProjectFile>_cfg.mak</tt> for \ref make "Make" to update configuration
         files using \ref ccmerge.</td>
   </tr>
   <tr>
     <td>\--update=&lt;CprjFile></td>
-    <td>Create fixed version CPRJ file.</td>    
+    <td>Create fixed version CPRJ file.</td>
     <td>Generate <tt>\<CprjFile></tt> with fixed versions for reproducing the current build.</td>
   </tr>
   <tr>
     <td>\--outdir=&lt;OutDir></td>
-    <td>Build output directory.</td>    
+    <td>Build output directory.</td>
     <td>Set output directory for binary executables, as well as log and map files.</td>
   </tr>
   <tr>
     <td>\--intdir=&lt;IntDir></td>
     <td>Intermediate files output directory.</td>
-    <td>Output directory for generated make files, list of missing packs (cpinstall), command files, object files, and dependency files.</td>    
+    <td>Output directory for generated make files, list of missing packs (cpinstall), command files, object files, and dependency files.</td>
   </tr>
   <tr>
     <td>\--quiet</td>
-    <td>Suppress messages.</td>    
+    <td>Suppress messages.</td>
     <td>Suppresses all tool messages except build progress and result information.</td>
   </tr>
   <tr>
@@ -491,36 +491,36 @@ cbuildgen <ProjectFile>.cprj <command> [<args>]
   <tr>
     <td rowspan="3"></td>
     <td>\--layer=&lt;Layer1..N></td>
-    <td>Optional layer ID.</td>    
+    <td>Optional layer ID.</td>
     <td>Specifies the layer name (ID) to be extracted. This option can be specified multiple times to select multiple layers.</td>
   </tr>
   <tr>
     <td>\--outdir=&lt;OutDir></td>
-    <td>Output directory.</td>    
+    <td>Output directory.</td>
     <td>Set the output directory for the extracted layers.</td>
   </tr>
   <tr>
     <td>\--quiet</td>
-    <td>Suppress messages.</td>    
+    <td>Suppress messages.</td>
     <td>Suppresses all tool messages except build progress and result information.</td>
   </tr>
   <tr>
     <td>remove</td>
     <td></td>
     <td>Remove layer from project</td>
-    <td>Updates the <tt>\<ProjectFile\>.cprj</tt> removing the layer description as well as all associated files and components for the 
+    <td>Updates the <tt>\<ProjectFile\>.cprj</tt> removing the layer description as well as all associated files and components for the
         layers specified at the command line. The command deletes the associated files from the respective project directory.
     </td>
   </tr>
   <tr>
     <td rowspan="2"></td>
     <td>\--layer=&lt;Layer1..N></td>
-    <td>Optional layer ID.</td>    
+    <td>Optional layer ID.</td>
     <td>Specifies the layer name (ID) to be removed. This option can be specified multiple times to remove multiple layers.</td>
   </tr>
   <tr>
     <td>\--quiet</td>
-    <td>Suppress messages.</td>    
+    <td>Suppress messages.</td>
     <td>Suppresses all tool messages except build progress and result information.</td>
   </tr>
   <tr>
@@ -534,19 +534,19 @@ cbuildgen <ProjectFile>.cprj <command> [<args>]
   <tr>
     <td rowspan="2"></td>
     <td>&lt;1.clayer> .. &lt;N.clayer></td>
-    <td>Layer description file(s).</td>    
+    <td>Layer description file(s).</td>
     <td>Specifies the layer description file(s) that are used to create the project. Please specify with full path.</td>
   </tr>
   <tr>
     <td>\--quiet</td>
-    <td>Suppress messages.</td>    
+    <td>Suppress messages.</td>
     <td>Suppresses all tool messages except build progress and result information.</td>
   </tr>
   <tr>
     <td>add</td>
     <td></td>
     <td>Add layer to project</td>
-    <td>Updates the <tt>\<ProjectFile\>.cprj</tt> adding the layer description as well as all associated files and components for the 
+    <td>Updates the <tt>\<ProjectFile\>.cprj</tt> adding the layer description as well as all associated files and components for the
         clayer files specified at the command line. The command copies the associated files from the layer directory into the project
         directory. One or more clayer files are required.
     </td>
@@ -554,12 +554,12 @@ cbuildgen <ProjectFile>.cprj <command> [<args>]
   <tr>
     <td rowspan="2"></td>
     <td>&lt;1.clayer> .. &lt;N.clayer></td>
-    <td>Layer description file(s).</td>    
+    <td>Layer description file(s).</td>
     <td>Specifies the layer description file(s) that are added to the project. Please specify with full path.</td>
   </tr>
   <tr>
     <td>\--quiet</td>
-    <td>Suppress messages.</td>    
+    <td>Suppress messages.</td>
     <td>Suppresses all tool messages except build progress and result information.</td>
   </tr>
 </table>
@@ -702,8 +702,8 @@ M650: Command completed successfully.
 <tr><td>M652</td> <td>INFO</td> <td>Generated makefile for project build:'%NAME%.mak'</td>
   <td>For information only.</td>
 </tr>
-<tr><td>M653</td> <td>INFO</td> <td>Local config file ... was not found. Copying default file from package.</td> 
-  <td>Please validate whether the config file is intentionally missing. The default config file may be missing project specific settings.</td> 
+<tr><td>M653</td> <td>INFO</td> <td>Local config file ... was not found. Copying default file from package.</td>
+  <td>Please validate whether the config file is intentionally missing. The default config file may be missing project specific settings.</td>
 </tr>
 <tr><td>M654</td> <td>INFO</td> <td>URL ... was added to the list of missing packages.</td>
   <td>For information only.</td>
@@ -722,7 +722,7 @@ M650: Command completed successfully.
 /**
 \page ccmerge ccmerge: Config File Updater
 
-\b ccmerge supports the update process for configuration files that use 
+\b ccmerge supports the update process for configuration files that use
 <a href="../../Pack/html/configWizard.html"><b>Configuration Wizard Annotations</b></a>. The tool takes the configuration
 file located in the CMSIS-Pack (\c pfile) and merges the configuration information extracted from the configuration file
 located in the current project (\c cfile). If the merge succeeds, the result is written to 'cfile' after a copy of 'cfile'
@@ -735,7 +735,7 @@ has been stored as 'cfile.nnnn'.
 
 \code
 ccmerge -pfile <name_of_pack_cfgfile> -cfile <name_of_current_cfgfile> [-merge] [-details]
-\endcode 
+\endcode
 
 \b Operation
 
@@ -746,11 +746,11 @@ ccmerge -pfile <name_of_pack_cfgfile> -cfile <name_of_current_cfgfile> [-merge] 
   </tr>
   <tr>
     <td>-pfile &lt;name_of_pack_cfgfile></td>
-    <td>File path of the configuration file from a pack</td>    
+    <td>File path of the configuration file from a pack</td>
   </tr>
   <tr>
     <td>-cfile &lt;name_of_current_cfgfile></td>
-    <td>File path of the current config file in a project</td>    
+    <td>File path of the current config file in a project</td>
   </tr>
   <tr>
     <td>-merge</td>
@@ -877,7 +877,7 @@ ccmerge -pfile $CMSIS_PACK_ROOT/ARM/CMSIS/5.6.0/CMSIS/RTOS2/RTX/Config/RTX_Confi
 /**
 \page cp_install cp_install.sh: Install Packs
 
-The \c cp_install "cp_install.sh" script gets a list of URLs that refer to software packs in CMSIS-Pack format that should 
+The \c cp_install "cp_install.sh" script gets a list of URLs that refer to software packs in CMSIS-Pack format that should
 be downloaded and installed.
 
 
@@ -886,7 +886,7 @@ be downloaded and installed.
 \b cp_install is called from the \b Bash command line with the following syntax:
 
 \code
-cp_install.sh <pack-list-file> 
+cp_install.sh <pack-list-file>
 \endcode
 
 <b>Where:</b>
@@ -905,13 +905,13 @@ the following format: \c \<url>/\<vendor>.\<packname>.\<version>.pack. Below is 
 For each URL in this list the following operations are performed:
   1. Download the related software pack from the URL.
   2. Extract the content of the software pack.
-  
+
 The following directories are used to store software pack.  The naming conventions for directories is based on the CMSIS-Pack specification.
 
 | Directory                                                         | Description                                                                        |
 |:------------------------------------------------------------------|:-----------------------------------------------------------------------------------|
 | <b>${CMSIS_PACK_ROOT}/.Download</b>                               | Stores the downloaded software pack                                                |
-| <b>${CMSIS_PACK_ROOT}/&lt;vendor>/&lt;packname>/&lt;version></b>  | Extracted content of the software pack (naming according CMSIS-Pack specification) | 
+| <b>${CMSIS_PACK_ROOT}/&lt;vendor>/&lt;packname>/&lt;version></b>  | Extracted content of the software pack (naming according CMSIS-Pack specification) |
 
 \note  The environment variable \c $CMSIS_PACK_ROOT must reference an existing directory with at least the file ./Web/index.pidx. The directory structure can be created with \ref cp_init
 
@@ -1016,7 +1016,7 @@ visit: https://www.gnu.org/software/make/manual/make.html#Options-Summary.
 
 \code
 make [<options>] [<target>] ...
-\endcode 
+\endcode
 
 The \ref cbuild "cbuild.sh" script uses only the following subset of the \ref make "Make" options.
 
@@ -1031,22 +1031,22 @@ The \ref cbuild "cbuild.sh" script uses only the following subset of the \ref ma
   </tr>
   <tr>
     <td>-f FILE</td>
-    <td>Specify makefile</td>    
+    <td>Specify makefile</td>
     <td>Run make for the makefile specified by FILE</td>
   </tr>
   <tr>
     <td>-j [N]</td>
-    <td>Run parallel jobs.</td>    
+    <td>Run parallel jobs.</td>
     <td>Speed up builds by allowing N jobs at once; infinite jobs with no arg.</td>
   </tr>
   <tr>
     <td>-r</td>
-    <td>Run make without built-in rules</td>    
+    <td>Run make without built-in rules</td>
     <td>Disable the implicit rules built into make.</td>
   </tr>
   <tr>
     <td>-s</td>
-    <td>Run make in silent mode</td>    
+    <td>Run make in silent mode</td>
     <td>Don't echo recipes.</td
   </tr>
   <tr>
@@ -1056,7 +1056,7 @@ The \ref cbuild "cbuild.sh" script uses only the following subset of the \ref ma
   </tr>
   <tr>
     <td>clean</td>
-    <td>Cleanup build</td>    
+    <td>Cleanup build</td>
     <td>Requests to remove intermediate build output files</td>
   </tr>
 </table>

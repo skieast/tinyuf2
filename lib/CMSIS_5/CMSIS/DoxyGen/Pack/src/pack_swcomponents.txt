@@ -77,7 +77,7 @@ Add release information and keywords:
       Initial version
     </release>
   </releases>
-      
+
   <keywords>
     <keyword>MyVendor</keyword>
     <keyword>My Software Component</keyword>
@@ -105,7 +105,7 @@ Add a \ref pdsc_components_pg "<components>" section with the following:
       </component>
   </components>
 \endcode
-\note 
+\note
 If you are using a header file with the attribute <span class="XML-Token">config</span>, save it in a separate directory from
 all other header files as in this example. Configuration files are copied into the project folder and are adopted
 specifically for that project but chances are that due to the include path search order of the compiler, the unmodified
@@ -172,11 +172,11 @@ Pack to identify a component. A component vendor must ensure that the combinatio
 For a list of established Cclasses, refer to \ref pack_Cclass.
 
 In case multiple interdependent components (belonging to the same \c Cclass) form part of a solution, these can be grouped
-in a so called \ref cp_Bundles "bundle". 
+in a so called \ref cp_Bundles "bundle".
 
 Use the following syntax to reference to software components and APIs:\n
 <b>\<Vendor\>::\<Cclass\>:\<Cgroup\>:\<Csub\></b>
-  
+
 \b Examples:
   - <b>\::CMSIS:RTOS (API)</b> - the CMSIS-RTOS API.
   - <b>ARM::CMSIS:DSP</b> - the CMSIS-DSP Library.
@@ -190,7 +190,7 @@ Software Component Files
 ------------------------
 Each software component consists of a certain number of files. Each file has at least the following attributes:
 - \c name: File path, file name, and file extension in the format path/name.extension. The file path is relative to the root
-  directory of the Pack. 
+  directory of the Pack.
 - \c category: Defines the purpose of the file. Select the predefined value as listed in the table
   \ref FileCategoryEnum "File Categories".
 
@@ -243,7 +243,7 @@ directory in your working environment:
 <li>
 Add a \ref pdsc_conditions_pg "<conditions>" section with the following:
 \code
-  <conditions> 
+  <conditions>
     <condition id="ARM Compiler">
       <require Tcompiler="ARMCC"/>
     </condition>
@@ -324,7 +324,7 @@ PackChk.exe <InFile.pdsc> -i <path to installed CMSIS pack>\ARM.CMSIS.pdsc
 
 \section cp_Variants Variants
 
-Software components may have <b>variants</b>, for example: 
+Software components may have <b>variants</b>, for example:
 - Debug version with or release version without diagnostic output
 - Long/short file names
 - Fast/slow modes
@@ -332,7 +332,7 @@ Software components may have <b>variants</b>, for example:
 Variants are mutually exclusive (only one variant can be chosen at a time). \c Cvariant is an optional part of the component
 ID. The variant specifier is a brief string (e.g. \c release, \c debug).
 
-\note Version management relies on variants to <b>remain unchanged between versions</b>. 
+\note Version management relies on variants to <b>remain unchanged between versions</b>.
 
 The following example introduces a new component to the Pack in two variants: \c debug and \c release. Copy the \e content of
 the <b>03_Variants</b> directory of the \b Pack_with_Software_Components.zip file to the <b>Files</b> directory in your
@@ -523,7 +523,7 @@ further details. Afterwards, install the Pack in your development tool and obser
 </ol>
 
 
-\section cp_Examples Example Projects 
+\section cp_Examples Example Projects
 Example projects help to understand a certain MCU or development board better. An example and each individual file of it may
 refer to a condition that must resolve to true; if it is false, the example or file will be ignored. The board element is
 used to reference to one or more board descriptions using the board vendor and name an example is targeted for. Each example

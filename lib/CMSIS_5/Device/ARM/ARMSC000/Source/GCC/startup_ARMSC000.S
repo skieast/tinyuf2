@@ -83,7 +83,7 @@ Reset_Handler:
 .L_loop0:
                 cmp      r4, r5
                 bge      .L_loop0_done
-                ldr      r1, [r4]                /* source address */   
+                ldr      r1, [r4]                /* source address */
                 ldr      r2, [r4, #4]            /* destination address */
                 ldr      r3, [r4, #8]            /* word count */
                 lsl      r3, r3, #2              /* byte count */

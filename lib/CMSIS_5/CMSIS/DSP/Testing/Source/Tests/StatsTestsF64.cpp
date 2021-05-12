@@ -5,7 +5,7 @@
 
 
 #define SNR_THRESHOLD 300
-/* 
+/*
 
 Reference patterns are generated with
 a double precision computation.
@@ -31,7 +31,7 @@ a double precision computation.
 
       ASSERT_REL_ERROR(ref,output,REL_ERROR);
 
-    } 
+    }
 
     void StatsTestsF64::test_kullback_leibler_f64()
     {
@@ -52,9 +52,9 @@ a double precision computation.
       ASSERT_SNR(ref,output,(float64_t)SNR_THRESHOLD);
 
       ASSERT_REL_ERROR(ref,output,REL_ERROR);
-    } 
-  
-  
+    }
+
+
     void StatsTestsF64::setUp(Testing::testID_t id,std::vector<Testing::param_t>& paramsArgs,Client::PatternMgr *mgr)
     {
         (void)paramsArgs;
@@ -85,7 +85,7 @@ a double precision computation.
             }
             break;
         }
-        
+
     }
 
     void StatsTestsF64::tearDown(Testing::testID_t id,Client::PatternMgr *mgr)

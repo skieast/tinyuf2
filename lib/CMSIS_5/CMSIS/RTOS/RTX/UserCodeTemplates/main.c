@@ -17,5 +17,5 @@ int main (void) {
   // create 'thread' functions that start executing,
   // example: tid_name = osThreadCreate (osThread(name), NULL);
 
-  osKernelStart ();                         // start thread execution 
+  osKernelStart ();                         // start thread execution
 }

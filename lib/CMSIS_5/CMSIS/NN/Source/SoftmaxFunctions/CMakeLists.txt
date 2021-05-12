@@ -14,6 +14,3 @@ configDsp(CMSISNNSoftmax ${ROOT})
 ### Includes
 target_include_directories(CMSISNNSoftmax PUBLIC "${NN}/Include")
 target_include_directories(CMSISNNSoftmax PUBLIC "${ROOT}/CMSIS/DSP/Include")
-
-
-

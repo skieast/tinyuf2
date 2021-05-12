@@ -7,7 +7,7 @@ void ref_float_to_q31(
 {
 	uint32_t i;
 	float32_t in;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 		in = pSrc[i];
@@ -16,7 +16,7 @@ void ref_float_to_q31(
 		pDst[i] = ref_sat_q31((q63_t)in);	//cast and saturate
 	}
 }
-	
+
 void ref_float_to_q15(
   float32_t * pSrc,
   q15_t * pDst,
@@ -24,7 +24,7 @@ void ref_float_to_q15(
 {
 	uint32_t i;
 	float32_t in;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 		in = pSrc[i];
@@ -33,7 +33,7 @@ void ref_float_to_q15(
 		pDst[i] = ref_sat_q15((q31_t)in);
 	}
 }
-	
+
 void ref_float_to_q7(
   float32_t * pSrc,
   q7_t * pDst,
@@ -41,7 +41,7 @@ void ref_float_to_q7(
 {
 	uint32_t i;
 	float32_t in;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 		in = pSrc[i];

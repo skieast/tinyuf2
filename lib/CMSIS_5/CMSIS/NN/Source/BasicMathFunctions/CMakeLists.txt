@@ -14,6 +14,3 @@ configDsp(CMSISNNBasicMaths ${ROOT})
 ### Includes
 target_include_directories(CMSISNNBasicMaths PUBLIC "${NN}/Include")
 target_include_directories(CMSISNNBasicMaths PUBLIC "${ROOT}/CMSIS/DSP/Include")
-
-
-

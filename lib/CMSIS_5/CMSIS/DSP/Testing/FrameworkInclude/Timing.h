@@ -86,10 +86,10 @@ static inline void stopSection() {
       default:
         stopSectionNB(0);
      }
-     
+
      sectionCounter++;
 }
 
-#endif 
+#endif
 
 #endif

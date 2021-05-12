@@ -1,14 +1,14 @@
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 //  ==== OS Tick API ====
-/** 
+/**
 \addtogroup CMSIS_RTOS_TickAPI OS Tick API
 \brief System tick timer interface for periodic RTOS Kernel Ticks defined in <b>%os_tick.h</b>
-\details 
+\details
 
 The <b>OS Tick API</b> is an interface to a system timer that generates the Kernel Ticks.
 
-All Cortex-M processors provide an unified System Tick Timer that is typically used to generate the RTOS Kernel Tick. 
-The Cortex-A processors do not implement an unified system timer and required a device specific implementation. 
+All Cortex-M processors provide an unified System Tick Timer that is typically used to generate the RTOS Kernel Tick.
+The Cortex-A processors do not implement an unified system timer and required a device specific implementation.
 
 CMSIS-RTOS2 provides in the directory \ref directory "CMSIS/RTOS2/Source" the several OS Tick implementations that can be used by any RTOS kernel.
 
@@ -26,7 +26,7 @@ Filename                 | OS Tick Implementation for...
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
 \fn int32_t  OS_Tick_Setup (uint32_t freq, IRQHandler_t handler)
-\details 
+\details
 
 Setup OS Tick timer to generate periodic RTOS Kernel Ticks.
 
@@ -73,7 +73,7 @@ int32_t  OS_Tick_Setup (uint32_t freq, IRQHandler_t handler) {
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
 \fn int32_t  OS_Tick_Enable (void)
-\details 
+\details
 Enable OS Tick timer interrupt.
 
 Enable and start the OS Tick timer to generate periodic RTOS Kernel Tick interrupts.
@@ -97,7 +97,7 @@ int32_t  OS_Tick_Enable (void) {
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
 \fn int32_t  OS_Tick_Disable (void)
-\details 
+\details
 Disable OS Tick timer interrupt.
 
 Stop the OS Tick timer and disable generation of RTOS Kernel Tick interrupts.
@@ -121,7 +121,7 @@ int32_t  OS_Tick_Disable (void) {
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
 \fn int32_t  OS_Tick_AcknowledgeIRQ (void)
-\details 
+\details
 Acknowledge execution of OS Tick timer interrupt.
 
 Acknowledge the execution of the OS Tick timer interrupt function, for example clear the pending flag.
@@ -139,7 +139,7 @@ int32_t  OS_Tick_AcknowledgeIRQ (void) {
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
 \fn int32_t OS_Tick_GetIRQn (void)
-\details 
+\details
 Get OS Tick timer IRQ number.
 
 Return the numeric value that identifies the interrupt called by the OS Tick timer.
@@ -156,7 +156,7 @@ int32_t  OS_Tick_GetIRQn (void) {
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
 \fn uint32_t OS_Tick_GetClock (void)
-\details 
+\details
 Get OS Tick timer clock frequency.
 
 Return the input clock frequency of the OS Tick timer. This is the increment rate of the counter value returned by the function \ref OS_Tick_GetCount.
@@ -174,8 +174,8 @@ uint32_t OS_Tick_GetClock (void) {
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
 \fn uint32_t OS_Tick_GetInterval (void)
-\details 
-Get OS Tick timer interval reload value. 
+\details
+Get OS Tick timer interval reload value.
 
 Return the number of counter ticks between to periodic OS Tick timer interrupts.
 
@@ -191,7 +191,7 @@ uint32_t OS_Tick_GetInterval (void) {
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
 \fn uint32_t OS_Tick_GetCount (void)
-\details 
+\details
 
 Get OS Tick timer counter value.
 
@@ -211,7 +211,7 @@ uint32_t OS_Tick_GetCount (void) {
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
 \fn OS_Tick_GetOverflow (void)
-\details 
+\details
 Get OS Tick timer overflow status.
 
 Return the state of OS Tick timer interrupt pending bit that indicates timer overflows to adjust SysTimer calculations.

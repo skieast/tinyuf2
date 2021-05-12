@@ -27,7 +27,7 @@ class CmsisPackVersionParser(VersionParser):
     if not v:
       v = self._regex_(file, ".*\$Revision:\s+([vV])?([0-9]+[.][0-9]+([.][0-9]+)?).*", 2)
     return v
-  
+
   def _cmtable_(self, file, skip = 0):
     table = ""
     dump = False
@@ -46,7 +46,7 @@ class CmsisPackVersionParser(VersionParser):
       table = lxml.etree.fromstring(table)
       return table
     return None
-    
+
   def _revhistory_(self, file, skip = 0):
     table = self._cmtable_(file, skip)
     if table is not None:
@@ -64,7 +64,7 @@ class CmsisPackVersionParser(VersionParser):
   def _dxy(self, file):
     """Get the PROJECT_NUMBER from a Doxygen configuration file."""
     return self._regex_(file, "PROJECT_NUMBER\s*=\s*\"(Version\s+)?(\d+.\d+(.\d+)?)\"", 2)
-    
+
   def _pdsc(self, file, component = None):
     pack = None
     if not file in self._packs:
@@ -89,7 +89,7 @@ class CmsisPackVersionParser(VersionParser):
 
   def _s(self, file):
     return self._file_version_(file)
-    
+
   def _xsd(self, file, rev=False, history=False):
     if rev:
       return self._all_(file)
@@ -101,7 +101,7 @@ class CmsisPackVersionParser(VersionParser):
 
   def overview_txt(self, file, skip = 0):
     return self._revhistory_(file, skip)
-    
+
   def introduction_txt(self, file, component = None):
     table = self._cmtable_(file)
     if table is None:
@@ -113,13 +113,13 @@ class CmsisPackVersionParser(VersionParser):
         return SemanticVersion(m.group(1))
     else:
       return SemanticVersion(table[1][0].text)
-    
+
   def dap_txt(self, file, skip = 0):
     return self._revhistory_(file, skip)
 
   def general_txt(self, file, skip = 0):
     return self._revhistory_(file, skip)
-  
+
   def history_txt(self, file, skip = 0):
     return self._revhistory_(file, skip)
 
@@ -129,16 +129,16 @@ class CmsisPackVersionParser(VersionParser):
     if not version:
       version = self._regex_(file, ".*\$Revision:\s+([vV])?([0-9]+[.][0-9]+([.][0-9]+)?).*", 2)
     return version
-    
+
 class CmsisPackLinter(PackLinter):
 
   def __init__(self, pdsc = "ARM.CMSIS.pdsc"):
     super().__init__(pdsc)
     self._versionParser = CmsisPackVersionParser(self._logger)
-    
+
   def pack_version(self):
     return self._pack.version()
-  
+
   def cmsis_corem_component(self):
     rte = { 'components' : set(), 'Dcore' : "Cortex-M3", 'Dvendor' : "*", 'Dname' : "*", 'Dtz' : "*", 'Dsecure' : "*", 'Tcompiler' : "*", 'Toptions' : "*" }
     cs = self._pack.component_by_name(rte, "CMSIS.CORE")
@@ -250,12 +250,12 @@ class CmsisPackLinter(PackLinter):
     if a and not api.match(a):
       self.warning("RTX5 API version (%s) does not match RTOS2 API version (%s)!", a, api)
     self.verify_version("CMSIS/DoxyGen/RTOS2/src/history.txt", v, skip=1)
-    
+
   def check_files(self):
     """Files referenced by pack description"""
     # Check schema of pack description
     self.verify_schema(self._pack.location(), "CMSIS/Utilities/PACK.xsd")
-        
+
     # Check schema of SVD files
     svdfiles = { d.svdfile() for d in self._pack.devices() if d.svdfile() }
     for svd in svdfiles:
@@ -275,7 +275,7 @@ class CmsisPackLinter(PackLinter):
               self.verify_version(f.location(), cv)
         if hv:
           self.verify_version(f.location(), SemanticVersion(hv))
-  
+
   def check_doc(self, pattern="./CMSIS/Documentation/**/*.html"):
     """Documentation"""
     self.debug("Using pattern '%s'", pattern)

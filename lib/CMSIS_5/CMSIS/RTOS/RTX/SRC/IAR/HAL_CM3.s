@@ -190,7 +190,7 @@ SVC_User:
         STM     R12,{R0-R3}             /* Function return values */
 SVC_Done:
         POP     {R4,PC}                 /* RETI */
-        
+
 
 /*-------------------------- PendSV_Handler ---------------------------------*/
 

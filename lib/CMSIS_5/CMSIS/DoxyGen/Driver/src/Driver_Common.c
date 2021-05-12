@@ -10,9 +10,9 @@ for a general overview.
 
 /**
 \enum ARM_POWER_STATE
-\details 
+\details
 The access structure of each CMSIS-Driver provides the function \b PowerControl, which handles the power
-profile for a peripheral using the parameter \ref ARM_POWER_STATE. Depending on this parameter, 
+profile for a peripheral using the parameter \ref ARM_POWER_STATE. Depending on this parameter,
 the peripheral will operate at full speed, detect just events, or is completely un-powered.
 
 Refer to \ref CallSequence for more information.
@@ -34,8 +34,8 @@ For example, version 1.12 is encoded as 0x10C.
 
 \defgroup execution_status Status Error Codes
 \ingroup common_drv_gr
-\brief Negative return values of functions indicate errors occurred during execution. 
-\details 
+\brief Negative return values of functions indicate errors occurred during execution.
+\details
 Most functions return a status information using negative return values.
 The following list provides the status error codes that are common in all drivers.
 The drivers may return also status error codes that are specific to the peripheral.

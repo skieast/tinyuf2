@@ -71,7 +71,7 @@ extern "C"
 
 /****** I2C Control Codes *****/
 
-#define ARM_I2C_OWN_ADDRESS             (0x01UL)    ///< Set Own Slave Address; arg = address 
+#define ARM_I2C_OWN_ADDRESS             (0x01UL)    ///< Set Own Slave Address; arg = address
 #define ARM_I2C_BUS_SPEED               (0x02UL)    ///< Set Bus Speed; arg = speed
 #define ARM_I2C_BUS_CLEAR               (0x03UL)    ///< Execute Bus clear: send nine clock pulses
 #define ARM_I2C_ABORT_TRANSFER          (0x04UL)    ///< Abort Master/Slave Transmit/Receive

@@ -15,7 +15,7 @@ enable_language(CXX C ASM)
 
 
 # Otherwise there is a .obj on windows and it creates problems
-# with armlink. 
+# with armlink.
 SET(CMAKE_C_OUTPUT_EXTENSION .o)
 SET(CMAKE_CXX_OUTPUT_EXTENSION .o)
 SET(CMAKE_ASM_OUTPUT_EXTENSION .o)
@@ -28,4 +28,3 @@ function(configLib project cmsisRoot)
   #configplatformForLib(${project} ${cmsisRoot})
   SET(COREID ${COREID} PARENT_SCOPE)
 endfunction()
-

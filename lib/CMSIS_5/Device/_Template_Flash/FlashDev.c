@@ -21,13 +21,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 #include "FlashOS.h"        // FlashOS Structures
 
 
 struct FlashDevice const FlashDevice  =  {
    FLASH_DRV_VERS,             // Driver Version, do not modify!
-   "New Device 256kB Flash",   // Device Name 
+   "New Device 256kB Flash",   // Device Name
    ONCHIP,                     // Device Type
    0x00000000,                 // Device Start Address
    0x00040000,                 // Device Size in Bytes (256kB)
@@ -39,7 +39,7 @@ struct FlashDevice const FlashDevice  =  {
 
 // Specify Size and Address of Sectors
    0x002000, 0x000000,         // Sector Size  8kB (8 Sectors)
-   0x010000, 0x010000,         // Sector Size 64kB (2 Sectors) 
+   0x010000, 0x010000,         // Sector Size 64kB (2 Sectors)
    0x002000, 0x030000,         // Sector Size  8kB (8 Sectors)
    SECTOR_END
 };

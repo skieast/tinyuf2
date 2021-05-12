@@ -8394,7 +8394,7 @@ cmsis_arm_rfft_4096_fast_init_f32(PyObject *obj, PyObject *args)
   return(NULL);
 }
 
-#endif 
+#endif
 
 static PyObject *
 cmsis_arm_rfft_fast_f32(PyObject *obj, PyObject *args)
@@ -15811,4 +15811,3 @@ static PyMethodDef CMSISMLMethods[] = {
     {"error_out", (PyCFunction)error_out, METH_NOARGS, NULL},
     {NULL, NULL, 0, NULL}        /* Sentinel */
 };
-

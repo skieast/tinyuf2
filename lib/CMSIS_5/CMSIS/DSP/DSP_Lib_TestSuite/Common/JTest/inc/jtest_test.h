@@ -33,7 +33,7 @@ typedef struct JTEST_TEST_struct
         } bits;
         uint8_t byte;           /* Access all flags at once. */
     } flags;
-    
+
 } JTEST_TEST_t;
 
 /*--------------------------------------------------------------------------------*/

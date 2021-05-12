@@ -41,7 +41,7 @@ arm_status ref_conv_partial_f32(
   uint32_t numPoints)
 {
 	ref_conv_f32(pSrcA,srcALen,pSrcB,srcBLen,pDst);
-	
+
 	return ARM_MATH_SUCCESS;
 }
 
@@ -120,7 +120,7 @@ arm_status ref_conv_partial_q31(
   uint32_t numPoints)
 {
 	ref_conv_q31(pSrcA,srcALen,pSrcB,srcBLen,pDst);
-	
+
 	return ARM_MATH_SUCCESS;
 }
 
@@ -134,7 +134,7 @@ arm_status ref_conv_partial_fast_q31(
   uint32_t numPoints)
 {
 	ref_conv_fast_q31(pSrcA,srcALen,pSrcB,srcBLen,pDst);
-   
+
 	return ARM_MATH_SUCCESS;
 }
 
@@ -204,7 +204,7 @@ arm_status ref_conv_partial_fast_opt_q15(
     /* Store the output in the destination buffer */
     pDst[i] = ref_sat_q15(sum >> 15U);
   }
-	
+
   return ARM_MATH_SUCCESS;
 }
 
@@ -284,7 +284,7 @@ arm_status ref_conv_partial_q15(
   uint32_t numPoints)
 {
 	ref_conv_q15(pSrcA,srcALen,pSrcB,srcBLen,pDst);
-	
+
 	return ARM_MATH_SUCCESS;
 }
 
@@ -298,7 +298,7 @@ arm_status ref_conv_partial_fast_q15(
   uint32_t numPoints)
 {
 	ref_conv_fast_q15(pSrcA,srcALen,pSrcB,srcBLen,pDst);
-	
+
 	return ARM_MATH_SUCCESS;
 }
 
@@ -343,8 +343,8 @@ arm_status ref_conv_partial_q7(
   q7_t * pDst,
   uint32_t firstIndex,
   uint32_t numPoints)
-{	
+{
 	ref_conv_q7(pSrcA,srcALen,pSrcB,srcBLen,pDst);
-	
+
 	return ARM_MATH_SUCCESS;
 }

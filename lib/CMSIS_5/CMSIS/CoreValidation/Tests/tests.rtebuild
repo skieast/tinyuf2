@@ -127,7 +127,7 @@ targets:
     extends: armca
     device : ARMCA9
     dsuffix: ""
-include: 
+include:
   - ./
   - ../Include/
   - ../../../Device/ARM/${device}/Include

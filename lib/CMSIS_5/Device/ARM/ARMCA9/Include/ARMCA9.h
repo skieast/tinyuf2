@@ -1,6 +1,6 @@
 /******************************************************************************
  * @file     ARMCA9.h
- * @brief    CMSIS Cortex-A9 Core Peripheral Access Layer Header File 
+ * @brief    CMSIS Cortex-A9 Core Peripheral Access Layer Header File
  * @version  V1.1.0
  * @date     15. May 2019
  *

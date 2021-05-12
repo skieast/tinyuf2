@@ -7,7 +7,7 @@ void ref_mult_f32(
   uint32_t blockSize)
 {
 	uint32_t i;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 		pDst[i] = pSrcA[i] * pSrcB[i];
@@ -22,7 +22,7 @@ void ref_mult_q31(
 {
 	uint32_t i;
 	q63_t temp;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 		temp = ((q63_t)pSrcA[i] * pSrcB[i]) >> 32;
@@ -39,7 +39,7 @@ void ref_mult_q15(
 {
 	uint32_t i;
 	q31_t temp;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 		temp = ((q31_t)pSrcA[i] * pSrcB[i]) >> 15; //this comment is for JD, this is specifically 15 and not 16 like the q31 case might imply.  This is because CMSIS DSP lib does it this way.  No other reason.
@@ -55,7 +55,7 @@ void ref_mult_q7(
 {
 	uint32_t i;
 	q15_t temp;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 		temp = ((q15_t)pSrcA[i] * pSrcB[i]) >> 7;

@@ -18,7 +18,7 @@ Some Cortex-M processors include an optional MVE unit.
 __STATIC_INLINE uint32_t SCB_GetMVEType(void);
 
 /**
- @}  
+ @}
 */
 
- 
+

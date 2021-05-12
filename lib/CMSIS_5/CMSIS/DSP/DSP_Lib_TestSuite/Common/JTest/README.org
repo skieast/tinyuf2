@@ -4,5 +4,3 @@
 * Overview
   JTEST is a test framework Microcontrollers.  Specifically for
   Microcontrollers that interface with the Keil Debugging environment.
-
-

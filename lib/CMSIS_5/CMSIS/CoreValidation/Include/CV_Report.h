@@ -1,5 +1,5 @@
 /*-----------------------------------------------------------------------------
- *      Name:         CV_Report.h 
+ *      Name:         CV_Report.h
  *      Purpose:      Report statistics and layout header
  *----------------------------------------------------------------------------
  *      Copyright (c) 2017 ARM Limited. All rights reserved.
@@ -13,7 +13,7 @@
 /*-----------------------------------------------------------------------------
  * Test report global definitions
  *----------------------------------------------------------------------------*/
- 
+
 #define REP_TC_FAIL 0
 #define REP_TC_WARN 1
 #define REP_TC_PASS 2
@@ -44,9 +44,9 @@ extern TC_ITF tcitf;
 
 /* Assertion result buffer */
 typedef struct {
-AS_INFO passed[BUFFER_ASSERTIONS];  
-AS_INFO failed[BUFFER_ASSERTIONS];  
-AS_INFO warnings[BUFFER_ASSERTIONS];  
+AS_INFO passed[BUFFER_ASSERTIONS];
+AS_INFO failed[BUFFER_ASSERTIONS];
+AS_INFO warnings[BUFFER_ASSERTIONS];
 } AS_T_INFO;
 
 /* Assertion statistics */
@@ -71,7 +71,7 @@ typedef struct {
 typedef struct {
   BOOL (* Init)     (void);
   BOOL (* Open)     (const char *title, const char *date, const char *time, const char *fn);
-  BOOL (* Close)    (void);  
+  BOOL (* Close)    (void);
   BOOL (* Open_TC)  (uint32_t num, const char *fn);
   BOOL (* Close_TC) (void);
 } REPORT_ITF;

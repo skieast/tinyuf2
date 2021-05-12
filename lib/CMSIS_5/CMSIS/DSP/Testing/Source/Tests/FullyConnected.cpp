@@ -17,10 +17,10 @@ void printPattern(char *s,Client::AnyPattern<q7_t> pat)
    }
    printf("----\n");
 }
-   
+
     void FullyConnected::test_fully_connected_tflite_s8()
     {
-       
+
        q7_t *inp=input.ptr();
        q31_t *biasp=bias.ptr();
        q7_t *weightp=weight.ptr();
@@ -39,22 +39,22 @@ void printPattern(char *s,Client::AnyPattern<q7_t> pat)
         ,output_shift
         ,output_offset
         ,(const int32_t*)biasp
-        ,(int8_t*)outp 
-        ,act_min 
+        ,(int8_t*)outp
+        ,act_min
         ,act_max
         ,tempp
         );
-      
-        ASSERT_EQ(ref,output);
-    } 
 
-  
+        ASSERT_EQ(ref,output);
+    }
+
+
     void FullyConnected::setUp(Testing::testID_t id,std::vector<Testing::param_t>& params,Client::PatternMgr *mgr)
     {
 
 
        nb_batches = 1;
-       
+
 
        switch(id)
        {
@@ -181,7 +181,7 @@ void printPattern(char *s,Client::AnyPattern<q7_t> pat)
              act_min =-128;
              act_max= 127;
 
-          
+
              nb_batches=9;
 
              colDim=6;
@@ -206,7 +206,7 @@ void printPattern(char *s,Client::AnyPattern<q7_t> pat)
              act_min =-128;
              act_max= 127;
 
-          
+
              nb_batches=8;
 
              colDim=8;
@@ -232,7 +232,7 @@ void printPattern(char *s,Client::AnyPattern<q7_t> pat)
              act_min =-128;
              act_max= 127;
 
-          
+
              nb_batches=4;
 
              colDim=10;
@@ -258,7 +258,7 @@ void printPattern(char *s,Client::AnyPattern<q7_t> pat)
              act_min =-128;
              act_max= 127;
 
-          
+
              nb_batches=9;
 
              colDim=6;
@@ -283,7 +283,7 @@ void printPattern(char *s,Client::AnyPattern<q7_t> pat)
              act_min =-128;
              act_max= 127;
 
-          
+
              nb_batches=4;
 
              colDim=10;
@@ -308,7 +308,7 @@ void printPattern(char *s,Client::AnyPattern<q7_t> pat)
              act_min =-128;
              act_max= 127;
 
-          
+
              nb_batches=8;
 
              colDim=8;
@@ -333,7 +333,7 @@ void printPattern(char *s,Client::AnyPattern<q7_t> pat)
              act_min =-128;
              act_max= 127;
 
-          
+
              nb_batches=9;
 
              colDim=8;
@@ -359,7 +359,7 @@ void printPattern(char *s,Client::AnyPattern<q7_t> pat)
              act_min =-128;
              act_max= 127;
 
-          
+
              nb_batches=8;
 
              colDim=8;
@@ -384,7 +384,7 @@ void printPattern(char *s,Client::AnyPattern<q7_t> pat)
              act_min =-128;
              act_max= 127;
 
-          
+
              nb_batches=4;
 
              colDim=7;
@@ -410,7 +410,7 @@ void printPattern(char *s,Client::AnyPattern<q7_t> pat)
              act_min =-128;
              act_max= 127;
 
-          
+
              nb_batches=8;
 
              colDim=7;
@@ -427,7 +427,7 @@ void printPattern(char *s,Client::AnyPattern<q7_t> pat)
              temp.create(colDim,FullyConnected::TEMP_S16_ID,mgr);
           break;
        }
-       
+
 
 
     }

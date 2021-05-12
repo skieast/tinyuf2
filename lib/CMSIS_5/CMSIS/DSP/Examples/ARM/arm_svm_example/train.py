@@ -72,7 +72,7 @@ print("gamma = %f" % clf._gamma)
 
 print("intercept = %f" % clf.intercept_)
 
-dualCoefs=clf.dual_coef_ 
+dualCoefs=clf.dual_coef_
 dualCoefs=dualCoefs.reshape(nbSupportVectors)
 supportVectors=clf.support_vectors_
 supportVectors = supportVectors.reshape(nbSupportVectors*VECDIM)

@@ -3,7 +3,7 @@
     \defgroup   peripheral_gr    Peripheral Access
     \brief      Naming conventions and optional features for accessing peripherals.
     \details
-	
+
 The section below describes the naming conventions, requirements, and optional features for accessing device specific peripherals.
 Most of the rules also apply to the core peripherals.  The \ref device_h_pg contains typically these definition and also includes
 the core specific header files.
@@ -12,7 +12,7 @@ the core specific header files.
 The definitions for \ref peripheral_gr can be generated using the <a href="../../SVD/html/index.html"><b>CMSIS-SVD</b></a> System View Description for Peripherals.
 Refer to <a href="../../SVD/html/svd_SVDConv_pg.html"><b>SVDConv.exe</b></a> for more information.
 \endif
-	
+
 Each peripheral provides a data type definition with a name that is composed of:
   - an optional prefix <b>&lt;<i>device abbreviation&gt;</i>_</b>
   - <b>&lt;<i>peripheral name</i>&gt;</b>
@@ -23,7 +23,7 @@ Examples:
   - \b LPC_UART_TypeDef for the device family \b LPC and the peripheral \b UART.
 
 The data type definition uses standard C data types defined by the ANSI C header file <stdint.h>.
- 
+
  - IO Type Qualifiers are used to specify the access to peripheral variables.
    IO Type Qualifier  | Type            | Description
    :------------------|:----------------|:------------
@@ -33,8 +33,8 @@ The data type definition uses standard C data types defined by the ANSI C header
    \b __I             | Scalar variable | Defines 'read only' permissions
    \b __O             | Scalar variable | Defines 'write only' permissions
    \b __IO            | Scalar variable | Defines 'read / write' permissions
-   
-\note 
+
+\note
 \b __IM, \b __OM, \b __IOM are added in CMSIS-Core V4.20 to enhance support for C++. Prior version used \b __I, \b __O, \b __IO also for struct member definitions.
 
 The typedef <b>\<<i>device abbreviation</i>\>_UART_TypeDef</b> shown below defines the generic register layout for all UART channels in a device.
@@ -84,9 +84,9 @@ In this example \b LPC_UART2 and \b LPC_UART3 are two pointers to UARTs defined 
 #define LPC_UART3             ((LPC_UART_TypeDef      *) LPC_UART3_BASE    )
 \endcode
 
-\note 
+\note
  - The prefix <b>LPC</b> is optional.
- 
+
 The registers in the various UARTs can now be referred in the user code as shown below:\n
 \code
  val = LPC_UART2->DR   // is the data register of UART1.
@@ -173,16 +173,16 @@ Bit field definitions for register CPUID in SCB (System Control Block).
 /* SCB CPUID Register Definitions */
 #define SCB_CPUID_IMPLEMENTER_Pos      24U                                       /*!< SCB CPUID: IMPLEMENTER Position */
 #define SCB_CPUID_IMPLEMENTER_Msk      (0xFFUL << SCB_CPUID_IMPLEMENTER_Pos)     /*!< SCB CPUID: IMPLEMENTER Mask */
-                                                                                 
+
 #define SCB_CPUID_VARIANT_Pos          20U                                       /*!< SCB CPUID: VARIANT Position */
 #define SCB_CPUID_VARIANT_Msk          (0xFUL << SCB_CPUID_VARIANT_Pos)          /*!< SCB CPUID: VARIANT Mask */
-                                                                                 
+
 #define SCB_CPUID_ARCHITECTURE_Pos     16U                                       /*!< SCB CPUID: ARCHITECTURE Position */
 #define SCB_CPUID_ARCHITECTURE_Msk     (0xFUL << SCB_CPUID_ARCHITECTURE_Pos)     /*!< SCB CPUID: ARCHITECTURE Mask */
-                                                                                 
+
 #define SCB_CPUID_PARTNO_Pos            4U                                       /*!< SCB CPUID: PARTNO Position */
 #define SCB_CPUID_PARTNO_Msk           (0xFFFUL << SCB_CPUID_PARTNO_Pos)         /*!< SCB CPUID: PARTNO Mask */
-                                                                                 
+
 #define SCB_CPUID_REVISION_Pos          0U                                       /*!< SCB CPUID: REVISION Position */
 #define SCB_CPUID_REVISION_Msk         (0xFUL /*<< SCB_CPUID_REVISION_Pos*/)     /*!< SCB CPUID: REVISION Mask */
 \endcode
@@ -199,7 +199,7 @@ The macros <b>_VAL2FLD(field, value)</b> and <b>_FLD2VAL(field, value)</b> enabl
 \details
 The macro \ref _VAL2FLD uses the \#define's <i>_Pos</i> and <i>_Msk</i> of the related bit field to shift bit-field values for
 assigning to a register.
- 
+
 <b>Example:</b>
 \code
   SCB->CPUID = _VAL2FLD(SCB_CPUID_REVISION, 0x3) | _VAL2FLD(SCB_CPUID_VARIANT, 0x3);
@@ -209,14 +209,14 @@ assigning to a register.
 #define _VAL2FLD(field, value)
 
 /**
- 
+
 \def _FLD2VAL(field, value)
 \param         field        name of bit field.
 \param         value        value of the register. This parameter is interpreted as an uint32_t type.
 \brief Extract from a peripheral register value the a bit field value.
 \details
 The macro \ref _FLD2VAL uses the \#define's <i>_Pos</i> and <i>_Msk</i> of the related bit field to extract the value of a bit field from a register.
- 
+
 <b>Example:</b>
 \code
   id = _FLD2VAL(SCB_CPUID_REVISION, SCB->CPUID);
@@ -226,6 +226,6 @@ The macro \ref _FLD2VAL uses the \#define's <i>_Pos</i> and <i>_Msk</i> of the r
 #define _FLD2VAL(field, value)
 
 /**
-@} 
+@}
 
 */

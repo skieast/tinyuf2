@@ -7,7 +7,7 @@ typedef struct {                                    /*!< TIMER0 Structure       
   __I  uint16_t  RESERVED1[7];
   __IO uint32_t  COUNT;                             /*!< The Counter Register reflects the actual Value of the Timer/Counter   */
   __IO uint32_t  MATCH;                             /*!< The Match Register stores the compare Value for the MATCH condition   */
-  
+
   union {
     __O  uint32_t  PRESCALE_WR;                     /*!< The Prescale Register stores the Value for the prescaler. The
                                                          cont event gets divided by this value                                 */

@@ -46,7 +46,7 @@ void ref_fir_decimate_f32(
       sum0 += x0 * c0;
 		}
 
-    /* Advance the state pointer by the decimation factor           
+    /* Advance the state pointer by the decimation factor
      * to process the next group of decimation factor number samples */
     pState += S->M;
 
@@ -56,8 +56,8 @@ void ref_fir_decimate_f32(
     /* Decrement the loop counter */
     blkCnt--;
   }
-  /* Processing is complete.         
-   ** Now copy the last numTaps - 1 samples to the start of the state buffer.       
+  /* Processing is complete.
+   ** Now copy the last numTaps - 1 samples to the start of the state buffer.
    ** This prepares the state buffer for the next function call. */
 
   /* Points to the start of the state buffer */
@@ -123,7 +123,7 @@ void ref_fir_decimate_q31(
       sum0 += (q63_t)x0 * c0;
 		}
 
-    /* Advance the state pointer by the decimation factor           
+    /* Advance the state pointer by the decimation factor
      * to process the next group of decimation factor number samples */
     pState = pState + S->M;
 
@@ -134,8 +134,8 @@ void ref_fir_decimate_q31(
     blkCnt--;
   }
 
-  /* Processing is complete.         
-   ** Now copy the last numTaps - 1 samples to the start of the state buffer.       
+  /* Processing is complete.
+   ** Now copy the last numTaps - 1 samples to the start of the state buffer.
    ** This prepares the state buffer for the next function call. */
 
   /* Points to the start of the state buffer */
@@ -200,7 +200,7 @@ void ref_fir_decimate_fast_q31(
 			sum0 = (q31_t)((((q63_t) sum0 << 32) + ((q63_t) x0 * c0)) >> 32);
 		}
 
-    /* Advance the state pointer by the decimation factor           
+    /* Advance the state pointer by the decimation factor
      * to process the next group of decimation factor number samples */
     pState = pState + S->M;
 
@@ -211,8 +211,8 @@ void ref_fir_decimate_fast_q31(
     blkCnt--;
   }
 
-  /* Processing is complete.         
-   ** Now copy the last numTaps - 1 samples to the start of the state buffer.       
+  /* Processing is complete.
+   ** Now copy the last numTaps - 1 samples to the start of the state buffer.
    ** This prepares the state buffer for the next function call. */
 
   /* Points to the start of the state buffer */
@@ -277,7 +277,7 @@ void ref_fir_decimate_q15(
       sum0 += (q31_t)x0 * c0;
 		}
 
-    /* Advance the state pointer by the decimation factor           
+    /* Advance the state pointer by the decimation factor
      * to process the next group of decimation factor number samples */
     pState = pState + S->M;
 
@@ -288,8 +288,8 @@ void ref_fir_decimate_q15(
     blkCnt--;
   }
 
-  /* Processing is complete.         
-   ** Now copy the last numTaps - 1 samples to the start of the state buffer.       
+  /* Processing is complete.
+   ** Now copy the last numTaps - 1 samples to the start of the state buffer.
    ** This prepares the state buffer for the next function call. */
 
   /* Points to the start of the state buffer */
@@ -354,7 +354,7 @@ void ref_fir_decimate_fast_q15(
       sum0 += x0 * c0;
 		}
 
-    /* Advance the state pointer by the decimation factor           
+    /* Advance the state pointer by the decimation factor
      * to process the next group of decimation factor number samples */
     pState = pState + S->M;
 
@@ -365,8 +365,8 @@ void ref_fir_decimate_fast_q15(
     blkCnt--;
   }
 
-  /* Processing is complete.         
-   ** Now copy the last numTaps - 1 samples to the start of the state buffer.       
+  /* Processing is complete.
+   ** Now copy the last numTaps - 1 samples to the start of the state buffer.
    ** This prepares the state buffer for the next function call. */
 
   /* Points to the start of the state buffer */
@@ -383,4 +383,3 @@ void ref_fir_decimate_fast_q15(
     i--;
   }
 }
-

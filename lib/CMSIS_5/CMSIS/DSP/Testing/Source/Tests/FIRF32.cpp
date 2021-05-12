@@ -4,7 +4,7 @@
 
 #define SNR_THRESHOLD 120
 
-/* 
+/*
 
 Reference patterns are generated with
 a double precision computation.
@@ -14,7 +14,7 @@ a double precision computation.
 
 #if defined(ARM_MATH_MVEF) && !defined(ARM_MATH_AUTOVECTORIZE)
 static __ALIGNED(8) float32_t coeffArray[32];
-#endif 
+#endif
 
 void checkInnerTail(float32_t *b)
 {
@@ -26,12 +26,12 @@ void checkInnerTail(float32_t *b)
 
     void FIRF32::test_fir_f32()
     {
-        
+
 
         const int16_t *configp = configs.ptr();
         float32_t *statep = state.ptr();
         const float32_t *orgcoefsp = coefs.ptr();
-        
+
         const float32_t *coefsp;
         const float32_t *inputp = inputs.ptr();
         float32_t *outp = output.ptr();
@@ -43,7 +43,7 @@ void checkInnerTail(float32_t *b)
         int blockSize;
         int numTaps;
 
-        
+
 
         /*
 
@@ -59,14 +59,14 @@ void checkInnerTail(float32_t *b)
            numTaps = configp[1];
 
 #if defined(ARM_MATH_MVEF) && !defined(ARM_MATH_AUTOVECTORIZE)
-           /* Copy coefficients and pad to zero 
+           /* Copy coefficients and pad to zero
            */
            memset(coeffArray,0,32);
            for(j=0;j < numTaps; j++)
            {
               coeffArray[j] = orgcoefsp[j];
            }
-   
+
            coefsp = coeffArray;
 #else
            coefsp = orgcoefsp;
@@ -87,7 +87,7 @@ void checkInnerTail(float32_t *b)
            inputp = inputs.ptr();
 
            /*
-           
+
            Python script is filtering a 2*blockSize number of samples.
            We do the same filtering in two pass to check (indirectly that
            the state management of the fir is working.)
@@ -97,7 +97,7 @@ void checkInnerTail(float32_t *b)
            arm_fir_f32(&this->S,inputp,outp,blockSize);
            outp += blockSize;
            checkInnerTail(outp);
-           
+
            inputp += blockSize;
            arm_fir_f32(&this->S,inputp,outp,blockSize);
            outp += blockSize;
@@ -115,21 +115,21 @@ void checkInnerTail(float32_t *b)
 
         ASSERT_REL_ERROR(output,ref,REL_ERROR);
 
-    } 
+    }
 
- 
+
     void FIRF32::setUp(Testing::testID_t id,std::vector<Testing::param_t>& params,Client::PatternMgr *mgr)
     {
-      
+
        (void)params;
-       
+
        switch(id)
        {
         case FIRF32::TEST_FIR_F32_1:
         break;
 
        }
-      
+
 
        inputs.reload(FIRF32::FIRINPUTS_F32_ID,mgr);
        coefs.reload(FIRF32::FIRCOEFS_F32_ID,mgr);

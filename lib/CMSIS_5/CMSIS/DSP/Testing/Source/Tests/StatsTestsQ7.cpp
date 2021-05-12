@@ -6,7 +6,7 @@
 //#include <cstdio>
 
 #define SNR_THRESHOLD 20
-/* 
+/*
 
 Reference patterns are generated with
 a double precision computation.
@@ -196,7 +196,7 @@ But the tests are kept for when they will be available.
     }
 
 #endif
-  
+
     void StatsTestsQ7::setUp(Testing::testID_t id,std::vector<Testing::param_t>& paramsArgs,Client::PatternMgr *mgr)
     {
         (void)paramsArgs;
@@ -205,10 +205,10 @@ But the tests are kept for when they will be available.
             case StatsTestsQ7::TEST_MAX_Q7_1:
             {
                inputA.reload(StatsTestsQ7::INPUT1_Q7_ID,mgr,15);
-              
+
                maxIndexes.reload(StatsTestsQ7::MAXINDEXES_S16_ID,mgr);
                ref.reload(StatsTestsQ7::MAXVALS_Q7_ID,mgr);
-               
+
                output.create(1,StatsTestsQ7::OUT_Q7_ID,mgr);
                index.create(1,StatsTestsQ7::OUT_S16_ID,mgr);
 
@@ -219,10 +219,10 @@ But the tests are kept for when they will be available.
             case StatsTestsQ7::TEST_MAX_Q7_2:
             {
                inputA.reload(StatsTestsQ7::INPUT1_Q7_ID,mgr,32);
-              
+
                maxIndexes.reload(StatsTestsQ7::MAXINDEXES_S16_ID,mgr);
                ref.reload(StatsTestsQ7::MAXVALS_Q7_ID,mgr);
-               
+
                output.create(1,StatsTestsQ7::OUT_Q7_ID,mgr);
                index.create(1,StatsTestsQ7::OUT_S16_ID,mgr);
 
@@ -233,10 +233,10 @@ But the tests are kept for when they will be available.
             case StatsTestsQ7::TEST_MAX_Q7_3:
             {
                inputA.reload(StatsTestsQ7::INPUT1_Q7_ID,mgr,47);
-              
+
                maxIndexes.reload(StatsTestsQ7::MAXINDEXES_S16_ID,mgr);
                ref.reload(StatsTestsQ7::MAXVALS_Q7_ID,mgr);
-               
+
                output.create(1,StatsTestsQ7::OUT_Q7_ID,mgr);
                index.create(1,StatsTestsQ7::OUT_S16_ID,mgr);
 
@@ -255,9 +255,9 @@ But the tests are kept for when they will be available.
             case StatsTestsQ7::TEST_MEAN_Q7_4:
             {
                inputA.reload(StatsTestsQ7::INPUT2_Q7_ID,mgr,15);
-              
+
                ref.reload(StatsTestsQ7::MEANVALS_Q7_ID,mgr);
-               
+
                output.create(1,StatsTestsQ7::OUT_Q7_ID,mgr);
 
                refOffset = 0;
@@ -267,9 +267,9 @@ But the tests are kept for when they will be available.
             case StatsTestsQ7::TEST_MEAN_Q7_5:
             {
                inputA.reload(StatsTestsQ7::INPUT2_Q7_ID,mgr,32);
-              
+
                ref.reload(StatsTestsQ7::MEANVALS_Q7_ID,mgr);
-               
+
                output.create(1,StatsTestsQ7::OUT_Q7_ID,mgr);
 
                refOffset = 1;
@@ -279,9 +279,9 @@ But the tests are kept for when they will be available.
             case StatsTestsQ7::TEST_MEAN_Q7_6:
             {
                inputA.reload(StatsTestsQ7::INPUT2_Q7_ID,mgr,47);
-              
+
                ref.reload(StatsTestsQ7::MEANVALS_Q7_ID,mgr);
-               
+
                output.create(1,StatsTestsQ7::OUT_Q7_ID,mgr);
 
                refOffset = 2;
@@ -291,10 +291,10 @@ But the tests are kept for when they will be available.
             case StatsTestsQ7::TEST_MIN_Q7_7:
             {
                inputA.reload(StatsTestsQ7::INPUT1_Q7_ID,mgr,15);
-              
+
                minIndexes.reload(StatsTestsQ7::MININDEXES_S16_ID,mgr);
                ref.reload(StatsTestsQ7::MINVALS_Q7_ID,mgr);
-               
+
                output.create(1,StatsTestsQ7::OUT_Q7_ID,mgr);
                index.create(1,StatsTestsQ7::OUT_S16_ID,mgr);
 
@@ -305,10 +305,10 @@ But the tests are kept for when they will be available.
             case StatsTestsQ7::TEST_MIN_Q7_8:
             {
                inputA.reload(StatsTestsQ7::INPUT1_Q7_ID,mgr,32);
-              
+
                minIndexes.reload(StatsTestsQ7::MININDEXES_S16_ID,mgr);
                ref.reload(StatsTestsQ7::MINVALS_Q7_ID,mgr);
-               
+
                output.create(1,StatsTestsQ7::OUT_Q7_ID,mgr);
                index.create(1,StatsTestsQ7::OUT_S16_ID,mgr);
 
@@ -319,10 +319,10 @@ But the tests are kept for when they will be available.
             case StatsTestsQ7::TEST_MIN_Q7_9:
             {
                inputA.reload(StatsTestsQ7::INPUT1_Q7_ID,mgr,47);
-              
+
                minIndexes.reload(StatsTestsQ7::MININDEXES_S16_ID,mgr);
                ref.reload(StatsTestsQ7::MINVALS_Q7_ID,mgr);
-               
+
                output.create(1,StatsTestsQ7::OUT_Q7_ID,mgr);
                index.create(1,StatsTestsQ7::OUT_S16_ID,mgr);
 
@@ -333,9 +333,9 @@ But the tests are kept for when they will be available.
             case StatsTestsQ7::TEST_POWER_Q7_10:
             {
                inputA.reload(StatsTestsQ7::INPUT1_Q7_ID,mgr,15);
-              
+
                refPower.reload(StatsTestsQ7::POWERVALS_Q31_ID,mgr);
-               
+
                outputPower.create(1,StatsTestsQ7::OUT_Q7_ID,mgr);
 
                refOffset = 0;
@@ -345,9 +345,9 @@ But the tests are kept for when they will be available.
             case StatsTestsQ7::TEST_POWER_Q7_11:
             {
                inputA.reload(StatsTestsQ7::INPUT1_Q7_ID,mgr,32);
-              
+
                refPower.reload(StatsTestsQ7::POWERVALS_Q31_ID,mgr);
-               
+
                outputPower.create(1,StatsTestsQ7::OUT_Q7_ID,mgr);
 
                refOffset = 1;
@@ -357,9 +357,9 @@ But the tests are kept for when they will be available.
             case StatsTestsQ7::TEST_POWER_Q7_12:
             {
                inputA.reload(StatsTestsQ7::INPUT1_Q7_ID,mgr,47);
-              
+
                refPower.reload(StatsTestsQ7::POWERVALS_Q31_ID,mgr);
-               
+
                outputPower.create(1,StatsTestsQ7::OUT_Q7_ID,mgr);
 
                refOffset = 2;
@@ -376,9 +376,9 @@ But the tests are kept for when they will be available.
             case StatsTestsQ7::TEST_RMS_Q7_13:
             {
                inputA.reload(StatsTestsQ7::INPUT1_Q7_ID,mgr,15);
-              
+
                ref.reload(StatsTestsQ7::RMSVALS_Q7_ID,mgr);
-               
+
                output.create(1,StatsTestsQ7::OUT_Q7_ID,mgr);
 
                refOffset = 0;
@@ -388,9 +388,9 @@ But the tests are kept for when they will be available.
             case StatsTestsQ7::TEST_RMS_Q7_14:
             {
                inputA.reload(StatsTestsQ7::INPUT1_Q7_ID,mgr,32);
-              
+
                ref.reload(StatsTestsQ7::RMSVALS_Q7_ID,mgr);
-               
+
                output.create(1,StatsTestsQ7::OUT_Q7_ID,mgr);
 
                refOffset = 1;
@@ -400,9 +400,9 @@ But the tests are kept for when they will be available.
             case StatsTestsQ7::TEST_RMS_Q7_15:
             {
                inputA.reload(StatsTestsQ7::INPUT1_Q7_ID,mgr,47);
-              
+
                ref.reload(StatsTestsQ7::RMSVALS_Q7_ID,mgr);
-               
+
                output.create(1,StatsTestsQ7::OUT_Q7_ID,mgr);
 
                refOffset = 2;
@@ -412,9 +412,9 @@ But the tests are kept for when they will be available.
             case StatsTestsQ7::TEST_STD_Q7_16:
             {
                inputA.reload(StatsTestsQ7::INPUT1_Q7_ID,mgr,15);
-              
+
                ref.reload(StatsTestsQ7::STDVALS_Q7_ID,mgr);
-               
+
                output.create(1,StatsTestsQ7::OUT_Q7_ID,mgr);
 
                refOffset = 0;
@@ -424,9 +424,9 @@ But the tests are kept for when they will be available.
             case StatsTestsQ7::TEST_STD_Q7_17:
             {
                inputA.reload(StatsTestsQ7::INPUT1_Q7_ID,mgr,32);
-              
+
                ref.reload(StatsTestsQ7::STDVALS_Q7_ID,mgr);
-               
+
                output.create(1,StatsTestsQ7::OUT_Q7_ID,mgr);
 
                refOffset = 1;
@@ -436,9 +436,9 @@ But the tests are kept for when they will be available.
             case StatsTestsQ7::TEST_STD_Q7_18:
             {
                inputA.reload(StatsTestsQ7::INPUT1_Q7_ID,mgr,47);
-              
+
                ref.reload(StatsTestsQ7::STDVALS_Q7_ID,mgr);
-               
+
                output.create(1,StatsTestsQ7::OUT_Q7_ID,mgr);
 
                refOffset = 2;
@@ -448,9 +448,9 @@ But the tests are kept for when they will be available.
             case StatsTestsQ7::TEST_VAR_Q7_19:
             {
                inputA.reload(StatsTestsQ7::INPUT1_Q7_ID,mgr,15);
-              
+
                ref.reload(StatsTestsQ7::VARVALS_Q7_ID,mgr);
-               
+
                output.create(1,StatsTestsQ7::OUT_Q7_ID,mgr);
 
                refOffset = 0;
@@ -460,9 +460,9 @@ But the tests are kept for when they will be available.
             case StatsTestsQ7::TEST_VAR_Q7_20:
             {
                inputA.reload(StatsTestsQ7::INPUT1_Q7_ID,mgr,32);
-              
+
                ref.reload(StatsTestsQ7::VARVALS_Q7_ID,mgr);
-               
+
                output.create(1,StatsTestsQ7::OUT_Q7_ID,mgr);
 
                refOffset = 1;
@@ -472,9 +472,9 @@ But the tests are kept for when they will be available.
             case StatsTestsQ7::TEST_VAR_Q7_21:
             {
                inputA.reload(StatsTestsQ7::INPUT1_Q7_ID,mgr,47);
-              
+
                ref.reload(StatsTestsQ7::VARVALS_Q7_ID,mgr);
-               
+
                output.create(1,StatsTestsQ7::OUT_Q7_ID,mgr);
 
                refOffset = 2;
@@ -485,10 +485,10 @@ But the tests are kept for when they will be available.
             case StatsTestsQ7::TEST_MAX_Q7_13:
             {
                inputA.reload(StatsTestsQ7::MAXINDEXMAX_Q7_ID,mgr,280);
-              
+
                maxIndexes.reload(StatsTestsQ7::MAXINDEXES_S16_ID,mgr);
                ref.reload(StatsTestsQ7::MAXVALS_Q7_ID,mgr);
-               
+
                output.create(1,StatsTestsQ7::OUT_Q7_ID,mgr);
                index.create(1,StatsTestsQ7::OUT_S16_ID,mgr);
 
@@ -499,19 +499,19 @@ But the tests are kept for when they will be available.
             case StatsTestsQ7::TEST_MIN_Q7_14:
             {
                inputA.reload(StatsTestsQ7::MININDEXMAX_Q7_ID,mgr,280);
-              
+
                minIndexes.reload(StatsTestsQ7::MININDEXES_S16_ID,mgr);
                ref.reload(StatsTestsQ7::MINVALS_Q7_ID,mgr);
-               
+
                output.create(1,StatsTestsQ7::OUT_Q7_ID,mgr);
                index.create(1,StatsTestsQ7::OUT_S16_ID,mgr);
 
                refOffset = 3;
             }
             break;
-          
+
         }
-        
+
     }
 
     void StatsTestsQ7::tearDown(Testing::testID_t id,Client::PatternMgr *mgr)

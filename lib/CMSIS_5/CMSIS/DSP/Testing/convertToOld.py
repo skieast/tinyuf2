@@ -2,7 +2,7 @@
 # Test status (like passed, or failed with error code)
 
 import argparse
-import re 
+import re
 import TestScripts.NewParser as parse
 import TestScripts.CodeGen
 from collections import deque
@@ -19,30 +19,30 @@ commonParams = []
 
 def findItem(root,path):
         """ Find a node in a tree
-      
+
         Args:
           path (list) : A list of node ID
             This list is describing a path in the tree.
             By starting from the root and following this path,
             we can find the node in the tree.
         Raises:
-          Nothing 
+          Nothing
         Returns:
           TreeItem : A node
         """
         # The list is converted into a queue.
-        q = deque(path) 
+        q = deque(path)
         q.popleft()
         c = root
         while q:
-            n = q.popleft() 
+            n = q.popleft()
             # We get the children based on its ID and continue
             c = c[n-1]
         return(c)
 
 
 
-NORMAL = 1 
+NORMAL = 1
 INTEST = 2
 TESTPARAM = 3
 
@@ -69,7 +69,7 @@ def convert(elem,fullPath):
 
    r=full[header].rename(columns = {"OLDID":"TESTNB"})
    r["TESTNB"] = pd.to_numeric(r["TESTNB"])
-   r["PASSED"]=1 
+   r["PASSED"]=1
    result.append(r)
 
 
@@ -79,7 +79,7 @@ def extractBenchmarks(benchmark,elem):
          benchPath = os.path.join(benchmark,elem.fullPath(),"fullBenchmark.csv")
          print("Processing %s" % benchPath)
          convert(elem,benchPath)
-         
+
      for c in elem.children:
        extractBenchmarks(benchmark,c)
 
@@ -107,6 +107,6 @@ if args.f is not None:
     cols = ['TESTNB'] + commonParams
     finalResult=finalResult.sort_values(by=cols)
     finalResult.to_csv(args.o,index=False,quoting=csv.QUOTE_NONNUMERIC)
-    
+
 else:
     parser.print_help()

@@ -18,7 +18,7 @@
  * ----------------------------------------------------------------------
  *
  * Project:      ARMv8-M System Recovery demo
- * Title:        SysTick_s.h   SysTick handler & timeout based watchdog 
+ * Title:        SysTick_s.h   SysTick handler & timeout based watchdog
  *
  * Version 1.0
  *    Initial Release

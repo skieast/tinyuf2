@@ -2,7 +2,7 @@ import cmsisdsp as dsp
 import numpy as np
 from scipy import signal
 import matplotlib.pyplot as plt
-from scipy.fftpack import dct 
+from scipy.fftpack import dct
 
 r = dsp.arm_add_f32(np.array([1.,2,3]),np.array([4.,5,7]))
 print(r)

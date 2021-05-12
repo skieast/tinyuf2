@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 #include "Driver_NAND.h"
 
 #define ARM_NAND_DRV_VERSION ARM_DRIVER_VERSION_MAJOR_MINOR(1, 0)   /* driver version */
@@ -140,7 +140,7 @@ static int32_t ARM_NAND_Control (uint32_t dev_num, uint32_t control, uint32_t ar
       return ARM_DRIVER_ERROR_UNSUPPORTED;
 
     case ARM_NAND_BUS_DATA_WIDTH:
-      return ARM_DRIVER_ERROR_UNSUPPORTED; 
+      return ARM_DRIVER_ERROR_UNSUPPORTED;
 
     case ARM_NAND_DEVICE_READY_EVENT:
       return ARM_DRIVER_ERROR_UNSUPPORTED;

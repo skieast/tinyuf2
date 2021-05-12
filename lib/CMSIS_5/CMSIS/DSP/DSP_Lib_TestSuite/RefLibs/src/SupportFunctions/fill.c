@@ -6,7 +6,7 @@ void ref_fill_f32(
   uint32_t blockSize)
 {
 	uint32_t i;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 		pDst[i] = value;
@@ -19,7 +19,7 @@ void ref_fill_q31(
   uint32_t blockSize)
 {
 	uint32_t i;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 		pDst[i] = value;
@@ -32,7 +32,7 @@ void ref_fill_q15(
   uint32_t blockSize)
 {
 	uint32_t i;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 		pDst[i] = value;
@@ -45,7 +45,7 @@ void ref_fill_q7(
   uint32_t blockSize)
 {
 	uint32_t i;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 		pDst[i] = value;

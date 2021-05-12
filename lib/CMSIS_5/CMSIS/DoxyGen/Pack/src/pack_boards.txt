@@ -11,12 +11,12 @@ content of a BSP is:
 - \ref cp_CodeTemplates "User Code Templates" that can be used as a starting point for using the development board or the
   mounted device.
 
-This section is a tutorial that explains how to create a BSP. 
+This section is a tutorial that explains how to create a BSP.
 Initially the PDSC file in the BSP only describes an evaluation board.
 This BSP is then extended to contain also software components that interface with the hardware of the board.
 Example projects and code templates may be added as described in the section \ref cp_SWComponents.
-  
-  
+
+
 BSP Use Cases
 -------------
 A BSP is typically provided by a Board Vendor and is used to

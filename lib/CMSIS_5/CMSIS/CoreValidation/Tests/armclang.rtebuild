@@ -108,7 +108,7 @@ targets:
     features: "+nodsp"
     mfpu    : none
     fpu     : SoftVFP
-    float   : soft  
+    float   : soft
   armcm35ps:
     mcpu    : cortex-m35p
     cpu     : cortex-m35p

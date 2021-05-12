@@ -63,4 +63,3 @@ void     board_flash_read (uint32_t addr, void* buffer, uint32_t len) {
         currentAddress += incBytes;
     }
 }
-

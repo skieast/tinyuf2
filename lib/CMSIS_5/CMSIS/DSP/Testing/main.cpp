@@ -60,7 +60,7 @@ int main()
 
     r=testmain(patternData);
 
-    /* 
+    /*
 
     Temporary solution to solve problems with IPSS support for M33.
 

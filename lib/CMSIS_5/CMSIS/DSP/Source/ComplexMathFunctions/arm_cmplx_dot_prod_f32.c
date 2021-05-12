@@ -113,7 +113,7 @@ void arm_cmplx_dot_prod_f32(
 
     real_sum = vgetq_lane(vec_acc, 0) + vgetq_lane(vec_acc, 2);
     imag_sum = vgetq_lane(vec_acc, 1) + vgetq_lane(vec_acc, 3);
-   
+
     /* Tail */
     blkCnt = (blockSize & 3) >> 1;
 
@@ -123,12 +123,12 @@ void arm_cmplx_dot_prod_f32(
       b0 = *pSrcA++;
       c0 = *pSrcB++;
       d0 = *pSrcB++;
-  
+
       real_sum += a0 * c0;
       imag_sum += a0 * d0;
       real_sum -= b0 * d0;
       imag_sum += b0 * c0;
-  
+
       /* Decrement loop counter */
       blkCnt--;
     }
@@ -186,7 +186,7 @@ void arm_cmplx_dot_prod_f32(
 
         vec3 = vld2q_f32(pSrcA);
         vec4 = vld2q_f32(pSrcB);
-	
+
 	/* Increment pointers */
         pSrcA += 8;
         pSrcB += 8;

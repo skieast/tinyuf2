@@ -10,7 +10,7 @@ But even with those limitations, it can be very useful to test a CMSIS-DSP imple
 
 ## Tested configurations
 
-The building of this package has been tested on Windows with the Python install from python.org and Microsoft Visual 2017. 
+The building of this package has been tested on Windows with the Python install from python.org and Microsoft Visual 2017.
 
 It has also been tested with cygwin. In that case, python-devel must be installed too. To run the examples, scipy and matplotlib must also be installed in cygwin.
 
@@ -93,7 +93,7 @@ The function can also be called more simply with
 
 The result of a CMSIS-DSP function will always be a numpy array whatever the arguments were (numpy array or list).
 
-## Functions with instance arguments 
+## Functions with instance arguments
 
 When the CMSIS-DSP function is requiring an instance data structure, it is just a bit more complex to use it:
 
@@ -123,7 +123,7 @@ Then, you can filter with CMSIS-DSP.:
 
 The size of this signal should be blockSize. blockSize was inferred from the size of the state array : numTaps + blockSize - 1 according to CMSIS-DSP. So here the signal must have 5 samples.
 
-If you want to filter more than 5 samples, then you can just call the function again. The state variable inside firf32 will ensure that it works like in the CMSIS-DSP C code. 
+If you want to filter more than 5 samples, then you can just call the function again. The state variable inside firf32 will ensure that it works like in the CMSIS-DSP C code.
 
     > print(dsp.arm_fir_f32(firf32,[6,7,8,9,10]))
 
@@ -134,7 +134,7 @@ If you want to compare with scipy it is easy but warning : coefficients for the 
 
 The principles are the same for all other APIs.
 
-## FFT 
+## FFT
 
 For Fourier transforms there are no init functions in the CMSIS-DSP for the instance variables. They must be initialized from a C struct. To make it simpler to use them from Python, the wrapper is introducing its own init functions.
 
@@ -147,7 +147,7 @@ Let's define a signal you will use for the FFT.
 
 The CMSIS-DSP cfft is requiring complex signals with a specific layout in memory.
 
-To remain as close as possible to the C API, we are not using complex numbers in the wrapper. So a complex signal must be converted into a real one. The function imToReal1D is defined in testdsp.py 
+To remain as close as possible to the C API, we are not using complex numbers in the wrapper. So a complex signal must be converted into a real one. The function imToReal1D is defined in testdsp.py
 
     > signalR = imToReal1D(signal)
 
@@ -169,7 +169,7 @@ You convert back to a complex format to compare with scipy:
     > resultI = realToIm1D(resultR)
     > print(resultI)
 
-## Matrix 
+## Matrix
 
 For matrix, the instance variables are masked by the Python API. We decided that for matrix only there was no use for having the CMSIS-DSP instance visibles since they contain the same information as the numpy array (samples and dimension).
 
@@ -197,11 +197,11 @@ https://www.physionet.org/pn3/ecgiddb/Person_87/rec_2.dat
 
 This signal was created for a master thesis:
 
-Lugovaya T.S. Biometric human identification based on electrocardiogram. [Master's thesis] Faculty of Computing Technologies and Informatics, Electrotechnical University "LETI", Saint-Petersburg, Russian Federation; June 2005. 
+Lugovaya T.S. Biometric human identification based on electrocardiogram. [Master's thesis] Faculty of Computing Technologies and Informatics, Electrotechnical University "LETI", Saint-Petersburg, Russian Federation; June 2005.
 
 and it is part of the PhysioNet database
 
-Goldberger AL, Amaral LAN, Glass L, Hausdorff JM, Ivanov PCh, Mark RG, Mietus JE, Moody GB, Peng C-K, Stanley HE. PhysioBank, PhysioToolkit, and PhysioNet: Components of a New Research Resource for Complex Physiologic Signals. Circulation 101(23):e215-e220 [Circulation Electronic Pages; http://circ.ahajournals.org/cgi/content/full/101/23/e215]; 2000 (June 13). 
+Goldberger AL, Amaral LAN, Glass L, Hausdorff JM, Ivanov PCh, Mark RG, Mietus JE, Moody GB, Peng C-K, Stanley HE. PhysioBank, PhysioToolkit, and PhysioNet: Components of a New Research Resource for Complex Physiologic Signals. Circulation 101(23):e215-e220 [Circulation Electronic Pages; http://circ.ahajournals.org/cgi/content/full/101/23/e215]; 2000 (June 13).
 
 
 # LIMITATIONS

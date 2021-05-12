@@ -1,12 +1,12 @@
 /**
 \defgroup wifi_interface_gr WiFi Interface
 \brief Driver API for WiFi (%Driver_WiFi.h)
-\details 
+\details
 
 Wi-Fi is technology for radio wireless local area networking of devices. Wi-Fi compatible devices typically
 connect to the Internet via a WLAN and a wireless access point (AP) also called hotspot.
 
-Wikipedia offers more information about 
+Wikipedia offers more information about
 the <a href="http://en.wikipedia.org/wiki/Ethernet" target="_blank"><b>WiFi</b></a>.
 
 <b>Driver Block Diagram</b>
@@ -49,11 +49,11 @@ The driver functions are published in the access struct as explained in \ref Dri
 
 /**
 \struct  ARM_DRIVER_WIFI
-\details 
+\details
 The functions of the WiFi driver are accessed by function pointers exposed by this structure.
 Refer to \ref DriverFunctions for overview information.
 
-Each instance of a WiFi interface provides such an access structure. 
+Each instance of a WiFi interface provides such an access structure.
 The instance is identified by a postfix number in the symbol name of the access structure, for example:
  - \b Driver_WiFi0 is the name of the access struct of the first instance (no. \token{0}).
  - \b Driver_WiFi1 is the name of the access struct of the second instance (no. \token{1}).
@@ -67,12 +67,12 @@ The default is \token{0}, which connects a middleware to the first instance of a
 \defgroup wifi_control_gr WiFi Control
 \ingroup wifi_interface_gr
 \brief Control functions for the WiFi module
-\details  
+\details
 The \ref wifi_control_gr functions setup and control the WiFi module.
 @{
 */
 
-/** 
+/**
 \struct  ARM_WIFI_CAPABILITIES
 \details
 A WiFi driver can be implemented with different capabilities.
@@ -118,11 +118,11 @@ Driver version is source code version of the actual driver implementation.
 \code
 extern ARM_DRIVER_WIFI Driver_WiFi0;
 static ARM_DRIVER_WIFI *wifi;
- 
+
 void get_wifi_version (void)  {
   ARM_DRIVER_VERSION version;
- 
-  wifi= &Driver_WiFi0;  
+
+  wifi= &Driver_WiFi0;
   version = wifi->GetVersion ();
   if (version.api < 0x100U) {        // requires at minimum API version 1.0 or higher
     // error handling
@@ -147,11 +147,11 @@ the \ref ARM_WIFI_SignalEvent callback function.
 \code
 extern ARM_DRIVER_WIFI Driver_WiFi0;
 static ARM_DRIVER_WIFI *wifi;
-  
+
 void get_wifi_capabilities (void)  {
   ARM_WIFI_CAPABILITIES capabilities;
- 
-  wifi = &Driver_WiFi0;  
+
+  wifi = &Driver_WiFi0;
   capabilities = wifi->GetCapabilities ();
   // interrogate capabilities
    :
@@ -181,14 +181,14 @@ use a \token{NULL} pointer when no callback signals are required.
 extern ARM_DRIVER_WIFI Driver_WiFi0;
 static ARM_DRIVER_WIFI *wifi;
 static ARM_ETH_MAC_ADDR own_mac_address;
- 
+
 void initialize_wifi (void) {
   wifi = &Driver_WiFi0;
- 
+
   // Initialize and Power-on WiFi Module
   wifi->Initialize (NULL);
   wifi->PowerControl (ARM_POWER_FULL);
- 
+
   // Populate own_mac_address with the address to use
   wifi->SetOption(ARM_WIFI_MAC, &own_mac_address, 6U);
 }
@@ -203,17 +203,17 @@ int32_t ARM_WIFI_Uninitialize (void) {
 \details
 The function \b ARM_WIFI_Uninitialize de-initializes the resources of the WiFi module.
 
-It is called when the middleware component stops operation and releases the software resources 
+It is called when the middleware component stops operation and releases the software resources
 used by the module.
 
 \b Example:
 \code
 extern ARM_DRIVER_WIFI Driver_WiFi0;
 static ARM_DRIVER_WIFI *wifi;
- 
+
 void uninitialize_wifi (void) {
   wifi = &Driver_WiFi0;
- 
+
   // Power off and De-initialize WiFi Module
   wifi->PowerControl (ARM_POWER_OFF);
   wifi->Uninitialize ();
@@ -277,16 +277,16 @@ The information might include module name, firmware version, ...
 \code
 extern ARM_DRIVER_WIFI Driver_WiFi0;
 static ARM_DRIVER_WIFI *wifi;
- 
+
 void initialize_wifi (void) {
   char info[32];
- 
+
   wifi = &Driver_WiFi0;
- 
+
   // Initialize and Power-on WiFi Module
   wifi->Initialize (NULL);
   wifi->PowerControl (ARM_POWER_FULL);
- 
+
   // Retrieve module information
   wifi->GetModuleInfo(&info, sizeof(info));
 }
@@ -334,7 +334,7 @@ when in access point mode.
 \defgroup WiFi_option WiFi Option Codes
 \ingroup wifi_management_gr
 \brief  WiFi Option Codes for \ref ARM_WIFI_SetOption or \ref ARM_WIFI_GetOption function.
-\details 
+\details
 Many parameters of the WiFi module are configured using the \ref ARM_WIFI_SetOption or \ref ARM_WIFI_GetOption function.
 @{
 \def ARM_WIFI_BSSID
@@ -523,7 +523,7 @@ and must be aligned to the data type of the corresponding option.
 
 The argument \em len specifies the length of the buffer \em data and must be equal (or higher)
 to the length of the corresponding option.
- 
+
 Option                                 | Description                            | Data          | Type/Length
 :--------------------------------------|:---------------------------------------|:--------------|:-----------
 \ref ARM_WIFI_BSSID                    | BSSID of AP to connect or AP           | bssid         | uint8_t[6]
@@ -552,12 +552,12 @@ Option                                 | Description                            
 \b Example:
 \code
 uint8_t ip[4];
- 
+
 ip[0] = 192U;
 ip[1] = 168U;
 ip[2] = 0U;
 ip[3] = 1U;
- 
+
 // Set IP static address of the Station
 wifi->SetOption (0U, ARM_WIFI_IP, &ip, sizeof(ip));
 \endcode
@@ -576,7 +576,7 @@ The argument \em interface specifies the interface (0 = Station, 1 = Access Poin
 
 The argument \em option specifies the option that is to be retrieved (see \ref ARM_WIFI_SetOption).
 
-The argument \em data points to a buffer that will be used to store the value of 
+The argument \em data points to a buffer that will be used to store the value of
 the \em option and must be aligned to the data type of the corresponding option.
 
 The argument \em len is a pointer to the length of the buffer at input and returns the length
@@ -587,7 +587,7 @@ of the option information on the output.
 uint8_t ip[4];          // IP address
 uint8_t mask[4];        // Subnet mask
 uint8_t gateway[4];     // Gateway address
- 
+
 // Get IP address, Subnet mask and Gateway address of the Station
 wifi->GetOption (0U, ARM_WIFI_IP, &ip, sizeof(ip));
 wifi->GetOption (0U, ARM_WIFI_IP_SUBNET_MASK, &mask, sizeof(mask));
@@ -604,8 +604,8 @@ int32_t ARM_WIFI_Scan (ARM_WIFI_SCAN_INFO_t scan_info[], uint32_t max_num) {
 The function \b ARM_WIFI_Scan searches for available WiFi networks. Using this function,
 you can determine which wireless networks are available for the connection. If the network is
 secured, you must also know the password to connect.
- 
-The argument \em scan_info is a pointer to an array of network information structures, where 
+
+The argument \em scan_info is a pointer to an array of network information structures, where
 the available network information will be returned.
 
 The argument \em max_num specifies maximum number of network information structures,
@@ -614,9 +614,9 @@ that can be stored to the \em scan_info.
 \b Example:
 \code
 ARM_WIFI_SCAN_INFO_t scan_info[8];
- 
+
 num = wifi->Scan (scan_info, 8U);
- 
+
 // Print SSIDs of available WiFi networks
 for (i = 0; i < num; i++) {
   printf ("%d. ssid=%s\n", i, scan_info[i].ssid);
@@ -690,13 +690,13 @@ to the access point (PIN needs to match when PIN method is selected).
 \b Example:
 \code
 ARM_WIFI_CONFIG_t wifi_config;
- 
+
 wifi_config.ssid = "GuestAccess";
 wifi_config.pass = "guest";
 wifi_config.security = ARM_WIFI_SECURITY_WPA2;
 wifi_config.ch = 0U;
 wifi_config.wps_method = ARM_WIFI_WPS_METHOD_NONE;
- 
+
 // Connect to wireless network
 status = wifi->Activate (0U, &wifi_config);
 if (status != ARM_DRIVER_OK) {
@@ -754,17 +754,17 @@ after initially connecting using WPS.
 \code
 ARM_WIFI_CONFIG_t wifi_config;
 ARM_WIFI_NET_INFO_t net_info;
- 
+
 memset(&wifi_config, 0, sizeof(wifi_config));
- 
+
 wifi_config.wps_method = ARM_WIFI_WPS_METHOD_PBC;
- 
+
 // Connect to wireless network (WPS)
 status = wifi->Activate (0U, &wifi_config);
 if (status != ARM_DRIVER_OK) {
   // error handling
 }
- 
+
 // Retrieve network information
 if (wifi->IsConnected ()) {
   status = wifi->GetNetInfo (&net_info);
@@ -773,7 +773,7 @@ if (wifi->IsConnected ()) {
   }
   printf("SSID=%s, Password=%s",net_info.ssid, net_info.pass);
 }
- 
+
 // Disconnect from wireless network
 wifi->Deactivate (0U);
 \endcode
@@ -812,35 +812,35 @@ Bypass mode is enabled by default if the module does not support the Socket inte
 
 The argument \em mode specifies the desired state of the WiFi Bypass mode, which is
 enabled or disabled.
- 
+
 \b Example:
 \code
 extern ARM_DRIVER_WIFI Driver_WiFi0;
 static ARM_DRIVER_WIFI *wifi;
 static ARM_ETH_MAC_ADDR own_mac_address;
- 
+
 static void wifi_notify (uint32_t event, ,void *arg) {
   switch (event)  {
      :
-  }  
+  }
 }
- 
+
 void initialize_wifi_bypass (void) {
   ARM_WIFI_CAPABILITIES capabilities;
- 
+
   wifi = &Driver_WiFi0;
   capabilities = wifi->GetCapabilities ();
   if (capabilities.bypass_mode == 0) {
-    // error handling 
-  } 
- 
+    // error handling
+  }
+
   // Initialize and Power-on WiFi Interface
   wifi->Initialize ((capabilities.eth_rx_frame_event) ? wifi_notify : NULL);
   wifi->PowerControl (ARM_POWER_FULL);
- 
+
   // populate own_mac_address with the address to use for station
   wifi->SetOption(0U, ARM_WIFI_MAC, &own_mac_address, 6U);
- 
+
   wifi->BypassControl (0U, 1U); // Enable bypass mode for station
 }
 \endcode
@@ -886,13 +886,13 @@ The \em len of the Ethernet frame can be checked using the function \ref ARM_WIF
 The frame data addressed by \em frame starts with MAC destination and ends with the last
 Payload data byte. The frame data is read from the receive buffer of the WiFi interface and
 the number of bytes written into the memory addressed by \em frame is returned.
-A negative return value indicates an error whereby the status code is defined with 
+A negative return value indicates an error whereby the status code is defined with
 driver common return codes.
 
 The function \ref ARM_WIFI_EthReadFrame may be called with \em buf = \token{NULL} and \em len = \token{0}
 to discard or release a frame. This is useful when an incorrect frame has been received or
 no memory is available to hold the Ethernet frame.
- 
+
 \b Example:
 \code
 size = wifi->EthGetRxFrameSize ();
@@ -913,14 +913,14 @@ uint32_t ARM_WIFI_EthGetRxFrameSize (uint32_t interface) {
 \fn uint32_t ARM_WIFI_EthGetRxFrameSize (uint32_t interface)
 \details
 The function \b ARM_WIFI_EthGetRxFrameSize returns the size of a received <b>Ethernet frame</b>
-in the bypass mode. This function can be called before \ref ARM_WIFI_EthReadFrame and retrieves 
+in the bypass mode. This function can be called before \ref ARM_WIFI_EthReadFrame and retrieves
 the value \em len.
 
 The frame size includes MAC destination and ends with the last Payload data byte.
 Value \token{0} indicates that no Ethernet frame is available in the receive buffer.
 Values smaller than minimum size of Ethernet frame or larger than maximum size of Ethernet frame
 indicate an invalid frame which needs to be discarded by calling \ref ARM_WIFI_EthReadFrame.
- 
+
 \b Example:
  - see \ref ARM_WIFI_EthReadFrame
 */
@@ -1071,7 +1071,7 @@ Protocol                     | Description
 :----------------------------|:-------------------------------------------------
 \ref ARM_SOCKET_IPPROTO_TCP  | Must be used with ARM_SOCKET_SOCK_STREAM socket type
 \ref ARM_SOCKET_IPPROTO_UDP  | Must be used with ARM_SOCKET_SOCK_DGRAM socket type
- 
+
 \b Example:
  - see \ref ARM_WIFI_SocketListen, \ref ARM_WIFI_SocketConnect
 */
@@ -1095,7 +1095,7 @@ for the IPv4 address and \token{16} bytes for the IPv6 address.
 
 The argument \em port specifies the local port. If the argument \em port is \token{0}, the function returns error,
 because this port is reserved.
- 
+
 \b Example:
  - see \ref ARM_WIFI_SocketListen
 */
@@ -1114,27 +1114,27 @@ The argument \em socket specifies a socket identification number returned from a
 to \ref ARM_WIFI_SocketCreate.
 
 The argument \em backlog specifies a maximum number of connection requests that can be queued.
- 
+
 \b Example:
 \code
 extern ARM_DRIVER_WIFI Driver_WiFi0;
 static ARM_DRIVER_WIFI *wifi;
- 
+
 void Echo_Server_Thread (void *arg) {
   uint8_t ip[4] = { 0U, 0U, 0U, 0U };
   int32_t sock, sd, res;
   char dbuf[120];
- 
+
   while (1) {
     wifi = &Driver_WiFi0;
     sock = wifi->SocketCreate (ARM_SOCKET_AF_INET, ARM_SOCKET_SOCK_STREAM, ARM_SOCKET_IPPROTO_TCP);
- 
+
     wifi->SocketBind (sock, (uint8_t *)ip, sizeof(ip), 7U);
     wifi->SocketListen (sock, 1);
     sd = wifi->SocketAccept (sock, NULL, NULL, NULL);
     wifi->SocketClose (sock);
     sock = sd;
- 
+
     while (1) {
       res = wifi->SocketRecv (sock, dbuf, sizeof(dbuf));
       if (res < 0) {
@@ -1142,7 +1142,7 @@ void Echo_Server_Thread (void *arg) {
       }
       if (res > 0) {
         wifi->SocketSend (sock, dbuf, res);         // Echo the data
-      }    
+      }
     }
     wifi->SocketClose (sock);
   }
@@ -1197,7 +1197,7 @@ behaves differently according to the type of socket:
   In non blocking mode, the function returns the error code \c ARM_SOCKET_EINPROGRESS and the connection
   is established asynchronously. Subsequent calls to \b ARM_WIFI_SocketConnect for the same socket,
   before the connection is established, return the error code \c ARM_SOCKET_EALREADY.  When the connection
-  is established, the call to \b ARM_WIFI_SocketConnect returns the error code \c ARM_SOCKET_EISCONN. 
+  is established, the call to \b ARM_WIFI_SocketConnect returns the error code \c ARM_SOCKET_EISCONN.
 
 - \b ARM_SOCKET_SOCK_DGRAM: An address filter is established between the endpoints.
 
@@ -1212,25 +1212,25 @@ The argument \em ip is a pointer to the buffer containing the IP address octets 
 The argument \em ip_len specifies the length of the IP address. The length is \token{4} bytes
 for the IPv4 address and \token{16} bytes for the IPv6 address.
 
-The argument \em port specifies the port of the endpoint node. If the argument \em port is \token{0}, 
+The argument \em port specifies the port of the endpoint node. If the argument \em port is \token{0},
 the function returns error, because this port is reserved.
 
 \b Example:
 \code
 extern ARM_DRIVER_WIFI Driver_WiFi0;
 static ARM_DRIVER_WIFI *wifi;
- 
+
 static const char message[] = { "The quick brown fox jumps over the lazy dog." };
-  
+
 void Echo_Client_Thread (void *arg) {
   uint8_t ip[4] = { 192U, 168U, 0U, 100U };
   int32_t sock, res;
   char dbuf[120];
- 
+
   while (1) {
     wifi = &Driver_WiFi0;
     sock = wifi->SocketCreate (ARM_SOCKET_AF_INET, ARM_SOCKET_SOCK_STREAM, ARM_SOCKET_IPPROTO_TCP);
- 
+
     res = wifi->SocketConnect (sock, (uint8_t *)ip, sizeof(ip), 7U);
     if (res == 0) {
       wifi->SocketSend (sock, message, sizeof(message));
@@ -1242,7 +1242,7 @@ void Echo_Client_Thread (void *arg) {
         if (memcmp (dbuf, message, res) != 0) {
           // error handling, message is not the same as sent
         }
-      }    
+      }
     }
     wifi->SocketClose (sock);
     osDelay (1000U);
@@ -1262,7 +1262,7 @@ You can use this function with both, the stream and the datagram socket. It read
 information as currently available up to the size of the buffer specified.
 
 In blocking mode, which is enabled by default, this function waits for received data. In non
-blocking mode, you must call the \b ARM_WIFI_SocketRecv function again if the error code 
+blocking mode, you must call the \b ARM_WIFI_SocketRecv function again if the error code
 \c ARM_SOCKET_EAGAIN is returned.
 
 The argument \em socket specifies a socket identification number returned from a previous call
@@ -1298,7 +1298,7 @@ ordered stream of data on a connected stream sockets. It reads as much informati
 up to the size of the buffer specified.
 
 In blocking mode, which is enabled by default, this function waits for received data. In non
-blocking mode, you must call the \b ARM_WIFI_SocketRecv function again if the error code 
+blocking mode, you must call the \b ARM_WIFI_SocketRecv function again if the error code
 \c ARM_SOCKET_EAGAIN is returned.
 
 The argument \em socket specifies a socket identification number returned from a previous call
@@ -1330,26 +1330,26 @@ In blocking mode, the function waits until data is available, in non blocking mo
 \code
 extern ARM_DRIVER_WIFI Driver_WiFi0;
 static ARM_DRIVER_WIFI *wifi;
- 
+
 void Echo_Server_Thread (void *arg) {
   uint8_t ip[4];
   uint16_t port;
   int32_t sock, res;
   uint32_t ip_len;
   char dbuf[120];
- 
+
   while (1) {
     wifi = &Driver_WiFi0;
     sock = wifi->SocketCreate (ARM_SOCKET_AF_INET, ARM_SOCKET_SOCK_DGRAM, ARM_SOCKET_IPPROTO_UDP);
- 
+
     ip[0] = 0U;                 // Unspecified address
     ip[1] = 0U;
     ip[2] = 0U;
     ip[3] = 0U;
     port  = 7U;                 // Standard port for Echo service
- 
+
     wifi->SocketBind (sock, (uint8_t *)ip, sizeof(ip), port);
- 
+
     while (1) {
       ip_len = sizeof(ip);
       res = wifi->SocketRecvFrom (sock, dbuf, sizeof(dbuf), (uint8_t *)ip, &ip_len, &port);
@@ -1358,7 +1358,7 @@ void Echo_Server_Thread (void *arg) {
       }
       if (res > 0) {            // Echo the data
         wifi->SocketSendTo (sock, dbuf, res, (uint8_t *)ip, ip_len, port);
-      }    
+      }
     }
     wifi->SocketClose (sock);
   }
@@ -1390,7 +1390,7 @@ The argument \a len specifies the length of data in bytes.
 Return value, when positive, represents the number of bytes sent, which can be less than \a len.
 
 \note
-The function can also be used to check if the socket is ready to send data by specifying \token{0} 
+The function can also be used to check if the socket is ready to send data by specifying \token{0}
 for argument \em len (argument \em buf is ignored).
 The function returns \token{0} if the socket is writable or error code otherwise.
 
@@ -1425,7 +1425,7 @@ The argument \em ip is a pointer to the buffer containing the IP address octets 
 The argument \em ip_len specifies the length of the IP address. The length is \token{4} bytes
 for the IPv4 address and \token{16} bytes for the IPv6 address.
 
-The argument \em port specifies the port of the endpoint node. If the argument \em port is \token{0}, 
+The argument \em port specifies the port of the endpoint node. If the argument \em port is \token{0},
 the function returns error, because this port is reserved.
 
 For the stream sockets, arguments \em ip, \em ip_len and \em port are ignored.
@@ -1433,7 +1433,7 @@ For the stream sockets, arguments \em ip, \em ip_len and \em port are ignored.
 Return value, when positive, represents the number of bytes sent, which can be less than \a len.
 
 \note
-The function can also be used to check if the socket is ready to send data by specifying \token{0} 
+The function can also be used to check if the socket is ready to send data by specifying \token{0}
 for argument \em len (arguments \em buf, \em ip, \em ip_len and \em port are ignored).
 The function returns \token{0} if the socket is writable or error code otherwise.
 
@@ -1465,10 +1465,10 @@ If the \em port is \token{NULL}, the local port number is not returned.
 \code
 static uint8_t  local_ip[4];    // Socket address and port
 static uint16_t local_port;
- 
+
 static void get_socket_local_info (void) {
   uint32_t ip_len;
- 
+
   ip_len = sizeof(local_ip);
   wifi->SocketGetSockName (sock, (uint8_t *)local_ip, &ip_len, &local_port);
 }
@@ -1500,10 +1500,10 @@ If the \em port is \token{NULL}, the port number is not returned.
 \code
 static uint8_t  peer_ip[4];    // Socket address and port
 static uint16_t peer_port;
- 
+
 static void get_socket_peer_info (void) {
   uint32_t ip_len;
- 
+
   ip_len = sizeof(peer_ip);
   wifi->SocketGetPeerName (sock, (uint8_t *)peer_ip, &ip_len, &peer_port);
 }
@@ -1538,7 +1538,7 @@ of the option information on the output.
 \b Example:
 \code
 uint32_t type;
- 
+
 wifi->SocketGetOpt (sock, ARM_SOCKET_SO_TYPE, &type, sizeof(type));
 if (type == ARM_SOCKET_SOCK_STREAM) {
   // Stream socket
@@ -1572,14 +1572,14 @@ Option                       | Description
 The argument \em opt_val points to the buffer containing the value of the \em opt_id.
 
 The argument \em opt_len tells the exact length of the option.
- 
+
 \b Example:
 \code
 uint32_t nonblocking = 0U;    // Blocking mode
 uint32_t timeout = 10000U;    // Timeout 10 seconds
- 
+
 wifi->SocketSetOpt (sock, ARM_SOCKET_IO_FIONBIO, &nonblocking, sizeof(nonblocking));
-wifi->SocketSetOpt (sock, ARM_SOCKET_SO_RCVTIMEO, &timeout, sizeof(timeout)); 
+wifi->SocketSetOpt (sock, ARM_SOCKET_SO_RCVTIMEO, &timeout, sizeof(timeout));
 wifi->SocketSetOpt (sock, ARM_SOCKET_SO_SNDTIMEO, &timeout, sizeof(timeout));
 \endcode
 */
@@ -1634,19 +1634,19 @@ space pointed to by \em ip. On return it contains the actual length of the addre
 \code
 extern ARM_DRIVER_WIFI Driver_WiFi0;
 static ARM_DRIVER_WIFI *wifi;
- 
+
 void ping_arm_com (void) {
   uint8_t ip[4];
   uint32_t ip_len;
   int32_t res;
- 
+
   wifi = &Driver_WiFi0;
   ip_len = sizeof(ip);
   res = wifi->SocketGetHostByName ("www.arm.com", ARM_SOCKET_AF_INET, (uint8_t *)ip, &ip_len);
   if (res == ARM_DRIVER_OK) {
     res = wifi->Ping ((uint8_t *)ip, sizeof(ip));
     if (res == ARM_DRIVER_OK) {
-      // "www.arm.com" responded to ping  
+      // "www.arm.com" responded to ping
     }
   }
   else {
@@ -1662,7 +1662,7 @@ int32_t ARM_WIFI_Ping (const uint8_t *ip, uint32_t ip_len) {
 /**
 \fn int32_t ARM_WIFI_Ping (const uint8_t *ip, uint32_t ip_len)
 \details
-The function \b ARM_WIFI_Ping checks if the remote host is reachable. It does this by sending 
+The function \b ARM_WIFI_Ping checks if the remote host is reachable. It does this by sending
 an echo request and waiting for an echo response. The function then returns the result
 of the operation. Check the \ref ARM_WIFI_CAPABILITIES of the driver, if this function
 is supported in the driver implementation.
@@ -1671,7 +1671,7 @@ The argument \em ip is a pointer to the buffer containing the IP address octets 
 
 The argument \em ip_len specifies the length of the IP address. The length is \token{4} bytes
 for the IPv4 address and \token{16} bytes for the IPv6 address.
- 
+
 \note
 The host availability check fails, if the remote host does not respond to echo requests,
 or intermediate routers do not forward the echo requests or echo responses.
@@ -1680,11 +1680,11 @@ or intermediate routers do not forward the echo requests or echo responses.
 \code
 extern ARM_DRIVER_WIFI Driver_WiFi0;
 static ARM_DRIVER_WIFI *wifi;
- 
+
 void ping_host (void) {
   uint8_t ip[4] = { 192U, 168U, 0U, 100U };
   int32_t res;
- 
+
   wifi = &Driver_WiFi0;
   res = wifi->Ping ((uint8_t *)ip, sizeof(ip));
   if (res == ARM_DRIVER_OK) {

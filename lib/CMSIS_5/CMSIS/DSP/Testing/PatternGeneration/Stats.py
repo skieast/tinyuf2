@@ -12,8 +12,8 @@ VECDIM = [12,14,20]
 
 def entropyTest(config,nb):
     DIMS = [3,8,9,12]
-    inputs = [] 
-    outputs = [] 
+    inputs = []
+    outputs = []
     dims=[NBTESTS]
     for i in range(0,NBTESTS):
        vecDim = DIMS[i % len(DIMS)]
@@ -32,8 +32,8 @@ def entropyTest(config,nb):
 
 def logsumexpTest(config,nb):
     DIMS = [3,8,9,12]
-    inputs = [] 
-    outputs = [] 
+    inputs = []
+    outputs = []
     dims=[NBTESTS]
     for i in range(0,NBTESTS):
        vecDim = DIMS[i % len(DIMS)]
@@ -52,9 +52,9 @@ def logsumexpTest(config,nb):
 
 def klTest(config,nb):
     DIMS = [3,8,9,12]
-    inputsA = [] 
-    inputsB = [] 
-    outputs = [] 
+    inputsA = []
+    inputsB = []
+    outputs = []
     vecDim = VECDIM[nb % len(VECDIM)]
     dims=[NBTESTS]
     for i in range(0,NBTESTS):
@@ -81,9 +81,9 @@ def klTest(config,nb):
 
 def logSumExpDotTest(config,nb):
     DIMS = [3,8,9,12]
-    inputsA = [] 
-    inputsB = [] 
-    outputs = [] 
+    inputsA = []
+    inputsB = []
+    outputs = []
     vecDim = VECDIM[nb % len(VECDIM)]
     dims=[NBTESTS]
     for i in range(0,NBTESTS):
@@ -147,7 +147,7 @@ def floatRound(x,f):
 
 def generateMaxTests(config,nb,format,data):
 
-    
+
     indexes=[]
     maxvals=[]
 
@@ -174,17 +174,17 @@ def generateMaxTests(config,nb,format,data):
 
     if format == 7:
       # Force max at position 280
-  
+
       nbiters = 280
-  
+
       data = np.zeros(nbiters)
-  
-      data[nbiters-1] = 0.9 
-      data[nbiters-2] = 0.8 
-  
+
+      data[nbiters-1] = 0.9
+      data[nbiters-2] = 0.8
+
       index=np.argmax(data[0:nbiters])
       maxvalue=data[index]
-  
+
       indexes.append(index)
       maxvals.append(maxvalue)
 
@@ -196,7 +196,7 @@ def generateMaxTests(config,nb,format,data):
 
 def generateMinTests(config,nb,format,data):
 
-    
+
     indexes=[]
     maxvals=[]
 
@@ -224,19 +224,19 @@ def generateMinTests(config,nb,format,data):
     if format == 7:
        # Force max at position 280
        nbiters = 280
-   
+
        data = 0.9*np.ones(nbiters)
-   
-       data[nbiters-1] = 0.0 
-       data[nbiters-2] = 0.1 
-   
+
+       data[nbiters-1] = 0.0
+       data[nbiters-2] = 0.1
+
        index=np.argmin(data[0:nbiters])
        maxvalue=data[index]
-   
+
        indexes.append(index)
        maxvals.append(maxvalue)
-   
-      
+
+
        config.writeInput(nb, data,"InputMinIndexMax")
     config.writeReference(nb, maxvals,"MinVals")
     config.writeInputS16(nb, indexes,"MinIndexes")
@@ -315,7 +315,7 @@ def writeTests(config,nb,format):
     NBSAMPLES = 300
     data1=np.random.randn(NBSAMPLES)
     data2=np.random.randn(NBSAMPLES)
-    
+
     data1 = Tools.normalize(data1)
     data2 = np.abs(data1)
 
@@ -348,7 +348,7 @@ def generateBenchmark(config,format):
     NBSAMPLES = 256
     data1=np.random.randn(NBSAMPLES)
     data2=np.random.randn(NBSAMPLES)
-    
+
     data1 = Tools.normalize(data1)
     data2 = np.abs(data1)
 
@@ -368,17 +368,17 @@ def generateBenchmark(config,format):
 def generatePatterns():
     PATTERNDIR = os.path.join("Patterns","DSP","Stats","Stats")
     PARAMDIR = os.path.join("Parameters","DSP","Stats","Stats")
-    
+
     configf32=Tools.Config(PATTERNDIR,PARAMDIR,"f32")
     configf16=Tools.Config(PATTERNDIR,PARAMDIR,"f16")
     configf64=Tools.Config(PATTERNDIR,PARAMDIR,"f64")
     configq31=Tools.Config(PATTERNDIR,PARAMDIR,"q31")
     configq15=Tools.Config(PATTERNDIR,PARAMDIR,"q15")
     configq7 =Tools.Config(PATTERNDIR,PARAMDIR,"q7")
-    
+
     nb=writeTests(configf32,1,0)
     nb=writeF32OnlyTests(configf32,22)
-    writeF64OnlyTests(configf64,22)    
+    writeF64OnlyTests(configf64,22)
     writeTests(configq31,1,31)
     writeTests(configq15,1,15)
     writeTests(configq7,1,7)

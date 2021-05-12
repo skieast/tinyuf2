@@ -5,7 +5,7 @@
 #include "Test.h"
 
 #define SNR_THRESHOLD 100
-/* 
+/*
 
 Reference patterns are generated with
 a double precision computation.
@@ -15,8 +15,8 @@ a double precision computation.
 
     void MISCQ31::test_correlate_q31()
     {
-        const q31_t *inpA=inputA.ptr(); 
-        const q31_t *inpB=inputB.ptr(); 
+        const q31_t *inpA=inputA.ptr();
+        const q31_t *inpB=inputB.ptr();
         q31_t *outp=output.ptr();
 
         arm_correlate_q31(inpA, inputA.nbSamples(),
@@ -30,8 +30,8 @@ a double precision computation.
 
     void MISCQ31::test_conv_q31()
     {
-        const q31_t *inpA=inputA.ptr(); 
-        const q31_t *inpB=inputB.ptr(); 
+        const q31_t *inpA=inputA.ptr();
+        const q31_t *inpB=inputB.ptr();
         q31_t *outp=output.ptr();
 
         arm_conv_q31(inpA, inputA.nbSamples(),
@@ -44,7 +44,7 @@ a double precision computation.
     }
 
 
-  
+
     void MISCQ31::setUp(Testing::testID_t id,std::vector<Testing::param_t>& paramsArgs,Client::PatternMgr *mgr)
     {
         (void)paramsArgs;
@@ -698,12 +698,12 @@ a double precision computation.
        inputB.reload(MISCQ31::INPUTB_Q31_ID,mgr,nbb);
 
        output.create(ref.nbSamples(),MISCQ31::OUT_Q31_ID,mgr);
-        
+
     }
 
     void MISCQ31::tearDown(Testing::testID_t id,Client::PatternMgr *mgr)
     {
       (void)id;
       output.dump(mgr);
-      
+
     }

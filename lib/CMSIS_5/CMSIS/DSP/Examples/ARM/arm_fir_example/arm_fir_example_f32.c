@@ -221,7 +221,7 @@ int32_t main(void)
   snr = arm_snr_f32(&refOutput[0], &testOutput[0], TEST_LENGTH_SAMPLES);
 
   status = (snr < SNR_THRESHOLD_F32) ? ARM_MATH_TEST_FAILURE : ARM_MATH_SUCCESS;
-  
+
   if (status != ARM_MATH_SUCCESS)
   {
 #if defined (SEMIHOSTING)

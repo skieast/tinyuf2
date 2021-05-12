@@ -1,6 +1,6 @@
 @ECHO off
 
-REM Usage: test.bat [PATH TO UV4.exe] 
+REM Usage: test.bat [PATH TO UV4.exe]
 
 IF "%1"=="" (
   SET UV4_EXE=C:\Keil\UV4\UV4.exe

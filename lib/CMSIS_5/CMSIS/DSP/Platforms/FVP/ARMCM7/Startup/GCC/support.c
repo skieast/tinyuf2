@@ -3,7 +3,7 @@
 extern "C"
 {
 #endif
-    
+
 char * _sbrk(int incr);
 
 void __malloc_lock() ;
@@ -24,9 +24,9 @@ char * sbrk(int incr) {
         return (char *)-1; // the malloc-family routine that called sbrk will return 0
     }
     currentHeapEnd += incr;
-    
+
     totalBytesProvidedBySBRK += incr;
-    
+
     return (char *) previousHeapEnd;
 }
 //! Synonym for sbrk.

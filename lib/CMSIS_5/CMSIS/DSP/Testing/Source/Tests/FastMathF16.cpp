@@ -8,7 +8,7 @@
 #define SNR_THRESHOLD 60
 #define SNR_LOG_THRESHOLD 40
 
-/* 
+/*
 
 Reference patterns are generated with
 a double precision computation.
@@ -53,7 +53,7 @@ a double precision computation.
 
     }
 
-#endif 
+#endif
 
     void FastMathF16::test_sqrt_f16()
     {
@@ -81,7 +81,7 @@ a double precision computation.
         float16_t *outp  = output.ptr();
 
         arm_vlog_f16(inp,outp,ref.nbSamples());
-    
+
         ASSERT_SNR(ref,output,(float16_t)SNR_LOG_THRESHOLD);
         ASSERT_CLOSE_ERROR(ref,output,ABS_LOG_ERROR,REL_LOG_ERROR);
         ASSERT_EMPTY_TAIL(output);
@@ -94,7 +94,7 @@ a double precision computation.
         float16_t *outp  = output.ptr();
 
         arm_vexp_f16(inp,outp,ref.nbSamples());
-    
+
         ASSERT_CLOSE_ERROR(ref,output,ABS_ERROR,REL_ERROR);
         ASSERT_SNR(ref,output,(float16_t)SNR_THRESHOLD);
         ASSERT_EMPTY_TAIL(output);
@@ -115,7 +115,7 @@ a double precision computation.
 
     }
 
-  
+
     void FastMathF16::setUp(Testing::testID_t id,std::vector<Testing::param_t>& paramsArgs,Client::PatternMgr *mgr)
     {
         (void)paramsArgs;
@@ -139,8 +139,8 @@ a double precision computation.
 
             }
             break;
-#endif 
-          
+#endif
+
             case FastMathF16::TEST_SQRT_F16_3:
             {
                input.reload(FastMathF16::SQRTINPUT1_F16_ID,mgr);
@@ -188,7 +188,7 @@ a double precision computation.
 
             case FastMathF16::TEST_VEXP_F16_8:
             {
-              
+
               input.reload(FastMathF16::EXPINPUT1_F16_ID,mgr);
               ref.reload(FastMathF16::EXP1_F16_ID,mgr);
               output.create(ref.nbSamples(),FastMathF16::OUT_F16_ID,mgr);
@@ -232,12 +232,12 @@ a double precision computation.
             }
             break;
         }
-        
+
     }
 
     void FastMathF16::tearDown(Testing::testID_t id,Client::PatternMgr *mgr)
     {
       (void)id;
       output.dump(mgr);
-      
+
     }

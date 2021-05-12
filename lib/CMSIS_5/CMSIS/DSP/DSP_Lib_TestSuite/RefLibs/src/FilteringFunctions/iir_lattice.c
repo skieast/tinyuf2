@@ -67,7 +67,7 @@ void ref_iir_lattice_f32(
     blkCnt--;
   }
 
-  /* Processing is complete. Now copy last S->numStages samples to start of the buffer           
+  /* Processing is complete. Now copy last S->numStages samples to start of the buffer
      for the preperation of next frame process */
 
   /* Points to the start of the state buffer */
@@ -159,7 +159,7 @@ void ref_iir_lattice_q31(
     blkCnt--;
   }
 
-  /* Processing is complete. Now copy last S->numStages samples to start of the buffer           
+  /* Processing is complete. Now copy last S->numStages samples to start of the buffer
      for the preperation of next frame process */
 
   /* Points to the start of the state buffer */
@@ -252,7 +252,7 @@ void ref_iir_lattice_q15(
     blkCnt--;
   }
 
-  /* Processing is complete. Now copy last S->numStages samples to start of the buffer           
+  /* Processing is complete. Now copy last S->numStages samples to start of the buffer
      for the preperation of next frame process */
   /* Points to the start of the state buffer */
   pStateCurnt = &S->pState[0];

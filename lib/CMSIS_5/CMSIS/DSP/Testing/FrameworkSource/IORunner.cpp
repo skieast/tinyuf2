@@ -3,7 +3,7 @@
  * Title:        IORunner.cpp
  * Description:  IORunner
  *
- *               Runner implementation for runner running on device 
+ *               Runner implementation for runner running on device
  *               under test
  *
  * $Date:        20. June 2019
@@ -50,7 +50,7 @@ using namespace std;
 
 namespace Client
 {
-  
+
       IORunner::IORunner(IO *io,PatternMgr *mgr,  Testing::RunningMode runningMode):m_io(io), m_mgr(mgr)
       {
         volatile Testing::cycles_t current;
@@ -68,7 +68,7 @@ namespace Client
 
         initCycleMeasurement();
 
-/* 
+/*
 
 For calibration :
 
@@ -81,8 +81,8 @@ a C++ function pointer from the cycle measurements.
         Client::Suite *s=(Client::Suite *)&c;
         Client::test t = (Client::test)&Calibrate::empty;
         calibration = 0;
-        
-/* 
+
+/*
 
 EXTBENCH is set when benchmarking is done through external traces
 instead of using internal counters.
@@ -185,13 +185,13 @@ While for the code itself we have the value for the code in cache.
 
       IORunner::~IORunner()
       {
-        
+
       }
 
-     
+
       /** Read driver data to control execution of a suite
       */
-      Testing::TestStatus IORunner::run(Suite *s) 
+      Testing::TestStatus IORunner::run(Suite *s)
       {
         Testing::TestStatus finalResult = Testing::kTestPassed;
         int nbTests = s->getNbTests();
@@ -204,7 +204,7 @@ While for the code itself we have the value for the code in cache.
 
         // Read node identification (suite)
         m_io->ReadIdentification();
-        // Read suite nb of parameters 
+        // Read suite nb of parameters
         nbParams = m_io->ReadNbParameters();
 
         // Read list of patterns
@@ -232,8 +232,8 @@ While for the code itself we have the value for the code in cache.
 
             // Read test identification (test ID)
             m_io->ReadTestIdentification();
-            
-            
+
+
             if (m_io->hasParam())
             {
                Testing::PatternID_t paramID=m_io->getParamID();
@@ -244,8 +244,8 @@ While for the code itself we have the value for the code in cache.
 
             while(canExecute)
             {
-              canExecute = false; 
-              
+              canExecute = false;
+
               if (m_io->hasParam() && paramData)
               {
                 // Load new params
@@ -258,12 +258,12 @@ While for the code itself we have the value for the code in cache.
                 canExecute = dataIndex < entries;
               }
               // Execute test
-              try {     
+              try {
                 // Prepare memory for test
                 // setUp will generally load patterns
                 // and do specific initialization for the tests
                 s->setUp(m_io->CurrentTestID(),params,m_mgr);
-                
+
                 // Run the test once to force the code to be in cache.
                 // By default it is disabled in the suite.
 #ifdef CORTEXA
@@ -300,11 +300,11 @@ While for the code itself we have the value for the code in cache.
                 cycles=cycles-calibration;
 #endif
                 cycleMeasurementStop();
-              } 
+              }
               catch(Error &ex)
               {
                  cycleMeasurementStop();
-                 // In dump only mode we ignore the tests 
+                 // In dump only mode we ignore the tests
                  // since the reference patterns are not loaded
                  // so tests will fail.
                  if (this->m_runningMode != Testing::kDumpOnly)
@@ -315,9 +315,9 @@ While for the code itself we have the value for the code in cache.
                     result=Testing::kTestFailed;
                  }
               }
-              catch (...) { 
+              catch (...) {
                 cycleMeasurementStop();
-                // In dump only mode we ignore the tests 
+                // In dump only mode we ignore the tests
                 // since the reference patterns are not loaded
                 // so tests will fail.
                 if (this->m_runningMode != Testing::kDumpOnly)
@@ -327,14 +327,14 @@ While for the code itself we have the value for the code in cache.
                   line = 0;
                 }
               }
-              try { 
+              try {
                  // Clean memory after this test
                  // May dump output and do specific cleaning for a test
                  s->tearDown(m_io->CurrentTestID(),m_mgr);
               }
               catch(...)
               {
-              
+
               }
 
               if (m_mgr->HasMemError())
@@ -348,11 +348,11 @@ While for the code itself we have the value for the code in cache.
                   line = 0;
                 }
               }
-              
+
               // Free all memory of memory manager so that next test
               // is starting in a clean and controlled tests
               m_mgr->freeAll();
-  
+
               // Dump test status to output
               m_io->DispStatus(result,error,line,cycles);
               m_io->DispErrorDetails(details);
@@ -380,7 +380,7 @@ While for the code itself we have the value for the code in cache.
 
       /** Read driver data to control execution of a group
       */
-      Testing::TestStatus IORunner::run(Group *g) 
+      Testing::TestStatus IORunner::run(Group *g)
       {
         int nbTests = g->getNbContainer();
         int failedTests=0;
@@ -388,7 +388,7 @@ While for the code itself we have the value for the code in cache.
 
         // Read Node identification
         m_io->ReadIdentification();
-        
+
 
         Testing::TestStatus finalResult = Testing::kTestPassed;
         // Iterate on group elements
@@ -406,7 +406,7 @@ While for the code itself we have the value for the code in cache.
                    finalResult = Testing::kTestFailed;
                 }
             }
-            
+
         }
         // Signal to output that processing of this group has finished.
         m_io->EndGroup();

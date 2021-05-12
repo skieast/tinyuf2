@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 #include "Driver_CAN.h"
 
 #define ARM_CAN_DRV_VERSION ARM_DRIVER_VERSION_MAJOR_MINOR(1,0) // CAN driver version
@@ -314,4 +314,3 @@ ARM_DRIVER_CAN Driver_CAN0 = {
   ARM_CAN_Control,
   ARM_CAN_GetStatus
 };
-

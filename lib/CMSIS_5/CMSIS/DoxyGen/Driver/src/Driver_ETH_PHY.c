@@ -26,7 +26,7 @@ application.
 /**
 \struct     ARM_DRIVER_ETH_PHY
 \details
-The functions of the Ethernet PHY are accessed by function pointers exposed by this structure. Refer to \ref DriverFunctions for 
+The functions of the Ethernet PHY are accessed by function pointers exposed by this structure. Refer to \ref DriverFunctions for
 overview information.
 
 Each instance of an Ethernet PHY provides such an access struct. The instance is identified by
@@ -77,11 +77,11 @@ Example:
 \code
 extern ARM_DRIVER_ETH_PHY Driver_ETH_PHY0;
 ARM_DRIVER_ETH_PHY *drv_info;
- 
+
 void setup_ethernet_phy (void)  {
   ARM_DRIVER_VERSION  version;
- 
-  drv_info = &Driver_ETH_PHY0;  
+
+  drv_info = &Driver_ETH_PHY0;
   version = drv_info->GetVersion ();
   if (version.api < 0x10A)   {      // requires at minimum API version 1.10 or higher
     // error handling
@@ -97,7 +97,7 @@ int32_t ARM_ETH_PHY_Initialize (ARM_ETH_PHY_Read_t fn_read, ARM_ETH_PHY_Write_t 
 /**
 \fn       int32_t ARM_ETH_PHY_Initialize (ARM_ETH_PHY_Read_t fn_read, ARM_ETH_PHY_Write_t fn_write)
 \details
-The function \b ARM_ETH_PHY_Initialize initializes the Ethernet PHY interface. 
+The function \b ARM_ETH_PHY_Initialize initializes the Ethernet PHY interface.
 It is called when the middleware component starts operation.
 
 The \ref ARM_ETH_PHY_Initialize function performs the following operations:
@@ -126,16 +126,16 @@ int32_t ARM_ETH_PHY_PowerControl (ARM_POWER_STATE state)  {
 }
 /**
 \fn int32_t ARM_ETH_PHY_PowerControl (ARM_POWER_STATE state)
-\details     
-The function \b ARM_ETH_PHY_PowerControl operates the power modes of the Ethernet PHY interface.  
+\details
+The function \b ARM_ETH_PHY_PowerControl operates the power modes of the Ethernet PHY interface.
 
 The parameter \em state sets the operation and can have the following values:
-  - \ref ARM_POWER_FULL : set-up peripheral for data transfers, enable interrupts (NVIC) and optionally DMA. 
-                          Can be called multiple times. If the peripheral is already in this mode the function performs 
+  - \ref ARM_POWER_FULL : set-up peripheral for data transfers, enable interrupts (NVIC) and optionally DMA.
+                          Can be called multiple times. If the peripheral is already in this mode the function performs
 						  no operation and returns with \ref ARM_DRIVER_OK.
   - \ref ARM_POWER_LOW : may use power saving. Returns \ref ARM_DRIVER_ERROR_UNSUPPORTED when not implemented.
   - \ref ARM_POWER_OFF : terminates any pending data transfers, disables peripheral, disables related interrupts and DMA.
-      
+
 Refer to \ref CallSequence for more information.
 
 \b Example:
@@ -149,10 +149,10 @@ int32_t ARM_ETH_PHY_SetInterface (uint32_t interface)  {
 \fn int32_t ARM_ETH_PHY_SetInterface (uint32_t interface)
 
 \details
-The function \b ARM_ETH_PHY_SetInterface specifies the \ref eth_interface_types1 that links the Ethernet MAC and Ethernet PHY. 
+The function \b ARM_ETH_PHY_SetInterface specifies the \ref eth_interface_types1 that links the Ethernet MAC and Ethernet PHY.
 After initialization of the PHY interface, you can set the media type.
 The function \ref ARM_ETH_MAC_GetCapabilities retrieves the media interface type encoded in the data field \b media_interface of the structure
-\ref ARM_ETH_MAC_CAPABILITIES. 
+\ref ARM_ETH_MAC_CAPABILITIES.
 
 The parameter \em interface can have the following values:
 
@@ -160,7 +160,7 @@ Parameter \em interface       | Media Type
 :-----------------------------|:-------------------------
 \ref ARM_ETH_INTERFACE_MII    | Media Independent Interface (MII)
 \ref ARM_ETH_INTERFACE_RMII   | Reduced Media Independent Interface (RMII)
-\ref ARM_ETH_INTERFACE_SMII   | Serial Media Independent Interface (SMII); 
+\ref ARM_ETH_INTERFACE_SMII   | Serial Media Independent Interface (SMII);
 
 \note
 Some \em interface values may be unsupported by a driver implementation. For example \ref ARM_ETH_INTERFACE_SMII may return \b ARM_DRIVER_ERROR_UNSUPPORTED.
@@ -170,10 +170,10 @@ Some \em interface values may be unsupported by a driver implementation. For exa
 static ARM_ETH_MAC_CAPABILITIES capabilities;
 static ARM_DRIVER_ETH_MAC *mac;
 static ARM_DRIVER_ETH_PHY *phy;
- 
+
 mac = &Driver_ETH_MAC0;
 phy = &Driver_ETH_PHY0;
- 
+
 // Initialize Media Access Controller
 capabilities = mac->GetCapabilities ();
 ...
@@ -224,10 +224,10 @@ Some \em mode values may be unsupported by a driver implementation. For example 
 static ARM_ETH_MAC_CAPABILITIES capabilities;
 static ARM_DRIVER_ETH_MAC *mac;
 static ARM_DRIVER_ETH_PHY *phy;
- 
+
 mac = &Driver_ETH_MAC0;
 phy = &Driver_ETH_PHY0;
- 
+
 // Initialize Media Access Controller
 capabilities = mac->GetCapabilities ();
 ...
@@ -270,7 +270,7 @@ mode (half/full duplex) and communication speed. Information is only valid when 
 
 /**
 @}
-*/ 
+*/
 // End ETH PHY Interface group; below the groups are included with \ingroup
 
 
@@ -280,11 +280,11 @@ mode (half/full duplex) and communication speed. Information is only valid when 
 \brief Specify operation modes of the Ethernet PHY interface
 \details
 @{
-\def ARM_ETH_PHY_SPEED_10M 
+\def ARM_ETH_PHY_SPEED_10M
 \sa ARM_ETH_PHY_SetMode
 \def ARM_ETH_PHY_SPEED_100M
 \sa ARM_ETH_PHY_SetMode
-\def ARM_ETH_PHY_SPEED_1G  
+\def ARM_ETH_PHY_SPEED_1G
 \sa ARM_ETH_PHY_SetMode
 \def ARM_ETH_PHY_DUPLEX_HALF
 \sa ARM_ETH_PHY_SetMode
@@ -292,12 +292,9 @@ mode (half/full duplex) and communication speed. Information is only valid when 
 \sa ARM_ETH_PHY_SetMode
 \def ARM_ETH_PHY_AUTO_NEGOTIATE
 \sa ARM_ETH_PHY_SetMode
-\def ARM_ETH_PHY_LOOPBACK      
+\def ARM_ETH_PHY_LOOPBACK
 \sa ARM_ETH_PHY_SetMode
-\def ARM_ETH_PHY_ISOLATE       
+\def ARM_ETH_PHY_ISOLATE
 \sa ARM_ETH_PHY_SetMode
 @}
 */
-
-
-

@@ -3,7 +3,7 @@
  * processor based microcontroller, but can be equally used for other
  * suitable processor architectures. This file can be freely distributed.
  * Modifications to this file shall be clearly marked.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED "AS IS". NO WARRANTIES, WHETHER EXPRESS, IMPLIED
  * OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE APPLY TO THIS SOFTWARE.
@@ -156,7 +156,7 @@ typedef struct {                                /*!< (@ 0x40010000) TIMER0 Struc
                                                                     of the Timer/Counter                                       */
   __IOM uint32_t  MATCH;                        /*!< (@ 0x00000024) The Match Register stores the compare Value for
                                                                     the MATCH condition                                        */
-  
+
   union {
     __IM  uint32_t PRESCALE_RD;                 /*!< (@ 0x00000028) The Prescale Register stores the Value for the
                                                                     prescaler. The cont event gets divided by

@@ -14,27 +14,27 @@
         memcpy(outfftp,inp,sizeof(float16_t)*input.nbSamples());
 
         ASSERT_TRUE(status == ARM_MATH_SUCCESS);
-   
+
         arm_cfft_f16(
              &(this->varInstCfftF16),
              outfftp,
              this->ifft,
              1);
-       
 
-          
+
+
         ASSERT_SNR(outputfft,ref,(float16_t)SNR_THRESHOLD);
         ASSERT_EMPTY_TAIL(outputfft);
 
 
-        
-    } 
+
+    }
 
     void TransformCF16::setUp(Testing::testID_t id,std::vector<Testing::param_t>& paramsArgs,Client::PatternMgr *mgr)
     {
 
        (void)paramsArgs;
-       
+
        switch(id)
        {
           case TransformCF16::TEST_CFFT_F16_1:
@@ -470,7 +470,7 @@
 
        }
         outputfft.create(ref.nbSamples(),TransformCF16::OUTPUT_CFFT_F16_ID,mgr);
-       
+
 
     }
 

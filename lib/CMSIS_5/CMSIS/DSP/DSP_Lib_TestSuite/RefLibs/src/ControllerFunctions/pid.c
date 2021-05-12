@@ -56,24 +56,24 @@ q15_t ref_pid_q15(
 	q63_t acc;
 	q15_t out;
 	q15_t A1, A2;
-	
+
 #if defined (ARM_MATH_DSP)
-   
+
 #ifndef  ARM_MATH_BIG_ENDIAN
 	A2 = S->A1 >> 16;
-	A1 = (q15_t)S->A1;	
+	A1 = (q15_t)S->A1;
 #else
 	A1 = S->A1 >> 16;
-	A2 = (q15_t)S->A1;	
+	A2 = (q15_t)S->A1;
 #endif
-   
+
 #else
-	
+
 	A1 = S->A1;
 	A2 = S->A2;
-	
-#endif	
-	
+
+#endif
+
 	/* acc = A0 * x[n]  */
 	acc = ((q31_t) S->A0) * in;
 

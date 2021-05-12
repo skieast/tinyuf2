@@ -3,7 +3,7 @@ README
 
 This folder is containing two files imported, and slightly modified, from the ComputeLibrary:
 
-    NEMath.h and arm_cl_tables.c 
+    NEMath.h and arm_cl_tables.c
 
 In the original compute library, there are instead two other files:
 

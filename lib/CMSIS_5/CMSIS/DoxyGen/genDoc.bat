@@ -3,12 +3,12 @@
 REM ====================================================================================
 REM Batch file for generating
 REM
-REM Author  : 
+REM Author  :
 REM Date    :  7th April 2016
 REM Version : 1.0
-REM Company : ARM 
+REM Company : ARM
 REM
-REM 
+REM
 REM Command syntax: genDoc.bat
 REM
 REM  Version: 1.0 Initial Version.
@@ -84,10 +84,10 @@ popd
 REM -- Copy search style sheet ---------------------
   ECHO.
   ECHO Copy search style sheets
-copy /Y Doxygen_Templates\search.css ..\Documentation\Core\html\search\. 
-copy /Y Doxygen_Templates\search.css ..\Documentation\Core_A\html\search\. 
+copy /Y Doxygen_Templates\search.css ..\Documentation\Core\html\search\.
+copy /Y Doxygen_Templates\search.css ..\Documentation\Core_A\html\search\.
 copy /Y Doxygen_Templates\search.css ..\Documentation\Driver\html\search\.
-REM copy /Y Doxygen_Templates\search.css ..\Documentation\General\html\search\. 
+REM copy /Y Doxygen_Templates\search.css ..\Documentation\General\html\search\.
 copy /Y Doxygen_Templates\search.css ..\Documentation\Pack\html\search\.
 copy /Y Doxygen_Templates\search.css ..\Documentation\Build\html\search\.
 REM copy /Y Doxygen_Templates\search.css ..\Documentation\SVD\html\search\.
@@ -96,8 +96,8 @@ copy /Y Doxygen_Templates\search.css ..\Documentation\NN\html\search\.
 copy /Y Doxygen_Templates\search.css ..\Documentation\DAP\html\search\.
 copy /Y Doxygen_Templates\search.css ..\Documentation\RTOS\html\search\.
 copy /Y Doxygen_Templates\search.css ..\Documentation\RTOS2\html\search\.
-copy /Y Doxygen_Templates\search.css ..\Documentation\Zone\html\search\. 
-  
+copy /Y Doxygen_Templates\search.css ..\Documentation\Zone\html\search\.
+
 :END
   ECHO.
 REM done

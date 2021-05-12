@@ -171,14 +171,14 @@ OS_RESULT rt_mut_release (OS_ID mutex) {
 #ifdef __CMSIS_RTOS
     rt_ret_val(p_TCB, 0U/*osOK*/);
 #else
-    rt_ret_val(p_TCB, OS_R_MUT); 
+    rt_ret_val(p_TCB, OS_R_MUT);
 #endif
     rt_rmv_dly (p_TCB);
     /* A waiting task becomes the owner of this mutex. */
     p_MCB->level  = 1U;
     p_MCB->owner  = p_TCB;
     p_MCB->p_mlnk = p_TCB->p_mlnk;
-    p_TCB->p_mlnk = p_MCB; 
+    p_TCB->p_mlnk = p_MCB;
     /* Priority inversion, check which task continues. */
     if (os_tsk.run->prio >= rt_rdy_prio()) {
       rt_dispatch (p_TCB);
@@ -213,7 +213,7 @@ OS_RESULT rt_mut_wait (OS_ID mutex, U16 timeout) {
   if (p_MCB->level == 0U) {
     p_MCB->owner  = os_tsk.run;
     p_MCB->p_mlnk = os_tsk.run->p_mlnk;
-    os_tsk.run->p_mlnk = p_MCB; 
+    os_tsk.run->p_mlnk = p_MCB;
     p_MCB->level = 1U;
     return (OS_R_OK);
   }

@@ -3,8 +3,8 @@
 \brief    Driver API for NAND Flash Device Interface (%Driver_NAND.h).
 
 \details
-<b>NAND</b> devices are a type of non-volatile storage and do not require power to hold data. 
-Wikipedia offers more information about 
+<b>NAND</b> devices are a type of non-volatile storage and do not require power to hold data.
+Wikipedia offers more information about
 the <a href="http://en.wikipedia.org/wiki/Flash_memory#ARM_NAND_memories" target="_blank"><b>Flash Memories</b></a>, including NAND.
 
 <b>Block Diagram</b>
@@ -19,13 +19,13 @@ the <a href="http://en.wikipedia.org/wiki/Flash_memory#ARM_NAND_memories" target
 The following header files define the Application Programming Interface (API) for the NAND interface:
   - \b %Driver_NAND.h : Driver API for NAND Flash Device Interface
 
-The driver implementation is a typical part of the Device Family Pack (DFP) that supports the 
+The driver implementation is a typical part of the Device Family Pack (DFP) that supports the
 peripherals of the microcontroller family.
 
 NAND Flash is organized in pages, grouped into blocks as the smallest erasable unit. The addressing
 of data is achieved by `byte_address = block * block_size + page_in_block * page_size + offset_in_page`.
 In terms of this NAND API blocks and pages are referred to as `row` and the byte offset within the page as `col`.
-Thus one can calculate the `byte_address = row * page_size + col`. The parameters `page_size` and `block_size` 
+Thus one can calculate the `byte_address = row * page_size + col`. The parameters `page_size` and `block_size`
 are device specific and must be handled by the driver user appropriately.
 
 <b>Driver Functions</b>
@@ -44,11 +44,11 @@ The driver functions are published in the access struct as explained in \ref Dri
 /**
 \defgroup nand_execution_status Status Error Codes
 \ingroup common_drv_gr
-\brief Negative values indicate errors (NAND has specific codes in addition to common \ref execution_status). 
-\details 
+\brief Negative values indicate errors (NAND has specific codes in addition to common \ref execution_status).
+\details
 The NAND driver has additional status error codes that are listed below.
-Note that the NAND driver also returns the common \ref execution_status. 
-  
+Note that the NAND driver also returns the common \ref execution_status.
+
 @{
 \def ARM_NAND_ERROR_ECC
 ECC generation or correction failed during \ref ARM_NAND_ReadData, \ref ARM_NAND_WriteData or \ref ARM_NAND_ExecuteSequence.
@@ -60,15 +60,15 @@ ECC generation or correction failed during \ref ARM_NAND_ReadData, \ref ARM_NAND
 \defgroup NAND_events NAND Events
 \ingroup nand_interface_gr
 \brief The NAND driver generates call back events that are notified via the function \ref ARM_NAND_SignalEvent.
-\details 
+\details
 This section provides the event values for the \ref ARM_NAND_SignalEvent callback function.
 
 The following call back notification events are generated:
 @{
 \def ARM_NAND_EVENT_DEVICE_READY
 \def ARM_NAND_EVENT_DRIVER_READY
-\def ARM_NAND_EVENT_DRIVER_DONE 
-\def ARM_NAND_EVENT_ECC_ERROR   
+\def ARM_NAND_EVENT_DRIVER_DONE
+\def ARM_NAND_EVENT_ECC_ERROR
 @}
 */
 
@@ -81,7 +81,7 @@ The following call back notification events are generated:
 The defines can be used in the function \ref ARM_NAND_ReadData and \ref ARM_NAND_WriteData for the parameter \em mode
 and in the function \ref ARM_NAND_ExecuteSequence for the parameter \em code.
 @{
-\def ARM_NAND_DRIVER_DONE_EVENT   
+\def ARM_NAND_DRIVER_DONE_EVENT
 @}
 */
 
@@ -91,7 +91,7 @@ and in the function \ref ARM_NAND_ExecuteSequence for the parameter \em code.
 \ingroup nand_interface_gr
 \brief Many parameters of the NAND driver are configured using the \ref ARM_NAND_Control function.
 @{
-\details 
+\details
 Refer to the function \ref ARM_NAND_Control for further details.
 */
 
@@ -102,11 +102,11 @@ Refer to the function \ref ARM_NAND_Control for further details.
 \details
 These controls can be used in the function \ref ARM_NAND_Control for the parameter \em control.
 @{
-\def ARM_NAND_BUS_MODE             
-\def ARM_NAND_BUS_DATA_WIDTH       
-\def ARM_NAND_DRIVER_STRENGTH      
-\def ARM_NAND_DEVICE_READY_EVENT   
-\def ARM_NAND_DRIVER_READY_EVENT   
+\def ARM_NAND_BUS_MODE
+\def ARM_NAND_BUS_DATA_WIDTH
+\def ARM_NAND_DRIVER_STRENGTH
+\def ARM_NAND_DEVICE_READY_EVENT
+\def ARM_NAND_DRIVER_READY_EVENT
 @}
 */
 
@@ -117,28 +117,28 @@ These controls can be used in the function \ref ARM_NAND_Control for the paramet
 \details
 The defines can be used in the function \ref ARM_NAND_Control for the parameter \em arg and with the \ref ARM_NAND_BUS_MODE as the \em control code.
 @{
-\def ARM_NAND_BUS_SDR               
-\def ARM_NAND_BUS_DDR               
-\def ARM_NAND_BUS_DDR2              
-\def ARM_NAND_BUS_TIMING_MODE_0     
-\def ARM_NAND_BUS_TIMING_MODE_1     
-\def ARM_NAND_BUS_TIMING_MODE_2     
-\def ARM_NAND_BUS_TIMING_MODE_3     
-\def ARM_NAND_BUS_TIMING_MODE_4     
-\def ARM_NAND_BUS_TIMING_MODE_5     
-\def ARM_NAND_BUS_TIMING_MODE_6     
-\def ARM_NAND_BUS_TIMING_MODE_7     
-\def ARM_NAND_BUS_DDR2_DO_WCYC_0    
-\def ARM_NAND_BUS_DDR2_DO_WCYC_1    
-\def ARM_NAND_BUS_DDR2_DO_WCYC_2    
-\def ARM_NAND_BUS_DDR2_DO_WCYC_4    
-\def ARM_NAND_BUS_DDR2_DI_WCYC_0    
-\def ARM_NAND_BUS_DDR2_DI_WCYC_1    
-\def ARM_NAND_BUS_DDR2_DI_WCYC_2    
-\def ARM_NAND_BUS_DDR2_DI_WCYC_4    
-\def ARM_NAND_BUS_DDR2_VEN          
-\def ARM_NAND_BUS_DDR2_CMPD         
-\def ARM_NAND_BUS_DDR2_CMPR         
+\def ARM_NAND_BUS_SDR
+\def ARM_NAND_BUS_DDR
+\def ARM_NAND_BUS_DDR2
+\def ARM_NAND_BUS_TIMING_MODE_0
+\def ARM_NAND_BUS_TIMING_MODE_1
+\def ARM_NAND_BUS_TIMING_MODE_2
+\def ARM_NAND_BUS_TIMING_MODE_3
+\def ARM_NAND_BUS_TIMING_MODE_4
+\def ARM_NAND_BUS_TIMING_MODE_5
+\def ARM_NAND_BUS_TIMING_MODE_6
+\def ARM_NAND_BUS_TIMING_MODE_7
+\def ARM_NAND_BUS_DDR2_DO_WCYC_0
+\def ARM_NAND_BUS_DDR2_DO_WCYC_1
+\def ARM_NAND_BUS_DDR2_DO_WCYC_2
+\def ARM_NAND_BUS_DDR2_DO_WCYC_4
+\def ARM_NAND_BUS_DDR2_DI_WCYC_0
+\def ARM_NAND_BUS_DDR2_DI_WCYC_1
+\def ARM_NAND_BUS_DDR2_DI_WCYC_2
+\def ARM_NAND_BUS_DDR2_DI_WCYC_4
+\def ARM_NAND_BUS_DDR2_VEN
+\def ARM_NAND_BUS_DDR2_CMPD
+\def ARM_NAND_BUS_DDR2_CMPR
 @}
 */
 
@@ -149,8 +149,8 @@ The defines can be used in the function \ref ARM_NAND_Control for the parameter 
 \details
 The defines can be used in the function \ref ARM_NAND_Control for the parameter \em arg and with the \ref ARM_NAND_BUS_DATA_WIDTH as the \em control code.
 @{
-\def ARM_NAND_BUS_DATA_WIDTH_8   
-\def ARM_NAND_BUS_DATA_WIDTH_16  
+\def ARM_NAND_BUS_DATA_WIDTH_8
+\def ARM_NAND_BUS_DATA_WIDTH_16
 @}
 */
 
@@ -161,10 +161,10 @@ The defines can be used in the function \ref ARM_NAND_Control for the parameter 
 \details
 The defines can be used in the function \ref ARM_NAND_Control for the parameter \em arg and with the \ref ARM_NAND_DRIVER_STRENGTH as the \em control code.
 @{
-\def ARM_NAND_DRIVER_STRENGTH_18 
-\def ARM_NAND_DRIVER_STRENGTH_25 
-\def ARM_NAND_DRIVER_STRENGTH_35 
-\def ARM_NAND_DRIVER_STRENGTH_50 
+\def ARM_NAND_DRIVER_STRENGTH_18
+\def ARM_NAND_DRIVER_STRENGTH_25
+\def ARM_NAND_DRIVER_STRENGTH_35
+\def ARM_NAND_DRIVER_STRENGTH_50
 @}
 */
 
@@ -195,19 +195,19 @@ and in the function \ref ARM_NAND_ExecuteSequence for the parameter \em code.
 \details
 The defines can be used in the function \ref ARM_NAND_ExecuteSequence for the parameter \em code.
 @{
-\def ARM_NAND_CODE_SEND_CMD1       
-\def ARM_NAND_CODE_SEND_ADDR_COL1  
-\def ARM_NAND_CODE_SEND_ADDR_COL2  
-\def ARM_NAND_CODE_SEND_ADDR_ROW1  
-\def ARM_NAND_CODE_SEND_ADDR_ROW2  
-\def ARM_NAND_CODE_SEND_ADDR_ROW3  
-\def ARM_NAND_CODE_INC_ADDR_ROW    
-\def ARM_NAND_CODE_WRITE_DATA      
-\def ARM_NAND_CODE_SEND_CMD2       
-\def ARM_NAND_CODE_WAIT_BUSY       
-\def ARM_NAND_CODE_READ_DATA       
-\def ARM_NAND_CODE_SEND_CMD3       
-\def ARM_NAND_CODE_READ_STATUS     
+\def ARM_NAND_CODE_SEND_CMD1
+\def ARM_NAND_CODE_SEND_ADDR_COL1
+\def ARM_NAND_CODE_SEND_ADDR_COL2
+\def ARM_NAND_CODE_SEND_ADDR_ROW1
+\def ARM_NAND_CODE_SEND_ADDR_ROW2
+\def ARM_NAND_CODE_SEND_ADDR_ROW3
+\def ARM_NAND_CODE_INC_ADDR_ROW
+\def ARM_NAND_CODE_WRITE_DATA
+\def ARM_NAND_CODE_SEND_CMD2
+\def ARM_NAND_CODE_WAIT_BUSY
+\def ARM_NAND_CODE_READ_DATA
+\def ARM_NAND_CODE_SEND_CMD3
+\def ARM_NAND_CODE_READ_STATUS
 @}
 */
 
@@ -223,11 +223,11 @@ Structure with information about the status of a NAND. The data fields encode fl
 *****************************************************************************************************************/
 
 /**
-\struct     ARM_DRIVER_NAND 
+\struct     ARM_DRIVER_NAND
 \details
 The functions of the NAND driver are accessed by function pointers exposed by this structure. Refer to \ref DriverFunctions for overview information.
 
-Each instance of a NAND interface provides such an access structure. 
+Each instance of a NAND interface provides such an access structure.
 The instance is identified by a postfix number in the symbol name of the access structure, for example:
  - \b Driver_NAND0 is the name of the access struct of the first instance (no. 0).
  - \b Driver_NAND1 is the name of the access struct of the second instance (no. 1).
@@ -237,9 +237,9 @@ The default is \token{0}, which connects a middleware to the first instance of a
 *******************************************************************************************************************/
 
 /**
-\struct     ARM_NAND_CAPABILITIES 
+\struct     ARM_NAND_CAPABILITIES
 \details
-A NAND driver can be implemented with different capabilities. The data fields of this struct encode 
+A NAND driver can be implemented with different capabilities. The data fields of this struct encode
 the capabilities implemented by this driver.
 
 <b>Returned by:</b>
@@ -272,7 +272,7 @@ To describe how application data must be organized, ECC information structure sp
 defines the protected part of data. As main and spare are of different size, two different algorithms could be
 provided, we can describe them as ECC0 and ECC1. Type can then have the following values:
 
-Type| Description 
+Type| Description
 :---|:-----------
  0  | ECC algorithm not used
  1  | ECC0 algorithm protects main data
@@ -305,7 +305,7 @@ Page layout defines main and spare ordering and two different page layouts are p
 spare area follows after every main area, while in second case all main areas build one contiguous region followed by
 contiguous region of spare areas. This is defined by member \em page_layout:
 
-Layout| Description 
+Layout| Description
 :-----|:-----------
  0    | Single spare follows after single main: Main0,Spare0 ... MainN-1,SpareN-1
  1    | Contiguous spare follows after contiguous main: Main0 ... MainN-1,Spare0 ... SpareN-1
@@ -327,7 +327,7 @@ Number of bits that ECC algorithm can correct per codeword is defined with \em c
 
 
 //
-//  Functions 
+//  Functions
 //
 
 ARM_DRIVER_VERSION ARM_NAND_GetVersion (void)  {
@@ -344,11 +344,11 @@ Example:
 \code
 extern ARM_DRIVER_NAND Driver_NAND0;
 ARM_DRIVER_NAND *drv_info;
- 
+
 void setup_nand (void)  {
   ARM_DRIVER_VERSION  version;
- 
-  drv_info = &Driver_NAND0;  
+
+  drv_info = &Driver_NAND0;
   version = drv_info->GetVersion ();
   if (version.api < 0x10A)   {      // requires at minimum API version 1.10 or higher
     // error handling
@@ -366,21 +366,21 @@ ARM_NAND_CAPABILITIES ARM_NAND_GetCapabilities (void)  {
 \details
 The function \b ARM_NAND_GetCapabilities retrieves information about capabilities in this driver implementation.
 The data fields of the structure \ref ARM_NAND_CAPABILITIES encode various capabilities, for example
-if a hardware is able to create signal events using the \ref ARM_NAND_SignalEvent 
+if a hardware is able to create signal events using the \ref ARM_NAND_SignalEvent
 callback function.
- 
+
 Example:
 \code
 extern ARM_DRIVER_NAND Driver_NAND0;
 ARM_DRIVER_NAND *drv_info;
-  
+
 void read_capabilities (void)  {
   ARM_NAND_CAPABILITIES drv_capabilities;
- 
-  drv_info = &Driver_NAND0;  
+
+  drv_info = &Driver_NAND0;
   drv_capabilities = drv_info->GetCapabilities ();
   // interrogate capabilities
- 
+
 }
 \endcode
 *******************************************************************************************************************/
@@ -391,14 +391,14 @@ int32_t ARM_NAND_Initialize (ARM_NAND_SignalEvent_t  cb_event)  {
 /**
 \fn int32_t ARM_NAND_Initialize (ARM_NAND_SignalEvent_t  cb_event)
 \details
-The function \b ARM_NAND_Initialize initializes the NAND interface. 
+The function \b ARM_NAND_Initialize initializes the NAND interface.
 It is called when the middleware component starts operation.
 
 The function performs the following operations:
   - Initializes the resources needed for the NAND interface.
   - Registers the \ref ARM_NAND_SignalEvent callback function.
 
-The parameter \em cb_event is a pointer to the \ref ARM_NAND_SignalEvent callback function; use a NULL pointer 
+The parameter \em cb_event is a pointer to the \ref ARM_NAND_SignalEvent callback function; use a NULL pointer
 when no callback signals are required.
 
 \b Example:
@@ -423,15 +423,15 @@ int32_t ARM_NAND_PowerControl (ARM_POWER_STATE state)  {
 /**
 \fn int32_t ARM_NAND_PowerControl (ARM_POWER_STATE state)
 \details
-The function \b ARM_NAND_PowerControl controls the power modes of the NAND interface.  
+The function \b ARM_NAND_PowerControl controls the power modes of the NAND interface.
 
 The parameter \em state sets the operation and can have the following values:
-  - \ref ARM_POWER_FULL : set-up peripheral for data transfers, enable interrupts (NVIC) and optionally DMA. 
-                          Can be called multiple times. If the peripheral is already in this mode the function performs 
+  - \ref ARM_POWER_FULL : set-up peripheral for data transfers, enable interrupts (NVIC) and optionally DMA.
+                          Can be called multiple times. If the peripheral is already in this mode the function performs
 						  no operation and returns with \ref ARM_DRIVER_OK.
   - \ref ARM_POWER_LOW : may use power saving. Returns \ref ARM_DRIVER_ERROR_UNSUPPORTED when not implemented.
   - \ref ARM_POWER_OFF : terminates any pending data transfers, disables peripheral, disables related interrupts and DMA.
-      
+
 Refer to \ref CallSequence for more information.
 *******************************************************************************************************************/
 
@@ -469,7 +469,7 @@ int32_t ARM_NAND_WriteProtect (uint32_t dev_num, bool enable)  {
 \details
 The function \b ARM_NAND_WriteProtect controls the Write Protect (WPn) pin of a NAND device.
 
-The parameter \em dev_num is the device number. \n 
+The parameter \em dev_num is the device number. \n
 The parameter \em enable specifies whether to enable or disable write protection.
 *******************************************************************************************************************/
 
@@ -481,11 +481,11 @@ int32_t ARM_NAND_ChipEnable (uint32_t dev_num, bool enable)  {
 \details
 The function \b ARM_NAND_ChipEnable control the Chip Enable (CEn) pin of a NAND device.
 
-The parameter \em dev_num is the device number. \n 
+The parameter \em dev_num is the device number. \n
 The parameter \em enable specifies whether to enable or disable the device.
 
 This function is optional and supported only when the data field \em ce_manual = \token{1} in the structure \ref ARM_NAND_CAPABILITIES.
-Otherwise, the Chip Enable (CEn) signal is controlled automatically by SendCommand/Address, Read/WriteData and ExecuteSequence 
+Otherwise, the Chip Enable (CEn) signal is controlled automatically by SendCommand/Address, Read/WriteData and ExecuteSequence
 (for example when the NAND device is connected to a memory bus).
 *******************************************************************************************************************/
 
@@ -550,12 +550,12 @@ Data type is:
  - \em uint16_t for 16-bit data bus
 
 The function executes in the following ways:
- - When the operation is blocking (typical for devices connected to memory bus when not using DMA), 
+ - When the operation is blocking (typical for devices connected to memory bus when not using DMA),
    then the function returns after all data is read and returns the number of data items read.
  - When the operation is non-blocking (typical for NAND controllers), then the function only starts the operation and returns with zero number of data items read.
    After the operation is completed, the \ref ARM_NAND_EVENT_DRIVER_DONE event is generated (if enabled by \b ARM_NAND_DRIVER_DONE_EVENT).
    Progress of the operation can also be monitored by calling the \ref ARM_NAND_GetStatus function and checking the \em busy data field.
-   Operation is automatically aborted if ECC is used and ECC correction fails, which generates the \ref ARM_NAND_EVENT_ECC_ERROR event 
+   Operation is automatically aborted if ECC is used and ECC correction fails, which generates the \ref ARM_NAND_EVENT_ECC_ERROR event
    (together with \ref ARM_NAND_DRIVER_DONE_EVENT if enabled).
 
 *******************************************************************************************************************/
@@ -587,13 +587,13 @@ Data type is:
  - \em uint16_t for 16-bit data bus
 
 The function executes in the following ways:
- - When the operation is blocking (typical for devices connected to memory bus when not using DMA), 
+ - When the operation is blocking (typical for devices connected to memory bus when not using DMA),
    then the function returns after all data is written and returns the number of data items written.
- - When the operation is non-blocking (typical for NAND controllers), then the function only starts the operation 
-   and returns with zero number of data items written. After the operation is completed, 
+ - When the operation is non-blocking (typical for NAND controllers), then the function only starts the operation
+   and returns with zero number of data items written. After the operation is completed,
    the \ref ARM_NAND_EVENT_DRIVER_DONE event is generated (if enabled by \b ARM_NAND_DRIVER_DONE_EVENT).
    Progress of the operation can also be monitored by calling the \ref ARM_NAND_GetStatus function and checking the \em busy data field.
-   Operation is automatically aborted if ECC is used and ECC generation fails, 
+   Operation is automatically aborted if ECC is used and ECC generation fails,
    which generates the \ref ARM_NAND_EVENT_ECC_ERROR event (together with \ref ARM_NAND_DRIVER_DONE_EVENT if enabled).
 *******************************************************************************************************************/
 
@@ -650,7 +650,7 @@ The function is non-blocking and returns as soon as the driver has started execu
 When the operation is completed, the \ref ARM_NAND_EVENT_DRIVER_DONE event is generated (if enabled by \b ARM_NAND_DRIVER_DONE_EVENT).
 Progress of the operation can also be monitored by calling the \ref ARM_NAND_GetStatus function and checking the \em busy data field.
 
-Driver executes the number of specified iterations where in each iteration 
+Driver executes the number of specified iterations where in each iteration
 items specified by \b ARM_NAND_CODE_xxx are executed in the order as listed in the table <b>Sequence execution Code</b>.
 The parameter \em count is holding the current number of iterations left.
 
@@ -738,7 +738,7 @@ The table lists values for the parameter \em arg used with the \em control opera
     <td rowspan="4" style="white-space: nowrap"> Data Output Warm-up   \anchor bus_output_tab  </td>
 	<td> Set the DDR2 Data Output Warm-up to \token{0} cycles      </td>
     <td rowspan="4">  <b>Data Output Warm-up</b> cycles are dummy cycles for interface calibration with no incremental data transfer
-                      and apply to NV-DDR2 of the \ref bus_data_interface_tab "\b Bus Data Interface".	
+                      and apply to NV-DDR2 of the \ref bus_data_interface_tab "\b Bus Data Interface".
 	</td></tr>
 <tr><td> \ref ARM_NAND_BUS_DDR2_DO_WCYC_1           </td><td> Set the DDR2 Data Output Warm-up to \token{1} cycles </td></tr>
 <tr><td> \ref ARM_NAND_BUS_DDR2_DO_WCYC_2           </td><td> Set the DDR2 Data Output Warm-up to \token{2} cycles </td></tr>
@@ -748,7 +748,7 @@ The table lists values for the parameter \em arg used with the \em control opera
     <td rowspan="4" style="white-space: nowrap">   Data Input Warm-up   </td>
 	<td> Set the DDR2 Data Input Warm-up to \token{0} cycles      </td>
     <td rowspan="4">  <b>Data Input Warm-up</b> cycles are dummy cycles for interface calibration with no incremental data transfer
-                      and apply to NV-DDR2 of the \ref bus_data_interface_tab "\b Bus Data Interface".	
+                      and apply to NV-DDR2 of the \ref bus_data_interface_tab "\b Bus Data Interface".
 	</td></tr>
 <tr><td> \ref ARM_NAND_BUS_DDR2_DI_WCYC_1           </td><td> Set the DDR2 Data Input Warm-up to \token{1} cycles </td></tr>
 <tr><td> \ref ARM_NAND_BUS_DDR2_DI_WCYC_2           </td><td> Set the DDR2 Data Input Warm-up to \token{2} cycles </td></tr>
@@ -782,7 +782,7 @@ The table lists values for the parameter \em arg used with the \em control opera
     <td rowspan="4" style="text-align:right"> 0..3 </td>
     <td rowspan="4" style="white-space: nowrap"> Driver Strength     </td>
 	<td> Set the Driver Strength 2.0x = 18 Ohms     </td>
-    <td> data field <i>driver_strength_18</i> = \token{1} 
+    <td> data field <i>driver_strength_18</i> = \token{1}
 	</td></tr>
 <tr><td> \ref ARM_NAND_DRIVER_STRENGTH_25            </td><td> Set the Driver Strength 1.4x = 25 Ohms </td><td> data field <i>driver_strength_25</i> = \token{1} </td></tr>
 <tr><td> \ref ARM_NAND_DRIVER_STRENGTH_35 (default)  </td><td> Set the Driver Strength 1.0x = 35 Ohms </td><td> <i>always supported</i>  </td></tr>
@@ -792,13 +792,13 @@ The table lists values for the parameter \em arg used with the \em control opera
 <b>Example</b>
 \code
 extern ARM_DRIVER_NAND Driver_NAND0;
- 
-status = Driver_NAND0.Control (0, ARM_NAND_BUS_MODE, ARM_NAND_BUS_TIMING_MODE_5 | 
-                                                     ARM_NAND_BUS_DDR2          | 
+
+status = Driver_NAND0.Control (0, ARM_NAND_BUS_MODE, ARM_NAND_BUS_TIMING_MODE_5 |
+                                                     ARM_NAND_BUS_DDR2          |
                                                      ARM_NAND_BUS_DDR2_VEN);
-											    
-status = Driver_NAND0.Control (0, ARM_NAND_BUS_DATA_WIDTH,  ARM_NAND_BUS_DATA_WIDTH_16); 
- 
+
+status = Driver_NAND0.Control (0, ARM_NAND_BUS_DATA_WIDTH,  ARM_NAND_BUS_DATA_WIDTH_16);
+
 status = Driver_NAND0.Control (0, ARM_NAND_DRIVER_STRENGTH, ARM_NAND_DRIVER_STRENGTH_50);
 \endcode
 
@@ -836,11 +836,11 @@ Parameter \em index is used by \ref ARM_NAND_ECC(n) in \ref ARM_NAND_ReadData, \
 
 <b>Example</b>
 \code
-extern ARM_DRIVER_NAND Driver_NAND0; 
+extern ARM_DRIVER_NAND Driver_NAND0;
 
 ARM_NAND_ECC_INFO ecc;
 int32_t idx;
- 
+
 idx = 0;
 while (Driver_NAND0.InquireECC (idx, &ecc) == ARM_DRIVER_OK) {
   // Examine retrieved ECC configuration
@@ -863,9 +863,9 @@ The function \b ARM_NAND_SignalEvent is a callback function registered by the fu
 
 The parameter \em dev_num is the device number. \n
 The parameter \em event indicates one or more events that occurred during driver operation.
-Each event is encoded in a separate bit and therefore it is possible to signal multiple events within the same call. 
+Each event is encoded in a separate bit and therefore it is possible to signal multiple events within the same call.
 
-Not every event is necessarily generated by the driver. This depends on the implemented capabilities stored in the 
+Not every event is necessarily generated by the driver. This depends on the implemented capabilities stored in the
 data fields of the structure \ref ARM_NAND_CAPABILITIES, which can be retrieved with the function \ref ARM_NAND_GetCapabilities.
 
 The following events can be generated:
@@ -875,23 +875,23 @@ Parameter \em event               | Bit | Description
 \ref ARM_NAND_EVENT_DEVICE_READY  | 0   | Occurs when rising edge is detected on R/Bn (Ready/Busy) pin indicating that the device is ready.
 \ref ARM_NAND_EVENT_DRIVER_READY  | 1   | Occurs to indicate that commands can be executed (after previously being busy and not able to start the requested operation).
 \ref ARM_NAND_EVENT_DRIVER_DONE   | 2   | Occurs after an operation completes. An operation was successfully started before with \ref ARM_NAND_ReadData, \ref ARM_NAND_WriteData, \ref ARM_NAND_ExecuteSequence.
-\ref ARM_NAND_EVENT_ECC_ERROR     | 3   | Occurs when ECC generation failed or ECC correction failed. An operation was successfully started before with \ref ARM_NAND_ReadData, \ref ARM_NAND_WriteData, \ref ARM_NAND_ExecuteSequence. 
+\ref ARM_NAND_EVENT_ECC_ERROR     | 3   | Occurs when ECC generation failed or ECC correction failed. An operation was successfully started before with \ref ARM_NAND_ReadData, \ref ARM_NAND_WriteData, \ref ARM_NAND_ExecuteSequence.
 
-The event \ref ARM_NAND_EVENT_DEVICE_READY occurs after complete execution of commands 
+The event \ref ARM_NAND_EVENT_DEVICE_READY occurs after complete execution of commands
 (initiated with the functions \ref ARM_NAND_SendCommand, \ref ARM_NAND_SendAddress, \ref ARM_NAND_ReadData, \ref ARM_NAND_WriteData, \ref ARM_NAND_ExecuteSequence).
-It is useful to indicate completion of complex operations (such as erase). 
+It is useful to indicate completion of complex operations (such as erase).
 The event is only generated when \ref ARM_NAND_GetCapabilities returns data field \em event_device_ready = \token{1}
 and was enabled by calling \ref ARM_NAND_Control (\ref ARM_NAND_DEVICE_READY_EVENT, 1).
 If the event is not available, poll the \em busy data field using the function \ref ARM_NAND_GetStatus.
 
-The event \ref ARM_NAND_EVENT_DRIVER_READY occurs when previously a function 
-(\ref ARM_NAND_SendCommand, \ref ARM_NAND_SendAddress, \ref ARM_NAND_ReadData, \ref ARM_NAND_WriteData, \ref ARM_NAND_ExecuteSequence) 
-returned with \ref ARM_DRIVER_ERROR_BUSY. It is useful when functions are called simultaneously from independent threads 
-(for example to control multiple devices) and the threads have no knowledge about each other (driver rejects reentrant calls with return of \ref ARM_DRIVER_ERROR_BUSY). 
-\em dev_num indicates the device that returned previously busy. 
+The event \ref ARM_NAND_EVENT_DRIVER_READY occurs when previously a function
+(\ref ARM_NAND_SendCommand, \ref ARM_NAND_SendAddress, \ref ARM_NAND_ReadData, \ref ARM_NAND_WriteData, \ref ARM_NAND_ExecuteSequence)
+returned with \ref ARM_DRIVER_ERROR_BUSY. It is useful when functions are called simultaneously from independent threads
+(for example to control multiple devices) and the threads have no knowledge about each other (driver rejects reentrant calls with return of \ref ARM_DRIVER_ERROR_BUSY).
+\em dev_num indicates the device that returned previously busy.
 *******************************************************************************************************************/
 
 /**
 @}
-*/ 
+*/
 // End NAND Interface

@@ -177,11 +177,11 @@ provides more information on this step):
       <files>
         <!--  include folder -->
         <file category="include" name="Device/Include/"/>
- 
+
         <file category="source"  name="Device/Source/ARM/startup_MVCM3xxx.s" attr="config" condition="Startup ARM" version="1.0.0"/>
         <file category="source"  name="Device/Source/GCC/startup_MVCM3xxx.S" attr="config" condition="Startup GCC" version="1.0.0"/>
         <file category="source"  name="Device/Source/IAR/startup_MVCM3xxx.s" attr="config" condition="Startup IAR" version="1.0.0"/>
- 
+
         <file category="source"  name="Device/Source/system_MVCM3xxx.c"  attr="config" version="1.0.0"/>
       </files>
     </component>
@@ -219,7 +219,7 @@ formalizes the description of the programmer's view for the system contained in 
 microcontrollers, in particular the memory mapped registers of the peripherals. The level of detail contained in system view
 descriptions is comparable to what is found in device reference manuals published by silicon vendors. The information ranges
 from a high level functional description of a peripheral all the way down to the definition and purpose of an individual bit
-field in a memory mapped register. CMSIS-SVD files are developed and maintained by the silicon vendors. 
+field in a memory mapped register. CMSIS-SVD files are developed and maintained by the silicon vendors.
 The XML based SVD file is the input for <a href="../../SVD/html/svd_SVDConv_pg.html"><b>SVDConv.exe</b></a> that
 generates the tool dependent debug view and the device header file.
 
@@ -253,11 +253,11 @@ CMSIS-SVD SVD Consistency Checker / Header File Generator V2.86g
 Copyright (C) 2010 - 2014 Arm Ltd and Arm Germany GmbH. All rights reserved.
 Options: "Files\SVD\MVCM3xxx.svd" --generate=header --fields=macro
 Reading file: "Files\SVD\MVCM3xxx.svd"
- 
+
 Decoding using XML SVD Schema V1.1
- 
+
 Found 0 Errors and 0 Warnings
- 
+
 Return Code: 0 (OK)
 \endverbatim
 Move the generated header file <b>MVCM3xxx.h</b> to the <b>Device\\Include</b> directory.
@@ -323,7 +323,7 @@ the device parameters (Device Name, Device Size, and Sector Size) in the \b Flas
 \code
 struct FlashDevice const FlashDevice  =  {
    FLASH_DRV_VERS,             // Driver Version, do not modify!
-   "MVCM3110/250 Flash",       // Device Name 
+   "MVCM3110/250 Flash",       // Device Name
    ONCHIP,                     // Device Type
    0x00000000,                 // Device Start Address
    0x00004000,                 // Device Size in Bytes (16kB)
@@ -392,7 +392,7 @@ Parameters of each single device are defined in:
 - \ref element_device "device": attributes of a specific silicon device
 - \ref element_variant "variant": attributes of a device variant (for example, with different package or temperature
   range) or an OEM device or board that integrates the device.
-       
+
 A device is described by the following properties:
  - \ref element_description "description": textual device description
  - \ref element_feature "feature": categorized list of device peripherals and features. This list is used on

@@ -1,7 +1,7 @@
-/** 
+/**
 \page pdsc_devices_pg /package/devices element
 
-The level \elem{devices} contains all devices for which support is provided by the \ref cp_SWComponents "Software Pack". 
+The level \elem{devices} contains all devices for which support is provided by the \ref cp_SWComponents "Software Pack".
 
 Devices can be organized in hierarchy groups to limit redundancy. The hierarchy levels are:
 - \ref element_family "family": the attributes of a device family which includes also the processor.
@@ -9,9 +9,9 @@ Devices can be organized in hierarchy groups to limit redundancy. The hierarchy 
 
 Device characteristics can be defined in:
 - \ref element_device "device": attributes of a specific silicon device
-- \ref element_variant "variant": attributes of a device variant (for example, with different package or temperature range) or an 
+- \ref element_variant "variant": attributes of a device variant (for example, with different package or temperature range) or an
        OEM device or board that integrates the device.
-       
+
 A device is described by the following properties:
  - \ref element_description "description": textual device description
  - \ref element_feature "feature": categorized list of device peripherals and features
@@ -29,8 +29,8 @@ A device is described by the following properties:
  - \ref element_memory "memory": memory layout of the device for internal and external RAM and ROM regions
  - \ref element_algorithm "algorithm": device specific Flash programming algorithms
 
-A device will inherit the specifications from both the family and sub-family levels. Some properties are required to be unique. 
-For example, the name of the svd file attribute of the \elem{debug} property. 
+A device will inherit the specifications from both the family and sub-family levels. Some properties are required to be unique.
+For example, the name of the svd file attribute of the \elem{debug} property.
 Therefore, the svd file specified on the family level can be redefined by the attribute on the sub-family or device level.
 Information like the description and feature entries are concatenated, starting with the information from the family and sub-family level
 and finalizing with the information on the device level.
@@ -155,15 +155,15 @@ The group is not mandatory.
 \delim
 */
 
-/** 
+/**
 \page pdsc_family_pg /package/devices/family element
 
 \section element_family /package/devices/family
 
-Define properties that are in common to all devices of a family. These properties are inherited by 
-subgroups or elements. This is a mechanism of granulation to reduce redundancy.  
+Define properties that are in common to all devices of a family. These properties are inherited by
+subgroups or elements. This is a mechanism of granulation to reduce redundancy.
 Multiple \<family> groups can be defined.
- 
+
 \b Example
 \code
 <devices>
@@ -183,7 +183,7 @@ Multiple \<family> groups can be defined.
     <debugport   .../>
     <debug       .../>
     <trace       .../>
-   
+
     <subFamily DsubFamily="...">
       ...
       <device Dname="...">
@@ -195,7 +195,7 @@ Multiple \<family> groups can be defined.
   </family>
   ...
 </devices>
-\endcode 
+\endcode
 
 <p>&nbsp;</p>
 
@@ -353,13 +353,13 @@ Multiple \<family> groups can be defined.
 
 \section element_subFamily /package/devices/family/subFamily
 
-Define properties that are in common to all devices of a subFamily. This is another mechanism of granulation to reduce redundancy. 
+Define properties that are in common to all devices of a subFamily. This is another mechanism of granulation to reduce redundancy.
 These properties are inherited by subgroups or elements. Multiple \<subFamily> groups can be defined.
- 
+
 \b Example
 \code
 <family Dfamily="STM32F2" Dvendor="STMicroelectronics:13">
-  ...   
+  ...
   <subFamily DsubFamily="...">
     <processor   .../>
     <debugconfig .../>
@@ -384,7 +384,7 @@ These properties are inherited by subgroups or elements. Multiple \<subFamily> g
   </subFamily>
 
 </family>
-\endcode 
+\endcode
 
 <p>&nbsp;</p>
 
@@ -693,7 +693,7 @@ Multiple \<device> elements can be defined.
 
 \section element_algorithm /package/devices/family/.../algorithm
 
-Specify Flash programming algorithms with the address range and its size.  An algorithm with 
+Specify Flash programming algorithms with the address range and its size.  An algorithm with
 \<default> set to \token{true} gets configured automatically to the download options of the project.
 Algorithms can be defined on various levels. Multiple \<algorithm> elements are possible. If the
 memory range and style are identical, the one on the lower level takes precedence.
@@ -704,10 +704,10 @@ memory range and style are identical, the one on the lower level takes precedenc
   ...
   <!-- use for all devices of the family  -->
   <algorithm name="Flash\STM32F2xx_512.flm" start=0x08000000 size=0x10000 default="1" style="Keil"/>
- 
+
   <subFamily DsubFamily="STM32F405">
     <!-- use for all devices of a subFamily -->
-    <algorithm name="Flash/STM32F2xx_1024.flm" start=0x08000000 size=0x20000 default="1" style="Keil"/>       
+    <algorithm name="Flash/STM32F2xx_1024.flm" start=0x08000000 size=0x20000 default="1" style="Keil"/>
 
     <device Dname="STM32F405OE">
       <!-- finally, this is the default for the device -->
@@ -717,7 +717,7 @@ memory range and style are identical, the one on the lower level takes precedenc
 </family>
 \endcode
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Type: AlgorithmType">
   <tr>
@@ -776,8 +776,8 @@ memory range and style are identical, the one on the lower level takes precedenc
   </tr>
   <tr>
     <td>RAMsize</td>
-    <td>Maximum size of RAM available for the execution of the Flash programming algorithm. 
-    End address = start + size - 1 is used for the Stack. If specified, the \ref element_memory 
+    <td>Maximum size of RAM available for the execution of the Flash programming algorithm.
+    End address = start + size - 1 is used for the Stack. If specified, the \ref element_memory
     "memory" element does not require a \c default attribute.</td>
     <td>NonNegativeInteger</td>
     <td>optional</td>
@@ -795,7 +795,7 @@ memory range and style are identical, the one on the lower level takes precedenc
     <tr>
     <td>style</td>
     <td>[Version 1.4.0] Today, different toolchains support different styles of incompatible flash
-    programming algorithms. The attribute specifies the style of the specified flash programming 
+    programming algorithms. The attribute specifies the style of the specified flash programming
     algorithm. For backward compatibility the default value is \token{Keil}. The aim is to converge to
     the <em>CMSIS</em> style.
     </td>
@@ -880,7 +880,7 @@ identical, the one on the lower level takes precedence. Overlap of Flash informa
   </tr>
   <tr>
     <td>blankval</td>
-    <td>Expected memory value for unprogrammed address ranges (64-bit value). 
+    <td>Expected memory value for unprogrammed address ranges (64-bit value).
     The access size used to read back programmed memory defines the number of least significant bytes of this value that are compared.
     Defaults to \token{0xFFFFFFFFFFFFFFFF} if not specified.</td>
     <td>NonNegativeInteger</td>
@@ -1074,7 +1074,7 @@ The book element contains the location, filename, and extension of the file. The
   </tr>
   <tr>
     <td>name</td>
-    <td>File name of the document including the extension. The document path is relative to the package base folder. 
+    <td>File name of the document including the extension. The document path is relative to the package base folder.
         Directory/file names are case-sensitive.</td>
     <td>xs:string</td>
     <td>required</td>
@@ -1087,7 +1087,7 @@ The book element contains the location, filename, and extension of the file. The
   </tr>
   <tr>
     <td>public</td>
-    <td>Set publishing permissions for the documentation. If \tagem{public} is \token{true}, then the vendor gives permission 
+    <td>Set publishing permissions for the documentation. If \tagem{public} is \token{true}, then the vendor gives permission
         to extract the documentation from the pack and publish it on a web-page. Links to web pages are assumed to be public.
         The default value is \token{false}.</td>
     <td>xs:boolean</td>
@@ -1105,10 +1105,10 @@ Multiple elements are allowed. The last occurrence in the hierarchy determines t
 \note
 - In the example below, the device \b STM32F407IG will have a define \c STM32F407IG. Previous defines
   are overridden.
-- It is good practice to add both attributes (\c header and \c define) in the attributes list of the 
+- It is good practice to add both attributes (\c header and \c define) in the attributes list of the
   \c compile element together. This clarifies the relationship between header file and define.
 - The name of the header file should be exported by the IDE to the \ref RTE_Components_h file using the \#define CMSIS_device_header.
-  
+
 \b Example
 \code
 <family Dfamily="STM32F4" Dvendor="STMicroelectronics:13">
@@ -1182,15 +1182,15 @@ of bullet points should not exceed ten. To create a detailed feature list use th
 <package>
   <devices>
     <family Dfamily="STM32F2" Dvendor="STMicroelectronics:13">
-    
+
       <description>
         STM32F2 devices are designed for medical, industrial and consumer
         applications and provide rich connectivity peripherals.
-        - At 120 MHz CPU clock: 150 DMIPS executing from Flash memory 
+        - At 120 MHz CPU clock: 150 DMIPS executing from Flash memory
         - ART Accelerator for low-power Flash execution (175 µA/MHz @ 120 MHz)
         - Flexible Memory Controller supports Compact Flash, SRAM, PSRAM, NOR and NAND
       </description>
- 
+
     </family>
   </devices>
 </package>
@@ -1240,10 +1240,10 @@ of bullet points should not exceed ten. To create a detailed feature list use th
 
 Tool-specific elements for a device.
 
-Can occur on various levels. 
+Can occur on various levels.
 
 Contains information that is specific for a <b>development tool</b> identified by the \em name attribute.
-The structure of the \em element is not specified in the schema file which gives the <b>development tool</b> 
+The structure of the \em element is not specified in the schema file which gives the <b>development tool</b>
 full control of the \em element usage.
 
 \b Example
@@ -1251,7 +1251,7 @@ full control of the \em element usage.
 <package>
   <devices>
     <family Dfamily="MySeries" Dvendor="Generic:5">
-      ...    
+      ...
       <environment name="MyConfigTool">
         <file>MyConfigFile.cfg</file>
         <control>MyControlString</control>
@@ -1267,7 +1267,7 @@ full control of the \em element usage.
 <package>
   <devices>
     <family Dfamily="XMC1000 Series" Dvendor="Infineon:7">
-      ...    
+      ...
       <environment name="uv" Pname="M0">
         <CMisc>--C99</CMisc>
         ...
@@ -1340,7 +1340,7 @@ features.
 
 Many device feature types are already predefined, such as timers, converters, Ethernet, USB, etc (for a complete list refer
 to table \ref DeviceFeatureTypeEnum "Device Feature Types"). Features can be defined on various levels. Inner elements
-supersede outer elements. 
+supersede outer elements.
 
 \b Example
 \code
@@ -1361,8 +1361,8 @@ supersede outer elements.
       <feature type="IntRC" n="32000" name="Internal RC with Calibration"/>
       <feature type="RTC" n="32000" name="RTC with 32 kHz calibrated Oscillator and Battery Backup"/>
       <feature type="PowerMode" n="3" name="Run, Stop, Standby"/>
-      <feature type="Temp" n="-40" m="85"/> 
-      <feature type="Temp" n="-40" m="105"/> 
+      <feature type="Temp" n="-40" m="85"/>
+      <feature type="Temp" n="-40" m="105"/>
       <feature type="Timer" n="4" m="16" name="General Purpose Timer"/>
       ...
       <subFamily DsubFamily="STM32F407">
@@ -1370,7 +1370,7 @@ supersede outer elements.
         <feature type="IOs" n="36"/>                                                  <!-- Adds new feature to subFamily  -->
         <feature type="Timer" n="7" m="32" name="General Purpose Timer"/>             <!-- Adds to settings from <family> -->
 
-        
+
         <device Dname="STM32F407IE">
           <!--  Feature specific to this device.  All above features are inherited.  -->
           <feature type="QFP" n="176" name="LQFP 176 24x24x1.4"/>
@@ -1434,7 +1434,7 @@ supersede outer elements.
   </tr>
   <tr>
     <td>name</td>
-    <td>Descriptive name of the feature. For example, "16-bit down counting timer". If omitted, the <b>Default Name</b> is used 
+    <td>Descriptive name of the feature. For example, "16-bit down counting timer". If omitted, the <b>Default Name</b> is used
     as described in the table \ref DeviceFeatureTypeEnum "Device Feature Types".</td>
     <td>xs:string</td>
     <td>optional</td>
@@ -1443,7 +1443,7 @@ supersede outer elements.
 
 \n
 
-\anchor DeviceFeatureTypeEnum <b>Table: Device Feature Types</b> 
+\anchor DeviceFeatureTypeEnum <b>Table: Device Feature Types</b>
 
 The table lists predefined device features (peripherals).
 \note The attribute \a name of the element \ref element_feature is a descriptive text for a feature. If \a name is omitted, then the <b>Default Name</b> is used.
@@ -1522,7 +1522,7 @@ The table lists predefined device features (peripherals).
 |NB-IoT|Standard Version|Maximum Data Rate in Bit/s|NB IoT|\<feature type="NB-IoT" n="NB1" m="250000"/\>|NB-IoT NB1 250 kbit/s|
 |NFC|Standard Version|Maximum Data Rate in Bit/s|NFC|\<feature type="NFC" n="ISO 18092"/\>|NFC ISO 18092|
 |WirelessOther|Standard Version|Maximum Data Rate in Bit/s|Other Wireless Connectivity|\<feature type="WirelessOther" n="MyStandard" m="1000000"/\>|MyStandard 1 Mbit/s Wireless Connectivity|
-	
+
 \delim
 
 \section element_memory /package/devices/family/.../memory
@@ -1542,11 +1542,11 @@ This element can be defined on various levels. Inner memory elements supersede o
         <debug  __dp="0" __ap="0" svd="SVD/STM32F40x.svd"/>
         <memory name="SRAM1" access="rwx" start="0x20020000" size="0x20000" default="1"/>
         <memory name="SRAM2" access="rwx" start="0x10000000" size="0x10000" default="1"/>
-        
+
         <device Dname="STM32F407IE">
           <memory name="Flash" access="rx" start="0x08000000" size="0x80000" startup="1" default="1"/>
         </device>
-        
+
       </subFamily>
     </family>
   </devices>
@@ -1581,7 +1581,7 @@ This element can be defined on various levels. Inner memory elements supersede o
   </tr>
   <tr>
     <td>Pname</td>
-    <td>Processor identifier. This attribute <b>is mandatory for devices that embed multiple processors</b>. 
+    <td>Processor identifier. This attribute <b>is mandatory for devices that embed multiple processors</b>.
         Only alphabetical characters, decimal digits, '-' and '_' are allowed. </td>
     <td>RestrictedString</td>
     <td>optional</td>
@@ -1626,7 +1626,7 @@ This element can be defined on various levels. Inner memory elements supersede o
     <td>default</td>
     <td>
       <p>Indicates a general purpose memory region, that does not require any special considerations (access speed, remapping, protection, etc.).</p>
-      <p>If \token{true}, then an IRAM memory region will be used by the linker for locating any data and an IROM memory region will for locating 
+      <p>If \token{true}, then an IRAM memory region will be used by the linker for locating any data and an IROM memory region will for locating
       any code. Every device needs at least one default IRAM region.</p>
       <p>If an \ref element_algorithm "algorithm" element is specified (without \c RAMstart and
       \c RAMsize attributes), the first listed IRAM region with default="1" will also be used for executing the flash programming algorithm.</p>
@@ -1774,7 +1774,7 @@ the attribute \elem{Pname}. If the information is relevant to all processors, no
   <processor Dcore="Cortex-A7" DcoreVersion="r0p5" Pname="Cortex-A7" Punits="2" />
   <processor Dcore="Cortex-M4" DcoreVersion="r0p1" Pname="Cortex-M4"/>
   ...
-  <debug   Pname="Cortex-A7" Punit="0" svd="SVD/iMX7D_A7.svd" __dp="0" __ap="1" address="0x80070000"/> 
+  <debug   Pname="Cortex-A7" Punit="0" svd="SVD/iMX7D_A7.svd" __dp="0" __ap="1" address="0x80070000"/>
   <debug   Pname="Cortex-A7" Punit="1" svd="SVD/iMX7D_A7.svd" __dp="0" __ap="1" address="0x80072000"/>
   <debug   Pname="Cortex-M4"           svd="SVD/iMX7D_M4.svd" __dp="0" __ap="4"/>
   ...
@@ -1808,7 +1808,7 @@ the attribute \elem{Pname}. If the information is relevant to all processors, no
   </tr>
   <tr>
     <td>Pname</td>
-    <td>Processor identifier. This attribute <b>is mandatory for devices that embed multiple processors</b>. 
+    <td>Processor identifier. This attribute <b>is mandatory for devices that embed multiple processors</b>.
 	      Each processor needs a unique identifier and must be used consistently in the <b>Pname</b> attribute of the elements within the scope of the current device family section.
         Only alphabetical characters, decimal digits, '-' and '_' are allowed.
     </td>
@@ -1888,13 +1888,13 @@ complete set of attributes should be present (at least Dcore, Dfpu, Dmpu, Ddsp, 
 means that you can overwrite previous attributes on the next level. For example, if you have a subFamily that has a general
 Dclock of 50000000 (50 Mhz), you can still specify for one of the subFamily members a different Dclock (such as 66000000).
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 \anchor DeviceVendorEnum <b>Table: Device Vendors</b>
 
-The table lists predefined values representing device vendors. The list is extended from time to time (on request by new vendors). 
+The table lists predefined values representing device vendors. The list is extended from time to time (on request by new vendors).
 Contact cmsis@arm.com to ask for an extension. These values can be used in the elements:
-- \ref element_board_mountedDevice 
+- \ref element_board_mountedDevice
 - \ref element_accept
 - \ref element_require
 - \ref element_deny
@@ -2273,7 +2273,7 @@ These values can be used in the elements:
 - \ref element_require
 - \ref element_deny
 - \ref element_processor
-	
+
 <table class="cmtable" summary="Enumeration: DcoreEnum">
   <tr>
     <th>Dcore=</th>
@@ -2318,7 +2318,7 @@ These values can be used in the elements:
   <tr>
     <td class="XML-Token">Cortex-M55</td>
     <td><a href="http://developer.arm.com/products/processors/cortex-m/cortex-m55" target="_blank">Arm Cortex-M55</a> processor based device</td>
-  </tr>  
+  </tr>
   <tr>
     <td class="XML-Token">SC000</td>
     <td>SecurCore <a href="http://developer.arm.com/products/processors/cortex-m/sc000-processor" target="_blank">SC000</a> based on technology of Cortex-M0.</td>
@@ -2412,9 +2412,9 @@ These values can be used in the elements:
 
 The table lists values that indicate whether a CPU has an Floating Point Unit (FPU).
 The tokens can be used in the elements:
-- \ref element_accept  
-- \ref element_require 
-- \ref element_deny  
+- \ref element_accept
+- \ref element_require
+- \ref element_deny
 - \ref element_processor
 
 <table class="cmtable" summary="Enumeration: DfpuEnum">
@@ -2446,9 +2446,9 @@ The tokens can be used in the elements:
 
 The table shows predefined values that identify whether a CPU has an Memory Protection Unit (MPU).
 The values can be used in the elements:
-- \ref element_accept  
-- \ref element_require 
-- \ref element_deny  
+- \ref element_accept
+- \ref element_require
+- \ref element_deny
 - \ref element_processor
 
 <table class="cmtable" summary="Enumeration: DmpuEnum">
@@ -2472,9 +2472,9 @@ The values can be used in the elements:
 
 The table shows predefined values that identify whether a CPU implements TrustZone(TZ).
 The values can be used in the elements:
-- \ref element_accept  
-- \ref element_require 
-- \ref element_deny  
+- \ref element_accept
+- \ref element_require
+- \ref element_deny
 - \ref element_processor
 
 <table class="cmtable" summary="Enumeration: DtzEnum">
@@ -2492,15 +2492,15 @@ The values can be used in the elements:
   </tr>
 </table>
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 \anchor DsecureEnum <b>Table: Software Model Selection </b>
 
 The table shows predefined values that identify whether an application will run in secure mode.
 The values can be used in the elements:
-- \ref element_accept  
-- \ref element_require 
-- \ref element_deny  
+- \ref element_accept
+- \ref element_require
+- \ref element_deny
 
 <table class="cmtable" summary="Enumeration: DsecureEnum">
   <tr>
@@ -2521,16 +2521,16 @@ The values can be used in the elements:
   </tr>
 </table>
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 
 \anchor DdspEnum <b>Table: Device implements DSP Instructions</b>
 
 The table shows predefined values that identify whether a CPU implements DSP instructions (DSP).
 The values can be used in the elements:
-- \ref element_accept  
-- \ref element_require 
-- \ref element_deny  
+- \ref element_accept
+- \ref element_require
+- \ref element_deny
 - \ref element_processor
 
 <table class="cmtable" summary="Enumeration: DdspEnum">
@@ -2548,15 +2548,15 @@ The values can be used in the elements:
   </tr>
 </table>
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 \anchor DmveEnum <b>Table: Device implements M-Profile Vector Extension Instructions</b>
 
 The table shows predefined values that identify whether a CPU implements MVE instructions (MVE).
 The values can be used in the elements:
-- \ref element_accept  
-- \ref element_require 
-- \ref element_deny  
+- \ref element_accept
+- \ref element_require
+- \ref element_deny
 - \ref element_processor
 
 <table class="cmtable" summary="Enumeration: DmveEnum">
@@ -2578,15 +2578,15 @@ The values can be used in the elements:
   </tr>
 </table>
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 \anchor DcdecpEnum <b>Table: Custom Datapath Extensions</b>
 
 The table lists values representing	Custom Datapath Extensions in a device.
 The values can be used in the elements:
-- \ref element_accept 
+- \ref element_accept
 - \ref element_require
-- \ref element_deny  
+- \ref element_deny
 - \ref element_processor
 
 <table class="cmtable" summary="Enumeration: DcdecpEnum">
@@ -2615,9 +2615,9 @@ The values can be used in the elements:
 
 The table lists values representing	the endianness of a device.
 The values can be used in the elements:
-- \ref element_accept 
+- \ref element_accept
 - \ref element_require
-- \ref element_deny  
+- \ref element_deny
 - \ref element_processor
 
 <table class="cmtable" summary="Enumeration: DendianEnum">
@@ -2656,7 +2656,7 @@ Default debugger configuration for a target connection.
 </family>
 \endcode
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: debugconfig">
   <tr>
@@ -2727,11 +2727,11 @@ Default debugger configuration for a target connection.
   </tr>
 </table>
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 \anchor DebugProtocolEnum <b>Table: Debug Protocol Type</b>
 
-The table lists the values for debug protocol types. The values can be used in 
+The table lists the values for debug protocol types. The values can be used in
  - \ref element_debugconfig
 
 <table class="cmtable" summary="Enumeration: DataPatchAccessTypeEnum">
@@ -2759,12 +2759,12 @@ The table lists the values for debug protocol types. The values can be used in
   </tr>
 </table>
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 <hr>
 
 \section element_debugvars /package/devices/family/.../debugvars
 
-Specify \ref DebugVars "global debug access variables". Use these in addition 
+Specify \ref DebugVars "global debug access variables". Use these in addition
 to the \ref PredefinedDebugVars "pre-defined variables" in order to
 query settings from a debug access sequences.<br>
 <br>
@@ -2773,7 +2773,7 @@ Define debug access variables with statements of the following form.
 __var uservar = value;  // Comment: Define "uservar" and initialize to "value"
 \endcode
 
-\note 
+\note
 - Initialization values must be constant unsigned numbers. No expressions are allowed.
 - User-defined debug access variables are <b>read-only</b> in a debug access sequence.
 - Pre-defined debug access variables cannot be set in this element.
@@ -2784,11 +2784,11 @@ __var uservar = value;  // Comment: Define "uservar" and initialize to "value"
 <family Dfamily="EFM32WG Series" Dvendor="Energy Micro:97">
   ...
   <debugvars configfile="Debug/EFM32WGxxx.dbgconf" version="1.0">
-  
+
     __var __TPIU_pinlocation = 0;  // Select one of four possible TPIU pin locations
-    
+
     __var __SWO_pinlocation  = 0;  // Select one of four possible SWO pin locations
-    
+
   </debugvars>
   ...
   <sequences>
@@ -2837,7 +2837,7 @@ __var uservar = value;  // Comment: Define "uservar" and initialize to "value"
     <td>configfile</td>
     \anchor debugvars_configfile
     <td>
-      Configuration file with path relative to the package base folder (extension *.DBGCONF). This file contains 
+      Configuration file with path relative to the package base folder (extension *.DBGCONF). This file contains
       assignments of a default value to global debug access variables. This file gets copied to the project folder
       and is editable by the end-user. This file is read by the debugger after processing the global debug access variables.
       By editing the values of the debug access variables, the end-user effectively controls the behavior of sequences.
@@ -2875,9 +2875,9 @@ __var uservar = value;  // Comment: Define "uservar" and initialize to "value"
 
 <p>&nbsp;</p>
 
-\b Example: Configuration File 
+\b Example: Configuration File
 \code
-// File: EFM32WGxxx.dbgconf 
+// File: EFM32WGxxx.dbgconf
 // Version: 1.0
 // <<< Use Configuration Wizard in Context Menu >>>
 // <h>Trace Pin Setup
@@ -2893,7 +2893,7 @@ __var uservar = value;  // Comment: Define "uservar" and initialize to "value"
 // <i> - Pin Location 3 (TRACECLK: PA6, TRACEDATA0: PA2, TRACEDATA1: PA3,  TRACEDATA2: PA4,  TRACEDATA3: PA5)
 // <i> Default: Pin Location 0
 __TPIU_pinlocation = 0;
-  
+
 // <o> SWO Pin Location
 //   <0=> Pin Location 0
 //   <1=> Pin Location 1
@@ -2906,7 +2906,7 @@ __TPIU_pinlocation = 0;
 // <i> - Pin Location 3 (SWO: PD2)
 // <i> Default: Pin Location 0
 __SWO_pinlocation = 0;
-  
+
 // </h>
 // <<< end of configuration section >>>
 \endcode
@@ -2931,20 +2931,20 @@ allowed <b>__dp</b> ID in later references is \token{0}.
 <family Dfamily="LPC4300 Series" Dvendor="NXP:11">
   ...
   <debugconfig default="jtag" clock="10000000" swj="1"/>
-  
+
   <debugport __dp="0">
     <jtag tapindex="0"/>
     <swd/>
   </debugport>
-  
+
   <debugport __dp="1">
-    <jtag tapindex="1"/> 
+    <jtag tapindex="1"/>
   </debugport>
   ...
 </family>
 \endcode
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: debugport">
   <tr>
@@ -3004,7 +3004,7 @@ allowed <b>__dp</b> ID in later references is \token{0}.
   </tr>
 </table>
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 <hr>
 
 
@@ -3027,7 +3027,7 @@ Pairs of <b>__dp</b> and <b>__ap</b> values must not be used to reference an acc
     <jtag tapindex="0"/>
     <swd/>
   </debugport>
-  
+
   <debugport __dp="1">  <!-- ADIv6 DAP -->
     <jtag tapindex="1"/>
   </debugport>
@@ -3035,16 +3035,16 @@ Pairs of <b>__dp</b> and <b>__ap</b> values must not be used to reference an acc
   <!-- ADIv5 DAP -->
   <accessportV1 __apid="0" _dp="0" index="0"/>
   <accessportV1 __apid="1" _dp="0" index="1"/>
-    
+
   <!-- ADIv6 DAP -->
   <accessportV2 __apid="2" _dp="1" address="0x00002000"/>
   <accessportV2 __apid="3" _dp="1" address="0x00004000"/>
-   
+
   ...
 </family>
 \endcode
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: accessportV1">
   <tr>
@@ -3097,7 +3097,7 @@ Pairs of <b>__dp</b> and <b>__ap</b> values must not be used to reference an acc
   </tr>
 </table>
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 <hr>
 
 
@@ -3118,7 +3118,7 @@ An <b>accessportV2</b> must be later selected via <b>__apid</b>. It is not possi
     <jtag tapindex="0"/>
     <swd/>
   </debugport>
-  
+
   <debugport __dp="1">  <!-- ADIv6 DAP -->
     <jtag tapindex="1"/>
   </debugport>
@@ -3126,16 +3126,16 @@ An <b>accessportV2</b> must be later selected via <b>__apid</b>. It is not possi
   <!-- ADIv5 DAP -->
   <accessportV1 __apid="0" _dp="0" index="0"/>
   <accessportV1 __apid="1" _dp="0" index="1"/>
-    
+
   <!-- ADIv6 DAP -->
   <accessportV2 __apid="2" _dp="1" address="0x00002000"/>
   <accessportV2 __apid="3" _dp="1" address="0x00004000"/>
-    
+
   ...
 </family>
 \endcode
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: accessportV2">
   <tr>
@@ -3197,7 +3197,7 @@ An <b>accessportV2</b> must be later selected via <b>__apid</b>. It is not possi
   </tr>
 </table>
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 <hr>
 
 
@@ -3212,7 +3212,7 @@ detection.
 <family Dfamily="STM32F4" Dvendor="STMicroelectronics:13">
   ...
   <debugconfig default="swd" clock="10000000" swj="1"/>
-  
+
   <debugport __dp="0">
     <jtag tapindex="0" idcode="0x4BA00477" irlen="4"/>
     <swd  idcode="0x2BA01477"/>
@@ -3221,7 +3221,7 @@ detection.
 </family>
 \endcode
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: jtag">
   <tr>
@@ -3268,7 +3268,7 @@ detection.
   </tr>
 </table>
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 <hr>
 
 \section element_dp_swd /package/devices/family/.../debugport/swd
@@ -3282,7 +3282,7 @@ information for the port selection in a system with multi-drop SWD support.
 <family Dfamily="STM32F4" Dvendor="STMicroelectronics:13">
   ...
   <debugconfig default="swd" clock="10000000" swj="1"/>
-  
+
   <debugport __dp="0">
     <jtag tapindex="0" idcode="0x4BA00477" irlen="4"/>
     <swd idcode="0x2BA01477"/>
@@ -3291,7 +3291,7 @@ information for the port selection in a system with multi-drop SWD support.
 </family>
 \endcode
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: swd">
   <tr>
@@ -3325,7 +3325,7 @@ information for the port selection in a system with multi-drop SWD support.
 --->
 </table>
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 <hr>
 
 \section element_dp_cjtag /package/devices/family/.../debugport/cjtag
@@ -3339,7 +3339,7 @@ detection.
 <family Dfamily="STM32F4" Dvendor="STMicroelectronics:13">
   ...
   <debugconfig default="swd" clock="10000000" swj="1"/>
-  
+
   <debugport __dp="0">
     <cjtag tapindex="0" idcode="0x4BA00477" irlen="4"/>
     <swd  idcode="0x2BA01477"/>
@@ -3348,7 +3348,7 @@ detection.
 </family>
 \endcode
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: cjtag">
   <tr>
@@ -3386,7 +3386,7 @@ detection.
   </tr>
 </table>
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 <hr>
 
 \section element_sequences /package/devices/family/.../sequences
@@ -3415,7 +3415,7 @@ Container for debug access sequences for this device.
   ...
 </family>
 \endcode
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: sequences">
   <tr>
@@ -3450,7 +3450,7 @@ Container for debug access sequences for this device.
   </tr>
 </table>
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 <hr>
 
 \section element_sequence /package/devices/family/.../sequences/sequence
@@ -3472,44 +3472,44 @@ Refer to \ref usage_of_sequences for details.<br>
   <sequences>
     ...
     <sequence name="UserSequence">
-      
+
       <block info="Define variables and do debug accesses">
         __var tpWidth = (__traceout &amp; 0x003F0000) >> 16;
         ...
       </block>
-      
+
       <control if="__traceout &amp; 0x2" info="Parallel Trace Port enabled">
-      
+
         <block>
           // Do something generic for parallel trace port trace
           ...
         </block>
-        
+
         <control if="tpWidth == 1" info="Configure device for 1-bit TPIU trace.">
-        
+
           <block>
             // Do debug accesses
             ...
           </block>
-          
+
         </control>
-        
+
         <control if="tpWidth == 2" info="Configure device for 2-bit TPIU trace.">
-        
+
           <block>
             // Do debug accesses
             ...
           </block>
-          
+
         </control>
-        
+
         <control if="tpWidth == 4" info="Configure device for 4-bit TPIU trace.">
-        
+
           <block>
             // Do debug accesses
             ...
           </block>
-          
+
         </control>
 
       </control>
@@ -3521,7 +3521,7 @@ Refer to \ref usage_of_sequences for details.<br>
 </family>
 \endcode
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: sequence">
   <tr>
@@ -3554,7 +3554,7 @@ Refer to \ref usage_of_sequences for details.<br>
       for this <b>sequence</b> element, a debugger executes the debug access sequence only for a debug connection
       to the referenced processor. Otherwise, it is executed for all processors.
       <b>This attribute must be set if defining multiple implementations of the same debug access sequence.</b>
-      Only alphabetical characters, decimal digits, '-' and '_' are allowed. 
+      Only alphabetical characters, decimal digits, '-' and '_' are allowed.
     </td>
     <td>RestrictedString</td>
     <td>optional</td>
@@ -3615,21 +3615,21 @@ Describes flow control like <b>if</b> and <b>while</b> blocks for debug access s
       </block>
       ...
       <control if="doIfBlock">
-      
+
         <block>
           // Do debug accesses
           ...
         </block>
-        
+
       </control>
       ...
       <control while="whileCondition" timeout="5000">
-      
+
         <block>
           // Execute while "whileCondition" different from '0' with a timeout of 5ms
           whileCondition = 0;
         </block>
-        
+
       </control>
       ...
     </sequence>
@@ -3639,7 +3639,7 @@ Describes flow control like <b>if</b> and <b>while</b> blocks for debug access s
 </family>
 \endcode
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: control">
   <tr>
@@ -3753,7 +3753,7 @@ for details on the allowed syntax of the block contents.
 </family>
 \endcode
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: block">
   <tr>
@@ -3833,13 +3833,13 @@ __var variable = 0;
   <b>\em block elements do not begin a new scope.</b>
 \code
 <sequence name="MySequence">
-  
+
   <block info="Block 1">
     __var condvar = 1;
     __var myvar1  = 5;
     __var myvar2  = 0;
   </block>
-  
+
   <control if="condvar">
     <block>
       // __var myvar1 = 2;      // Redefinition, not allowed!
@@ -3847,12 +3847,12 @@ __var variable = 0;
       myvar2 = myvar1 + myvar3; // Assign value (5+2) = 7
     </block>
   </control>
-  
+
   <block info="Block 2">
     myvar1 = myvar2 + 1;  // Variable myvar1 holds the value '8' after this statement
     // myvar2 = myvar3;   // myvar3 does not exist in this scope, not allowed!
   </block>
-  
+
 </sequence>
 \endcode
 - The debug access variables <b>__dp</b>, <b>__ap</b>, <b>__apid</b>, and <b>__errorcontrol</b> can be modified
@@ -3882,7 +3882,7 @@ An expression may consist of the following:
 - Comparison-operators such as \token{==}, \token{!=}, \token{<}, \token{>}, \token{<=}, and \token{>=}.
 - Logic operators such as \token{!}, \token{&&}, \token{||}, and \token{==}.
 - Conditional expression operations like: \code (x < y) ? a : b \endcode
-- Precedence of sub-expressions is indicated by brackets (\token{(}, \token{)}). C-like precedence applies 
+- Precedence of sub-expressions is indicated by brackets (\token{(}, \token{)}). C-like precedence applies
   if brackets are omitted.
 - References to \ref DebugVars "debug access variables" for evaluating debug settings.
 - Calls to \ref DebugFunctions "debug access functions".
@@ -3921,14 +3921,14 @@ to all connections.
   <processor Dcore="Cortex-A7" DcoreVersion="r0p5" Pname="Cortex-A7" Punits="2" />
   <processor Dcore="Cortex-M4" DcoreVersion="r0p1" Pname="Cortex-M4"/>
   ...
-  <debug   Pname="Cortex-A7" Punit="0" svd="SVD/iMX7D_A7.svd" __dp="0" __ap="1" address="0x80070000"/> 
+  <debug   Pname="Cortex-A7" Punit="0" svd="SVD/iMX7D_A7.svd" __dp="0" __ap="1" address="0x80070000"/>
   <debug   Pname="Cortex-A7" Punit="1" svd="SVD/iMX7D_A7.svd" __dp="0" __ap="1" address="0x80072000"/>
   <debug   Pname="Cortex-M4"           svd="SVD/iMX7D_M4.svd" __dp="0" __ap="4"/>
   ...
 </device>
 \endcode
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: debug">
   <tr>
@@ -4085,7 +4085,7 @@ Describes a patch a debugger shall apply when reading data from the device.
 </family>
 \endcode
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: datapatch">
   <tr>
@@ -4171,7 +4171,7 @@ Describes a patch a debugger shall apply when reading data from the device.
   </tr>
 </table>
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 \anchor DataPatchAccessTypeEnum <b>Table: Data Patch Access Type</b>
 
@@ -4228,7 +4228,7 @@ Multiple <b>trace</b> elements can be defined which are either specific to a pro
 </family>
 \endcode
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: trace">
   <tr>
@@ -4259,7 +4259,7 @@ Multiple <b>trace</b> elements can be defined which are either specific to a pro
       Reference to a processor identifier as specified for a <b>processor</b> element. If <b>Pname</b> is set this
       <b>trace</b> section only applies for target connections to the referenced processor. Otherwise, it applies
       for all processors. <b>This attribute must be set if defining multiple \em trace elements within the same section.</b>
-      Only alphabetical characters, decimal digits, '-' and '_' are allowed. 
+      Only alphabetical characters, decimal digits, '-' and '_' are allowed.
     </td>
     <td>RestrictedString</td>
     <td>optional</td>
@@ -4293,7 +4293,7 @@ Multiple <b>trace</b> elements can be defined which are either specific to a pro
   </tr>
 </table>
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 <hr>
 
 \section element_trace_serialwire /package/devices/family/.../trace/serialwire
@@ -4313,7 +4313,7 @@ Indicates serial wire trace output capabilities of the specified processor.
 </family>
 \endcode
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: serialwire">
   <tr>
@@ -4326,7 +4326,7 @@ Indicates serial wire trace output capabilities of the specified processor.
   </tr>
 </table>
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 <hr>
 
 \section element_trace_traceport /package/devices/family/.../trace/traceport
@@ -4488,7 +4488,7 @@ The value <b>width=0x00008088</b> (as shown in the table) indicates that three p
 </table>
 
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 <hr>
 
 \section element_trace_tracebuffer /package/devices/family/.../trace/tracebuffer
@@ -4510,7 +4510,7 @@ and reading it from the buffer.
 </family>
 \endcode
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: tracebuffer">
   <tr>
@@ -4587,8 +4587,8 @@ Defines a device variant. The element is optional. Can exist multiple times.
   </tr>
   <tr>
     <td>Dvariant</td>
-    <td><b>May get replaced by 'Dname' in the future</b>. Name of the device on the variant level. This effectively 
-        overwrites the device name specified on the device level. 
+    <td><b>May get replaced by 'Dname' in the future</b>. Name of the device on the variant level. This effectively
+        overwrites the device name specified on the device level.
         Once a device section contains a variant section, only the variant elements describe a 'selectable' device
         which can be selected in the tools. The Dname of the device level effectively becomes a group name like the
         Dfamily and DsubFamily attributes. Only alphabetical characters, decimal digits, '-' and '_' are allowed</td>

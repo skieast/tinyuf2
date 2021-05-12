@@ -1,9 +1,9 @@
 #include "ref.h"
 
-float32_t scratchArray[8192*2]; 
+float32_t scratchArray[8192*2];
 
 arm_cfft_instance_f32 ref_cfft_sR_f32_len8192 = { 8192, 0, 0, 0 };
-	
+
 q31_t ref_sat_n(q31_t num, uint32_t bits)
 {
 	int32_t posMax, negMin;
@@ -88,16 +88,16 @@ float32_t ref_pow(float32_t a, uint32_t b)
 {
 	uint32_t i;
 	float32_t r = a;
-	
-	for(i=1;i<b;i++) 
+
+	for(i=1;i<b;i++)
 	{
 		r *= a;
 	}
-	
+
 	if ( b == 0)
 	{
 		return 1;
 	}
-	
+
 	return r;
 }

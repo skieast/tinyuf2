@@ -7,7 +7,7 @@ void ref_cmplx_mult_cmplx_f32(
   uint32_t numSamples)
 {
 	uint32_t i;
-	
+
 	for(i=0;i<numSamples*2;i+=2)
 	{
 		pDst[i]   = pSrcA[i] * pSrcB[i]   - pSrcA[i+1] * pSrcB[i+1];
@@ -23,7 +23,7 @@ void ref_cmplx_mult_cmplx_q31(
 {
 	uint32_t i;
 	q31_t mul1, mul2, mul3, mul4;
-	
+
 	for(i=0;i<numSamples*2;i+=2)
 	{
 		mul1 = ((q63_t)pSrcA[i]   * pSrcB[i])   >> 33;
@@ -43,7 +43,7 @@ void ref_cmplx_mult_cmplx_q15(
 {
 	uint32_t i;
 	q31_t mul1, mul2, mul3, mul4;
-	
+
 	for(i=0;i<numSamples*2;i+=2)
 	{
 		mul1 = ((q31_t)pSrcA[i]   * pSrcB[i])   >> 17;

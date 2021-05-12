@@ -87,7 +87,7 @@ void arm_cmplx_mult_cmplx_f16(
     blkCnt = blockSize * CMPLX_DIM;
     blkCnt = blkCnt >> 3;
 
-    while (blkCnt > 0) 
+    while (blkCnt > 0)
     {
         vecA = vldrhq_f16(pSrcA);
         vecB = vldrhq_f16(pSrcB);

@@ -19,7 +19,7 @@ python addToDB.py SupportBarF32
 echo "Support"
 python addToDB.py Support
 echo "Unary Matrix"
-python addToDB.py Unary 
+python addToDB.py Unary
 echo "Binary Matrix"
 python addToDB.py Binary
 echo "Transform"

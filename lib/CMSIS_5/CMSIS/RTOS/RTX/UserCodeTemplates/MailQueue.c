@@ -4,7 +4,7 @@
 /*----------------------------------------------------------------------------
  *      Mail Queue creation & usage
  *---------------------------------------------------------------------------*/
- 
+
 void Thread_MailQueue1 (void const *argument);                  // thread function 1
 void Thread_MailQueue2 (void const *argument);                  // thread function 2
 osThreadId tid_Thread_MailQueue1;                               // thread id 1
@@ -28,12 +28,12 @@ int Init_MailQueue (void) {
   if (!qid_MailQueue) {
     ; // Mail Queue object not created, handle failure
   }
-  
+
   tid_Thread_MailQueue1 = osThreadCreate (osThread(Thread_MailQueue1),  NULL);
   if (!tid_Thread_MailQueue1) return(-1);
   tid_Thread_MailQueue2 = osThreadCreate (osThread(Thread_MailQueue2),  NULL);
   if (!tid_Thread_MailQueue2) return(-1);
-  
+
   return(0);
 }
 

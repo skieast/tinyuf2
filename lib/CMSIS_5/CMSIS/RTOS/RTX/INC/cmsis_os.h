@@ -21,7 +21,7 @@
  * Version 1.02
  *    Control functions for short timeouts in microsecond resolution:
  *    Added: osKernelSysTick, osKernelSysTickFrequency, osKernelSysTickMicroSec
- *    Removed: osSignalGet 
+ *    Removed: osSignalGet
  *----------------------------------------------------------------------------
  *
  * Copyright (c) 2013-2017 ARM LIMITED. All rights reserved.
@@ -244,7 +244,7 @@ extern uint16_t const os_tickus_f;
 /// \endcond
 
 /// Get the RTOS kernel system timer counter.
-/// \return RTOS kernel system timer as 32-bit value 
+/// \return RTOS kernel system timer as 32-bit value
 uint32_t osKernelSysTick (void);
 
 /// The RTOS kernel system timer frequency in Hz.

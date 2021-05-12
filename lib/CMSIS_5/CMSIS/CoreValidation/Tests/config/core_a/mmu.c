@@ -236,7 +236,7 @@ void MMU_CreateTranslationTable(void)
      *
      */
     static uint32_t *const ttb = (uint32_t*)__TTB_BASE;
-     
+
     //Create 4GB of normal entries
     MMU_TTSection (ttb, 0, 4096, Sect_Normal);
 

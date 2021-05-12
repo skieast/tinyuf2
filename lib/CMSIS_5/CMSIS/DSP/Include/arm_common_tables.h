@@ -526,4 +526,3 @@ extern const unsigned char hwLUT[256];
 #endif
 
 #endif /*  ARM_COMMON_TABLES_H */
-

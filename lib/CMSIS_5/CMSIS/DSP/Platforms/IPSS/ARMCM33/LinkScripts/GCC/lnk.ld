@@ -21,7 +21,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include "mem_ARMCM33.h" 
+#include "mem_ARMCM33.h"
 
 __STACK_SIZE = 0x2000;
 __HEAP_SIZE  = 0x50000;
@@ -119,10 +119,10 @@ SECTIONS
   /**
    * Location counter can end up 2byte aligned with narrow Thumb code but
    * __etext is assumed by startup code to be the LMA of a section in RAM
-   * which must be 4byte aligned 
+   * which must be 4byte aligned
    */
-  
-  .data : 
+
+  .data :
   {
     __data_start__ = .;
     *(vtable)
@@ -234,6 +234,3 @@ SECTIONS
   /* Check if data + heap + stack exceeds DTCM2 limit */
   ASSERT(__StackLimit >= __HeapLimit, "region DTCM2 overflowed with stack")
 }
-
-
-

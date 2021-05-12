@@ -6,7 +6,7 @@ Example functionality:
    - XTAL    =  12 MHz
    - Core    =  12 MHz
 
-The simple RTX Kernel based example shows how to use a 
+The simple RTX Kernel based example shows how to use a
 memory pool for dynamic object allocation.
 
 The MemPool example program is available for one target:

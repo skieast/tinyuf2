@@ -47,7 +47,7 @@ status_t LPUART_Init(LPUART_Type *base, const lpuart_config_t *config, uint32_t 
         (void (*)(LPUART_Type *, const lpuart_config_t *, uint32_t))0x00208e31;
 
     uint32_t instance;
-    // Find the instance index from base address mappings. 
+    // Find the instance index from base address mappings.
     for (instance = 0; instance < FSL_FEATURE_SOC_LPUART_COUNT; instance++)
     {
         if (s_lpuartBases[instance] == base)

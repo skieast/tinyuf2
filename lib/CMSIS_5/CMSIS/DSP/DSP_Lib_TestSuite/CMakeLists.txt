@@ -62,7 +62,7 @@ set(TESTSRC ${MAIN}
   ${JTEST_MAIN}
   )
 
-set(JINCS 
+set(JINCS
   Common/JTest/inc
   Common/JTest/inc/arr_desc
   Common/inc/basic_math_tests
@@ -72,8 +72,8 @@ set(JINCS
   Common/inc/filtering_tests
   Common/inc/intrinsics_tests
   Common/inc/matrix_tests
-  Common/inc/statistics_tests 
-  Common/inc/support_tests 
+  Common/inc/statistics_tests
+  Common/inc/support_tests
   Common/inc/transform_tests
   )
 
@@ -137,5 +137,3 @@ target_sources(DSP_Lib_TestSuite PRIVATE ${TESTSRC})
 target_include_directories(DSP_Lib_TestSuite PRIVATE "Common/inc")
 target_include_directories(DSP_Lib_TestSuite PRIVATE "Common/inc/templates")
 target_include_directories(DSP_Lib_TestSuite PRIVATE ${JINCS})
-
-

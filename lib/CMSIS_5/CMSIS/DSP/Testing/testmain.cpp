@@ -43,11 +43,11 @@ int testmain(const char *patterns)
               Client::Semihosting io("../TestDesc.txt","../Patterns","../Output","../Parameters");
            #endif
 
-    
+
            // Pattern Manager making the link between IO and Memory
            Client::PatternMgr mgr(&io,&memory);
 
-    
+
            // A Runner to run the test.
            // An IO runner is driven by some IO
            // In future one may have a client/server runner driven
@@ -60,20 +60,20 @@ int testmain(const char *patterns)
            Client::IORunner runner(&io,&mgr,Testing::kTestAndDump);
            #endif
 
-    
+
            // Root object containing all the tests
            Root d(1);
 
            // Runner applied to the tree of tests
            d.accept(&runner);
-    
+
         }
         catch(...)
         {
             printf("Exception\n");
         }
-        
-        
+
+
         free(memoryBuf);
     }
     else

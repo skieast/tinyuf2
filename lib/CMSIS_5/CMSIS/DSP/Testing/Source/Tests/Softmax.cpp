@@ -85,10 +85,10 @@ int16_t differences(int16_t *pa,int16_t *pb, int length)
        }
 
        int diff = differences(ref.ptr(),output.ptr(),this->nbSamples);
-       
+
        ASSERT_TRUE(100.0*diff/this->nbSamples <= THRESHOLD);
-       
-    } 
+
+    }
 
     void Softmax::test_softmax_with_batch_q7()
     {
@@ -107,12 +107,12 @@ int16_t differences(int16_t *pa,int16_t *pb, int length)
        }
 
        int diff = differences(ref.ptr(),output.ptr(),this->nbSamples);
-       
-       ASSERT_TRUE(100.0*diff/this->nbSamples <= THRESHOLD);
-       
-    } 
 
-  
+       ASSERT_TRUE(100.0*diff/this->nbSamples <= THRESHOLD);
+
+    }
+
+
     void Softmax::setUp(Testing::testID_t id,std::vector<Testing::param_t>& paramsArgs,Client::PatternMgr *mgr)
     {
 
@@ -129,8 +129,8 @@ int16_t differences(int16_t *pa,int16_t *pb, int length)
                this->nbSamples = pDims[0];
                this->vecDim = pDims[1];
           }
-          break; 
-          
+          break;
+
           case Softmax::TEST_SOFTMAX_WITH_BATCH_Q7_2:
           {
                ref.reload(Softmax::REF1_S16_ID,mgr);
@@ -142,7 +142,7 @@ int16_t differences(int16_t *pa,int16_t *pb, int length)
                this->nbSamples = pDims[0];
                this->vecDim = pDims[1];
           }
-          break; 
+          break;
 
        }
 
@@ -150,7 +150,7 @@ int16_t differences(int16_t *pa,int16_t *pb, int length)
         // Used to compare bit exactness of the reference C version
         // and the optimized version.
         temp.create(this->vecDim*this->nbSamples,Softmax::TEMP_Q7_ID,mgr);
-       
+
 
     }
 

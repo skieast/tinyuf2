@@ -6,7 +6,7 @@
 #define SNR_THRESHOLD 62
 #define SNR_DOTPROD_THRESHOLD 40
 
-/* 
+/*
 
 Reference patterns are generated with
 a double precision computation.
@@ -32,7 +32,7 @@ float16_t *outp=output.ptr();
 
         ASSERT_REL_ERROR(output,ref,REL_ERROR);
 
-    } 
+    }
 
     void BasicTestsF16::test_sub_f16()
     {
@@ -42,12 +42,12 @@ float16_t *outp=output.ptr();
         arm_sub_f16(inp1,inp2,outp,input1.nbSamples());
 
         ASSERT_EMPTY_TAIL(output);
-        
+
         ASSERT_SNR(output,ref,(float16_t)SNR_THRESHOLD);
 
         ASSERT_REL_ERROR(output,ref,REL_ERROR);
- 
-    } 
+
+    }
 
     void BasicTestsF16::test_mult_f16()
     {
@@ -61,8 +61,8 @@ float16_t *outp=output.ptr();
         ASSERT_SNR(output,ref,(float16_t)SNR_THRESHOLD);
 
         ASSERT_REL_ERROR(output,ref,REL_ERROR);
-   
-    } 
+
+    }
 
     void BasicTestsF16::test_negate_f16()
     {
@@ -78,8 +78,8 @@ float16_t *outp=output.ptr();
         ASSERT_SNR(output,ref,(float16_t)SNR_THRESHOLD);
 
         ASSERT_REL_ERROR(output,ref,REL_ERROR);
-  
-    } 
+
+    }
 
     void BasicTestsF16::test_offset_f16()
     {
@@ -95,8 +95,8 @@ float16_t *outp=output.ptr();
         ASSERT_SNR(output,ref,(float16_t)SNR_THRESHOLD);
 
         ASSERT_REL_ERROR(output,ref,REL_ERROR);
-  
-    } 
+
+    }
 
     void BasicTestsF16::test_scale_f16()
     {
@@ -112,8 +112,8 @@ float16_t *outp=output.ptr();
         ASSERT_SNR(output,ref,(float16_t)SNR_THRESHOLD);
 
         ASSERT_REL_ERROR(output,ref,REL_ERROR);
-   
-    } 
+
+    }
 
     void BasicTestsF16::test_dot_prod_f16()
     {
@@ -132,8 +132,8 @@ float16_t *outp=output.ptr();
 
         ASSERT_EMPTY_TAIL(output);
 
-       
-    } 
+
+    }
 
     void BasicTestsF16::test_abs_f16()
     {
@@ -149,14 +149,14 @@ float16_t *outp=output.ptr();
         ASSERT_SNR(output,ref,(float16_t)SNR_THRESHOLD);
 
         ASSERT_REL_ERROR(output,ref,REL_ERROR);
- 
-    } 
 
- 
+    }
+
+
     void BasicTestsF16::setUp(Testing::testID_t id,std::vector<Testing::param_t>& params,Client::PatternMgr *mgr)
     {
-      
-       Testing::nbSamples_t nb=MAX_NB_SAMPLES; 
+
+       Testing::nbSamples_t nb=MAX_NB_SAMPLES;
 
        (void)params;
 
@@ -301,7 +301,7 @@ float16_t *outp=output.ptr();
         break;
 
        }
-      
+
 
        input1.reload(BasicTestsF16::INPUT1_F16_ID,mgr,nb);
        input2.reload(BasicTestsF16::INPUT2_F16_ID,mgr,nb);

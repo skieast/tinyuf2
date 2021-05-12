@@ -88,11 +88,11 @@
 // For cores without coherency logic (such as SCU) marking a region as shareable forces the processor to not cache that region regardless of the inner cache settings.
 // Cortex-A versions of RTX use LDREX/STREX instructions relying on Local monitors. Local monitors will be used only when the region gets cached, regions that are not cached will use the Global Monitor.
 // Some Cortex-A implementations do not include Global Monitors, so wrongly setting the attribute Shareable may cause STREX to fail.
-   
+
 // Recall: When the Shareable attribute is applied to a memory region that is not Write-Back, Normal memory, data held in this region is treated as Non-cacheable.
 // When SMP bit = 0, Inner WB/WA Cacheable Shareable attributes are treated as Non-cacheable.
 // When SMP bit = 1, Inner WB/WA Cacheable Shareable attributes are treated as Cacheable.
-   
+
 // Following MMU configuration is expected
 // SCTLR.AFE == 1 (Simplified access permissions model - AP[2:1] define access permissions, AP[0] is an access flag)
 // SCTLR.TRE == 0 (TEX remap disabled, so memory type and attributes are described directly by bits in the descriptor)
@@ -105,12 +105,12 @@
 //-----------------------------------------------------
 #define PRIVATE_TABLE_L2_BASE_4k       (0x80504000) //Map 4k Private Address space
 #define SYNC_FLAGS_TABLE_L2_BASE_4k    (0x80504C00) //Map 4k Flag synchronization
-#define PERIPHERAL_A_TABLE_L2_BASE_64k (0x80504400) //Map 64k Peripheral #1 
-#define PERIPHERAL_B_TABLE_L2_BASE_64k (0x80504800) //Map 64k Peripheral #2 
+#define PERIPHERAL_A_TABLE_L2_BASE_64k (0x80504400) //Map 64k Peripheral #1
+#define PERIPHERAL_B_TABLE_L2_BASE_64k (0x80504800) //Map 64k Peripheral #2
 
 //--------------------- PERIPHERALS -------------------
-#define PERIPHERAL_A_FAULT             (0x00000000 + 0x1C000000) 
-#define PERIPHERAL_B_FAULT             (0x00100000 + 0x1C000000) 
+#define PERIPHERAL_A_FAULT             (0x00000000 + 0x1C000000)
+#define PERIPHERAL_B_FAULT             (0x00100000 + 0x1C000000)
 
 //--------------------- SYNC FLAGS --------------------
 #define FLAG_SYNC                       0xFFFFF000
@@ -128,8 +128,8 @@ static uint32_t Sect_Normal_RO;     // as Sect_Normal_Cod, but not executable
 static uint32_t Sect_Normal_RW;     // as Sect_Normal_Cod, but writeable and not executable
 static uint32_t Sect_Device_RO;     // device, non-shareable, non-executable, ro, domain 0, base addr 0
 static uint32_t Sect_Device_RW;     // as Sect_Device_RO, but writeable
-                                       
-/* Define global descriptors */        
+
+/* Define global descriptors */
 static uint32_t Page_L1_4k  = 0x0;  // generic
 static uint32_t Page_L1_64k = 0x0;  // generic
 static uint32_t Page_4k_Device_RW;  // shared device, not executable, rw, domain 0
@@ -178,10 +178,10 @@ void MMU_CreateTranslationTable(void)
   MMU_TTSection (&Image$$TTB$$ZI$$Base, <DeviceAbbreviation>_VRAM_BASE      ,   32U, Sect_Device_RW);
   MMU_TTSection (&Image$$TTB$$ZI$$Base, <DeviceAbbreviation>_ETHERNET_BASE  ,   16U, Sect_Device_RW);
   MMU_TTSection (&Image$$TTB$$ZI$$Base, <DeviceAbbreviation>_USB_BASE       ,   16U, Sect_Device_RW);
-                                                                                
-  // Create (16 * 64k)=1MB faulting entries to cover peripheral range           
+
+  // Create (16 * 64k)=1MB faulting entries to cover peripheral range
   MMU_TTPage64k(&Image$$TTB$$ZI$$Base, PERIPHERAL_A_FAULT                   ,   16U, Page_L1_64k, (uint32_t *)PERIPHERAL_A_TABLE_L2_BASE_64k, DESCRIPTOR_FAULT);
-  // Define peripheral range                                                    
+  // Define peripheral range
   MMU_TTPage64k(&Image$$TTB$$ZI$$Base, <DeviceAbbreviation>_DAP_BASE        ,    1U, Page_L1_64k, (uint32_t *)PERIPHERAL_A_TABLE_L2_BASE_64k, Page_64k_Device_RW);
   MMU_TTPage64k(&Image$$TTB$$ZI$$Base, <DeviceAbbreviation>_SYSTEM_REG_BASE ,    1U, Page_L1_64k, (uint32_t *)PERIPHERAL_A_TABLE_L2_BASE_64k, Page_64k_Device_RW);
   MMU_TTPage64k(&Image$$TTB$$ZI$$Base, <DeviceAbbreviation>_SERIAL_BASE     ,    1U, Page_L1_64k, (uint32_t *)PERIPHERAL_A_TABLE_L2_BASE_64k, Page_64k_Device_RW);
@@ -190,10 +190,10 @@ void MMU_CreateTranslationTable(void)
   MMU_TTPage64k(&Image$$TTB$$ZI$$Base, <DeviceAbbreviation>_KMI0_BASE       ,    2U, Page_L1_64k, (uint32_t *)PERIPHERAL_A_TABLE_L2_BASE_64k, Page_64k_Device_RW);
   MMU_TTPage64k(&Image$$TTB$$ZI$$Base, <DeviceAbbreviation>_UART_BASE       ,    4U, Page_L1_64k, (uint32_t *)PERIPHERAL_A_TABLE_L2_BASE_64k, Page_64k_Device_RW);
   MMU_TTPage64k(&Image$$TTB$$ZI$$Base, <DeviceAbbreviation>_WDT_BASE        ,    1U, Page_L1_64k, (uint32_t *)PERIPHERAL_A_TABLE_L2_BASE_64k, Page_64k_Device_RW);
-                                                                                
-  // Create (16 * 64k)=1MB faulting entries to cover peripheral range           
+
+  // Create (16 * 64k)=1MB faulting entries to cover peripheral range
   MMU_TTPage64k(&Image$$TTB$$ZI$$Base, PERIPHERAL_B_FAULT                   ,   16U, Page_L1_64k, (uint32_t *)PERIPHERAL_B_TABLE_L2_BASE_64k, DESCRIPTOR_FAULT);
-  // Define peripheral range                                                    
+  // Define peripheral range
   MMU_TTPage64k(&Image$$TTB$$ZI$$Base, <DeviceAbbreviation>_TIMER_BASE      ,    2U, Page_L1_64k, (uint32_t *)PERIPHERAL_B_TABLE_L2_BASE_64k, Page_64k_Device_RW);
   MMU_TTPage64k(&Image$$TTB$$ZI$$Base, <DeviceAbbreviation>_DVI_BASE        ,    1U, Page_L1_64k, (uint32_t *)PERIPHERAL_B_TABLE_L2_BASE_64k, Page_64k_Device_RW);
   MMU_TTPage64k(&Image$$TTB$$ZI$$Base, <DeviceAbbreviation>_RTC_BASE        ,    1U, Page_L1_64k, (uint32_t *)PERIPHERAL_B_TABLE_L2_BASE_64k, Page_64k_Device_RW);
@@ -209,7 +209,7 @@ void MMU_CreateTranslationTable(void)
 
   // Create (256 * 4k)=1MB faulting entries to synchronization space (Useful if some non-cacheable DMA agent is present in the SoC)
   MMU_TTPage4k (&Image$$TTB$$ZI$$Base, F_SYNC_BASE                          ,  256U, Page_L1_4k, (uint32_t *)SYNC_FLAGS_TABLE_L2_BASE_4k, DESCRIPTOR_FAULT);
-  // Define synchronization space entry.                       
+  // Define synchronization space entry.
   MMU_TTPage4k (&Image$$TTB$$ZI$$Base, FLAG_SYNC                            ,    1U, Page_L1_4k, (uint32_t *)SYNC_FLAGS_TABLE_L2_BASE_4k, Page_4k_Device_RW);
 
   /* Set location of level 1 page table

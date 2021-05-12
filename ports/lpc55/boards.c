@@ -130,7 +130,7 @@ void board_flash_write (uint32_t addr, void const *data, uint32_t len)
 {
   uint32_t newAddr = addr & ~(FLASH_PAGE_SIZE - 1);
   int32_t status;
-    
+
   if (newAddr != _flash_page_addr) {
     board_flash_flush();
     _flash_page_addr = newAddr;

@@ -5,7 +5,7 @@
 
 
 #define SNR_THRESHOLD 70
-/* 
+/*
 
 Reference patterns are generated with
 a double precision computation.
@@ -63,7 +63,7 @@ a double precision computation.
 
     }
 
-  
+
     void FastMathQ15::setUp(Testing::testID_t id,std::vector<Testing::param_t>& paramsArgs,Client::PatternMgr *mgr)
     {
         (void)paramsArgs;
@@ -96,12 +96,12 @@ a double precision computation.
             }
             break;
         }
-        
+
     }
 
     void FastMathQ15::tearDown(Testing::testID_t id,Client::PatternMgr *mgr)
     {
       (void)id;
       output.dump(mgr);
-      
+
     }

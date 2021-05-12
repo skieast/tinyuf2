@@ -11,38 +11,38 @@ OPTIMIZATION = [ 'O1', 'O2', 'Ofast', 'Os', 'Oz' ]
 
 CC_OPT = {
   Compiler.AC5: {
-    'O1': 'O0', 
-    'O2': 'O1', 
-    'Ofast': 'Otime', 
-    'Os': 'O2', 
+    'O1': 'O0',
+    'O2': 'O1',
+    'Ofast': 'Otime',
+    'Os': 'O2',
     'Oz': 'O3'
   },
   Compiler.AC6: {
-    'O1': 'O1', 
-    'O2': 'O2', 
-    'Ofast': 'Ofast', 
-    'Os': 'Os', 
+    'O1': 'O1',
+    'O2': 'O2',
+    'Ofast': 'Ofast',
+    'Os': 'Os',
     'Oz': 'Oz'
   },
   Compiler.AC6LTM: {
-    'O1': 'O1', 
-    'O2': 'O2', 
-    'Ofast': 'Ofast', 
-    'Os': 'Os', 
+    'O1': 'O1',
+    'O2': 'O2',
+    'Ofast': 'Ofast',
+    'Os': 'Os',
     'Oz': 'Oz'
   },
   Compiler.AC6STBL: {
-    'O1': 'O1', 
-    'O2': 'O2', 
-    'Ofast': 'Ofast', 
-    'Os': 'Os', 
+    'O1': 'O1',
+    'O2': 'O2',
+    'Ofast': 'Ofast',
+    'Os': 'Os',
     'Oz': 'Oz'
   },
   Compiler.GCC: {
-    'O1': 'O1', 
-    'O2': 'O2', 
-    'Ofast': 'Ofast', 
-    'Os': 'Os', 
+    'O1': 'O1',
+    'O2': 'O2',
+    'Ofast': 'Ofast',
+    'Os': 'Os',
     'Oz': 'O3'
   },
 }
@@ -140,7 +140,7 @@ def create():
   debugStep.images = images
   debugStep.args = lambda step, config: { 'cadi' : True }
   debugStep.model = lambda step, config: FVP_MODELS[config['device']]
-  
+
   filterAC5 = Filter().addAxis(compilerAxis, Compiler.AC5).addAxis(deviceAxis, "CM[23]3*")
   filterAC6LTM = Filter().addAxis(compilerAxis, Compiler.AC6LTM).addAxis(deviceAxis, "CM35P*")
 

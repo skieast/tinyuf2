@@ -72,7 +72,7 @@ def setup_arm_thumb():
 
     c.flags.extend(["-mcpu=cortex-m0", "-mthumb", "-ffunction-sections", "-fdata-sections", "-fno-builtin-fprintf", "-fno-builtin-printf"])
     c.defines["LPC11XX"] = 1
-    
+
     link.local_flags.extend(["-mcpu=cortex-m0", "-mthumb", "-nostartfiles", "-nostdlib", "-Wl,--gc-sections"])
     link.local_flags.extend(["-Tflash.lds", "-L/Projects/lpc11xx/core", "/Projects/lpc11xx/core/" + emk.build_dir + "/board_cstartup.o"])
     link.local_syslibs += ["gcc"]
@@ -88,7 +88,7 @@ def setup_arm_thumb():
 
     link.exe_funcs.append(handle_exe)
     link.strip = True
-    
+
     emk.recurse("/Projects/lpc11xx/core")
 
 def setup_linux_rpi():
@@ -97,7 +97,7 @@ def setup_linux_rpi():
 
     c.compiler = c.GccCompiler("/Volumes/xtools/arm-none-linux-gnueabi/bin/arm-none-linux-gnueabi-")
     link.linker = link.GccLinker("/Volumes/xtools/arm-none-linux-gnueabi/bin/arm-none-linux-gnueabi-")
-    
+
     c.flags.extend(["-fomit-frame-pointer"])
 
 setup_build_dir()

@@ -18,7 +18,7 @@
  * ----------------------------------------------------------------------
  *
  * Project:      ARMv8-M System Recovery demo
- * Title:        SysTick_s.c   SysTick handler & timeout based watchdog 
+ * Title:        SysTick_s.c   SysTick handler & timeout based watchdog
  *
  * Version 1.0
  *    Initial Release
@@ -39,15 +39,15 @@ static uint32_t Timeout ;
 
 // Secure SysTick handler
 void SysTick_Handler (void) {
-  static unsigned int Milliseconds; 
-  
+  static unsigned int Milliseconds;
+
   Milliseconds++ ;
   if (Milliseconds >= 1000) {
     Seconds++;
     Milliseconds = 0;
   }
-  
-  if (Timeout != 0) { 
+
+  if (Timeout != 0) {
     Timeout-- ;
     if (Timeout == 0) {
       LogIncident (IR_WDTEXP, 0, IS_SECURE);

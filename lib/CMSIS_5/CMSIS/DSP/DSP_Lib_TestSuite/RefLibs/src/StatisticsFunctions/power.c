@@ -7,7 +7,7 @@ void ref_power_f32(
 {
 	uint32_t i;
 	float32_t sumsq=0;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 			sumsq += pSrc[i] * pSrc[i];
@@ -22,7 +22,7 @@ void ref_power_q31(
 {
 	uint32_t i;
 	q63_t sumsq=0;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 			sumsq += ((q63_t)pSrc[i] * pSrc[i]) >> 14;
@@ -37,7 +37,7 @@ void ref_power_q15(
 {
 	uint32_t i;
 	q63_t sumsq=0;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 			sumsq += (q63_t)pSrc[i] * pSrc[i];
@@ -52,7 +52,7 @@ void ref_power_q7(
 {
 	uint32_t i;
 	q31_t sumsq=0;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 			sumsq += (q31_t)pSrc[i] * pSrc[i];

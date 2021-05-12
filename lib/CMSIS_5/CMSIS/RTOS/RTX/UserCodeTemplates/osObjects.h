@@ -21,7 +21,7 @@
 
 
 // global 'thread' functions ---------------------------------------------------
-/* 
+/*
 Example:
 extern void sample_name (void const *argument);         // thread function
 
@@ -31,7 +31,7 @@ osThreadDef (sample_name, osPriorityNormal, 1, 0);      // thread object
 
 
 // global 'semaphores' ----------------------------------------------------------
-/* 
+/*
 Example:
 osSemaphoreId sid_sample_name;                          // semaphore id
 osSemaphoreDef (sample_name);                           // semaphore object
@@ -39,7 +39,7 @@ osSemaphoreDef (sample_name);                           // semaphore object
 
 
 // global 'memory pools' --------------------------------------------------------
-/* 
+/*
 Example:
 typedef struct sample_name type_sample_name;            // object data type
 
@@ -49,7 +49,7 @@ osPoolDef (sample_name, 16, type_sample_name);          // memory pool object
 
 
 // global 'message queues' -------------------------------------------------------
-/* 
+/*
 Example:
 typedef struct sample_name type_sample_name;            // object data type
 
@@ -59,7 +59,7 @@ osMessageQDef (sample_name, 16, type_sample_name);      // message queue object
 
 
 // global 'mail queues' ----------------------------------------------------------
-/* 
+/*
 Example:
 typedef struct sample_name type_sample_name;            // object data type
 

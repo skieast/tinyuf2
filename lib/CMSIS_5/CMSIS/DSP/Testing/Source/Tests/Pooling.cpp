@@ -31,11 +31,11 @@
            tmpin,
            tempp,
            outp);
-       
-       ASSERT_EQ(ref,output);
-    } 
 
-  
+       ASSERT_EQ(ref,output);
+    }
+
+
     void Pooling::setUp(Testing::testID_t id,std::vector<Testing::param_t>& paramsArgs,Client::PatternMgr *mgr)
     {
 
@@ -59,7 +59,7 @@
             this->ACT_MIN= -128;
             this->ACT_MAX= 127;
 
-          break; 
+          break;
 
           case Pooling::TEST_AVGPOOL_S8_2:
             input.reload(Pooling::INPUT2_S8_ID,mgr);
@@ -78,7 +78,7 @@
             this->STRIDE_Y= 2;
             this->ACT_MIN= -128;
             this->ACT_MAX= 127;
-          break; 
+          break;
 
           case Pooling::TEST_AVGPOOL_S8_3:
             input.reload(Pooling::INPUT3_S8_ID,mgr);
@@ -97,7 +97,7 @@
             this->STRIDE_Y= 2;
             this->ACT_MIN= -8;
             this->ACT_MAX= 8;
-          break; 
+          break;
 
           case Pooling::TEST_AVGPOOL_S8_4:
             input.reload(Pooling::INPUT4_S8_ID,mgr);
@@ -116,7 +116,7 @@
             this->STRIDE_Y= 2;
             this->ACT_MIN= 0;
             this->ACT_MAX= 48;
-          break; 
+          break;
 
           case Pooling::TEST_AVGPOOL_S8_5:
             input.reload(Pooling::INPUT5_S8_ID,mgr);
@@ -135,7 +135,7 @@
             this->STRIDE_Y= 2;
             this->ACT_MIN= 0;
             this->ACT_MAX= 48;
-          break; 
+          break;
 
           case Pooling::TEST_AVGPOOL_S8_6:
             input.reload(Pooling::INPUT6_S8_ID,mgr);
@@ -154,7 +154,7 @@
             this->STRIDE_Y= 1;
             this->ACT_MIN= -128;
             this->ACT_MAX= 127;
-          break; 
+          break;
 
           case Pooling::TEST_AVGPOOL_S8_7:
             input.reload(Pooling::INPUT7_S8_ID,mgr);
@@ -173,7 +173,7 @@
             this->STRIDE_Y= 1;
             this->ACT_MIN= -128;
             this->ACT_MAX= 127;
-          break; 
+          break;
 
           case Pooling::TEST_AVGPOOL_S8_8:
             input.reload(Pooling::INPUT8_S8_ID,mgr);
@@ -192,7 +192,7 @@
             this->STRIDE_Y= 2;
             this->ACT_MIN= -128;
             this->ACT_MAX= 127;
-          break; 
+          break;
 
 
 

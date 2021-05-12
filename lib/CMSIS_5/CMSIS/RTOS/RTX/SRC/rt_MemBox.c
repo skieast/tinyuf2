@@ -45,7 +45,7 @@ U32 _init_box  (void *box_mem, U32 box_size, U32 blk_size) {
 
   /* Create memory structure. */
   if (blk_size & BOX_ALIGN_8) {
-    /* Memory blocks 8-byte aligned. */ 
+    /* Memory blocks 8-byte aligned. */
     blk_size = ((blk_size & ~BOX_ALIGN_8) + 7U) & ~(U32)7U;
     sizeof_bm = (sizeof (struct OS_BM) + 7U) & ~(U32)7U;
   }

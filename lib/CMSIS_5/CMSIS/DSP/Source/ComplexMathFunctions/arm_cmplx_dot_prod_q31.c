@@ -67,7 +67,7 @@ void arm_cmplx_dot_prod_q31(
     uint32_t blockSize = numSamples * CMPLX_DIM;  /* loop counters */
     uint32_t blkCnt;
     q31x4_t vecSrcA, vecSrcB;
-    q63_t accReal = 0LL; 
+    q63_t accReal = 0LL;
     q63_t accImag = 0LL;
 
     q31_t a0,b0,c0,d0;
@@ -76,7 +76,7 @@ void arm_cmplx_dot_prod_q31(
     blkCnt = blockSize >> 2U;
 
     while (blkCnt > 0U)
-    {        
+    {
 
         vecSrcA = vld1q(pSrcA);
         vecSrcB = vld1q(pSrcB);
@@ -105,16 +105,16 @@ void arm_cmplx_dot_prod_q31(
       b0 = *pSrcA++;
       c0 = *pSrcB++;
       d0 = *pSrcB++;
-  
+
       accReal += ((q63_t)a0 * c0) >> 14;
       accImag += ((q63_t)a0 * d0) >> 14;
       accReal -= ((q63_t)b0 * d0) >> 14;
       accImag += ((q63_t)b0 * c0) >> 14;
-  
+
       /* Decrement loop counter */
       blkCnt--;
     }
-  
+
     /* Store real and imaginary result in destination buffer. */
     *realResult = accReal;
     *imagResult = accImag;

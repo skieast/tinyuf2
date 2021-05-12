@@ -5,7 +5,7 @@
 #include "Test.h"
 
 #define SNR_THRESHOLD 120
-/* 
+/*
 
 Reference patterns are generated with
 a double precision computation.
@@ -16,8 +16,8 @@ a double precision computation.
 
     void MISCF32::test_correlate_f32()
     {
-        const float32_t *inpA=inputA.ptr(); 
-        const float32_t *inpB=inputB.ptr(); 
+        const float32_t *inpA=inputA.ptr();
+        const float32_t *inpB=inputB.ptr();
         float32_t *outp=output.ptr();
 
         arm_correlate_f32(inpA, inputA.nbSamples(),
@@ -31,8 +31,8 @@ a double precision computation.
 
     void MISCF32::test_conv_f32()
     {
-        const float32_t *inpA=inputA.ptr(); 
-        const float32_t *inpB=inputB.ptr(); 
+        const float32_t *inpA=inputA.ptr();
+        const float32_t *inpB=inputB.ptr();
         float32_t *outp=output.ptr();
 
         arm_conv_f32(inpA, inputA.nbSamples(),
@@ -45,7 +45,7 @@ a double precision computation.
     }
 
 
-  
+
     void MISCF32::setUp(Testing::testID_t id,std::vector<Testing::param_t>& paramsArgs,Client::PatternMgr *mgr)
     {
         (void)paramsArgs;
@@ -699,12 +699,12 @@ a double precision computation.
        inputB.reload(MISCF32::INPUTB_F32_ID,mgr,nbb);
 
        output.create(ref.nbSamples(),MISCF32::OUT_F32_ID,mgr);
-        
+
     }
 
     void MISCF32::tearDown(Testing::testID_t id,Client::PatternMgr *mgr)
     {
       (void)id;
       output.dump(mgr);
-      
+
     }

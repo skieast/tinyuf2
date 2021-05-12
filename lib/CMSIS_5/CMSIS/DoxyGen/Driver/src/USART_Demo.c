@@ -2,14 +2,14 @@
 #include "cmsis_os.h"                   /* ARM::CMSIS:RTOS:Keil RTX */
 #include <stdio.h>
 #include <string.h>
- 
+
 void myUART_Thread(void const *argument);
 osThreadId tid_myUART_Thread;
- 
+
 /* USART Driver */
 extern ARM_DRIVER_USART Driver_USART3;
- 
- 
+
+
 void myUSART_callback(uint32_t event)
 {
   uint32_t mask;
@@ -33,7 +33,7 @@ void myUSART_callback(uint32_t event)
   }
 }
 
- 
+
 /* CMSIS-RTOS Thread - UART command thread */
 void myUART_Thread(const void* args)
 {
@@ -41,7 +41,7 @@ void myUART_Thread(const void* args)
     ARM_DRIVER_VERSION     version;
     ARM_USART_CAPABILITIES drv_capabilities;
     char                   cmd;
- 
+
   #ifdef DEBUG
     version = USARTdrv->GetVersion();
     if (version.api < 0x200)   /* requires at minimum API version 2.00 or higher */
@@ -54,7 +54,7 @@ void myUART_Thread(const void* args)
         return;
     }
   #endif
- 
+
     /*Initialize the USART driver */
     USARTdrv->Initialize(myUSART_callback);
     /*Power up the USART peripheral */
@@ -65,14 +65,14 @@ void myUART_Thread(const void* args)
                       ARM_USART_PARITY_NONE |
                       ARM_USART_STOP_BITS_1 |
                       ARM_USART_FLOW_CONTROL_NONE, 4800);
-     
+
     /* Enable Receiver and Transmitter lines */
     USARTdrv->Control (ARM_USART_CONTROL_TX, 1);
     USARTdrv->Control (ARM_USART_CONTROL_RX, 1);
- 
+
     USARTdrv->Send("\nPress Enter to receive a message", 34);
     osSignalWait(0x01, osWaitForever);
-     
+
     while (1)
     {
         USARTdrv->Receive(&cmd, 1);          /* Get byte from UART */
@@ -82,6 +82,6 @@ void myUART_Thread(const void* args)
           USARTdrv->Send("\nHello World!", 12);
           osSignalWait(0x01, osWaitForever);
         }
- 
+
     }
 }

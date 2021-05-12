@@ -11,7 +11,7 @@ class TransformRF16:public Client::Suite
             virtual void tearDown(Testing::testID_t,Client::PatternMgr *mgr);
         private:
             #include "TransformRF16_decl.h"
-            
+
             Client::Pattern<float16_t> input;
             Client::LocalPattern<float16_t> outputfft;
             Client::LocalPattern<float16_t> inputchanged;
@@ -21,5 +21,5 @@ class TransformRF16:public Client::Suite
             arm_rfft_fast_instance_f16 instRfftF16;
 
             int ifft;
-            
+
     };

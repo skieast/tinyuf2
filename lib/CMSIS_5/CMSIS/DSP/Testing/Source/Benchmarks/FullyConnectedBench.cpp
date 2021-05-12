@@ -1,10 +1,10 @@
 #include "FullyConnectedBench.h"
 #include "Error.h"
 #include "arm_nnfunctions.h"
-   
+
     void FullyConnectedBench::test_fully_connected_tflite_s8()
     {
-      
+
       for(int i=0; i < this->repeatNb; i++)
        {
           arm_fully_connected_s8((int8_t*)this->inp
@@ -18,23 +18,23 @@
             ,output_shift
             ,output_offset
             ,(const int32_t*)this->biasp
-            ,(int8_t*)this->outp 
-            ,act_min 
+            ,(int8_t*)this->outp
+            ,act_min
             ,act_max
             ,this->tempp
             );
        }
-      
-    } 
 
-    
+    }
+
+
     void FullyConnectedBench::setUp(Testing::testID_t,std::vector<Testing::param_t>& params,Client::PatternMgr *mgr)
     {
 
 
        std::vector<Testing::param_t>::iterator it = params.begin();
        this->repeatNb = *it;
-       
+
 
         output_mult = 1077969154;
         output_shift = 2;
@@ -44,7 +44,7 @@
         act_min =-128;
         act_max= 127;
 
-          
+
         nb_batches=8;
 
         colDim=8;
@@ -69,5 +69,5 @@
 
     void FullyConnectedBench::tearDown(Testing::testID_t id,Client::PatternMgr *mgr)
     {
-       
+
     }

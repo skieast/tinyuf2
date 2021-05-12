@@ -8,7 +8,7 @@ void ref_dot_prod_f32(
 {
 	uint32_t i;
   float32_t sum = 0.0f;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 		sum += pSrcA[i] * pSrcB[i];
@@ -24,7 +24,7 @@ void ref_dot_prod_q31(
 {
 	uint32_t i;
   q63_t sum = 0.0f;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 		sum += ((q63_t)pSrcA[i] * pSrcB[i]) >> 14; //16.48
@@ -40,7 +40,7 @@ void ref_dot_prod_q15(
 {
 	uint32_t i;
   q63_t sum = 0.0f;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 		sum += (q31_t)pSrcA[i] * pSrcB[i]; //34.30
@@ -56,7 +56,7 @@ void ref_dot_prod_q7(
 {
 	uint32_t i;
   q31_t sum = 0.0f;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 		sum += (q31_t)pSrcA[i] * pSrcB[i]; //18.14

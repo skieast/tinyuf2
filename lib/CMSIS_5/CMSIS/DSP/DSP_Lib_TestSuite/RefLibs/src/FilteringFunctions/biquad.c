@@ -146,7 +146,7 @@ void ref_biquad_cascade_stereo_df2T_f32(
         stage--;
 
     } while (stage > 0U);
-	
+
 }
 
 void ref_biquad_cascade_df2T_f64(
@@ -249,8 +249,8 @@ void ref_biquad_cascade_df1_f32(
     Yn1 = pState[2];
     Yn2 = pState[3];
 
-    /*      The variables acc holds the output value that is computed:        
-     *    acc =  b0 * x[n] + b1 * x[n-1] + b2 * x[n-2] + a1 * y[n-1]   + a2 * y[n-2]        
+    /*      The variables acc holds the output value that is computed:
+     *    acc =  b0 * x[n] + b1 * x[n-1] + b2 * x[n-2] + a1 * y[n-1]   + a2 * y[n-2]
      */
 
     sample = blockSize;
@@ -394,7 +394,7 @@ void ref_biquad_cascade_df1_q31(
   q31_t * pSrc,
   q31_t * pDst,
   uint32_t blockSize)
-{	
+{
         q63_t acc;                                     /*  accumulator                   */
         uint32_t uShift = ((uint32_t) S->postShift + 1U);
         uint32_t lShift = 32U - uShift;                /*  Shift to be applied to the output */
@@ -422,8 +422,8 @@ void ref_biquad_cascade_df1_q31(
     Yn1 = pState[2];
     Yn2 = pState[3];
 
-    /*      The variables acc holds the output value that is computed:         
-     *    acc =  b0 * x[n] + b1 * x[n-1] + b2 * x[n-2] + a1 * y[n-1] + a2 * y[n-2]         
+    /*      The variables acc holds the output value that is computed:
+     *    acc =  b0 * x[n] + b1 * x[n-1] + b2 * x[n-2] + a1 * y[n-1] + a2 * y[n-2]
      */
 
     sample = blockSize;
@@ -515,7 +515,7 @@ void ref_biquad_cascade_df1_fast_q31(
     Xn2 = pState[1];
     Yn1 = pState[2];
     Yn2 = pState[3];
-		
+
     sample = blockSize;
 
    while (sample > 0U)
@@ -523,7 +523,7 @@ void ref_biquad_cascade_df1_fast_q31(
       /* Read the input */
       Xn = *pIn++;
 
-      /* acc =  b0 * x[n] + b1 * x[n-1] + b2 * x[n-2] + a1 * y[n-1] + a2 * y[n-2] */    
+      /* acc =  b0 * x[n] + b1 * x[n-1] + b2 * x[n-2] + a1 * y[n-1] + a2 * y[n-2] */
       mult_32x32_keep32_R(acc, b0, Xn);
       multAcc_32x32_keep32_R(acc, b1, Xn1);
       multAcc_32x32_keep32_R(acc, b2, Xn2);

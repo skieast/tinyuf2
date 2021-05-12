@@ -17,7 +17,7 @@ JTEST_DEFINE_GROUP(all_tests)
   */
 #if !defined(CUSTOMIZE_TESTS) || defined(ENABLE_BASICMATH_TESTS)
   JTEST_GROUP_CALL(basic_math_tests);
-#endif 
+#endif
 
 #if !defined(CUSTOMIZE_TESTS) || defined(ENABLE_COMPLEXMATH_TESTS)
   JTEST_GROUP_CALL(complex_math_tests);
@@ -40,7 +40,7 @@ JTEST_DEFINE_GROUP(all_tests)
 
 #if !defined(CUSTOMIZE_TESTS) || defined(ENABLE_MATRIX_TESTS)
   JTEST_GROUP_CALL(matrix_tests);
-#endif 
+#endif
 
 #if !defined(CUSTOMIZE_TESTS) || defined(ENABLE_STATISTICS_TESTS)
   JTEST_GROUP_CALL(statistics_tests);

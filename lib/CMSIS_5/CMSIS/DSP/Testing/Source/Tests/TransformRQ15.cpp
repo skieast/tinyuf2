@@ -47,10 +47,10 @@
        }
        ASSERT_EMPTY_TAIL(outputfft);
 
-        
-    } 
 
-  
+    }
+
+
     void TransformRQ15::setUp(Testing::testID_t id,std::vector<Testing::param_t>& paramsArgs,Client::PatternMgr *mgr)
     {
 
@@ -497,7 +497,7 @@
 
        }
 
-       
+
       outputfft.create(ref.nbSamples(),TransformRQ15::OUTPUT_RFFT_Q15_ID,mgr);
       /*
 

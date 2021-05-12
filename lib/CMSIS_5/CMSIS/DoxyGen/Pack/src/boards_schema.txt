@@ -1,5 +1,5 @@
 /**************************************************************************************************/
-/** 
+/**
 \page pdsc_boards_pg  /package/boards element
 
 The level \b \<boards\> describes a development board that is the subject of a Board Support Pack (BSP).
@@ -11,29 +11,29 @@ A development board is described by the following properties:
 - description: a brief description of the development board
 - \ref element_board_book "book": documentation about the board (user manuals, schematics, etc.)
 - \ref element_board_mountedDevice "mountedDevice": the microcontroller device mounted on the development board.
-- \ref element_board_compatibleDevice "compatibleDevice": compatible microcontroller devices. 
-- \ref element_board_image "image": pictures of the board to be displayed on web pages. 
-- \ref element_board_feature "feature": categorized list of the development board's features and peripherals. 
-- \ref element_board_debugInterface "debugInterface": describing the debug capabilities. 
+- \ref element_board_compatibleDevice "compatibleDevice": compatible microcontroller devices.
+- \ref element_board_image "image": pictures of the board to be displayed on web pages.
+- \ref element_board_feature "feature": categorized list of the development board's features and peripherals.
+- \ref element_board_debugInterface "debugInterface": describing the debug capabilities.
 
 \b Example
 \code
   <boards>
     <board vendor="STMicroelectronics" name="32F429IDISCOVERY" revision="Rev.1" salesContact="http://www.st.com/stonline/contactus/contacts/index.php" orderForm="https://my.st.com/esample/app?page=basket&amp;pn=STM32F429I-DISCO">
-	 
+
       <description>STMicroelectronics STM32F429I Discovery Board Support and Examples</description>
-	   
+
       <image small="Images/stm32f429i-disco_small.png" large="Images/stm32f429i-disco.png"/>
-	   
+
       <book category="overview"  name="http://www.st.com/web/catalog/tools/FM116/SC959/SS1532/LN1199/PF259090" title="32F429IDISCOVERY Web Page"/>
       <book category="setup"     name="Documents/UM1662.pdf" title="Getting Started"/>
       <book category="schematic" name="Documents/UM1670.pdf" title="Schematics"/>
       <book category="manual"    name="Documents/UM1670.pdf" title="User Manual"/>
-	   
+
       <mountedDevice    deviceIndex="0" Dvendor="STMicroelectronics:13" Dname="STM32F429ZI"/>
-	   
+
       <compatibleDevice deviceIndex="0" Dvendor="STMicroelectronics:13" Dfamily="STM32F4 Series" DsubFamily="STM32F429 Line"/>
-	   
+
       <feature type="ODbg"      n="1"              name="On-board ST-LINK/V2 with selection mode switch to use the kit as a standalone"/>
       <feature type="XTAL"      n="80000000"/>
       <feature type="PWR"       n="5"              name="USB Powered"/>
@@ -47,14 +47,14 @@ A development board is described by the following properties:
       <feature type="LED"       n="6"              name="Com, 3.3 V Power, Two user, Two USB OTG LEDs"/>
       <feature type="CustomFF"  n="66" m="119.3"   name="Discovery Board Formfactor"/>
       <feature type="GLCD"      n="1"  m="240.320" name="2.4 inch QVGA TFT LCD"/>
-	   
+
       <debugInterface adapter="ST-Link" connector="Mini-USB"/>
-	   
+
     </board>
   </boards>
 \endcode
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 <hr>
 
 \section element_boards /package/boards
@@ -69,7 +69,7 @@ Grouping element for boards. No more than one such group can exist in a Pack. No
   <tr>
     <td>\ref pdsc_package_pg "package"</td>
     <td colspan="3">\ref pdsc_package_pg "/package"</td>
-  </tr>	
+  </tr>
   <tr>
     <th>Child Elements</th>
     <th>Description</th>
@@ -84,7 +84,7 @@ Grouping element for boards. No more than one such group can exist in a Pack. No
   </tr>
  </table>
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 <hr>
 
 \section element_board /package/boards/board
@@ -99,7 +99,7 @@ This element provides information to specify the \ref createPackBoard "Board Sup
   <tr>
     <td>\ref element_boards "boards"</td>
     <td colspan="3">\ref element_boards</td>
-  </tr>	
+  </tr>
   <tr>
     <th>Attributes</th>
     <th>Description</th>
@@ -190,14 +190,14 @@ This element provides information to specify the \ref createPackBoard "Board Sup
 <hr>
 
 \section element_board_feature /package/boards/board/feature
-This element contains information about the features and capabilities of a board. 
+This element contains information about the features and capabilities of a board.
 A list of pre-defined features exists.
 
 \b Example
 \code
 <feature type="PWR" n="3" m="5" name="Element: Board feature"/>
 \endcode
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="BoardFeature">
   <tr>
@@ -207,7 +207,7 @@ A list of pre-defined features exists.
   <tr>
     <td>\ref element_board "board"</td>
     <td colspan="3">\ref element_board</td>
-  </tr>	
+  </tr>
   <tr>
     <th>Attributes</th>
     <th>Description</th>
@@ -242,7 +242,7 @@ A list of pre-defined features exists.
   </tr>
 </table>
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 \anchor BoardFeatureTypeEnum <b>Table: Board Features</b>
 
@@ -306,7 +306,7 @@ The table below lists predefined board features.
 |Speaker|Number of Speakers|N/A|Speaker|\<feature type="Speaker"  n="1"/\>|1 x Speaker|
 |Other|Number of Other Features|N/A|Other Feature|\<feature type="Other" n=1 name="My Other Feature"/\>|1 x My Other Feature|
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 <hr>
 
 \section element_board_mountedDevice /package/boards/board/mountedDevice
@@ -316,7 +316,7 @@ The element specifies the devices mounted on the board. At least one device must
 \code
 <mountedDevice deviceIndex="0" Dvendor="STMicroelectronics:13" Dname="STM32F429ZI"/>
 \endcode
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: Boards mountedDevice">
   <tr>
@@ -326,7 +326,7 @@ The element specifies the devices mounted on the board. At least one device must
   <tr>
     <td>\ref element_board "board"</td>
     <td colspan="3">\ref element_board</td>
-  </tr>	
+  </tr>
   <tr>
     <th>Attributes</th>
     <th>Description</th>
@@ -377,7 +377,7 @@ means that the user is able to generate code for compatible devices and test it 
 \code
 <compatibleDevice deviceIndex="0" Dvendor="STMicroelectronics:13" Dfamily="STM32F4 Series" DsubFamily="STM32F429 Line"/>
 \endcode
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: Board compatibleDevice">
   <tr>
@@ -387,7 +387,7 @@ means that the user is able to generate code for compatible devices and test it 
   <tr>
     <td>\ref element_board "board"</td>
     <td colspan="3">\ref element_board</td>
-  </tr>	
+  </tr>
   <tr>
     <th>Attributes</th>
     <th>Description</th>
@@ -439,7 +439,7 @@ Two different picture types (\token{small} and \token{large}) can be specified f
 \code
 <image small="Images\board_image_small.png" large="Images\board_image.png"/>
 \endcode
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: Board Image">
   <tr>
@@ -449,7 +449,7 @@ Two different picture types (\token{small} and \token{large}) can be specified f
   <tr>
     <td>\ref element_board "board"</td>
     <td colspan="3">\ref element_board</td>
-  </tr>	
+  </tr>
   <tr>
     <th>Attributes</th>
     <th>Description</th>
@@ -470,7 +470,7 @@ Two different picture types (\token{small} and \token{large}) can be specified f
   </tr>
   <tr>
     <td>public</td>
-    <td>Set publishing permissions for the documentation. If \tagem{public} is \token{true}, then the vendor gives permission 
+    <td>Set publishing permissions for the documentation. If \tagem{public} is \token{true}, then the vendor gives permission
         to extract the documentation from the Pack and publish it on a web-page. Links to web pages are assumed to be public.
         The default value is \token{false}.</td>
     <td>xs:boolean</td>
@@ -491,7 +491,7 @@ This element describes the debug interface of a board. At least debug interface 
 <debugInterface adapter="JTAG/SW" connector="20-pin Cortex Debug + ETM Connector (0.05 inch connector)"/>
 <debugInterface adapter="ST-Link" connector="Mini-USB"/>
 \endcode
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: BoardDebugInterface">
   <tr>
@@ -501,7 +501,7 @@ This element describes the debug interface of a board. At least debug interface 
   <tr>
     <td>\ref element_board "board"</td>
     <td colspan="3">\ref element_board</td>
-  </tr>	
+  </tr>
   <tr>
     <th>Attributes</th>
     <th>Description</th>
@@ -510,21 +510,21 @@ This element describes the debug interface of a board. At least debug interface 
   </tr>
   <tr>
     <td>adapter</td>
-    <td>String describing the debug adapter. Common adapters are: \token{JTAG/SW} (for all adapters supporting JTAG and Serial-Wire Debug), 
+    <td>String describing the debug adapter. Common adapters are: \token{JTAG/SW} (for all adapters supporting JTAG and Serial-Wire Debug),
 	\token{CMSIS-DAP}, \token{OpenSDA}, \token{J-Link}, \token{ST-Link}, \token{Nu-Link}.</td>
     <td>xs:string</td>
     <td>optional</td>
   </tr>
   <tr>
     <td>connector</td>
-    <td>String describing the debug connector. Usually one of these: \token{10-pin Cortex Debug Connector}, \token{20-pin Arm Standard JTAG Connector}, 
+    <td>String describing the debug connector. Usually one of these: \token{10-pin Cortex Debug Connector}, \token{20-pin Arm Standard JTAG Connector},
 	\token{20-pin Cortex Debug + ETM Connector}, \token{Mini-USB}, \token{Micro-USB}.</td>
     <td>xs:string</td>
     <td>optional</td>
   </tr>
 </table>
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 <hr>
 
 \section element_board_book /package/boards/board/book
@@ -535,7 +535,7 @@ The element provides information about documentation parts related to a developm
 \code
 <book category="setup" name="Documents/UM1662.pdf" title="Getting Started"/>
 \endcode
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Element: Books">
   <tr>
@@ -545,7 +545,7 @@ The element provides information about documentation parts related to a developm
   <tr>
     <td>\ref element_board "board"</td>
     <td colspan="3">\ref element_board</td>
-  </tr>	
+  </tr>
   <tr>
     <th>Attributes</th>
     <th>Description</th>
@@ -572,7 +572,7 @@ The element provides information about documentation parts related to a developm
   </tr>
   <tr>
     <td>public</td>
-    <td>Set publishing permissions for the documentation. If \tagem{public} is \token{true}, then the vendor gives permission 
+    <td>Set publishing permissions for the documentation. If \tagem{public} is \token{true}, then the vendor gives permission
         to extract the documentation from the pack and publish it on a web-page. Links to web pages are assumed to be public.
         The default value is \token{false}.</td>
     <td>xs:boolean</td>
@@ -584,7 +584,7 @@ The element provides information about documentation parts related to a developm
 
 \anchor BoardBookCategoryEnum <b>Table: Board Book Categories</b>
 
-The table lists values to identify a specific type of documentation for development boards. 
+The table lists values to identify a specific type of documentation for development boards.
 <table class="cmtable" summary="Type: BoardBookCategoryEnum">
   <tr>
     <th>category=</th>

@@ -14,34 +14,34 @@ def writeTests(config,format):
     data1=np.random.randn(NBSAMPLES)
     data2=np.random.randn(NBSAMPLES)
     data3=np.random.randn(1)
-    
+
     data1 = Tools.normalize(data1)
     data2 = Tools.normalize(data2)
 
     # temp for debug of f16
     config.writeInput(1, data1)
     config.writeInput(2, data2)
-    
+
     ref = data1 + data2
     config.writeReference(1, ref)
-    
+
     ref = data1 - data2
     config.writeReference(2, ref)
-    
+
     ref = data1 * data2
     config.writeReference(3, ref)
-    
+
     ref = -data1
     config.writeReference(4, ref)
-    
+
     ref = data1 + 0.5
     config.writeReference(5, ref)
-    
+
     ref = data1 * 0.5
     config.writeReference(6, ref)
-    
-    
-   
+
+
+
     nb = Tools.loopnb(format,Tools.TAILONLY)
     ref = np.array([np.dot(data1[0:nb] ,data2[0:nb])])
 
@@ -56,7 +56,7 @@ def writeTests(config,format):
        config.writeReferenceQ31(7, ref)
     else:
        config.writeReference(7, ref)
-    
+
     nb = Tools.loopnb(format,Tools.BODYONLY)
     ref = np.array([np.dot(data1[0:nb] ,data2[0:nb])])
 
@@ -71,7 +71,7 @@ def writeTests(config,format):
        config.writeReferenceQ31(8, ref)
     else:
        config.writeReference(8, ref)
-    
+
     nb = Tools.loopnb(format,Tools.BODYANDTAIL)
     ref = np.array([np.dot(data1[0:nb] ,data2[0:nb])])
 
@@ -86,7 +86,7 @@ def writeTests(config,format):
        config.writeReferenceQ31(9, ref)
     else:
        config.writeReference(9, ref)
-    
+
     ref = abs(data1)
     config.writeReference(10, ref)
 
@@ -117,7 +117,7 @@ def writeTestsWithSat(config,format):
        NBSAMPLES=33
 
     nb = writeTests(config,format)
-    
+
     data1 = np.full(NBSAMPLES, 2**format - 1)
     data1[1::2] = 2
     data2 = np.full(NBSAMPLES, -2**format)
@@ -143,7 +143,7 @@ def writeTestsWithSat(config,format):
        config.writeInputS8(nb+1,data1-1,"MaxPosInput")
        config.writeInputS8(nb+1,data2+1,"MaxNegInput")
        config.writeInputS8(nb+1,data2,"MaxNeg2Input")
-       
+
     d1 = 1.0*(data1-1) / 2**format
     d2 = 1.0*(data2+1) / 2**format
     d3 = 1.0*(data2) / 2**format
@@ -198,7 +198,7 @@ def writeTests2(config,format):
     if format == 15:
        maxVal = 0x7fff
     if format == 7:
-       maxVal = 0x7f 
+       maxVal = 0x7f
 
     minVal = -maxVal-1
 
@@ -265,13 +265,13 @@ def writeTests2(config,format):
 def generatePatterns():
     PATTERNDIR = os.path.join("Patterns","DSP","BasicMaths","BasicMaths")
     PARAMDIR = os.path.join("Parameters","DSP","BasicMaths","BasicMaths")
-    
+
     configf32=Tools.Config(PATTERNDIR,PARAMDIR,"f32")
     configf16=Tools.Config(PATTERNDIR,PARAMDIR,"f16")
     configq31=Tools.Config(PATTERNDIR,PARAMDIR,"q31")
     configq15=Tools.Config(PATTERNDIR,PARAMDIR,"q15")
     configq7=Tools.Config(PATTERNDIR,PARAMDIR,"q7")
-    
+
     writeTests(configf32,0)
     writeTests(configf16,16)
 
@@ -282,7 +282,7 @@ def generatePatterns():
 
     # Params just as example
     someLists=[[1,3,5],[1,3,5],[1,3,5]]
-    
+
     r=np.array([element for element in itertools.product(*someLists)])
     configf32.writeParam(1, r.reshape(81))
 

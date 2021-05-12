@@ -12,20 +12,20 @@
        float64_t *outfftp = outputfft.ptr();
 
         memcpy(outfftp,inp,sizeof(float64_t)*input.nbSamples());
-   
+
         arm_cfft_f64(
              &(this->varInstCfftF64),
              outfftp,
              this->ifft,
              1);
 
-          
+
         ASSERT_SNR(outputfft,ref,(float64_t)SNR_THRESHOLD);
         ASSERT_EMPTY_TAIL(outputfft);
-        
-    } 
 
-  
+    }
+
+
     void TransformCF64::setUp(Testing::testID_t id,std::vector<Testing::param_t>& paramsArgs,Client::PatternMgr *mgr)
     {
 

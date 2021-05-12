@@ -2,7 +2,7 @@
 # Test status (like passed, or failed with error code)
 
 import argparse
-import re 
+import re
 import TestScripts.NewParser as parse
 import TestScripts.CodeGen
 from collections import deque
@@ -16,30 +16,30 @@ import TestScripts.Deprecate as d
 
 def findItem(root,path):
         """ Find a node in a tree
-      
+
         Args:
           path (list) : A list of node ID
             This list is describing a path in the tree.
             By starting from the root and following this path,
             we can find the node in the tree.
         Raises:
-          Nothing 
+          Nothing
         Returns:
           TreeItem : A node
         """
         # The list is converted into a queue.
-        q = deque(path) 
+        q = deque(path)
         q.popleft()
         c = root
         while q:
-            n = q.popleft() 
+            n = q.popleft()
             # We get the children based on its ID and continue
             c = c[n-1]
         return(c)
 
 
 
-NORMAL = 1 
+NORMAL = 1
 INTEST = 2
 TESTPARAM = 3
 
@@ -68,23 +68,23 @@ def summaryBenchmark(resultPath,elem,path):
       print("  Generating %s" % regressionPath)
       full=pd.read_csv(path,dtype={'OLDID': str} ,keep_default_na = False)
       #print(full)
-      
+
       csvheaders = []
       with open(os.path.join(resultPath,'currentConfig.csv'), 'r') as f:
            reader = csv.reader(f)
            csvheaders = next(reader, None)
-   
+
       groupList = list(set(elem.params.full) - set(elem.params.summary))
       #grouped=full.groupby(list(elem.params.summary) + ['ID','CATEGORY']).max()
       #grouped.reset_index(level=grouped.index.names, inplace=True)
       #print(grouped)
       #print(grouped.columns)
 
-  
+
       def reg(d):
        m=d["CYCLES"].max()
        #print( elem.params.formula)
-       
+
        results = smf.ols('CYCLES ~ ' + elem.params.formula, data=d).fit()
 
        f=joinit([formatProd(a,b) for (a,b) in zip(results.params.index,results.params.values)]," + ")
@@ -92,9 +92,9 @@ def summaryBenchmark(resultPath,elem,path):
        f = re.sub(r':','*',f)
        #print(results.summary())
        return(pd.Series({'Regression':"%s" % f,'MAX' : m,'MAXREGCOEF' : results.params.values[-1]}))
-   
-      regList = ['ID','OLDID','CATEGORY','TESTNAME','NAME'] + csvheaders + groupList 
-      
+
+      regList = ['ID','OLDID','CATEGORY','TESTNAME','NAME'] + csvheaders + groupList
+
       regression=full.groupby(regList).apply(reg)
       regression.reset_index(level=regression.index.names, inplace=True)
       renamingDict = { a : b for (a,b) in zip(elem.params.full,elem.params.paramNames)}
@@ -108,7 +108,7 @@ def extractBenchmarks(resultPath,benchmark,elem):
          benchPath = os.path.join(benchmark,elem.fullPath(),"fullBenchmark.csv")
          print("Processing %s" % benchPath)
          summaryBenchmark(resultPath,elem,benchPath)
-         
+
      for c in elem.children:
        extractBenchmarks(resultPath,benchmark,c)
 
@@ -133,6 +133,6 @@ if args.f is not None:
     d.deprecate(root,args.others)
     resultPath=os.path.dirname(args.r)
     extractBenchmarks(resultPath,args.b,root)
-    
+
 else:
     parser.print_help()

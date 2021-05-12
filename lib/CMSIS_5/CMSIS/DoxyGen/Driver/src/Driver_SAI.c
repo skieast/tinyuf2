@@ -27,8 +27,8 @@
 /**
 \defgroup sai_interface_gr SAI Interface
 \brief   Driver API for Serial Audio Interface (%Driver_SAI.h)
-\details 
-The <b>Serial Audio Interface</b> (SAI) implements a synchronous serial bus interface for connecting digital audio devices. 
+\details
+The <b>Serial Audio Interface</b> (SAI) implements a synchronous serial bus interface for connecting digital audio devices.
 It is by far the most common mechanism used to transfer two channels of audio data between devices within a system. \b SAI
 can transfer digital audio using various protocols:
 - \ref Driver_SAI_I2S
@@ -60,13 +60,13 @@ the microcontroller family.
 
 The driver functions are published in the access struct as explained in \ref DriverFunctions
   - \ref ARM_DRIVER_SAI : access struct for SAI driver functions
-  
+
 \section Driver_SAI_I2S I2S
 <a href="https://en.wikipedia.org/wiki/I%C2%B2S" target="_blank">Integrated Interchip Sound</a> (\b I2S) is a serial bus
 interface that connects digital audio devices together. It was introduced by Philips (now
 <a href="http://www.nxp.com" target="_blank">NXP</a>) in the late 80's and last revised 1996. It uses pulse code modulation
 to exchange the audio data between the devices. The following timing diagram explains the operation:
- 
+
 \image html driver_sai_i2s.png
 
 I2S separates the clock (\b SCK) from the serial data (\b SD), resulting in a lower jitter. A complete audio data frame
@@ -168,7 +168,7 @@ For more information, consult the
 
 \section Driver_SAI_User User Defined Protocol
 Using the control structs of the CMSIS-Driver SAI, it is possible to create support for nearly all serial audio protocols
-that are available today. 
+that are available today.
 
 \image html driver_sai_user.png
 
@@ -192,13 +192,13 @@ For more information, refer to \ref ARM_SAI_Control that explains the different 
 */
 
 
-/** 
+/**
 \struct     ARM_DRIVER_SAI
 \details
 The functions of the SAI driver are accessed by function pointers exposed by this structure.
 Refer to \ref DriverFunctions for overview information.
 
-Each instance of an SAI interface provides such an access structure. 
+Each instance of an SAI interface provides such an access structure.
 The instance is identified by a postfix number in the symbol name of the access structure, for example:
  - \b Driver_SAI0 is the name of the access struct of the first instance (no. 0).
  - \b Driver_SAI1 is the name of the access struct of the second instance (no. 1).
@@ -208,7 +208,7 @@ The default is \token{0}, which connects a middleware to the first instance of a
 *****************************************************************************************************************/
 
 /**
-\struct     ARM_SAI_CAPABILITIES 
+\struct     ARM_SAI_CAPABILITIES
 \details
 An SAI driver can be implemented with different capabilities (for example protocol support). The data fields of this
 structure encode the capabilities implemented by this driver. If a certain hardware peripheral is not able to handle one
@@ -220,7 +220,7 @@ the \ref Driver_SAI_User (if supported).
 *****************************************************************************************************************/
 
 /**
-\struct ARM_SAI_STATUS 
+\struct ARM_SAI_STATUS
 \details
 Structure with information about the status of the SAI. The data fields encode busy flags and error flags.
 
@@ -242,34 +242,34 @@ Provides the typedef for the callback function \ref ARM_SAI_SignalEvent.
 /**
 \defgroup sai_execution_status Status Error Codes
 \ingroup common_drv_gr
-\brief Negative values indicate errors (SAI has specific codes in addition to common \ref execution_status). 
-\details 
+\brief Negative values indicate errors (SAI has specific codes in addition to common \ref execution_status).
+\details
 The SAI driver has additional status error codes that are listed below.
 \note
 - In case multiple errors exist, only the first encountered error will be reported.
 - errors ARM_SAI_ERROR_BIT_ORDER, ARM_SAI_ERROR_FRAME_SYNC_xxx, ARM_SAI_ERROR_SLOT_xxx will only be reported in \ref Driver_SAI_User mode.
 - The SAI driver also returns the common \ref execution_status.
-  
+
 @{
-\def ARM_SAI_ERROR_SYNCHRONIZATION       
+\def ARM_SAI_ERROR_SYNCHRONIZATION
 The \b synchronization requested with the function \ref ARM_SAI_Control is not supported.
 
 \def ARM_SAI_ERROR_PROTOCOL
 The \b protocol requested with the function \ref ARM_SAI_Control is not supported.
 
-\def ARM_SAI_ERROR_DATA_SIZE     
+\def ARM_SAI_ERROR_DATA_SIZE
 The <b>data size</b> requested with the function \ref ARM_SAI_Control is not supported.
 
 \def ARM_SAI_ERROR_BIT_ORDER
 The <b>bit order</b> requested with the function \ref ARM_SAI_Control is not supported.
 
-\def ARM_SAI_ERROR_MONO_MODE            
+\def ARM_SAI_ERROR_MONO_MODE
 The <b>mono mode</b> requested with the function \ref ARM_SAI_Control is not supported.
 
-\def ARM_SAI_ERROR_COMPANDING   
+\def ARM_SAI_ERROR_COMPANDING
 The <b>companding</b> requested with the function \ref ARM_SAI_Control is not supported.
 
-\def ARM_SAI_ERROR_CLOCK_POLARITY 
+\def ARM_SAI_ERROR_CLOCK_POLARITY
 The <b>clock polarity</b> requested with the function \ref ARM_SAI_Control is not supported.
 
 \def ARM_SAI_ERROR_AUDIO_FREQ
@@ -278,22 +278,22 @@ The <b>audio frequency</b> requested with the function \ref ARM_SAI_Control is n
 \def ARM_SAI_ERROR_MCLK_PIN
 The <b>MCLK pin</b> setting requested with the function \ref ARM_SAI_Control is not supported.
 
-\def ARM_SAI_ERROR_MCLK_PRESCALER       
+\def ARM_SAI_ERROR_MCLK_PRESCALER
 The <b>MCLK prescaler</b> requested with the function \ref ARM_SAI_Control is not supported.
 
 \def ARM_SAI_ERROR_FRAME_LENGTH
 The <b>frame length</b> requested with the function \ref ARM_SAI_Control is not supported.
 
-\def ARM_SAI_ERROR_FRAME_SYNC_WIDTH 
+\def ARM_SAI_ERROR_FRAME_SYNC_WIDTH
 The <b>frame sync width</b> requested with the function \ref ARM_SAI_Control is not supported.
 
 \def ARM_SAI_ERROR_FRAME_SYNC_POLARITY
 The <b>frame sync polarity</b> requested with the function \ref ARM_SAI_Control is not supported.
 
-\def ARM_SAI_ERROR_FRAME_SYNC_EARLY      
+\def ARM_SAI_ERROR_FRAME_SYNC_EARLY
 The <b>frame sync early</b> requested with the function \ref ARM_SAI_Control is not supported.
 
-\def ARM_SAI_ERROR_SLOT_COUNT 
+\def ARM_SAI_ERROR_SLOT_COUNT
 The <b>slot count</b> requested with the function \ref ARM_SAI_Control is not supported.
 
 \def ARM_SAI_ERROR_SLOT_SIZE
@@ -310,16 +310,16 @@ The <b>slot offset</b> requested with the function \ref ARM_SAI_Control is not s
 \defgroup SAI_events SAI Events
 \ingroup sai_interface_gr
 \brief The SAI driver generates call back events that are notified via the function \ref ARM_SAI_SignalEvent.
-\details 
+\details
 This section provides the event values for the \ref ARM_SAI_SignalEvent callback function.
 
 The following call back notification events are generated:
 @{
-\def ARM_SAI_EVENT_SEND_COMPLETE    
-\def ARM_SAI_EVENT_RECEIVE_COMPLETE 
-\def ARM_SAI_EVENT_TX_UNDERFLOW     
-\def ARM_SAI_EVENT_RX_OVERFLOW      
-\def ARM_SAI_EVENT_FRAME_ERROR      
+\def ARM_SAI_EVENT_SEND_COMPLETE
+\def ARM_SAI_EVENT_RECEIVE_COMPLETE
+\def ARM_SAI_EVENT_TX_UNDERFLOW
+\def ARM_SAI_EVENT_RX_OVERFLOW
+\def ARM_SAI_EVENT_FRAME_ERROR
 @}
 */
 
@@ -535,11 +535,11 @@ The function \b ARM_SAI_GetVersion returns version information of the driver imp
 \code
 extern ARM_DRIVER_SAI Driver_SAI0;
 ARM_DRIVER_SAI *drv_info;
- 
+
 void setup_sai (void)  {
   ARM_DRIVER_VERSION  version;
- 
-  drv_info = &Driver_SAI0;  
+
+  drv_info = &Driver_SAI0;
   version = drv_info->GetVersion ();
   if (version.api < 0x10A)  {      // requires at minimum API version 1.10 or higher
     // error handling
@@ -557,21 +557,21 @@ ARM_SAI_CAPABILITIES ARM_SAI_GetCapabilities (void)  {
 \fn ARM_SAI_CAPABILITIES ARM_SAI_GetCapabilities (void)
 The function \b  ARM_SAI_GetCapabilities retrieves information about the capabilities in this driver implementation.
 The data fields of the struct \ref ARM_SAI_CAPABILITIES encode various capabilities, for example
-supported protocols, or if a hardware is capable to create signal events using the \ref ARM_SAI_SignalEvent 
+supported protocols, or if a hardware is capable to create signal events using the \ref ARM_SAI_SignalEvent
 callback function.
- 
+
 \b Example:
 \code
 extern ARM_DRIVER_SAI Driver_SAI0;
 ARM_DRIVER_SAI *drv_info;
-  
+
 void read_capabilities (void)  {
   ARM_SAI_CAPABILITIES drv_capabilities;
- 
-  drv_info = &Driver_SAI0;  
+
+  drv_info = &Driver_SAI0;
   drv_capabilities = drv_info->GetCapabilities ();
   // interrogate capabilities
- 
+
 }
 \endcode
 *****************************************************************************************************************/
@@ -589,7 +589,7 @@ The function performs the following operations:
   - Initializes the required resources of the SAI interface.
   - Registers the \ref ARM_SAI_SignalEvent callback function.
 
-The parameter \em cb_event is a pointer to the \ref ARM_SAI_SignalEvent callback function; use a NULL pointer 
+The parameter \em cb_event is a pointer to the \ref ARM_SAI_SignalEvent callback function; use a NULL pointer
 when no callback signals are required.
 *****************************************************************************************************************/
 
@@ -603,22 +603,22 @@ The function \b ARM_SAI_Uninitialize de-initializes the resources of SAI interfa
 
 It is called when the middleware component stops operation and releases the software resources used by the interface.
 *****************************************************************************************************************/
-  
+
 int32_t ARM_SAI_PowerControl (ARM_POWER_STATE state)  {
   return ARM_DRIVER_OK;
 }
 /**
 \fn int32_t ARM_SAI_PowerControl (ARM_POWER_STATE state)
 \details
-The function \b ARM_SAI_PowerControl allows you to control the power modes of the SAI interface.  
+The function \b ARM_SAI_PowerControl allows you to control the power modes of the SAI interface.
 
 The parameter \em state sets the operation and can have the following values:
-  - \ref ARM_POWER_FULL : set-up peripheral for data transfers, enable interrupts (NVIC) and optionally DMA. 
-                          Can be called multiple times. If the peripheral is already in this mode the function performs 
+  - \ref ARM_POWER_FULL : set-up peripheral for data transfers, enable interrupts (NVIC) and optionally DMA.
+                          Can be called multiple times. If the peripheral is already in this mode the function performs
 						  no operation and returns with \ref ARM_DRIVER_OK.
   - \ref ARM_POWER_LOW : may use power saving. Returns \ref ARM_DRIVER_ERROR_UNSUPPORTED when not implemented.
   - \ref ARM_POWER_OFF : terminates any pending data transfers, disables peripheral, disables related interrupts and DMA.
-      
+
 Refer to \ref CallSequence for more information.
 *****************************************************************************************************************/
 
@@ -626,7 +626,7 @@ int32_t ARM_SAI_Send (const void *data, uint32_t num)  {
   return ARM_DRIVER_OK;
 }
 /**
-\fn int32_t ARM_SAI_Send (const void *data, uint32_t num) 
+\fn int32_t ARM_SAI_Send (const void *data, uint32_t num)
 \details
 The function \b ARM_SAI_Send sends data to the SAI transmitter.
 
@@ -641,14 +641,14 @@ Data type is:
 Transmitter is enabled by calling \ref ARM_SAI_Control with \ref ARM_SAI_CONTROL_TX as the control parameter and \token{1} as
 an argument. This starts the transmit engine which, generates a clock and frame sync signal in master mode and transmits the
 data. In slave mode, clock and frame sync are generated by the external master. When mute is active, data is discarded and
-zero values are transmitted. 
- 
+zero values are transmitted.
+
 Calling the function <b>ARM_SAI_Send</b> only starts the send operation. The function is non-blocking and returns as soon as
 the driver has started the operation (the driver typically configures DMA or the interrupt system for continuous transfer).
 During the operation it is not allowed to call this function again. Also, the data buffer must stay allocated and the
 contents of unsent data must not be modified. When the send operation is completed (requested number of items have been
 sent), the event \ref ARM_SAI_EVENT_SEND_COMPLETE is generated. Progress of the send operation can be monitored by reading
-the number of already sent items by calling the function \ref ARM_SAI_GetTxCount. 
+the number of already sent items by calling the function \ref ARM_SAI_GetTxCount.
 
 The status of the transmitter can also be monitored by calling the function \ref ARM_SAI_GetStatus and checking the \em tx_busy flag,
 which indicates if a transmission is still in progress.
@@ -657,7 +657,7 @@ If the transmitter is enabled and data is to be sent but the send operation has 
 \ref ARM_SAI_EVENT_TX_UNDERFLOW is generated.
 
 If an invalid synchronization frame is detected in slave mode, then the event \ref ARM_SAI_EVENT_FRAME_ERROR is generated (if
-supported and reported by \em event_frame_error in \ref ARM_SAI_CAPABILITIES). 
+supported and reported by \em event_frame_error in \ref ARM_SAI_CAPABILITIES).
 
 The send operation can be aborted by calling the function \ref ARM_SAI_Control with the control parameter \ref ARM_SAI_ABORT_SEND.
 *****************************************************************************************************************/
@@ -679,23 +679,23 @@ Data type is:
 
 The receiver is enabled by calling the function \ref ARM_SAI_Control with the control parameter \ref ARM_SAI_CONTROL_RX and the value \token{1}
 for the parameter \em arg1. This starts the receive engine, which generates a clock and frame sync signal in master mode and receives
-data. In slave mode, clock and frame sync are generated by the external master. 
- 
+data. In slave mode, clock and frame sync are generated by the external master.
+
 Calling the function <b>ARM_SAI_Receive</b> only starts the receive operation. The function is non-blocking and returns as
 soon as the driver has started the operation (the driver typically configures DMA or the interrupt system for continuous
 transfer). During the operation, it is not allowed to call this function again. The data buffer must also stay allocated.
 When receive operation is completed (the requested number of items have been received), the
 \ref ARM_SAI_EVENT_RECEIVE_COMPLETE event is generated. Progress of the receive operation can also be monitored by reading
-the number of items already received by calling the function \ref ARM_SAI_GetRxCount. 
+the number of items already received by calling the function \ref ARM_SAI_GetRxCount.
 
 The status of the receiver can also be monitored by calling the function \ref ARM_SAI_GetStatus and checking the \em rx_busy flag, which
-indicates whether a reception is still in progress. 
+indicates whether a reception is still in progress.
 
 When the receiver is enabled and data is received but the receive operation has not been started yet, then the event
 \ref ARM_SAI_EVENT_RX_OVERFLOW is generated.
 
 If an invalid synchronization frame is detected in slave mode, then the event \ref ARM_SAI_EVENT_FRAME_ERROR is generated (if
-supported and reported by \em event_frame_error in \ref ARM_SAI_CAPABILITIES). 
+supported and reported by \em event_frame_error in \ref ARM_SAI_CAPABILITIES).
 
 The receive operation can be aborted by calling the function \ref ARM_SAI_Control with the control parameter \ref ARM_SAI_ABORT_RECEIVE.
 *****************************************************************************************************************/
@@ -730,35 +730,35 @@ int32_t ARM_SAI_Control (uint32_t control, uint32_t arg1, uint32_t arg2)  {
 The function \b ARM_SAI_Control controls the SAI interface and executes various operations.
 
 The parameter \em control specifies the operation. Values are listed in the table <a href="#sai_contrl_tab"><b>Parameter <i>control</i></b></a>.\n
-The parameter \em arg1 provides,  depending on the operation,  additional information or sets values. 
+The parameter \em arg1 provides,  depending on the operation,  additional information or sets values.
 Refer to table <a href="#sai_arg1_tab"><b>Parameter <i>arg1</i></b></a>. \n
-The parameter \em arg2 provides,  depending on the operation and/or \em arg1,  additional information or sets values. 
+The parameter \em arg2 provides,  depending on the operation and/or \em arg1,  additional information or sets values.
 
-The driver provides a receiver/transmitter pair of signals. 
-In asynchronous operation mode, they operate completely independent from each other. 
+The driver provides a receiver/transmitter pair of signals.
+In asynchronous operation mode, they operate completely independent from each other.
 In synchronous operation mode, the synchronous channel uses the Clock (SCK) and Frame Sync (WS) signal from the asynchronous one
 (control category <a href="#sai_sync"><b>Synchronization</b></a>).
 
 The clock polarity can be set for every protocol, regardless whether it is already predefined for I2S, MSB/LSB Jusitified
 (control category <a href="#sai_clk_polarity"><b>Clock Polarity</b></a>).
 
-A master clock provides a faster clock from which the frame can be derived (usually 256 x faster than the normal frame clock). 
-You can use a master clock only in master mode. A slave will always have only one clock 
+A master clock provides a faster clock from which the frame can be derived (usually 256 x faster than the normal frame clock).
+You can use a master clock only in master mode. A slave will always have only one clock
 (control category <a href="#master_clock"><b>Master Clock pin (MCLK)</b></a>).
 
-\anchor sai_contrl_tab		
+\anchor sai_contrl_tab
 The table lists the operation values for \em control. Values from different categories can be ORed.
 <table class="cmtable" summary="">
 <tr><th> Parameter \em control              </th><th>                                       Bit </th><th>             Category      </th>
     <th> Description                        </th></tr>
 <tr><td> \ref ARM_SAI_CONFIGURE_TX          </td><td rowspan="9" style="text-align:right"> 0..7 </td><td rowspan="9"> Operation    </td>
     <td> Configure transmitter. \em arg1 (see  <a href="#sai_arg1_tab"><b>Parameter <i>arg1</i></b></a>) and \em arg2 provide additional configuration.  </td></tr>
-<tr><td> \ref ARM_SAI_CONFIGURE_TX          </td>    
+<tr><td> \ref ARM_SAI_CONFIGURE_TX          </td>
     <td> Configure transmitter. \em arg1 (see  <a href="#sai_arg1_tab"><b>Parameter <i>arg1</i></b></a>) and \em arg2 provide additional configuration.  </td></tr>
 <tr><td> \ref ARM_SAI_CONFIGURE_RX          </td>
     <td> Configure transmitter. \em arg1 and \em arg2 provide additional configuration.  </td></tr>
 <tr><td> \ref ARM_SAI_CONTROL_TX                </td>
-    <td> Enable or disable transmitter and control mute; 
+    <td> Enable or disable transmitter and control mute;
 	\em arg1.0 : \token{0=disable (default); 1=enable;} \em arg1.1 : \token{mute} (see \ref ARM_SAI_Send) </td></tr>
 <tr><td> \ref ARM_SAI_CONTROL_RX            </td>
     <td> Enable or disable receiver; \em arg1.0 : \token{0=disable (default); 1=enable} (see \ref ARM_SAI_Receive)  </td></tr>
@@ -776,37 +776,37 @@ The table lists the operation values for \em control. Values from different cate
     <td> Slave mode.  </td></tr>
 <tr><td> \ref ARM_SAI_ASYNCHRONOUS (default)    \anchor sai_sync </td><td rowspan="2" style="text-align:right">  9  </td><td rowspan="2"> Synchronization </td>
     <td> Asynchronous operation using own clock and sync signal.  </td></tr>
-<tr><td> \ref ARM_SAI_SYNCHRONOUS               </td> 
+<tr><td> \ref ARM_SAI_SYNCHRONOUS               </td>
     <td> Synchronous operation using clock and sync signal from other transmitter/receiver.  </td></tr>
 <tr><td> \ref ARM_SAI_PROTOCOL_USER  (default)  </td><td rowspan="7" style="text-align:right"> 10..12 </td><td rowspan="7"> Protocol     </td>
     <td> User defined                           </td></tr>
 <tr><td> \ref ARM_SAI_PROTOCOL_I2S              </td>
     <td> I2C                                    </td></tr>
-<tr><td> \ref ARM_SAI_PROTOCOL_MSB_JUSTIFIED    </td> 
+<tr><td> \ref ARM_SAI_PROTOCOL_MSB_JUSTIFIED    </td>
     <td> MSB (left) justified                   </td></tr>
-<tr><td> \ref ARM_SAI_PROTOCOL_LSB_JUSTIFIED    </td> 
+<tr><td> \ref ARM_SAI_PROTOCOL_LSB_JUSTIFIED    </td>
     <td> LSB (right) justified                  </td></tr>
-<tr><td> \ref ARM_SAI_PROTOCOL_PCM_SHORT        </td> 
+<tr><td> \ref ARM_SAI_PROTOCOL_PCM_SHORT        </td>
     <td> PCM with short frame                   </td></tr>
-<tr><td> \ref ARM_SAI_PROTOCOL_PCM_LONG         </td> 
+<tr><td> \ref ARM_SAI_PROTOCOL_PCM_LONG         </td>
     <td> PCM with long frame                    </td></tr>
-<tr><td> \ref ARM_SAI_PROTOCOL_AC97             </td> 
+<tr><td> \ref ARM_SAI_PROTOCOL_AC97             </td>
     <td> AC'97                                  </td></tr>
-<tr><td> \ref ARM_SAI_DATA_SIZE(n)              </td><td style="text-align:right"> 13..17 </td><td> Data Size    </td>     
+<tr><td> \ref ARM_SAI_DATA_SIZE(n)              </td><td style="text-align:right"> 13..17 </td><td> Data Size    </td>
     <td> Data size in bits; the range for \em n is \token{8..32}. See also: <a href="#frame_slot_size"><b>Frame Slot Size</b></a>.    </td></tr>
-<tr><td> \ref ARM_SAI_MSB_FIRST                 </td><td rowspan="2" style="text-align:right"> 18     </td><td rowspan="2"> Bit Order    </td>     
+<tr><td> \ref ARM_SAI_MSB_FIRST                 </td><td rowspan="2" style="text-align:right"> 18     </td><td rowspan="2"> Bit Order    </td>
     <td> Data is transferred with MSB first.    </td></tr>
 <tr><td> \ref ARM_SAI_LSB_FIRST                 </td>
     <td> Data is transferred with LSB first (User protocol only, ignored otherwise).     </td></tr>
-<tr><td> \ref ARM_SAI_MONO_MODE                 </td><td style="text-align:right"> 19     </td><td> Mono Mode</td>      
-    <td> Only for I2S, MSB/LSB justified. 
+<tr><td> \ref ARM_SAI_MONO_MODE                 </td><td style="text-align:right"> 19     </td><td> Mono Mode</td>
+    <td> Only for I2S, MSB/LSB justified.
 	     When using \ref Driver_SAI_I2S in mono mode, only data for a single channel is sent to and received from the driver.
          Hardware will duplicate the data for the second channel on transmit and ignore the second channel on receive.    </td></tr>
 <tr><td> \ref ARM_SAI_COMPANDING_NONE (default) </td><td rowspan="3" style="text-align:right"> 20..22 </td><td rowspan="3"> Companding    </td>
     <td> No companding  </td></tr>
-<tr><td> \ref ARM_SAI_COMPANDING_A_LAW          </td>   
+<tr><td> \ref ARM_SAI_COMPANDING_A_LAW          </td>
     <td> A-Law companding (8-bit data)          </td></tr>
-<tr><td> \ref ARM_SAI_COMPANDING_U_LAW          </td>   
+<tr><td> \ref ARM_SAI_COMPANDING_U_LAW          </td>
     <td> u-Law companding (8-bit data)          </td></tr>
 <tr><td> \ref ARM_SAI_CLOCK_POLARITY_0&nbsp;(default)  \anchor sai_clk_polarity > </td><td rowspan="2" style="text-align:right">    23   </td><td rowspan="2"> Clock Polarity </td>
     <td> Drive on falling edge, capture on rising  edge. </td></tr>
@@ -814,9 +814,9 @@ The table lists the operation values for \em control. Values from different cate
     <td> Drive on rising  edge, capture on falling edge. </td></tr>
 <tr><td> \ref ARM_SAI_MCLK_PIN_INACTIVE&nbsp;(default)  </td><td rowspan="3" style="text-align:right"> 24..26 </td><td rowspan="3"> Master Clock pin (MCLK) </td>
     <td> MCLK not used.                         </td></tr>
-<tr><td> \ref ARM_SAI_MCLK_PIN_OUTPUT           </td>   
+<tr><td> \ref ARM_SAI_MCLK_PIN_OUTPUT           </td>
     <td> MCLK is output (Master mode only).     </td></tr>
-<tr><td> \ref ARM_SAI_MCLK_PIN_INPUT            </td>   
+<tr><td> \ref ARM_SAI_MCLK_PIN_INPUT            </td>
     <td> MCLK is input (Master mode only).      </td></tr>
 </table>
 
@@ -876,24 +876,24 @@ Parameter \em arg2                       | MCLK Prescaler
 
 \code
 extern ARM_DRIVER_SAI Driver_SAI0;
- 
+
 // configure Transmitter to Asynchronous Master: I2S Protocol, 16-bit data, 16kHz Audio frequency
-status = Driver_SAI0.Control(ARM_SAI_CONFIGURE_TX | 
-                             ARM_SAI_MODE_MASTER  | 
-                             ARM_SAI_ASYNCHRONOUS | 
-                             ARM_SAI_PROTOCOL_I2S | 
+status = Driver_SAI0.Control(ARM_SAI_CONFIGURE_TX |
+                             ARM_SAI_MODE_MASTER  |
+                             ARM_SAI_ASYNCHRONOUS |
+                             ARM_SAI_PROTOCOL_I2S |
                              ARM_SAI_DATA_SIZE(16), 0, 16000);
- 
+
 // configure Receiver to Asynchronous Master: I2S Protocol, 16-bit data, 16kHz Audio frequency
-status = Driver_SAI0.Control(ARM_SAI_CONFIGURE_RX | 
-                             ARM_SAI_MODE_MASTER  | 
-                             ARM_SAI_ASYNCHRONOUS | 
-                             ARM_SAI_PROTOCOL_I2S | 
+status = Driver_SAI0.Control(ARM_SAI_CONFIGURE_RX |
+                             ARM_SAI_MODE_MASTER  |
+                             ARM_SAI_ASYNCHRONOUS |
+                             ARM_SAI_PROTOCOL_I2S |
                              ARM_SAI_DATA_SIZE(16), 0, 16000);
- 
+
 // enable Transmitter
 status = Driver_SAI0.Control(ARM_SAI_CONTROL_TX, 1, 0);
- 
+
 // enable Receiver
 status = Driver_SAI0.Control(ARM_SAI_CONTROL_RX, 1, 0);
 \endcode
@@ -915,24 +915,24 @@ void ARM_SAI_SignalEvent (uint32_t event)  {
 /**
 \fn void ARM_SAI_SignalEvent (uint32_t event)
 \details
-The function \b ARM_SAI_SignalEvent is a callback function registered by the function \ref ARM_SAI_Initialize. 
+The function \b ARM_SAI_SignalEvent is a callback function registered by the function \ref ARM_SAI_Initialize.
 
 The parameter \em event indicates one or more events that occurred during driver operation.
-Each event is encoded in a separate bit and therefore it is possible to signal multiple events within the same call. 
+Each event is encoded in a separate bit and therefore it is possible to signal multiple events within the same call.
 
 The following events can be generated:
 
-Parameter \em event                        | Bit | Description 
+Parameter \em event                        | Bit | Description
 ------------------------------------------ |:---:|:-----------
 \ref ARM_SAI_EVENT_SEND_COMPLETE           |  0  | Occurs after call to \ref ARM_SAI_Send to indicate that all the data has been sent (or queued in transmit buffers). The driver is ready for the next call to \ref ARM_SAI_Send.
 \ref ARM_SAI_EVENT_RECEIVE_COMPLETE        |  1  | Occurs after call to \ref ARM_SAI_Receive to indicate that all the data has been received. The driver is ready for the next call to \ref ARM_SAI_Receive.
 \ref ARM_SAI_EVENT_TX_UNDERFLOW            |  2  | Occurs when data is to be sent but send operation has not been started. Data field \em tx_underflow = \token{1} of \ref ARM_SAI_STATUS.
 \ref ARM_SAI_EVENT_RX_OVERFLOW             |  3  | Occurs when data is received but receive operation has not been started. Data field \em rx_underflow = \token{1} of \ref ARM_SAI_STATUS.
 \ref ARM_SAI_EVENT_FRAME_ERROR             |  4  | Occurs in slave mode when invalid synchronization frame is detected. Data field \em  event_frame_error = \token{1} of \ref ARM_SAI_STATUS.
-  
+
 *****************************************************************************************************************/
 
 /**
 @}
-*/ 
+*/
 // End SAI Interface

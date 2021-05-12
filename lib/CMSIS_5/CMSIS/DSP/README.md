@@ -23,7 +23,7 @@ The cmake command is requiring several arguments. For instance, to build for m7 
     -DROOT="../../../../../.." \
     -DPLATFORM="FVP" \
     -G "Unix Makefiles" ..
-  
+
 DCMAKE_PREFIX_PATH is the path to the compiler toolchain. This folder should contain the bin folder where are the compiler executables.
 
 ROOT is pointing to the root CMSIS folder (the one containing CMSIS and Device).
@@ -40,14 +40,14 @@ Since the build folder is assumed to be created in arm_variance_examples then th
 
 To build for A5, you need to change DCMAKE_TOOLCHAIN_FILE and ARM_CPU:
 
-    -DCMAKE_TOOLCHAIN_FILE=../../../../armac5.cmake 
+    -DCMAKE_TOOLCHAIN_FILE=../../../../armac5.cmake
     -DARM_CPU="cortex-a5"
 
 To build for A5 with Neon acceleration, you need to add:
-  
+
     -DNEON=ON
 
-### Building 
+### Building
 
 Once cmake has generated the makefiles, you can use a GNU Make to build.
 
@@ -55,12 +55,12 @@ Once cmake has generated the makefiles, you can use a GNU Make to build.
 
 ### Running
 
-The generated executable can be run on a fast model. 
+The generated executable can be run on a fast model.
 For instance, if you built for m7, you could just do:
 
     FVP_MPS2_Cortex-M7.exe -a arm_variance_example
 
-The final executable has no extension in the filename. 
+The final executable has no extension in the filename.
 
 ## Building only the CMSIS-DSP library
 
@@ -82,7 +82,7 @@ set(DSP ${ROOT}/CMSIS/DSP)
 # Add DSP folder to module path
 list(APPEND CMAKE_MODULE_PATH ${DSP})
 
-########### 
+###########
 #
 # CMSIS DSP
 #
@@ -120,7 +120,7 @@ If no new symbol is defined, everything will behave as usual. If ARM_DSP_CONFIG_
 
 Then you can select all FFT tables or all interpolation tables by defining following compilation symbols:
 
-* ARM_ALL_FFT_TABLES : All FFT tables are included 
+* ARM_ALL_FFT_TABLES : All FFT tables are included
 * ARM_ALL_FAST_TABLES : All interpolation tables are included
 
 If more control is required, there are other symbols but it is not always easy to know which ones need to be enabled for a given use case.
@@ -131,7 +131,7 @@ For instance, if you want to use the arm_rfft_fast_f32, in fft.cmake you'll see 
 
 We see that following symbols need to be enabled :
 
-* ARM_TABLE_TWIDDLECOEF_F32_16 
+* ARM_TABLE_TWIDDLECOEF_F32_16
 * ARM_TABLE_BITREVIDX_FLT_16
 * ARM_TABLE_TWIDDLECOEF_RFFT_F32_32
 * ARM_TABLE_TWIDDLECOEF_F32_16

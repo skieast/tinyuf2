@@ -109,7 +109,7 @@ q31_t ref__QASX(q31_t x, q31_t y)
 {
    q31_t sum = 0;
 	q31_t xL, xH, yL, yH;
-	
+
    // extract bottom halfword and sign extend
 	xL = (q15_t)(x & 0xffff);
    // extract bottom halfword and sign extend
@@ -118,7 +118,7 @@ q31_t ref__QASX(q31_t x, q31_t y)
    xH = (q15_t)(x >> 16);
    // extract top halfword and sign extend
    yH = (q15_t)(y >> 16);
-   
+
    sum = (((q31_t)ref_sat_q15(xH + yL )) << 16) |
          (((q31_t)ref_sat_q15(xL - yH )) & 0xffff);
 
@@ -145,7 +145,7 @@ q31_t ref__QSAX(q31_t x, q31_t y)
 {
    q31_t sum = 0;
 	q31_t xL, xH, yL, yH;
-	
+
    // extract bottom halfword and sign extend
 	xL = (q15_t)(x & 0xffff);
    // extract bottom halfword and sign extend
@@ -154,7 +154,7 @@ q31_t ref__QSAX(q31_t x, q31_t y)
    xH = (q15_t)(x >> 16);
    // extract top halfword and sign extend
    yH = (q15_t)(y >> 16);
-   
+
    sum = (((q31_t)ref_sat_q15(xH - yL )) << 16) |
          (((q31_t)ref_sat_q15(xL + yH )) & 0xffff);
 

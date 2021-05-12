@@ -22,7 +22,7 @@
  * limitations under the License.
  */
 
- 
+
 #ifndef _BASIC_MATH_FUNCTIONS_F16_H_
 #define _BASIC_MATH_FUNCTIONS_F16_H_
 

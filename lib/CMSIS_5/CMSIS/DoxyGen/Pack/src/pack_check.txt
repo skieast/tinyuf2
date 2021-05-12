@@ -3,7 +3,7 @@
 \page packChk PackChk
 
 \b PackChk is a utility for validation of a Software Pack. It operates on the unzipped content of the Software Pack and
-is located in the directory <b>.\\CMSIS\\Utilities</b> of the <b>ARM::CMSIS</b> Pack.  
+is located in the directory <b>.\\CMSIS\\Utilities</b> of the <b>ARM::CMSIS</b> Pack.
 \b PackChk is available for Windows and Linux operating systems.
 
 \b PackChk performs the following operations:
@@ -39,42 +39,42 @@ Operation
   </tr>
   <tr>
     <td>-i \<file></td>
-    <td nowrap>Check component dependencies</td>	
+    <td nowrap>Check component dependencies</td>
     <td>Reference PDSC file(s) used to resolve component dependencies in conditions.</td>
   </tr>
   <tr>
     <td>-n \<file></td>
-    <td >Write Pack file name</td>	
+    <td >Write Pack file name</td>
     <td>Write a standardized name for the Software Pack to the specified ASCII file.</td>
   </tr>
   <tr>
     <td>-s</td>
-    <td nowrap>Verify SVD files</td>	
+    <td nowrap>Verify SVD files</td>
     <td>Each SVD file referenced in the *.pdsc file is <a href="../../SVD/html/svd_validate_file_pg.html"><b>validated</b></a> with \b SVDConv.
 	With this option set, \b SVDConv.exe is invoked from the same directory as \b PackChk.
 	</td>
   </tr>
   <tr>
     <td>-u \<url></td>
-    <td >Pack Server URL</td>	
+    <td >Pack Server URL</td>
     <td>Verifies that the specified URL matches the \<url> element in the *.pdsc file.</td>
   </tr>
   <tr>
     <td>-v</td>
-    <td nowrap>Verbose</td>	
+    <td nowrap>Verbose</td>
     <td>Prints extra process information.</td>
   </tr>
   <tr>
     <td>-x&nbsp;\<msg-list></td>
-    <td nowrap>Suppress</td>	
+    <td nowrap>Suppress</td>
     <td>Suppress all listed validation messages. You can separate the values with blanks to create a list or repeat the option.
 	Ranges are not allowed. Suppressing validation messages does not affect error and warning counters.
-	For a list of messages refer to <a href="#packchk_valid_msgs"><b>Validation Messages</b></a>. 
+	For a list of messages refer to <a href="#packchk_valid_msgs"><b>Validation Messages</b></a>.
 	</td>
   </tr>
   <tr>
     <td>-h/-?</td>
-    <td>Help</td>	
+    <td>Help</td>
     <td>Show help.</td>
   </tr>
 </table>
@@ -117,10 +117,10 @@ M2xx | \ref packchk_invoc_msgs "Invocation Errors"    | Errors in the command li
 M3xx\n M4xx | \ref packchk_valid_msgs "Validation Messages"  | Errors and Warnings from the pack validation.
 M5xx | \ref packchk_model_msgs "Model Errors"         | Errors in RTE model creation
 
-\anchor packchk_internal_msgs 
+\anchor packchk_internal_msgs
 Internal Errors
 -----------------
-The errors in this category are issued because of an internal error in the PackChk utility. 
+The errors in this category are issued because of an internal error in the PackChk utility.
 
 <table class="cmtable" summary="packChk Internal Msgs">
   <tr>
@@ -160,7 +160,7 @@ The errors in this category are issued because of an internal error in the PackC
 </tr>
 </table>
 
-\anchor packchk_invoc_msgs 
+\anchor packchk_invoc_msgs
 Invocation Errors
 -----------------
 The errors in this category are issued because of an incorrect command-line input that prevents the PackChk execution.
@@ -198,7 +198,7 @@ The errors in this category are issued because of an incorrect command-line inpu
   <td>The PDSC file expected has not been found. Rename or exchange the PDSC file.</td>
 </tr>
 <tr><td>M208</td> <td>ERROR</td> <td>Error calling SVDConv:  \em 'PATH'</td>
-  <td><a href="../../SVD/html/svd_SVDConv_pg.html">SVDConv utility</a> could not be executed. 
+  <td><a href="../../SVD/html/svd_SVDConv_pg.html">SVDConv utility</a> could not be executed.
      <br>Verify the permissions. Correct the path name.</td>
 </tr>
 <tr><td>M209</td> <td>ERROR</td> <td>Unknown Option: \em 'OPT'</td>
@@ -216,7 +216,7 @@ The errors in this category are issued because of an incorrect command-line inpu
 \anchor packchk_valid_msgs
 Validation Messages
 --------------------
-The messages in this category are issued by PackChk during package validation. This can be for example incorrect use of the pack schema in the PDSC file, missing files, broken dependancies and others. \em ERROR messages must be resolved to ensure that the package is compliant to the CMSIS-format. \em WARNING messages should be checked and are strongly recommended to be resolved. 
+The messages in this category are issued by PackChk during package validation. This can be for example incorrect use of the pack schema in the PDSC file, missing files, broken dependancies and others. \em ERROR messages must be resolved to ensure that the package is compliant to the CMSIS-format. \em WARNING messages should be checked and are strongly recommended to be resolved.
 
 <table class="cmtable" summary="packChk Validation Msgs">
   <tr>
@@ -256,13 +256,13 @@ The messages in this category are issued by PackChk during package validation. T
   <br>Use \token{\<release>} tag to specify release information in \token{\<releases>} element. Refer to \ref element_release.</td>
 </tr>
 <tr><td>M306</td> <td>ERROR</td><td>No package description found in the PDSC file. Add the \<description>-tag and provide a descriptive text.</td>
-  <td>Package description is mandatory required in the package description but was not found in the \ref element_package element in the PDSC file. 
+  <td>Package description is mandatory required in the package description but was not found in the \ref element_package element in the PDSC file.
   <br>Within the parent \token{\<package>} element add the tag \token{\<description>} and briefly describe the package content. Refer to \ref package_description "/package/description".</td>
 </tr>
 <tr><td>M307</td> <td>ERROR</td> <td>Checking SVD file  \em 'PATH' failed!</td>
   <td>Verify the consistency of the *.SVD file. Refer to <a href="../../SVD/html/svd_validate_file_pg.html">SVD File Validation</a>.</td>
 </tr>
-<!--  
+<!--
 <tr><td>M308</td> <td>ERROR</td> <td>SVD file \em 'PATH' not found. Add the SVD file or correct the PDSC entry.</td>
   <td>The *.SVD file was not found in the specified \em 'PATH'.
   <br>Add the path to the SVD file or correct the entry in the PDSC file. Refer to the \token{svd} attribute in \ref element_debug.</td>
@@ -310,22 +310,22 @@ The messages in this category are issued by PackChk during package validation. T
   <td>The release defined through the version \em 'VER' needs a description. Refer to \ref element_release.</td>
 </tr>
 <tr><td>M330</td> <td>ERROR</td> <td>Condition redefined: \em 'COND', already defined in Line \em 'LINE'</td>
-  <td>The condition has been defined already in a previous line. 
+  <td>The condition has been defined already in a previous line.
   <br>Correct the condition name, or remove the duplicate. Refer to \ref element_condition.</td>
 </tr>
 <tr><td>M331</td> <td>WARNING</td> <td>Condition unused: \em 'COND'</td>
-  <td>The condition has been defined but not used further. 
+  <td>The condition has been defined but not used further.
   <br>Remove the condition or add condition rules. Refer to \ref element_condition.</td>
 </tr>
 <tr><td>M332</td> <td>ERROR</td> <td>Condition undefined: \em 'COND'</td>
-  <td>A condition has been used but not defined. 
+  <td>A condition has been used but not defined.
   <br>Correct the name of the condition or define the missing condition. Refer to \ref element_condition.</td>
 </tr>
 <tr><td>M333</td> <td>WARNING</td> <td>Component has no condition: Cclass= \em 'CCLASS', Cgroup= \em 'CGROUP', \em Csub='CSUB', \em Cversion= 'CVER'</td>
   <td>The component defined has no condition. If the component has restrictions, then add a condition to the component definition. Refer to \ref element_component.</td>
 </tr>
 <tr><td>M334</td> <td>WARNING</td> <td>Config File has no version: \em 'PATH'</td>
-  <td>Specified file 'PATH' does not contain version information. It is recommended to specify versions for configuration files. 
+  <td>Specified file 'PATH' does not contain version information. It is recommended to specify versions for configuration files.
   <br>Add attribute \token{version} with the file version in the \token{\<file>} tag that defines the \em 'PATH' file in the PDSC. Refer to \ref element_file.</td>
 </tr>
 <tr><td>M335</td> <td>WARNING</td> <td>Component declared as 'Board Support' has no ref to a device: Cclass= \em 'CCLASS', Cgroup= \em 'CGROUP', Cversion= \em 'CVER'</td>
@@ -383,7 +383,7 @@ The messages in this category are issued by PackChk during package validation. T
   <td>Example projects have been found for a board that was not defined. Correct the entry for the examples (\ref element_example_board) or define the board (\ref element_board).</td>
 </tr>
 <tr><td>M350</td> <td>WARNING</td> <td>No \em 'COMP' found for \em 'VENDOR' : \em 'MCU' (\em 'COMPILER')</td>
-  <td>The package (\ref element_package) defines a Vendor-MCU combination for which no component was defined. 
+  <td>The package (\ref element_package) defines a Vendor-MCU combination for which no component was defined.
   <br>Define a component (\ref element_component) or verify the \em 'VENDOR' - \em 'MCU' settings.</td>
 </tr>
 <tr><td>M351</td> <td>WARNING</td> <td>Component \em 'COMP' (\em 'COMPID') error for \em 'VENDOR': \em 'MCU' ( \em 'COMPILER'): \em 'MSG'</td>
@@ -403,7 +403,7 @@ The messages in this category are issued by PackChk during package validation. T
 </tr>
 <!-- /* not used */
 <tr><td>M356</td> <td>WARNING</td> <td>Multiple \em 'FILECAT' Directories found for Component \em 'COMP' (\em 'COMPID') for \em 'VENDOR' : \em 'MCU' (\em 'COMPILER')</td>
-  <td>Multiple directories were found for the same file category in the specified component. 
+  <td>Multiple directories were found for the same file category in the specified component.
   <br>Remove obsolete information or correct the component settings.</td>
 </tr>
 -->

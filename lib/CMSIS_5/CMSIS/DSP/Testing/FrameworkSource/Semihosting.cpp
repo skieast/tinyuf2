@@ -43,7 +43,7 @@
 
 namespace Client
 {
-  
+
       struct pathOrGen {
         int kind;
         std::string path;
@@ -96,7 +96,7 @@ namespace Client
          Read the list of patterns from the driver file.
 
          This list is for the current suite.
-    
+
       */
       void Semihosting::ReadPatternList()
       {
@@ -124,7 +124,7 @@ namespace Client
          Read the list of parameters from the driver file.
 
          This list is for the current suite.
-    
+
       */
       void Semihosting::ReadParameterList(Testing::nbParameters_t nbParams)
       {
@@ -136,7 +136,7 @@ namespace Client
         // Not the number of parameters controlling the function
         int nbValues;
         fscanf(this->infile,"%d\n",&nbValues);
-        
+
         // Reset the list for the current suite
         this->DeleteParams();
         this->parameterNames->clear();
@@ -161,7 +161,7 @@ namespace Client
               tmp += this->testDir;
               tmp += "/";
               tmp += tmpstr;
-        
+
 
               gen.kind=0;
               gen.path=tmp;
@@ -181,12 +181,12 @@ namespace Client
            {
               int kind,nbInputSamples,nbOutputSamples,dimensions,sample;
               Testing::param_t *p,*current;
-             
+
               // Generator kind. Not yet used since there is only one kind of generator
               fscanf(this->infile,"%d\n",&kind);
               // Input data in config file
               fscanf(this->infile,"%d\n",&nbInputSamples);
-              
+
               // Number of output combinations
               // And each output has dimensions parameters
               fscanf(this->infile,"%d\n",&nbOutputSamples);
@@ -196,7 +196,7 @@ namespace Client
               current=p;
               for(int i=0;i < nbInputSamples; i ++)
               {
-                
+
                 fscanf(this->infile,"%d\n",&sample);
                 *current++ = (Testing::param_t)sample;
               }
@@ -216,7 +216,7 @@ namespace Client
          Read the list of output from the driver file.
 
          This list is for the current suite.
-    
+
       */
       void Semihosting::ReadOutputList()
       {
@@ -280,10 +280,10 @@ namespace Client
         }
       }
 
-      
+
       void Semihosting::ReadTestIdentification()
       {
-    
+
         char tmp[255];
         int kind;
         Testing::testID_t theId;
@@ -344,7 +344,7 @@ namespace Client
 
          The difference with a test node is that the current folder
          can be changed by a group or suite.
-    
+
       */
       void Semihosting::ReadIdentification()
       {
@@ -404,8 +404,8 @@ namespace Client
         tmp += this->testDir;
         tmp += "/";
         tmp += (*this->patternFilenames)[id];
-        
-        return(tmp); 
+
+        return(tmp);
       }
 
       /**
@@ -416,10 +416,10 @@ namespace Client
       struct pathOrGen Semihosting::getParameterDesc(Testing::PatternID_t id)
       {
 
-        
+
 
         return((*this->parameterNames)[id]);
-        
+
       }
 
       /**
@@ -437,8 +437,8 @@ namespace Client
         sprintf(fmt,"/%s_%ld.txt",(*this->outputNames)[id].c_str(),this->currentId);
         tmp += std::string(fmt);
         //printf("%s\n",tmp.c_str());
-        
-        return(tmp); 
+
+        return(tmp);
       }
 
       Testing::nbSamples_t Semihosting::GetPatternSize(Testing::PatternID_t id)
@@ -456,7 +456,7 @@ namespace Client
 
            // Ignore word size format
            fgets(tmp,256,pattern);
-        
+
            // Get nb of samples
            fgets(tmp,256,pattern);
 
@@ -472,8 +472,8 @@ namespace Client
       {
            char tmp[256];
            Testing::nbSamples_t len;
-           
-  
+
+
            FILE *params=fopen(filepath.c_str(), "r");
            if (params==NULL)
            {
@@ -492,7 +492,7 @@ namespace Client
       {
            bool begin=true;
            printf("b ");
-           for(std::vector<Testing::param_t>::iterator it = params.begin(); it != params.end(); ++it) 
+           for(std::vector<Testing::param_t>::iterator it = params.begin(); it != params.end(); ++it)
            {
               if (!begin)
               {
@@ -509,7 +509,7 @@ namespace Client
           nbEntries = 0;
 
           char tmp[256];
-          
+
           Testing::param_t *p;
           uint32_t val;
 
@@ -521,27 +521,27 @@ namespace Client
              char *result=NULL;
              paramKind=Testing::kDynamicBuffer;
              FILE *params=fopen(gen.path.c_str(), "r");
-             
+
              if (params==NULL)
              {
                 return(NULL);
              }
              // Get nb of samples
              fgets(tmp,256,params);
-             
-   
+
+
              len=gen.nbInputSamples;
              result=(char*)malloc(len*sizeof(Testing::param_t));
              p = (Testing::param_t*)result;
              nbEntries = len / gen.dimensions;
-   
+
              for(uint32_t i=0; i < len; i++)
              {
                fscanf(params,"%d\n",&val);
                *p++ = val;
              }
-   
-   
+
+
              fclose(params);
              return((Testing::param_t*)result);
           }
@@ -554,8 +554,8 @@ namespace Client
              len=gen.nbOutputSamples * gen.dimensions;
 
              result=(Testing::param_t*)malloc(len*sizeof(Testing::param_t));
-   
- 
+
+
              switch(gen.dimensions)
              {
                case 1:
@@ -574,7 +574,7 @@ namespace Client
                  generate1(result,gen.data,nbEntries);
                break;
              }
- 
+
              return(result);
           }
 
@@ -588,7 +588,7 @@ namespace Client
       Testing::PatternID_t Semihosting::getParamID()
       {
          return(this->currentParam);
-      } 
+      }
 
       void Semihosting::ImportPattern_f64(Testing::PatternID_t id,char* p,Testing::nbSamples_t nb)
       {
@@ -626,7 +626,7 @@ namespace Client
           }
 
           fclose(pattern);
-          
+
       }
 
       void Semihosting::ImportPattern_f32(Testing::PatternID_t id,char* p,Testing::nbSamples_t nb)
@@ -667,7 +667,7 @@ namespace Client
           }
 
           fclose(pattern);
-          
+
       }
 
 #if !defined( __CC_ARM ) && defined(ARM_FLOAT16_SUPPORTED)
@@ -709,7 +709,7 @@ namespace Client
           }
 
           fclose(pattern);
-          
+
       }
 #endif
 
@@ -748,7 +748,7 @@ namespace Client
           }
 
           fclose(pattern);
-          
+
       }
 
       void Semihosting::ImportPattern_q31(Testing::PatternID_t id,char* p,Testing::nbSamples_t nb)
@@ -786,7 +786,7 @@ namespace Client
           }
 
           fclose(pattern);
-          
+
       }
 
       void Semihosting::ImportPattern_q15(Testing::PatternID_t id,char* p,Testing::nbSamples_t nb)
@@ -824,7 +824,7 @@ namespace Client
           }
 
           fclose(pattern);
-          
+
       }
 
       void Semihosting::ImportPattern_q7(Testing::PatternID_t id,char* p,Testing::nbSamples_t nb)
@@ -862,7 +862,7 @@ namespace Client
           }
 
           fclose(pattern);
-          
+
       }
 
       void Semihosting::ImportPattern_u32(Testing::PatternID_t id,char* p,Testing::nbSamples_t nb)
@@ -900,7 +900,7 @@ namespace Client
           }
 
           fclose(pattern);
-          
+
       }
 
       void Semihosting::ImportPattern_u16(Testing::PatternID_t id,char* p,Testing::nbSamples_t nb)
@@ -938,7 +938,7 @@ namespace Client
           }
 
           fclose(pattern);
-          
+
       }
 
       void Semihosting::ImportPattern_u8(Testing::PatternID_t id,char* p,Testing::nbSamples_t nb)
@@ -962,7 +962,7 @@ namespace Client
           {
              len = nb;
           }
-          
+
           if (ptr)
           {
               for(i=0;i<len;i++)
@@ -976,7 +976,7 @@ namespace Client
           }
 
           fclose(pattern);
-          
+
       }
 
       void Semihosting::DumpPattern_f64(Testing::outputID_t id,Testing::nbSamples_t nb, float64_t* data)
@@ -1037,7 +1037,7 @@ namespace Client
             }
       }
 #endif
-      
+
       void Semihosting::DumpPattern_q63(Testing::outputID_t id,Testing::nbSamples_t nb, q63_t* data)
       {
             std::string fileName = this->getOutputPath(id);
@@ -1151,8 +1151,8 @@ namespace Client
                fclose(f);
             }
       }
-      
-    
+
+
 
 
 }

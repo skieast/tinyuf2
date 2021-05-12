@@ -845,7 +845,7 @@ If these <i>\#defines</i> are missing default values are used.
       <td>0 .. 1</td>
       <td>0</td>
       <td>
-        The combination of the defines \ref __FPU_PRESENT and \ref __FPU_DP determine 
+        The combination of the defines \ref __FPU_PRESENT and \ref __FPU_DP determine
         whether the FPU is with single or double precision.
       </td>
     </tr>
@@ -1499,7 +1499,7 @@ functionality provided by CMSIS-Core(M) dependent on the device capabilities.
     </tr>
   </table>
 */
-#define __FPU_DP                  
+#define __FPU_DP
 
 #define __DSP_PRESENT               /*!< \brief DSP extension present or not */
 #define __SAUREGION_PRESENT         /*!< \brief SAU regions present or not */
@@ -1508,4 +1508,4 @@ functionality provided by CMSIS-Core(M) dependent on the device capabilities.
 #define __ICACHE_PRESENT            /*!< \brief Instruction Cache present or not */
 #define __DCACHE_PRESENT            /*!< \brief Data Cache present or not */
 #define __DTCM_PRESENT              /*!< \brief Data Tightly Coupled Memory is present or not */
-/** @} */     
+/** @} */

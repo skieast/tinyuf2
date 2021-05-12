@@ -111,7 +111,7 @@ void arm_cmplx_dot_prod_f16(
         pSrcB += 8;
         blkCnt--;
     }
-   
+
     /* Tail */
     blkCnt = (blockSize & 7);
 

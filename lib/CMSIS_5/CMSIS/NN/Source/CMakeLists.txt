@@ -91,6 +91,3 @@ endif()
 
 ### Includes
 target_include_directories(CMSISNN INTERFACE "${NN}/Include")
-
-
-

@@ -1,9 +1,9 @@
-/** 
+/**
 \page regMap_pg  Register Mapping
 
-\details 
+\details
 
-The table below associates some common register names used in CMSIS to the register names 
+The table below associates some common register names used in CMSIS to the register names
 used in Technical Reference Manuals.
 
 <table class="cmtable" summary="Register Mapping">

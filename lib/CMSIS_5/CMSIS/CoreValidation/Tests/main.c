@@ -9,7 +9,7 @@
 
 #include "RTE_Components.h"
 #include  CMSIS_device_header
- 
+
 #ifdef RTE_Compiler_EventRecorder
 #include "EventRecorder.h"
 #endif
@@ -28,7 +28,7 @@ int main (void);
   * @retval None
   */
 int main (void)
-{  
+{
 
   // System Initialization
   SystemCoreClockUpdate();
@@ -37,9 +37,9 @@ int main (void)
   (void)EventRecorderInitialize(EventRecordError, 1U);
   (void)EventRecorderEnable    (EventRecordAll, 0xFEU, 0xFEU);
 #endif
-  
+
   cmsis_cv();
-  
+
   #ifdef __MICROLIB
   for(;;) {}
   #else

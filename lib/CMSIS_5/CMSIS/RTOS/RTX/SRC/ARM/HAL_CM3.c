@@ -117,7 +117,7 @@ __asm void SVC_Handler (void) {
 
 #ifdef  IFX_XMC4XXX
         EXPORT  SVC_Handler_Veneer
-SVC_Handler_Veneer        
+SVC_Handler_Veneer
 #endif
 
         MRS     R0,PSP                  ; Read PSP
@@ -126,7 +126,7 @@ SVC_Handler_Veneer
         CBNZ    R1,SVC_User
 
         LDM     R0,{R0-R3,R12}          ; Read R0-R3,R12 from stack
-        BLX     R12                     ; Call SVC Function 
+        BLX     R12                     ; Call SVC Function
 
         MRS     R12,PSP                 ; Read PSP
         STM     R12,{R0-R2}             ; Store return values
@@ -191,7 +191,7 @@ __asm void PendSV_Handler (void) {
 
 #ifdef  IFX_XMC4XXX
         EXPORT  PendSV_Handler_Veneer
-PendSV_Handler_Veneer        
+PendSV_Handler_Veneer
 #endif
 
         BL      __cpp(rt_pop_req)
@@ -236,7 +236,7 @@ __asm void SysTick_Handler (void) {
 
 #ifdef  IFX_XMC4XXX
         EXPORT  SysTick_Handler_Veneer
-SysTick_Handler_Veneer        
+SysTick_Handler_Veneer
 #endif
 
         BL      __cpp(rt_systick)

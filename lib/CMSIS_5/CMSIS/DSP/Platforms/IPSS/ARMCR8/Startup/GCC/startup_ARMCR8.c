@@ -140,8 +140,8 @@ __NO_RETURN void Reset_Handler(void)
 {
    SystemInit();                             /* CMSIS System Initialization */
 
-  
-  __PROGRAM_START();    
+
+  __PROGRAM_START();
 }
 
 
@@ -161,5 +161,3 @@ void Default_Handler(void)
 {
   while(1);
 }
-
-

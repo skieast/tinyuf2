@@ -1,7 +1,7 @@
 /**
 \defgroup vio_interface_gr VIO
 \brief API for Virtual I/O (VIO) (%cmsis_vio.h)
-\details 
+\details
 
 The VIO software component is a virtual I/O abstraction for peripherals that are typically used in example projects. It
 enables developers to move from an evaluation kit to custom hardware and helps to scale project examples at large to many
@@ -50,40 +50,40 @@ void vioInit (void) {
   uint32_t i;
 #if !defined CMSIS_VIN
 // Add user variables here:
- 
+
 #endif
 #if !defined CMSIS_VOUT
 // Add user variables here:
- 
+
 #endif
- 
+
   vioSignalIn  = 0U;
   vioSignalOut = 0U;
- 
+
   memset (vioPrintMem, 0, sizeof(vioPrintMem));
   memset (vioValue,    0, sizeof(vioValue));
   memset (vioValueXYZ, 0, sizeof(vioValueXYZ));
   memset (vioAddrIPv4, 0, sizeof(vioAddrIPv4));
   memset (vioAddrIPv6, 0, sizeof(vioAddrIPv6));
- 
+
 #if !defined CMSIS_VOUT
 // Add user code here:
 // <code vioInit output>
- 
+
   BSP_LED_Init(LED_BLUE);
   BSP_LED_Init(LED_RED);
   BSP_LED_Init(LED_GREEN);
 // </code>
 #endif
- 
+
 #if !defined CMSIS_VIN
 // Add user code here:
 // <code vioInit input>
- 
+
   BSP_PB_Init(BUTTON_USER, BUTTON_MODE_GPIO);
 // </code>
 #endif
- 
+
   return;
 }
 \endcode
@@ -122,16 +122,16 @@ Arm Keil MDK uses the provided SCVD file to display the VIO signals in Component
 \def vioLED7
 \def vioLEDon
 \def vioLEDoff
-\def vioBUTTON0  
-\def vioBUTTON1  
-\def vioBUTTON2  
-\def vioBUTTON3  
-\def vioJOYup    
-\def vioJOYdown  
-\def vioJOYleft  
-\def vioJOYright 
+\def vioBUTTON0
+\def vioBUTTON1
+\def vioBUTTON2
+\def vioBUTTON3
+\def vioJOYup
+\def vioJOYdown
+\def vioJOYleft
+\def vioJOYright
 \def vioJOYselect
-\def vioJOYall   
+\def vioJOYall
 @}
 */
 
@@ -141,12 +141,12 @@ Arm Keil MDK uses the provided SCVD file to display the VIO signals in Component
 \brief Value related defines.
 \details
 @{
-\def vioAIN0 
-\def vioAIN1 
-\def vioAIN2 
-\def vioAIN3 
+\def vioAIN0
+\def vioAIN1
+\def vioAIN2
+\def vioAIN3
 \def vioAOUT0
-/** 
+/**
 \struct     vioValueXYZ_t
 \details
 Structure holding three-dimensional values for gyroscopes, accelerometers, etc.
@@ -164,14 +164,14 @@ Structure holding three-dimensional values for gyroscopes, accelerometers, etc.
 \brief ID related defines.
 \details
 @{
-\def vioAIN0 
-\def vioAIN1 
-\def vioAIN2 
-\def vioAIN3 
+\def vioAIN0
+\def vioAIN1
+\def vioAIN2
+\def vioAIN3
 \def vioAOUT0
-\def vioMotionGyro    
+\def vioMotionGyro
 \def vioMotionAccelero
-\def vioMotionMagneto 
+\def vioMotionMagneto
 @}
 */
 
@@ -181,7 +181,7 @@ Structure holding three-dimensional values for gyroscopes, accelerometers, etc.
 \brief Print level related defines.
 \details
 @{
-\def vioLevelNone   
+\def vioLevelNone
 \def vioLevelHeading
 \def vioLevelMessage
 \def vioLevelError
@@ -224,19 +224,19 @@ void vioInit (void) {};
 \fn void vioInit (void)
 \details
 The function \b vioInit initializes the VIO interface. Use it to initialize any connected hardware that is used to
-map VIO signals. 
+map VIO signals.
 
 \b Code \b Example:
 \code
 #include "cmsis_vio.h"                  // ::CMSIS Driver:VIO
- 
+
 int main (void) {
- 
+
   // System Initialization
   SystemCoreClockUpdate();
   vioInit();
   // ...
- 
+
 }
 \endcode
 ***************************************************************************************************************************/
@@ -247,7 +247,7 @@ int32_t vioPrint (uint32_t level, const char *format, ...) {
 /**
 \fn int32_t vioPrint (uint32_t level, const char *format, ...)
 \details
-The function \b vioPrint prints a formatted string to a test terminal. Formatting of the output follows the rules of 
+The function \b vioPrint prints a formatted string to a test terminal. Formatting of the output follows the rules of
 standard C language printf().
 
 Refer to \ref vioPrintLevels_gr for information about the possible \a levels.
@@ -255,15 +255,15 @@ Refer to \ref vioPrintLevels_gr for information about the possible \a levels.
 \b Code \b Example:
 \code
 #include "cmsis_vio.h"                  // ::CMSIS Driver:VIO
- 
+
 int main (void) {
   int x = 3;
- 
+
   vioInit();
-  vioPrint(vioLevelNone,    "Test [None]"); 
-  vioPrint(vioLevelHeading, "Test [Heading] = Network Connector Message"); 
-  vioPrint(vioLevelMessage, "Test [Message] = Connection failed"); 
-  vioPrint(vioLevelError,   "Test [Error]   = %d", x); 
+  vioPrint(vioLevelNone,    "Test [None]");
+  vioPrint(vioLevelHeading, "Test [Heading] = Network Connector Message");
+  vioPrint(vioLevelMessage, "Test [Message] = Connection failed");
+  vioPrint(vioLevelError,   "Test [Error]   = %d", x);
 }
 \endcode
 ***************************************************************************************************************************/
@@ -280,9 +280,9 @@ Refer to \ref vioSignals_gr for information about the possible \a mask and \a si
 \b Code \b Example:
 \code
 #include "cmsis_vio.h"                  // ::CMSIS Driver:VIO
- 
+
 int main (void) {
- 
+
   vioInit();
   vioSetSignal(vioLED0, vioLEDon);
   // ...
@@ -305,11 +305,11 @@ Refer to \ref vioSignals_gr for information about the possible \a mask values.
 \b Code \b Example:
 \code
 #include "cmsis_vio.h"                  // ::CMSIS Driver:VIO
- 
+
 int main (void) {
   uint32_t state;
   uint32_t last = 0U;
- 
+
   vioInit();
   for (;;) {
     state = (vioGetSignal (vioBUTTON0)); // Get pressed button state
@@ -336,9 +336,9 @@ Refer to \ref vioValues_gr for information about \a value and \ref vioIDs_gr for
 \b Code \b Example:
 \code
 #include "cmsis_vio.h"                  // ::CMSIS Driver:VIO
- 
+
 int main (void) {
- 
+
   vioInit();
   vioSetValue(vioAOUT0, 1024);
 }
@@ -358,10 +358,10 @@ Refer to \ref vioIDs_gr for information about \a id.
 \b Code \b Example:
 \code
 #include "cmsis_vio.h"                  // ::CMSIS Driver:VIO
- 
+
 int main (void) {
   uint32_t button;
- 
+
   vioInit();
   button = vioGetValue(vioBUTTON0);
 }
@@ -382,10 +382,10 @@ Refer to \ref vioValues_gr for information about the \a valueXYZ and \ref vioIDs
 \b Code \b Example:
 \code
 #include "cmsis_vio.h"                  // ::CMSIS Driver:VIO
- 
+
 int main (void) {
   vioValueXYZ_t xyz = {123, 456, 789};
- 
+
   vioInit();
   vioSetXYZ(0, xyz);
 }
@@ -406,10 +406,10 @@ Refer to \ref vioIDs_gr for information about \a id.
 \b Code \b Example:
 \code
 #include "cmsis_vio.h"                  // ::CMSIS Driver:VIO
- 
+
 int main (void) {
   volatile vioValueXYZ_t xyz;
- 
+
   vioInit();
   xyz = vioGetXYZ(vioMotionGyro);
 }
@@ -428,10 +428,10 @@ Refer to \ref vioIDs_gr for information about \a id and \ref vioIPAddr_gr for \a
 \b Code \b Example:
 \code
 #include "cmsis_vio.h"                  // ::CMSIS Driver:VIO
- 
+
 int main (void) {
   vioAddrIPv4_t addrIPv4 = {192U, 168U, 111U, 123U};
- 
+
   vioInit();
   vioSetIPv4 (0, addrIPv4);
 }
@@ -452,10 +452,10 @@ Refer to \ref vioIDs_gr for information about \a id.
 \b Code \b Example:
 \code
 #include "cmsis_vio.h"                  // ::CMSIS Driver:VIO
- 
+
 int main (void) {
   vioAddrIPv4_t addrIPv4;
- 
+
   vioInit();
   addrIPv4 = vioGetIPv4(0);
 }
@@ -474,11 +474,11 @@ Refer to \ref vioIDs_gr for information about \a id and \ref vioIPAddr_gr for \a
 \b Code \b Example:
 \code
 #include "cmsis_vio.h"                  // ::CMSIS Driver:VIO
- 
+
 int main (void) {
   vioAddrIPv6_t addrIPv6 = {1U, 2U, 3U, 4U, 5U, 6U, 7U, 8U,
                            9U, 10U, 11U, 12U, 13U, 14U, 15U, 16U};
- 
+
   vioInit();
   vioSetIPv6 (0, addrIPv6);
 }
@@ -499,10 +499,10 @@ Refer to \ref vioIDs_gr for information about \a id.
 \b Code \b Example:
 \code
 #include "cmsis_vio.h"                  // ::CMSIS Driver:VIO
- 
+
 int main (void) {
   vioAddrIPv6_t addrIPv6;
- 
+
   vioInit();
   addrIPv6 = vioGetIPv6(0);
 }

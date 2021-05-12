@@ -10,7 +10,7 @@ import re
 includes = [os.path.join(ROOT,"Include"),os.path.join(ROOT,"PrivateInclude"),os.path.join("cmsisdsp_pkg","src")]
 
 if sys.platform == 'win32':
-  cflags = ["-DWIN",config.cflags,"-DUNALIGNED_SUPPORT_DISABLE"] 
+  cflags = ["-DWIN",config.cflags,"-DUNALIGNED_SUPPORT_DISABLE"]
   # Custom because a customized arm_math.h is required to build on windows
   # since the visual compiler and the win platform are
   # not supported by default in arm_math.h

@@ -9,23 +9,23 @@
     {
       float64_t out;
       out = arm_entropy_f64(inap,this->nb);
-      
 
-    } 
 
-  
+    }
+
+
 
     void StatsF64::test_kullback_leibler_f64()
     {
-      
+
       float64_t out;
 
       out = arm_kullback_leibler_f64(inap,inbp,this->nb);
-     
-    } 
 
-   
-  
+    }
+
+
+
     void StatsF64::setUp(Testing::testID_t id,std::vector<Testing::param_t>& paramsArgs,Client::PatternMgr *mgr)
     {
         std::vector<Testing::param_t>::iterator it = paramsArgs.begin();
@@ -43,14 +43,14 @@
             inbp=inputB.ptr();
           break;
 
-          
+
 
         }
-        
+
     }
 
     void StatsF64::tearDown(Testing::testID_t id,Client::PatternMgr *mgr)
     {
       (void)id;
-     
+
     }

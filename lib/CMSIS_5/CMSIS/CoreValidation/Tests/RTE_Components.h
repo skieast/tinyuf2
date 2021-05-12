@@ -45,7 +45,7 @@
 
 #ifdef __UVISION_VERSION
 #define RTE_Compiler_IO_STDOUT          /* Compiler I/O: STDOUT */
-#if defined(ARMCM0) || defined(ARMCM0plus) 
+#if defined(ARMCM0) || defined(ARMCM0plus)
 #define RTE_Compiler_IO_STDOUT_EVR      /* Compiler I/O: STDOUT EVR */
 #ifndef RTE_Compiler_EventRecorder
 #define RTE_Compiler_EventRecorder

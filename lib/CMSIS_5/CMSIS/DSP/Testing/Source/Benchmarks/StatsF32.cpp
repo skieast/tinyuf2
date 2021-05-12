@@ -20,31 +20,31 @@
 
     void StatsF32::test_max_no_idx_f32()
     {
-       
+
         float32_t result;
 
-       
+
         arm_max_no_idx_f32(inap,
               this->nb,
               &result);
 
-       
+
 
     }
 
     void StatsF32::test_min_f32()
     {
-       
+
         float32_t result;
         uint32_t  indexval;
 
-       
+
         arm_min_f32(inap,
               this->nb,
               &result,
               &indexval);
 
-      
+
 
     }
 
@@ -61,29 +61,29 @@
 
     void StatsF32::test_power_f32()
     {
-        
+
         float32_t result;
 
-        
+
         arm_power_f32(inap,
               this->nb,
               &result);
 
-       
+
 
     }
 
     void StatsF32::test_rms_f32()
     {
-       
+
         float32_t result;
 
-       
+
         arm_rms_f32(inap,
               this->nb,
               &result);
 
-       
+
     }
 
     void StatsF32::test_std_f32()
@@ -91,12 +91,12 @@
 
         float32_t result;
 
-       
+
         arm_std_f32(inap,
               this->nb,
               &result);
 
-       
+
     }
 
     void StatsF32::test_var_f32()
@@ -104,53 +104,53 @@
 
         float32_t result;
 
-       
+
         arm_var_f32(inap,
               this->nb,
               &result);
 
-      
+
     }
 
 
-   
+
 
     void StatsF32::test_entropy_f32()
     {
       float32_t out;
       out = arm_entropy_f32(inap,this->nb);
-      
 
-    } 
+
+    }
 
     void StatsF32::test_logsumexp_f32()
     {
        float32_t out;
 
        out  = arm_logsumexp_f32(inap,this->nb);
-     
-    } 
+
+    }
 
 
     void StatsF32::test_kullback_leibler_f32()
     {
-      
+
       float32_t out;
 
       out = arm_kullback_leibler_f32(inap,inbp,this->nb);
-     
-    } 
+
+    }
 
     void StatsF32::test_logsumexp_dot_prod_f32()
     {
       float32_t out;
 
       out = arm_logsumexp_dot_prod_f32(inap,inbp,this->nb,tmpp);
-      
-    } 
 
-   
-  
+    }
+
+
+
     void StatsF32::setUp(Testing::testID_t id,std::vector<Testing::param_t>& paramsArgs,Client::PatternMgr *mgr)
     {
         std::vector<Testing::param_t>::iterator it = paramsArgs.begin();
@@ -180,11 +180,11 @@
           break;
 
         }
-        
+
     }
 
     void StatsF32::tearDown(Testing::testID_t id,Client::PatternMgr *mgr)
     {
       (void)id;
-     
+
     }

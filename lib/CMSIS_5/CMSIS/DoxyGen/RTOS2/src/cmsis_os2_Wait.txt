@@ -1,11 +1,11 @@
 
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 //  ==== Generic Wait Functions ====
-/** 
+/**
 \addtogroup CMSIS_RTOS_Wait Generic Wait Functions
 \ingroup CMSIS_RTOS
 \brief Wait for a certain period of time.
-\details 
+\details
 The generic wait functions provide means for a time delay.
 
 \note Generic wait functions cannot be called from \ref CMSIS_RTOS_ISR_Calls "Interrupt Service Routines".
@@ -13,11 +13,11 @@ The generic wait functions provide means for a time delay.
 */
 
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
-/** 
+/**
 \fn osStatus_t osDelay (uint32_t ticks)
 \details
 The function \b osDelay waits for a time period specified in kernel \a ticks. For a value of \token{1} the system waits
-until the next timer tick occurs. The actual time delay may be up to one timer tick less than specified, i.e. calling 
+until the next timer tick occurs. The actual time delay may be up to one timer tick less than specified, i.e. calling
 \c osDelay(1) right before the next system tick occurs the thread is rescheduled immediately.
 
 The delayed thread is put into the \ref ThreadStates "BLOCKED" state and a context switch occurs immediately. The thread
@@ -33,19 +33,19 @@ Possible \ref osStatus_t return values:
 <b>Code Example</b>
 \code
 #include "cmsis_os2.h"
- 
+
 void Thread_1 (void *arg) {             // Thread function
   osStatus_t status;                    // capture the return status
   uint32_t   delayTime;                 // delay time in milliseconds
- 
+
   delayTime = 1000U;                    // delay 1 second
   status = osDelay(delayTime);          // suspend thread execution
 }
 \endcode
-*/ 
+*/
 
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
-/** 
+/**
 \fn osStatus_t osDelayUntil (uint32_t ticks)
 \details
 The function \b osDelayUntil waits until an absolute time (specified in kernel \a ticks) is reached.
@@ -69,10 +69,10 @@ Possible \ref osStatus_t return values:
 <b>Code Example</b>
 \code
 #include "cmsis_os2.h"
- 
+
 void Thread_1 (void *arg) {             // Thread function
   uint32_t tick;
- 
+
   tick = osKernelGetTickCount();        // retrieve the number of system ticks
   for (;;) {
     tick += 1000U;                      // delay 1000 ticks periodically

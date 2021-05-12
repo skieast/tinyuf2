@@ -1,13 +1,13 @@
-#include "ref.h"	
+#include "ref.h"
 #include "arm_const_structs.h"
-	
+
 void ref_rfft_f32(
 	arm_rfft_instance_f32 * S,
   float32_t * pSrc,
   float32_t * pDst)
 {
 	uint32_t i;
-	
+
 	if (S->ifftFlagR)
 	{
 		for(i=0;i<S->fftLenReal*2;i++)
@@ -23,26 +23,26 @@ void ref_rfft_f32(
 			pDst[2*i+1] = 0.0f;
 		}
 	}
-	
+
 	switch(S->fftLenReal)
-	{   
-   case 128: 
+	{
+   case 128:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len128, pDst, S->ifftFlagR, S->bitReverseFlagR);
 		 break;
-   
-   case 512: 
+
+   case 512:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len512, pDst, S->ifftFlagR, S->bitReverseFlagR);
 		 break;
-   
-   case 2048: 
+
+   case 2048:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len2048, pDst, S->ifftFlagR, S->bitReverseFlagR);
 		 break;
-   
-   case 8192: 
+
+   case 8192:
 		 ref_cfft_f32(&ref_cfft_sR_f32_len8192, pDst, S->ifftFlagR, S->bitReverseFlagR);
 		 break;
 	}
-	
+
 	if (S->ifftFlagR)
 	{
 		//throw away the imaginary part which should be all zeros
@@ -52,14 +52,14 @@ void ref_rfft_f32(
 		}
 	}
 }
-	
+
 void ref_rfft_fast_f32(
 	arm_rfft_fast_instance_f32 * S,
 	float32_t * p, float32_t * pOut,
 	uint8_t ifftFlag)
 {
 	uint32_t i,j;
-	
+
 	if (ifftFlag)
 	{
 		for(i=0;i<S->fftLenRFFT;i++)
@@ -86,42 +86,42 @@ void ref_rfft_fast_f32(
 			pOut[2*i+1] = 0.0f;
 		}
 	}
-	
+
 	switch(S->fftLenRFFT)
-	{   
-   case 32: 
+	{
+   case 32:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len32, pOut, ifftFlag, 1);
 		 break;
-   
-   case 64: 
+
+   case 64:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len64, pOut, ifftFlag, 1);
 		 break;
-   
-   case 128: 
+
+   case 128:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len128, pOut, ifftFlag, 1);
 		 break;
-   
-   case 256: 
+
+   case 256:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len256, pOut, ifftFlag, 1);
 		 break;
-   
-   case 512: 
+
+   case 512:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len512, pOut, ifftFlag, 1);
 		 break;
-   
-   case 1024: 
+
+   case 1024:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len1024, pOut, ifftFlag, 1);
 		 break;
-   
-   case 2048: 
+
+   case 2048:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len2048, pOut, ifftFlag, 1);
 		 break;
-   
-   case 4096: 
+
+   case 4096:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len4096, pOut, ifftFlag, 1);
 		 break;
 	}
-	
+
 	if (ifftFlag)
 	{
 		//throw away the imaginary part which should be all zeros
@@ -136,7 +136,7 @@ void ref_rfft_fast_f32(
 		pOut[1] = pOut[S->fftLenRFFT];
 	}
 }
-	
+
 void ref_rfft_q31(
   const arm_rfft_instance_q31 * S,
   q31_t * pSrc,
@@ -144,7 +144,7 @@ void ref_rfft_q31(
 {
 	uint32_t i;
 	float32_t *fDst = (float32_t*)pDst;
-	
+
 	if (S->ifftFlagR)
 	{
 		for(i=0;i<S->fftLenReal*2;i++)
@@ -160,49 +160,49 @@ void ref_rfft_q31(
 			fDst[2*i+1] = 0.0f;
 		}
 	}
-	
+
 	switch(S->fftLenReal)
 	{
-   case 32: 
+   case 32:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len32, fDst, S->ifftFlagR, S->bitReverseFlagR);
 		 break;
-	 
-   case 64: 
+
+   case 64:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len64, fDst, S->ifftFlagR, S->bitReverseFlagR);
 		 break;
-	 
-   case 128: 
+
+   case 128:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len128, fDst, S->ifftFlagR, S->bitReverseFlagR);
 		 break;
-	 
-   case 256: 
+
+   case 256:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len256, fDst, S->ifftFlagR, S->bitReverseFlagR);
 		 break;
-	 
-   case 512: 
+
+   case 512:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len512, fDst, S->ifftFlagR, S->bitReverseFlagR);
 		 break;
-	 
-   case 1024: 
+
+   case 1024:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len1024, fDst, S->ifftFlagR, S->bitReverseFlagR);
 		 break;
-   
-   case 2048: 
+
+   case 2048:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len2048, fDst, S->ifftFlagR, S->bitReverseFlagR);
 		 break;
-   
-   case 4096: 
+
+   case 4096:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len4096, fDst, S->ifftFlagR, S->bitReverseFlagR);
 		 break;
-   
-   case 8192: 
+
+   case 8192:
 		 ref_cfft_f32(&ref_cfft_sR_f32_len8192, fDst, S->ifftFlagR, S->bitReverseFlagR);
 		 break;
 	}
-	
+
 	if (S->ifftFlagR)
 	{
-		//throw away the imaginary part which should be all zeros		
+		//throw away the imaginary part which should be all zeros
 		for(i=0;i<S->fftLenReal;i++)
 		{
 			//read the float data, scale up for q31, cast to q31
@@ -226,8 +226,8 @@ void ref_rfft_q15(
 {
 	uint32_t i;
 	float32_t *fDst = (float32_t*)pDst;
-	
-	
+
+
 	if (S->ifftFlagR)
 	{
 		for(i=0;i<S->fftLenReal*2;i++)
@@ -244,46 +244,46 @@ void ref_rfft_q15(
 			fDst[2*i+1] = 0.0f;
 		}
 	}
-	
+
 	switch(S->fftLenReal)
-	{   
-   case 32: 
+	{
+   case 32:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len32, fDst, S->ifftFlagR, S->bitReverseFlagR);
 		 break;
-	 
-   case 64: 
+
+   case 64:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len64, fDst, S->ifftFlagR, S->bitReverseFlagR);
 		 break;
-	 
-   case 128: 
+
+   case 128:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len128, fDst, S->ifftFlagR, S->bitReverseFlagR);
 		 break;
-	 
-   case 256: 
+
+   case 256:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len256, fDst, S->ifftFlagR, S->bitReverseFlagR);
 		 break;
-	 
-   case 512: 
+
+   case 512:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len512, fDst, S->ifftFlagR, S->bitReverseFlagR);
 		 break;
-	 
-   case 1024: 
+
+   case 1024:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len1024, fDst, S->ifftFlagR, S->bitReverseFlagR);
 		 break;
-   
-   case 2048: 
+
+   case 2048:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len2048, fDst, S->ifftFlagR, S->bitReverseFlagR);
 		 break;
-   
-   case 4096: 
+
+   case 4096:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len4096, fDst, S->ifftFlagR, S->bitReverseFlagR);
 		 break;
-   
-   case 8192: 
+
+   case 8192:
 		 ref_cfft_f32(&ref_cfft_sR_f32_len8192, fDst, S->ifftFlagR, S->bitReverseFlagR);
 		 break;
 	}
-	
+
 	if (S->ifftFlagR)
 	{
 		//throw away the imaginary part which should be all zeros

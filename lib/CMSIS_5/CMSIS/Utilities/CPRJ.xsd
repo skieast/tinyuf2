@@ -51,7 +51,7 @@
     </xs:restriction>
   </xs:simpleType>
 
-  <!-- version can contain one or more of alphanumeric characters and symbols '_' '-' '.' 
+  <!-- version can contain one or more of alphanumeric characters and symbols '_' '-' '.'
        Allows specifing a version range: minVersion : maxVersion
   -->
   <xs:simpleType name="VersionRangeType">

@@ -167,7 +167,7 @@ Reset_Handler:
 // TCM Configuration
 //----------------------------------------------------------------
 
-// Cortex-R8 optionally provides two Tightly-Coupled Memory (TCM) blocks (ITCM and DTCM) 
+// Cortex-R8 optionally provides two Tightly-Coupled Memory (TCM) blocks (ITCM and DTCM)
 //    for fast access to code or data.
 // ITCM typically holds interrupt or exception code that must be accessed at high speed,
 //    without any potential delay resulting from a cache miss.

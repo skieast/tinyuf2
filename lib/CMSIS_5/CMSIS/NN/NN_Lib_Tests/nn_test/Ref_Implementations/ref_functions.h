@@ -38,7 +38,7 @@ extern    "C"
     void      arm_convolve_HWC_q7_ref(const q7_t * Im_in,   // input image
                                       const uint16_t dim_im_in, // input image dimention
                                       const uint16_t ch_im_in,  // number of input image channels
-                                      const q7_t * wt,  // kernel weights 
+                                      const q7_t * wt,  // kernel weights
                                       const uint16_t ch_im_out, // number of filters, i.e., output image channels
                                       const uint16_t dim_kernel,    // filter kernel size
                                       const uint16_t padding,   // padding sizes
@@ -54,7 +54,7 @@ extern    "C"
                                                 const uint16_t dim_im_in_x, // input image dimention x
                                                 const uint16_t dim_im_in_y, // input image dimention y
                                                 const uint16_t ch_im_in,    // number of input image channels
-                                                const q7_t * wt,    // kernel weights 
+                                                const q7_t * wt,    // kernel weights
                                                 const uint16_t ch_im_out,   // number of filters, i.e., output image channels
                                                 const uint16_t dim_kernel_x,    // filter kernel size x
                                                 const uint16_t dim_kernel_y,    // filter kernel size y
@@ -73,7 +73,7 @@ extern    "C"
     void      arm_convolve_HWC_q15_ref(const q15_t * Im_in, // input image
                                        const uint16_t dim_im_in,    // input image dimention
                                        const uint16_t ch_im_in, // number of input image channels
-                                       const q15_t * wt,    // kernel weights 
+                                       const q15_t * wt,    // kernel weights
                                        const uint16_t ch_im_out,    // number of filters, i.e., output image channels
                                        const uint16_t dim_kernel,   // filter kernel size
                                        const uint16_t padding,  // padding sizes
@@ -101,14 +101,14 @@ extern    "C"
                                                       const uint16_t out_shift,
                                                       q15_t * Im_out,
                                                       const uint16_t dim_im_out_x,
-                                                      const uint16_t dim_im_out_y, 
-                                                      q15_t * bufferA, 
+                                                      const uint16_t dim_im_out_y,
+                                                      q15_t * bufferA,
                                                       q7_t * bufferB);
-													  
+
     void      arm_depthwise_separable_conv_HWC_q7_ref(const q7_t * Im_in,   // input image
                                                       const uint16_t dim_im_in, // input image dimention
                                                       const uint16_t ch_im_in,  // number of input image channels
-                                                      const q7_t * wt,  // kernel weights 
+                                                      const q7_t * wt,  // kernel weights
                                                       const uint16_t ch_im_out, // number of filters, i.e., output image channels
                                                       const uint16_t dim_kernel,    // filter kernel size
                                                       const uint16_t padding,   // padding sizes
@@ -125,7 +125,7 @@ extern    "C"
                                                                 const uint16_t dim_im_in_x, // input image dimention x
                                                                 const uint16_t dim_im_in_y, // input image dimention y
                                                                 const uint16_t ch_im_in,    // number of input image channels
-                                                                const q7_t * wt,    // kernel weights 
+                                                                const q7_t * wt,    // kernel weights
                                                                 const uint16_t ch_im_out,   // number of filters, i.e., output image channels
                                                                 const uint16_t dim_kernel_x,    // filter kernel size x
                                                                 const uint16_t dim_kernel_y,    // filter kernel size y

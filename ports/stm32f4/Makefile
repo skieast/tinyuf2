@@ -41,7 +41,7 @@ PORT_SRC_C += \
 SRC_C += \
 	$(PORT_SRC_C) \
 	lib/tinyusb/src/portable/st/synopsys/dcd_synopsys.c \
-	
+
 # Port include
 INC += \
 	$(TOP)/$(CMSIS_5)/CMSIS/Core/Include \

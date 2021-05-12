@@ -21,16 +21,16 @@ function(compilerSpecificCompileOptions PROJECTNAME ROOT)
   if ((OPTIMIZED) AND (NOT DISABLEOPTIM))
     target_compile_options(${PROJECTNAME} PUBLIC "-Ofast")
   endif()
-  
+
   if (FASTMATHCOMPUTATIONS)
       target_compile_options(${PROJECTNAME} PUBLIC "-ffast-math")
   endif()
-  
+
   if (HARDFP)
     target_compile_options(${PROJECTNAME} PUBLIC "-mfloat-abi=hard")
     target_link_options(${PROJECTNAME} PUBLIC "-mfloat-abi=hard")
   endif()
-  
+
   if (LITTLEENDIAN)
     target_compile_options(${PROJECTNAME} PUBLIC "-mlittle-endian")
   endif()
@@ -66,22 +66,22 @@ function(compilerSpecificCompileOptions PROJECTNAME ROOT)
   #   target_compile_options(${PROJECTNAME} PUBLIC "")
   #   target_link_options(${PROJECTNAME} PUBLIC "")
   #endif()
-  
-  
+
+
   if (ARM_CPU STREQUAL "cortex-a9" )
       if (NOT (NEON OR NEONEXPERIMENTAL))
         target_compile_options(${PROJECTNAME} PUBLIC "-march=armv7-a;-mfpu=vfpv3-d16")
         target_link_options(${PROJECTNAME} PUBLIC "-march=armv7-a;-mfpu=vfpv3-d16")
       endif()
   endif()
-  
+
   if (ARM_CPU STREQUAL "cortex-a7" )
       if (NOT (NEON OR NEONEXPERIMENTAL))
           target_compile_options(${PROJECTNAME} PUBLIC "-march=armv7-a;-mfpu=vfpv3-d16")
           target_link_options(${PROJECTNAME} PUBLIC "-march=armv7-a;-mfpu=vfpv3-d16")
       endif()
   endif()
-  
+
   if (ARM_CPU STREQUAL "cortex-a5" )
       if ((NEON OR NEONEXPERIMENTAL))
         target_compile_options(${PROJECTNAME} PUBLIC "-march=armv7-a;-mfpu=neon-vfpv4")
@@ -91,28 +91,28 @@ function(compilerSpecificCompileOptions PROJECTNAME ROOT)
         target_link_options(${PROJECTNAME} PUBLIC "-march=armv7-a;-mfpu=vfpv3-d16")
       endif()
   endif()
-  
+
 endfunction()
 
 function(preprocessScatter CORE PLATFORMFOLDER SCATTERFILE)
 
-    
+
     file(REMOVE ${SCATTERFILE})
 
-    # Copy the mem file to the build directory 
+    # Copy the mem file to the build directory
     # so that it can be find when preprocessing the scatter file
     # since we cannot pass an include path to armlink
     add_custom_command(
       OUTPUT
        ${SCATTERFILE}
       COMMAND
-        ${CMAKE_C_COMPILER} -E -x c -I${PLATFORMFOLDER}/${CORE}/LinkScripts/GCC -o ${SCATTERFILE} ${PLATFORMFOLDER}/${CORE}/LinkScripts/GCC/lnk.ld 
-      COMMAND 
-        python ${ROOT}/CMSIS/DSP/filterLinkScript.py ${SCATTERFILE} 
-      DEPENDS  
+        ${CMAKE_C_COMPILER} -E -x c -I${PLATFORMFOLDER}/${CORE}/LinkScripts/GCC -o ${SCATTERFILE} ${PLATFORMFOLDER}/${CORE}/LinkScripts/GCC/lnk.ld
+      COMMAND
+        python ${ROOT}/CMSIS/DSP/filterLinkScript.py ${SCATTERFILE}
+      DEPENDS
        "${PLATFORMFOLDER}/${CORE}/LinkScripts/GCC/lnk.ld;${PLATFORMFOLDER}/${CORE}/LinkScripts/GCC/mem_${CORE}.h"
       )
-    
+
     add_custom_target(
       scatter ALL
       DEPENDS "${SCATTERFILE};${PLATFORMFOLDER}/${CORE}/LinkScripts/GCC/mem_${CORE}.h"
@@ -126,7 +126,7 @@ function(toolchainSpecificLinkForCortexM  PROJECTNAME ROOT CORE PLATFORMFOLDER H
       target_sources(${PROJECTNAME} PRIVATE ${PLATFORMFOLDER}/${CORE}/Startup/GCC/startup_${CORE}.c)
     else()
       target_sources(${PROJECTNAME} PRIVATE ${PLATFORMFOLDER}/${CORE}/Startup/GCC/startup_${CORE}.S)
-    endif() 
+    endif()
     target_sources(${PROJECTNAME} PRIVATE  ${PLATFORMFOLDER}/${CORE}/Startup/GCC/support.c)
 
     target_include_directories(${PROJECTNAME} PRIVATE ${PLATFORMFOLDER}/${CORE}/LinkScripts/GCC)

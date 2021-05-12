@@ -138,7 +138,7 @@ void rt_ret_val2(P_TCB p_TCB, U32 v0, U32 v1) {
 
 #ifdef DBG_MSG
 void dbg_init (void) {
-  if (((DEMCR & DEMCR_TRCENA) != 0U)     && 
+  if (((DEMCR & DEMCR_TRCENA) != 0U)     &&
       ((ITM_CONTROL & ITM_ITMENA) != 0U) &&
       ((ITM_ENABLE & (1UL << 31)) != 0U)) {
     dbg_msg = __TRUE;

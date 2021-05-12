@@ -14,19 +14,19 @@
         memcpy(outfftp,inp,sizeof(q31_t)*input.nbSamples());
 
         ASSERT_TRUE(status == ARM_MATH_SUCCESS);
-   
+
         arm_cfft_q31(
              &(this->instCfftQ31),
              outfftp,
              this->ifft,
              1);
-          
+
         ASSERT_SNR(outputfft,ref,(float32_t)SNR_THRESHOLD);
         ASSERT_NEAR_EQ(outputfft,ref,(q31_t)32);
         ASSERT_EMPTY_TAIL(outputfft);
-       
-        
-    } 
+
+
+    }
 
     void TransformCQ31::test_cifft_q31()
     {
@@ -38,7 +38,7 @@
         memcpy(outfftp,inp,sizeof(q31_t)*input.nbSamples());
 
         ASSERT_TRUE(status == ARM_MATH_SUCCESS);
-   
+
         arm_cfft_q31(
              &(this->instCfftQ31),
              outfftp,
@@ -49,15 +49,15 @@
         {
           refp[i] >>= this->scaling;
         }
-          
+
         ASSERT_SNR(outputfft,ref,(float32_t)SNR_THRESHOLD);
         ASSERT_EMPTY_TAIL(outputfft);
 
-       
-        
-    } 
 
-  
+
+    }
+
+
     void TransformCQ31::setUp(Testing::testID_t id,std::vector<Testing::param_t>& paramsArgs,Client::PatternMgr *mgr)
     {
 

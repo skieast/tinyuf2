@@ -48,7 +48,7 @@ static int default_RNG(uint8_t *dest, unsigned size) {
             return 0;
         }
     }
-    
+
     char *ptr = (char *)dest;
     size_t left = size;
     while (left > 0) {
@@ -60,7 +60,7 @@ static int default_RNG(uint8_t *dest, unsigned size) {
         left -= bytes_read;
         ptr += bytes_read;
     }
-    
+
     close(fd);
     return 1;
 }

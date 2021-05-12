@@ -42,7 +42,7 @@
 // Mask off lower 12 bits to get FCFB offset
 #define FCFB_START_ADDRESS    (FlexSPI_AMBA_BASE + (((uint32_t) &qspiflash_config) & 0xFFF))
 
-// Flash Configuration Structure 
+// Flash Configuration Structure
 extern flexspi_nor_config_t const qspiflash_config;
 
 static uint32_t _flash_page_addr = NO_CACHE;
@@ -75,7 +75,7 @@ void board_flash_init(void)
   if (boot_mode == 1 || !fcfb_valid)
   {
     write_tinyuf2_to_flash();
-  } 
+  }
 }
 
 uint32_t board_flash_size(void)

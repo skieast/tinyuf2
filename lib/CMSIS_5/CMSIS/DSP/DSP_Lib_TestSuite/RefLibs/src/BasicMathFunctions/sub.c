@@ -7,7 +7,7 @@ void ref_sub_f32(
   uint32_t blockSize)
 {
 	uint32_t i;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 		pDst[i] = pSrcA[i] - pSrcB[i];
@@ -21,7 +21,7 @@ void ref_sub_q31(
   uint32_t blockSize)
 {
 	uint32_t i;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 		pDst[i] = ref_sat_q31( (q63_t)pSrcA[i] - pSrcB[i] );
@@ -35,7 +35,7 @@ void ref_sub_q15(
   uint32_t blockSize)
 {
 	uint32_t i;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 		pDst[i] = ref_sat_q15( (q31_t)pSrcA[i] - pSrcB[i] );
@@ -49,7 +49,7 @@ void ref_sub_q7(
   uint32_t blockSize)
 {
 	uint32_t i;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 		pDst[i] = ref_sat_q7( (q15_t)pSrcA[i] - pSrcB[i] );

@@ -20,21 +20,17 @@ LOAD_REGION 0x0
 {
     CODE +0 0x80000
     {
-        *.o (VECTORS, +First)  
-        * (InRoot$$$Sections)     
-        * (+RO-CODE)                              
+        *.o (VECTORS, +First)
+        * (InRoot$$$Sections)
+        * (+RO-CODE)
     }
 
     DATA 0x80000 NOCOMPRESS 0x100000
     {
         * (+RO-DATA)
-        * (+RW,+ZI)                         
+        * (+RW,+ZI)
     }
 
-    ARM_LIB_STACKHEAP 0x180000 ALIGN 64 EMPTY 0x00060000 
+    ARM_LIB_STACKHEAP 0x180000 ALIGN 64 EMPTY 0x00060000
     {}
 }
-
-
-
-

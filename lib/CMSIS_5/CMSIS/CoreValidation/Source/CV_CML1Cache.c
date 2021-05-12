@@ -1,5 +1,5 @@
 /*-----------------------------------------------------------------------------
- *      Name:         CV_CML1Cache.c 
+ *      Name:         CV_CML1Cache.c
  *      Purpose:      CMSIS CORE validation tests implementation
  *-----------------------------------------------------------------------------
  *      Copyright (c) 2020 ARM Limited. All rights reserved.
@@ -20,9 +20,9 @@
 void TC_CML1Cache_EnDisableICache(void) {
 #ifdef __ICACHE_PRESENT
   SCB_EnableICache();
-  
+
   ASSERT_TRUE((SCB->CCR & SCB_CCR_IC_Msk) == SCB_CCR_IC_Msk);
-  
+
   SCB_DisableICache();
 
   ASSERT_TRUE((SCB->CCR & SCB_CCR_IC_Msk) == 0U);

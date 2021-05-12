@@ -22,5 +22,5 @@ class BinaryQ31:public Client::Suite
             arm_matrix_instance_q31 in1;
             arm_matrix_instance_q31 in2;
             arm_matrix_instance_q31 out;
-            
+
     };

@@ -10,10 +10,10 @@ BODYONLY = 2
 BODYANDTAIL = 3
 
 # Datatype formats
-F64 = 64 
+F64 = 64
 F32 = 0
 F16 = 16
-Q31 = 31 
+Q31 = 31
 Q15 = 15
 Q7 = 7
 
@@ -21,18 +21,18 @@ def loopnb(format,loopkind):
     nb = 0
     if loopkind == TAILONLY:
         if format == 64:
-            nb = 1 
+            nb = 1
         if format == 0 or format == 31:
-            nb = 3 
+            nb = 3
         if format == 15 or format == 16:
             nb = 7
         if format == 7:
             nb = 15
     if loopkind == BODYONLY:
         if format == 64:
-            nb = 4 
+            nb = 4
         if format == 0 or format == 31:
-            nb = 8 
+            nb = 8
         if format == 15 or format == 16:
             nb = 16
         if format == 7:
@@ -71,17 +71,17 @@ def packset(a):
     for i in range(0,vecSize):
         #print(c[i,:])
         #print("%X %X %X %X" % (c[i,0],c[i,1],c[i,2],c[i,3]))
-        d = (c[i,0] << 24) | (c[i,1] << 16) | (c[i,2] << 8) | c[i,3] 
+        d = (c[i,0] << 24) | (c[i,1] << 16) | (c[i,2] << 8) | c[i,3]
         result.append(np.uint32(d))
-    return(result) 
+    return(result)
 
 def float_to_hex(f):
     """ Convert and x86 float to an ARM unsigned long int.
-  
+
     Args:
       f (float): value to be converted
     Raises:
-      Nothing 
+      Nothing
     Returns:
       str : representation of the hex value
     """
@@ -89,11 +89,11 @@ def float_to_hex(f):
 
 def float16_to_hex(f):
     """ Convert and x86 float to an ARM unsigned long int.
-  
+
     Args:
       f (float): value to be converted
     Raises:
-      Nothing 
+      Nothing
     Returns:
       str : representation of the hex value
     """
@@ -101,11 +101,11 @@ def float16_to_hex(f):
 
 def float64_to_hex(f):
     """ Convert and x86 float to an ARM unsigned long int.
-  
+
     Args:
       f (float): value to be converted
     Raises:
-      Nothing 
+      Nothing
     Returns:
       str : representation of the hex value
     """
@@ -159,19 +159,19 @@ class Config:
     def __init__(self,patternDir,paramDir,ext):
       self._patternDir = "%s%s" % (patternDir,ext.upper())
       self._paramDir = "%s%s" % (paramDir,ext.upper())
-      self._ext = ext 
+      self._ext = ext
 
       createMissingDir(self._patternDir)
       createMissingDir(self._paramDir)
 
-    
+
     def inputP(self,i,name=None):
         """ Path to a reference pattern from the ID
-      
+
         Args:
           i (int): ID to the reference pattern
         Raises:
-          Nothing 
+          Nothing
         Returns:
           str : path to the file where to generate the pattern data
         """
@@ -182,11 +182,11 @@ class Config:
 
     def inputS32P(self,i,name=None):
         """ Path to a reference pattern from the ID
-      
+
         Args:
           i (int): ID to the reference pattern
         Raises:
-          Nothing 
+          Nothing
         Returns:
           str : path to the file where to generate the pattern data
         """
@@ -197,11 +197,11 @@ class Config:
 
     def inputS16P(self,i,name=None):
         """ Path to a reference pattern from the ID
-      
+
         Args:
           i (int): ID to the reference pattern
         Raises:
-          Nothing 
+          Nothing
         Returns:
           str : path to the file where to generate the pattern data
         """
@@ -212,11 +212,11 @@ class Config:
 
     def inputS8P(self,i,name=None):
         """ Path to a reference pattern from the ID
-      
+
         Args:
           i (int): ID to the reference pattern
         Raises:
-          Nothing 
+          Nothing
         Returns:
           str : path to the file where to generate the pattern data
         """
@@ -227,11 +227,11 @@ class Config:
 
     def inputF32P(self,i,name=None):
         """ Path to a reference pattern from the ID
-      
+
         Args:
           i (int): ID to the reference pattern
         Raises:
-          Nothing 
+          Nothing
         Returns:
           str : path to the file where to generate the pattern data
         """
@@ -242,11 +242,11 @@ class Config:
 
     def inputF16P(self,i,name=None):
         """ Path to a reference pattern from the ID
-      
+
         Args:
           i (int): ID to the reference pattern
         Raises:
-          Nothing 
+          Nothing
         Returns:
           str : path to the file where to generate the pattern data
         """
@@ -257,11 +257,11 @@ class Config:
 
     def inputQ31P(self,i,name=None):
         """ Path to a reference pattern from the ID
-      
+
         Args:
           i (int): ID to the reference pattern
         Raises:
-          Nothing 
+          Nothing
         Returns:
           str : path to the file where to generate the pattern data
         """
@@ -272,11 +272,11 @@ class Config:
 
     def inputQ15P(self,i,name=None):
         """ Path to a reference pattern from the ID
-      
+
         Args:
           i (int): ID to the reference pattern
         Raises:
-          Nothing 
+          Nothing
         Returns:
           str : path to the file where to generate the pattern data
         """
@@ -287,11 +287,11 @@ class Config:
 
     def inputQ7P(self,i,name=None):
         """ Path to a reference pattern from the ID
-      
+
         Args:
           i (int): ID to the reference pattern
         Raises:
-          Nothing 
+          Nothing
         Returns:
           str : path to the file where to generate the pattern data
         """
@@ -302,11 +302,11 @@ class Config:
 
     def inputU32P(self,i,name=None):
         """ Path to a reference pattern from the ID
-      
+
         Args:
           i (int): ID to the reference pattern
         Raises:
-          Nothing 
+          Nothing
         Returns:
           str : path to the file where to generate the pattern data
         """
@@ -317,11 +317,11 @@ class Config:
 
     def refP(self,i,name=None):
         """ Path to a reference pattern from the ID
-      
+
         Args:
           i (int): ID to the reference pattern
         Raises:
-          Nothing 
+          Nothing
         Returns:
           str : path to the file where to generate the pattern data
         """
@@ -332,11 +332,11 @@ class Config:
 
     def refS8P(self,i,name=None):
         """ Path to a reference pattern from the ID
-      
+
         Args:
           i (int): ID to the reference pattern
         Raises:
-          Nothing 
+          Nothing
         Returns:
           str : path to the file where to generate the pattern data
         """
@@ -347,11 +347,11 @@ class Config:
 
     def refS16P(self,i,name=None):
         """ Path to a reference pattern from the ID
-      
+
         Args:
           i (int): ID to the reference pattern
         Raises:
-          Nothing 
+          Nothing
         Returns:
           str : path to the file where to generate the pattern data
         """
@@ -362,11 +362,11 @@ class Config:
 
     def refS32P(self,i,name=None):
         """ Path to a reference pattern from the ID
-      
+
         Args:
           i (int): ID to the reference pattern
         Raises:
-          Nothing 
+          Nothing
         Returns:
           str : path to the file where to generate the pattern data
         """
@@ -377,11 +377,11 @@ class Config:
 
     def refQ63P(self,i,name=None):
         """ Path to a reference pattern from the ID
-      
+
         Args:
           i (int): ID to the reference pattern
         Raises:
-          Nothing 
+          Nothing
         Returns:
           str : path to the file where to generate the pattern data
         """
@@ -392,11 +392,11 @@ class Config:
 
     def refQ31P(self,i,name=None):
         """ Path to a reference pattern from the ID
-      
+
         Args:
           i (int): ID to the reference pattern
         Raises:
-          Nothing 
+          Nothing
         Returns:
           str : path to the file where to generate the pattern data
         """
@@ -407,11 +407,11 @@ class Config:
 
     def refF32P(self,i,name=None):
         """ Path to a reference pattern from the ID
-      
+
         Args:
           i (int): ID to the reference pattern
         Raises:
-          Nothing 
+          Nothing
         Returns:
           str : path to the file where to generate the pattern data
         """
@@ -422,11 +422,11 @@ class Config:
 
     def refF16P(self,i,name=None):
         """ Path to a reference pattern from the ID
-      
+
         Args:
           i (int): ID to the reference pattern
         Raises:
-          Nothing 
+          Nothing
         Returns:
           str : path to the file where to generate the pattern data
         """
@@ -437,11 +437,11 @@ class Config:
 
     def paramP(self,i,name=None):
         """ Path to a parameters from the ID
-      
+
         Args:
           i (int): ID to the params
         Raises:
-          Nothing 
+          Nothing
         Returns:
           str : path to the file where to generate the pattern data
         """
@@ -452,18 +452,18 @@ class Config:
 
     def _writeVectorF64(self,i,data):
         """ Write pattern data
-        
+
         The format is recognized by the text framework script.
         First line is the sample width (B,H or W,D for 8,16,32 or 64 bits)
         Second line is number of samples
         Other lines are hexadecimal representation of the samples in format
         which can be read on big endian ARM.
-        
+
           Args:
             j (int): ID of pattern file
             data (array): Vector containing the data
           Raises:
-            Nothing 
+            Nothing
           Returns:
             Nothing
         """
@@ -477,18 +477,18 @@ class Config:
 
     def _writeVectorF32(self,i,data):
         """ Write pattern data
-        
+
         The format is recognized by the text framework script.
         First line is the sample width (B,H or W for 8,16 or 32 bits)
         Second line is number of samples
         Other lines are hexadecimal representation of the samples in format
         which can be read on big endian ARM.
-        
+
           Args:
             j (int): ID of pattern file
             data (array): Vector containing the data
           Raises:
-            Nothing 
+            Nothing
           Returns:
             Nothing
         """
@@ -502,18 +502,18 @@ class Config:
 
     def _writeVectorF16(self,i,data):
         """ Write pattern data
-        
+
         The format is recognized by the text framework script.
         First line is the sample width (B,H or W for 8,16 or 32 bits)
         Second line is number of samples
         Other lines are hexadecimal representation of the samples in format
         which can be read on big endian ARM.
-        
+
           Args:
             j (int): ID of pattern file
             data (array): Vector containing the data
           Raises:
-            Nothing 
+            Nothing
           Returns:
             Nothing
         """
@@ -527,18 +527,18 @@ class Config:
 
     def _writeVectorQ63(self,i,data):
         """ Write pattern data
-        
+
         The format is recognized by the text framework script.
         First line is the sample width (B,H or W for 8,16 or 32 bits)
         Second line is number of samples
         Other lines are hexadecimal representation of the samples in format
         which can be read on big endian ARM.
-        
+
           Args:
             j (int): ID of pattern file
             data (array): Vector containing the data
           Raises:
-            Nothing 
+            Nothing
           Returns:
             Nothing
         """
@@ -552,18 +552,18 @@ class Config:
 
     def _writeVectorQ31(self,i,data):
         """ Write pattern data
-        
+
         The format is recognized by the text framework script.
         First line is the sample width (B,H or W for 8,16 or 32 bits)
         Second line is number of samples
         Other lines are hexadecimal representation of the samples in format
         which can be read on big endian ARM.
-        
+
           Args:
             j (int): ID of pattern file
             data (array): Vector containing the data
           Raises:
-            Nothing 
+            Nothing
           Returns:
             Nothing
         """
@@ -577,18 +577,18 @@ class Config:
 
     def _writeVectorQ15(self,i,data):
         """ Write pattern data
-        
+
         The format is recognized by the text framework script.
         First line is the sample width (B,H or W for 8,16 or 32 bits)
         Second line is number of samples
         Other lines are hexadecimal representation of the samples in format
         which can be read on big endian ARM.
-        
+
           Args:
             j (int): ID of pattern file
             data (array): Vector containing the data
           Raises:
-            Nothing 
+            Nothing
           Returns:
             Nothing
         """
@@ -602,18 +602,18 @@ class Config:
 
     def _writeVectorS16(self,i,data):
         """ Write pattern data
-        
+
         The format is recognized by the text framework script.
         First line is the sample width (B,H or W for 8,16 or 32 bits)
         Second line is number of samples
         Other lines are hexadecimal representation of the samples in format
         which can be read on big endian ARM.
-        
+
           Args:
             j (int): ID of pattern file
             data (array): Vector containing the data
           Raises:
-            Nothing 
+            Nothing
           Returns:
             Nothing
         """
@@ -627,18 +627,18 @@ class Config:
 
     def _writeVectorS32(self,i,data):
         """ Write pattern data
-        
+
         The format is recognized by the text framework script.
         First line is the sample width (B,H or W for 8,16 or 32 bits)
         Second line is number of samples
         Other lines are hexadecimal representation of the samples in format
         which can be read on big endian ARM.
-        
+
           Args:
             j (int): ID of pattern file
             data (array): Vector containing the data
           Raises:
-            Nothing 
+            Nothing
           Returns:
             Nothing
         """
@@ -652,18 +652,18 @@ class Config:
 
     def _writeVectorU32(self,i,data):
         """ Write pattern data
-        
+
         The format is recognized by the text framework script.
         First line is the sample width (B,H or W for 8,16 or 32 bits)
         Second line is number of samples
         Other lines are hexadecimal representation of the samples in format
         which can be read on big endian ARM.
-        
+
           Args:
             j (int): ID of pattern file
             data (array): Vector containing the data
           Raises:
-            Nothing 
+            Nothing
           Returns:
             Nothing
         """
@@ -677,18 +677,18 @@ class Config:
 
     def _writeVectorQ7(self,i,data):
         """ Write pattern data
-        
+
         The format is recognized by the text framework script.
         First line is the sample width (B,H or W for 8,16 or 32 bits)
         Second line is number of samples
         Other lines are hexadecimal representation of the samples in format
         which can be read on big endian ARM.
-        
+
           Args:
             j (int): ID of pattern file
             data (array): Vector containing the data
           Raises:
-            Nothing 
+            Nothing
           Returns:
             Nothing
         """
@@ -702,18 +702,18 @@ class Config:
 
     def _writeVectorS8(self,i,data):
         """ Write pattern data
-        
+
         The format is recognized by the text framework script.
         First line is the sample width (B,H or W for 8,16 or 32 bits)
         Second line is number of samples
         Other lines are hexadecimal representation of the samples in format
         which can be read on big endian ARM.
-        
+
           Args:
             j (int): ID of pattern file
             data (array): Vector containing the data
           Raises:
-            Nothing 
+            Nothing
           Returns:
             Nothing
         """
@@ -756,7 +756,7 @@ class Config:
 
     def writeReferenceS16(self,j,data,name=None):
         self._writeVectorS16(self.refS16P(j,name),data)
-       
+
     def writeReferenceS32(self,j,data,name=None):
         self._writeVectorS32(self.refS32P(j,name),data)
 
@@ -813,18 +813,18 @@ class Config:
 
     def writeParam(self,j,data,name=None):
         """ Write pattern data
-        
+
         The format is recognized by the text framework script.
         First line is the sample width (B,H or W for 8,16 or 32 bits)
         Second line is number of samples
         Other lines are hexadecimal representation of the samples in format
         which can be read on big endian ARM.
-        
+
           Args:
             j (int): ID of parameter file
             data (array): Vector containing the data
           Raises:
-            Nothing 
+            Nothing
           Returns:
             Nothing
         """
@@ -835,6 +835,3 @@ class Config:
             f.write("%d\n" % len(data))
             for v in data:
                 f.write("%d\n" % v)
-
-
-

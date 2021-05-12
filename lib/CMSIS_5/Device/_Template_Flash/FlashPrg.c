@@ -21,10 +21,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 #include "FlashOS.h"        // FlashOS Structures
 
-/* 
+/*
    Mandatory Flash Programming Functions (Called by FlashOS):
                 int Init        (unsigned long adr,   // Initialize Flash
                                  unsigned long clk,

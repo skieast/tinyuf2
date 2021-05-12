@@ -16,7 +16,7 @@ class TransformF32:public Client::Suite
             Client::LocalPattern<float32_t> output;
             Client::LocalPattern<float32_t> tmp;
             Client::LocalPattern<float32_t> state;
-            
+
             int nbSamples;
             int ifft;
             int bitRev;
@@ -35,5 +35,5 @@ class TransformF32:public Client::Suite
             arm_rfft_instance_f32 rfftInstance;
             arm_cfft_radix4_instance_f32 cfftRadix4Instance;
             arm_cfft_radix2_instance_f32 cfftRadix2Instance;
-            
+
     };

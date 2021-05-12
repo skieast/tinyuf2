@@ -1,7 +1,7 @@
 import numpy as np
 from pylab import figure, clf, plot, xlabel, ylabel, xlim, ylim, title, grid, axes, show,semilogx, semilogy
 import scipy.fftpack
-import os.path 
+import os.path
 import struct
 import argparse
 import sys
@@ -25,9 +25,9 @@ outputPath= os.path.join(parent_dir,"Output","DSP","Filtering","BIQUAD","BIQUAD%
 
 
 inSig = d.readF16Pattern(inputPath)
-     
+
 refSig = d.readF16Pattern(refPath)
-     
+
 sig = d.readF16Output(outputPath)
 
 

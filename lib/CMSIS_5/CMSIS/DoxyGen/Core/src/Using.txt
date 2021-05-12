@@ -1,4 +1,4 @@
-/** 
+/**
 \page using_pg  Using CMSIS in Embedded Applications
 
 \details
@@ -8,8 +8,8 @@ To use the CMSIS-Core (Cortex-M) the following files are added to the embedded a
  - \ref system_c_pg with general device configuration (i.e. for clock and BUS setup).
  - \ref device_h_pg gives access to processor core and all peripherals.
 
-\note The files \ref startup_c_pg (or \ref startup_s_pg) and \ref system_c_pg may require application specific adaptations and therefore should be copied 
-  into the application project folder prior configuration. The \ref device_h_pg is included in all source files that need device access 
+\note The files \ref startup_c_pg (or \ref startup_s_pg) and \ref system_c_pg may require application specific adaptations and therefore should be copied
+  into the application project folder prior configuration. The \ref device_h_pg is included in all source files that need device access
   and can be stored on a central include folder that is generic for all projects.
 
 The \ref startup_c_pg (or \ref startup_s_pg) is executed after reset and calls \ref SystemInit. After the system initialization control is transferred to the C/C++ run-time
@@ -17,7 +17,7 @@ library which performs initialization and calls the \b main function in the user
 interrupt vectors and implements a default function for every interrupt. It may also contain stack and heap configurations for the user application.
 
 The \ref system_c_pg performs the setup for the processor clock. The variable \ref SystemCoreClock indicates the CPU clock speed.
-\ref system_init_gr describes the minimum feature set. In addition the file may contain functions for the memory BUS setup and clock re-configuration. 
+\ref system_init_gr describes the minimum feature set. In addition the file may contain functions for the memory BUS setup and clock re-configuration.
 
 The \ref device_h_pg is the central include file that the application programmer is using in the C source code.  It provides the following features:
  - \ref peripheral_gr provides a standardized register layout for all peripherals. Optionally functions for device-specific peripherals may be available.
@@ -73,51 +73,51 @@ Thereafter, the functions described under <a href="Modules.html">\b Reference </
 
 \page using_CMSIS Basic CMSIS Example
 
-A typical example for using the CMSIS layer is provided below. The example is based on a STM32F10x Device. 
-    
+A typical example for using the CMSIS layer is provided below. The example is based on a STM32F10x Device.
+
 \code
 #include <stm32f10x.h>                           // File name depends on device used
- 
+
 uint32_t volatile msTicks;                       // Counter for millisecond Interval
- 
+
 void SysTick_Handler (void) {                    // SysTick Interrupt Handler
   msTicks++;                                     // Increment Counter
 }
- 
+
 void WaitForTick (void)  {
   uint32_t curTicks;
- 
+
   curTicks = msTicks;                            // Save Current SysTick Value
   while (msTicks == curTicks)  {                 // Wait for next SysTick Interrupt
     __WFE ();                                    // Power-Down until next Event/Interrupt
   }
 }
- 
+
 void TIM1_UP_IRQHandler (void) {                 // Timer Interrupt Handler
   ;                                              // Add user code here
 }
- 
+
 void timer1_init(int frequency) {                // Set up Timer (device specific)
   NVIC_SetPriority (TIM1_UP_IRQn, 1);            // Set Timer priority
   NVIC_EnableIRQ (TIM1_UP_IRQn);                 // Enable Timer Interrupt
 }
- 
- 
+
+
 void Device_Initialization (void)  {             // Configure & Initialize MCU
   if (SysTick_Config (SystemCoreClock / 1000)) { // SysTick 1mSec
-       : // Handle Error 
+       : // Handle Error
   }
   timer1_init ();                                // setup device-specific timer
 }
- 
- 
+
+
 // The processor clock is initialized by CMSIS startup + system file
 void main (void) {                               // user application starts here
   Device_Initialization ();                      // Configure & Initialize MCU
   while (1)  {                                   // Endless Loop (the Super-Loop)
     __disable_irq ();                            // Disable all interrupts
     Get_InputValues ();                          // Read Values
-    __enable_irq ();                             // Enable all interrupts 
+    __enable_irq ();                             // Enable all interrupts
     Calculation_Response ();                     // Calculate Results
     Output_Response ();                          // Output Results
     WaitForTick ();                              // Synchronize to SysTick Timer
@@ -125,7 +125,7 @@ void main (void) {                               // user application starts here
 }
 \endcode
 
-CMSIS-Pack provides the <b>\#define CMSIS_header_file</b> in <a href="../../Pack/html/pdsc_components_pg.html#RTE_Components_h"><b>RTE_Components.h</b></a> which gives you access to the <b><i>device</i>.h</b> file 
+CMSIS-Pack provides the <b>\#define CMSIS_header_file</b> in <a href="../../Pack/html/pdsc_components_pg.html#RTE_Components_h"><b>RTE_Components.h</b></a> which gives you access to the <b><i>device</i>.h</b> file
 of a project. This allows you to generate generic software components that use the device selected in a project.
 
 \code
@@ -140,7 +140,7 @@ a typical use case where the interrupt vectors are copied to RAM and the SysTick
 
 \code
 #include "ARMCM3.h"                     // Device header
- 
+
 #define VECTORTABLE_SIZE        (240)    /* size of the used vector tables    */
                                          /* see startup file startup_ARMCM3.c */
 #define VECTORTABLE_ALIGNMENT   (0x100U) /* 16 Cortex + 32 ARMCM3 = 48 words  */
@@ -152,7 +152,7 @@ extern uint32_t __VECTOR_TABLE[VECTORTABLE_SIZE];        /* vector table ROM  */
 /* new vector table in RAM, same size as vector table in ROM */
 uint32_t vectorTable_RAM[VECTORTABLE_SIZE] __attribute__(( aligned (VECTORTABLE_ALIGNMENT) ));
 
- 
+
 /*----------------------------------------------------------------------------
   SysTick_Handler
  *----------------------------------------------------------------------------*/
@@ -160,7 +160,7 @@ volatile uint32_t msTicks = 0;                        /* counts 1ms timeTicks */
 void SysTick_Handler(void) {
   msTicks++;                                             /* increment counter */
 }
- 
+
 /*----------------------------------------------------------------------------
   SysTick_Handler (RAM)
  *----------------------------------------------------------------------------*/
@@ -168,39 +168,39 @@ volatile uint32_t msTicks_RAM = 0;                    /* counts 1ms timeTicks */
 void SysTick_Handler_RAM(void) {
   msTicks_RAM++;                                         /* increment counter */
 }
- 
+
 /*----------------------------------------------------------------------------
   MAIN function
  *----------------------------------------------------------------------------*/
 int main (void) {
   uint32_t i;
-   
+
   for (i = 0; i < VECTORTABLE_SIZE; i++) {
     vectorTable_RAM[i] = __VECTOR_TABLE[i];       /* copy vector table to RAM */
   }
                                                    /* replace SysTick Handler */
   vectorTable_RAM[SysTick_IRQn + 16] = (uint32_t)SysTick_Handler_RAM;
-  
-  /* relocate vector table */ 
+
+  /* relocate vector table */
   __disable_irq();
     SCB->VTOR = (uint32_t)&vectorTable_RAM;
   __DSB();
   __enable_irq();
- 
+
   SystemCoreClockUpdate();                        /* Get Core Clock Frequency */
   SysTick_Config(SystemCoreClock / 1000ul); /* Setup SysTick Timer for 1 msec */
-   
+
   while(1);
 }
 \endcode
 
-    
+
 \page using_ARM_pg Using CMSIS with generic Arm Processors
 
-Arm provides CMSIS-Core (Cortex-M) files for the supported Arm Processors and for various compiler vendors. 
+Arm provides CMSIS-Core (Cortex-M) files for the supported Arm Processors and for various compiler vendors.
 These files can be used when standard Arm processors should be used in a project.
 The table below lists the folder and device names of the Arm processors.
-  
+
 <table class="cmtable">
     <tr>
       <th>Folder</th>
@@ -242,7 +242,7 @@ The table below lists the folder and device names of the Arm processors.
         The device name is ARMCM7 and the name of the \ref device_h_pg is <ARMCM7.h>.
     </td>
     </tr>
-\if ARMSC 
+\if ARMSC
     <tr>
       <td>".\Device\ARM\ARMSC000"</td>
       <td>SecurCore SC000</td>
@@ -257,22 +257,22 @@ The table below lists the folder and device names of the Arm processors.
         The device name is ARMSC300 and the name of the \ref device_h_pg is <ARMSC300.h>.
     </td>
     </tr>
-\endif  
+\endif
 </table>
 
 \note
-CMSIS-Pack provides the <b>\#define CMSIS_header_file</b> in <a href="../../Pack/html/pdsc_components_pg.html#RTE_Components_h"><b>RTE_Components.h</b></a> which gives you access to the <b><i>device</i>.h</b> file 
+CMSIS-Pack provides the <b>\#define CMSIS_header_file</b> in <a href="../../Pack/html/pdsc_components_pg.html#RTE_Components_h"><b>RTE_Components.h</b></a> which gives you access to the <b><i>device</i>.h</b> file
 of a project. This allows you to generate generic software components that adjust to the device settings.
 
 
 \section using_ARM_Lib_sec Create generic Libraries with CMSIS
 
-The CMSIS Processor and Core Peripheral files allow also to create generic libraries. 
+The CMSIS Processor and Core Peripheral files allow also to create generic libraries.
 The <a href="../../DSP/html/index.html">\b CMSIS-DSP </a> Libraries are an example for such a generic library.
 
 To build a generic Library set the define \b __CMSIS_GENERIC and include the relevant <b>core_<cpu>.h</b> CMSIS CPU & Core Access header file for the processor.
 The define <b>__CMSIS_GENERIC</b> disables device-dependent features such as the <b>SysTick</b> timer and the <b>Interrupt System</b>.
-Refer to \ref core_config_sect for a list of the available <b>core_<cpu>.h</b> header files. 
+Refer to \ref core_config_sect for a list of the available <b>core_<cpu>.h</b> header files.
 
 \b Example:
 

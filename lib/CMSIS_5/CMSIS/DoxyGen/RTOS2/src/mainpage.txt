@@ -21,14 +21,14 @@ time when they are needed. Each activity gets a separate thread which executes a
 overall program structure. The CMSIS-RTOS2 system is scalable and additional threads can be added easily at a later time.
 Threads have a priority allowing faster execution of time-critical parts of a user application.
 
-The CMSIS-RTOS2 offers services needed in many real-time applications, for example, periodical activation of timer functions, 
+The CMSIS-RTOS2 offers services needed in many real-time applications, for example, periodical activation of timer functions,
 memory management, and message exchange between threads with time limits.
 
 The CMSIS-RTOS2 addresses the following new requirements:
  - Dynamic object creation no longer requires static memory, static memory buffers are now optional.
 \if ARMv8M
  - Support for Armv8-M architecture that provides a secure and non-secure state of code execution.
-\endif 
+\endif
  - Provisions for message passing in multi-core systems.
  - Full support of C++ run-time environments.
  - C interface which is binary compatible across
@@ -66,13 +66,11 @@ CMSIS-RTOS2 in ARM::CMSIS Pack
 \anchor directory
 
 The following files relevant to CMSIS-RTOS2 are present in the <b>ARM::CMSIS</b> Pack directories:
-Directory                    | Content                                                                
+Directory                    | Content
 :----------------------------|:-----------------------------------------------------------------------
-\b CMSIS/Documentation/RTOS2 | This documentation                                                     
-\b CMSIS/RTOS2/Include       | \ref cmsis_os2_h                                                 
+\b CMSIS/Documentation/RTOS2 | This documentation
+\b CMSIS/RTOS2/Include       | \ref cmsis_os2_h
 \b CMSIS/RTOS2/RTX           | CMSIS-RTOS2 reference implementation based on RTX version 5
 \b CMSIS/RTOS2/Source        | Generic <b>OS tick</b> implementations for various processors based on \ref rtos_os_tick_api
 \b CMSIS/RTOS2/Template      | Compatibility layer to <a class="el" href="../../RTOS/html/index.html">CMSIS-RTOS v1</a>
 */
-
-

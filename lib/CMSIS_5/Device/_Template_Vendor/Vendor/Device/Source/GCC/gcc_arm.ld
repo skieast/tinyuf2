@@ -21,7 +21,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 /*
 ;-------- <<< Use Configuration Wizard in Context Menu >>> -------------------
 */
@@ -168,9 +168,9 @@ SECTIONS
 		. = ALIGN(4);
 		__zero_table_start__ = .;
     /** Add each additional bss section here */
-    /* 
+    /*
     LONG (__bss2_start__)
-		LONG (__bss2_end__ - __bss2_start__) 
+		LONG (__bss2_end__ - __bss2_start__)
     */
 		__zero_table_end__ = .;
 	} > FLASH
@@ -186,7 +186,7 @@ SECTIONS
 		*(vtable)
 		*(.data)
     *(.data.*)
-        
+
 		. = ALIGN(4);
 		/* preinit data */
 		PROVIDE_HIDDEN (__preinit_array_start = .);
@@ -215,9 +215,9 @@ SECTIONS
 
 	} > RAM
 
-  /** 
-   * Secondary data section, optional 
-   * 
+  /**
+   * Secondary data section, optional
+   *
    * Remember to add each additional data section
    * to the .copy.table above to asure proper
    * initialization during startup.
@@ -234,9 +234,9 @@ SECTIONS
 		. = ALIGN(4);
 		__data2_end__ = .;
 
-	} > RAM 
+	} > RAM
   */
-  
+
 	.bss :
 	{
 		. = ALIGN(4);
@@ -249,7 +249,7 @@ SECTIONS
 	} > RAM
 
   /**
-   * Secondary bss section, optional 
+   * Secondary bss section, optional
    *
    * Remember to add each additional bss section
    * to the .zero.table above to asure proper

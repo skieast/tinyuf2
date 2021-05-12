@@ -11,10 +11,10 @@ class Table(object):
 
   def sigmoid(self, x):
     return 1 / (1 + math.exp(-1*x))
-  
+
   def tanh(self, x):
     return (math.exp(2*x)-1) / (math.exp(2*x)+1)
-  
+
   def fp2q7(self, x):
     x_int = math.floor(x*(2**7)+0.5)
     if x_int >= 128 :
@@ -25,7 +25,7 @@ class Table(object):
       return x_int
     else :
       return 0x100 + x_int
-  
+
   def fp2q15(self, x):
     x_int = math.floor(x*(2**15)+0.5)
     if x_int >= 2**15 :
@@ -41,7 +41,7 @@ class Table(object):
     outfile = open("NNCommonTable.c", "wb")
 
     outfile.write("/*\n * Common tables for NN\n *\n *\n *\n *\n */\n\n#include \"arm_math.h\"\n#include \"NNCommonTable.h\"\n\n/*\n * Table for sigmoid\n */\n")
-  
+
     for function_type in ["sigmoid", "tanh"]:
       for data_type in [7, 15]:
         out_type = "q"+str(data_type)+"_t"
@@ -107,10 +107,10 @@ class Table(object):
           if i % 8 == 7:
             outfile.write("\n")
         outfile.write("};\n\n")
-    
+
     outfile.close()
-  
-  
+
+
 mytable = Table(table_entry=256, table_range=16)
 
 mytable.table_gen()

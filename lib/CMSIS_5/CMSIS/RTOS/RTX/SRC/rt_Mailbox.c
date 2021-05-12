@@ -91,7 +91,7 @@ OS_RESULT rt_mbx_send (OS_ID mailbox, void *p_msg, U16 timeout) {
         p_MCB->p_lnk = os_tsk.run;
         os_tsk.run->p_lnk  = NULL;
         os_tsk.run->p_rlnk = (P_TCB)p_MCB;
-        /* Task is waiting to send a message */      
+        /* Task is waiting to send a message */
         p_MCB->state = 2U;
       }
       os_tsk.run->msg = p_msg;
@@ -154,7 +154,7 @@ OS_RESULT rt_mbx_wait (OS_ID mailbox, void **message, U16 timeout) {
     p_MCB->p_lnk = os_tsk.run;
     os_tsk.run->p_lnk = NULL;
     os_tsk.run->p_rlnk = (P_TCB)p_MCB;
-    /* Task is waiting to receive a message */      
+    /* Task is waiting to receive a message */
     p_MCB->state = 1U;
   }
   rt_block(timeout, WAIT_MBX);

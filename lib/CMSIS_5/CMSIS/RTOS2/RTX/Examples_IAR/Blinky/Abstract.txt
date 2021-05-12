@@ -6,8 +6,8 @@ Example functionality:
    - XTAL    =  50 MHz
    - Core    =  25 MHz
 
-The simple RTX Kernel based example simulates the step-motor 
-driver. Four LEDs are blinking simulating the activation of 
+The simple RTX Kernel based example simulates the step-motor
+driver. Four LEDs are blinking simulating the activation of
 the four output driver stages
 The simulation does not provide LEDs, so the state changes
 are output on the Debug printf window:

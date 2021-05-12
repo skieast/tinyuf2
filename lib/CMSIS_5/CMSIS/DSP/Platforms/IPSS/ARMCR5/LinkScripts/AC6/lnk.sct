@@ -13,13 +13,13 @@ LOAD_REGION 0x0
     {
         *.o (VECTORS, +First)
         * (InRoot$$$Sections)
-        * (+RO-CODE)                             
+        * (+RO-CODE)
     }
 
     DATA 0x100000 NOCOMPRESS 0x60000
     {
     * (+RO-DATA)
-	* (+RW,+ZI)                         
+	* (+RW,+ZI)
     }
 
     ARM_LIB_STACKHEAP 0x180000 ALIGN 64 EMPTY 0x000052000
@@ -27,9 +27,3 @@ LOAD_REGION 0x0
 
 
 }
-
-
-
-
-
-

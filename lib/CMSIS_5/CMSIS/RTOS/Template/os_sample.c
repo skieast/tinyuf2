@@ -1,18 +1,18 @@
-/* ----------------------------------------------------------------------  
- * Copyright (C) 2011 ARM Limited. All rights reserved.  
- *  
+/* ----------------------------------------------------------------------
+ * Copyright (C) 2011 ARM Limited. All rights reserved.
+ *
  * $Date:        30. November 2011
  * $Revision:    V0.02
- *  
+ *
  * Project: 	 CMSIS-RTOS API
  * Title:	     os_sample.c
- *  
+ *
  * Description:	 This file shows the usage of the CMSIS-RTOS API.
- *  
- *  
+ *
+ *
  * Version 0.02
- *    Initial Proposal Phase 
- * -------------------------------------------------------------------- */ 
+ *    Initial Proposal Phase
+ * -------------------------------------------------------------------- */
 
 
 #include "my_objects.h"              // Define CMSIS OS Objects
@@ -25,10 +25,10 @@ osThreadId  osThreadCreate (const osThreadDef_t *thread_def, void *argument)  { 
 /// Terminate execution of a thread and remove it from ActiveThreads
 osStatus osThreadTerminate (osThreadId thread_id)   { return osOK; }
 
-/// Change prority of an existing thread  
+/// Change prority of an existing thread
 osStatus osThreadSetPriority (osThreadId thread_id, osPriority priority)   { return osOK; }
 
-/// Get current prority of an existing thread  
+/// Get current prority of an existing thread
 osPriority osThreadGetPriority (osThreadId thread_id)   { return osPriorityNormal; }
 
 osMessageQId osMessageCreate (const osMessageQDef_t *queue_def, osThreadId thread_id) { return NULL; }
@@ -64,11 +64,10 @@ void CreateMessageQueues (void)  {
   for (i = 0; i < 4; i++)  {
     TcpMessageQ[i] = osMessageCreate (TcpMessageQDef[i], NULL);
   }
-}   
+}
 
 
 int main (void)  {
   thread_sample1 = osThreadCreate (osThread (thread_sample), NULL);
   thread_sample2 = osThreadCreate (osThread (thread_sample), NULL);
 }
-

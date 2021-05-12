@@ -50,7 +50,7 @@ LR_ROM __ROM_BASE __ROM_SIZE  {                             ; load region size_r
   /* make sure stack-overflow will cause bus-fault (which might be escalated to hardfault) */
   ARM_LIB_STACK __RAM1_BASE ALIGN 8 EMPTY __STACK_SIZE {   ; Reserve empty region for stack
   }
-  
+
   RW_RAM1 +0 __RAM2_RW_SIZE {
     * (+RO-DATA)
     .ANY (+RW +ZI)

@@ -234,7 +234,7 @@ SVC_Done:
 
         .fnend
         .size   SVC_Handler, .-SVC_Handler
-        
+
 
 /*-------------------------- PendSV_Handler ---------------------------------*/
 

@@ -7,7 +7,7 @@ void ref_mean_f32(
 {
 	uint32_t i;
 	float32_t sum=0;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 			sum += pSrc[i];
@@ -22,7 +22,7 @@ void ref_mean_q31(
 {
 	uint32_t i;
 	q63_t sum=0;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 			sum += pSrc[i];
@@ -37,7 +37,7 @@ void ref_mean_q15(
 {
 	uint32_t i;
 	q31_t sum=0;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 			sum += pSrc[i];
@@ -52,7 +52,7 @@ void ref_mean_q7(
 {
 	uint32_t i;
 	q31_t sum=0;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 			sum += pSrc[i];

@@ -168,7 +168,7 @@ SVC_Handler:
 
         MRS     R0,PSP                  /* Read PSP */
         SUBS    R0,R0,#32               /* Adjust Start Address */
-        STR     R0,[R1,#TCB_TSTACK]     /* Update os_tsk.run->tsk_stack */       
+        STR     R0,[R1,#TCB_TSTACK]     /* Update os_tsk.run->tsk_stack */
         STMIA   R0!,{R4-R7}             /* Save old context (R4-R7) */
         MOV     R4,R8
         MOV     R5,R9
@@ -221,7 +221,7 @@ SVC_User:
         STMIA   R4!,{R0-R3}             /* Function return values */
 SVC_Done:
         POP     {R4,PC}                 /* RETI */
-        
+
 
 /*-------------------------- PendSV_Handler ---------------------------------*/
 

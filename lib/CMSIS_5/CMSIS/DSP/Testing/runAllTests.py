@@ -1,6 +1,6 @@
 import os
 import os.path
-import subprocess 
+import subprocess
 import colorama
 from colorama import init,Fore, Back, Style
 import argparse
@@ -11,7 +11,7 @@ import itertools
 from pathlib import Path
 import sqlite3
 
-# Command to get last runid 
+# Command to get last runid
 lastID="""SELECT runid FROM RUN ORDER BY runid DESC LIMIT 1
 """
 
@@ -64,7 +64,7 @@ def updateTestStatus(testStatusForThisBuild,newTestStatus):
 
 # Analyze the configuration flags (like loopunroll etc ...)
 def analyzeFlags(flags):
-  
+
   onoffFlags = []
   for f in flags:
     if type(f) is dict:
@@ -74,11 +74,11 @@ def analyzeFlags(flags):
               onoffFlags.append(["-D%s=ON" % (var)])
             else:
               onoffFlags.append(["-D%s=OFF" % (var)])
-         else:   
+         else:
            onoffFlags.append(["-D%s=%s" % (var,f[var])])
     else:
       onoffFlags.append(["-D" + f +"=ON","-D" + f +"=OFF"])
-  
+
   allConfigs=cartesian(*onoffFlags)
   return(allConfigs)
 
@@ -90,17 +90,17 @@ def analyzeToolchain(toolchain, globalConfig):
     cmake=""
     sim=True
     if type(toolchain) is str:
-       cmake=toolchain 
+       cmake=toolchain
     else:
        for t in toolchain:
          if type(t) is dict:
             if "FLAGS" in t:
-               hasConfig=True 
+               hasConfig=True
                config = analyzeFlags(t["FLAGS"])
             if "SIM" in t:
                sim = t["SIM"]
          if type(t) is str:
-           cmake=t 
+           cmake=t
     return(cmake,config,sim)
 
 
@@ -150,7 +150,7 @@ if args.db is not None:
    conn = sqlite3.connect(args.db)
    try:
       currentID = getLastRunID(conn)
-      benchID = currentID + 1 
+      benchID = currentID + 1
       print("Bench db")
       addNewID(conn,benchID)
    finally:
@@ -163,7 +163,7 @@ if args.regdb is not None:
    conn = sqlite3.connect(args.regdb)
    try:
       currentID = getLastRunID(conn)
-      regID = currentID + 1 
+      regID = currentID + 1
       print("Regression db")
       addNewID(conn,regID)
    finally:
@@ -246,15 +246,15 @@ def buildAndTest(compiler,theConfig,cmake,sim):
                   config['CORES'][core][compiler],
                   config["CMAKE"]
                   )
-               
+
                flags = []
                if core in config["IMPLIEDFLAGS"]:
                   flags += config["IMPLIEDFLAGS"][core]
                flags += flagConfig
-   
+
                if compiler in config["IMPLIEDFLAGS"]:
                   flags += config["IMPLIEDFLAGS"][compiler]
-       
+
                build.createFolder()
                # Run all tests for the build
                testStatusForThisBuild = NOTESTFAILED
@@ -268,13 +268,13 @@ def buildAndTest(compiler,theConfig,cmake,sim):
                       msg(test["testName"]+"\n")
                       testClass=test["testClass"]
                       test = build.getTest(testClass)
-                      fvp = None 
+                      fvp = None
                       if 'FVP' in config:
                         if core in config['FVP']:
-                           fvp = config['FVP'][core] 
+                           fvp = config['FVP'][core]
                       if 'SIM' in config:
                         if core in config['SIM']:
-                           fvp = config['SIM'][core] 
+                           fvp = config['SIM'][core]
                       newTestStatus = test.runAndProcess(patternConfig,compiler,fvp,sim,args.b,args.db,args.regdb,benchID,regID)
                       testStatusForThisBuild = updateTestStatus(testStatusForThisBuild,newTestStatus)
                       if testStatusForThisBuild != NOTESTFAILED:
@@ -286,13 +286,13 @@ def buildAndTest(compiler,theConfig,cmake,sim):
                    build.cleanFolder()
          else:
            msg("No toolchain %s for core %s" % (compiler,core))
-   
+
     except TestFlowFailure as flow:
          errorMsg("Error flow id %d\n" % flow.errorCode())
          failedBuild[buildStr] = FLOWFAILURE
          logFailedBuild(args.r,failedBuild)
          sys.exit(1)
-    except CallFailure: 
+    except CallFailure:
          errorMsg("Call failure\n")
          failedBuild[buildStr] = CALLFAILURE
          logFailedBuild(args.r,failedBuild)
@@ -314,4 +314,4 @@ for t in config["TOOLCHAINS"]:
 
 logFailedBuild(args.r,failedBuild)
 sys.exit(testFailed)
-  
+

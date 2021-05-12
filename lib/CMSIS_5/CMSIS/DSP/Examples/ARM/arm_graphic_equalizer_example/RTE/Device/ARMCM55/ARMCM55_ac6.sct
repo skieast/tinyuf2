@@ -8,7 +8,7 @@
 /* memory regions are:
        secure ROM: 0x10000000
    non-secure ROM: 0x00000000
-   
+
        secure RAM: 0x30000000
    non-secure RAM: 0x20000000
  */

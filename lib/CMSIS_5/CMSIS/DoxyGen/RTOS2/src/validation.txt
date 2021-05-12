@@ -11,28 +11,28 @@ The <b>ARM::CMSIS-RTOS_Validation</b> Pack contains the following:
 \note
 Currently, a public version of the test suite is available only for CMSIS-RTOS v1 API.
 
-The CMSIS-RTOS Validation Suite performs generic validation of various RTOS features. The test cases verify the 
+The CMSIS-RTOS Validation Suite performs generic validation of various RTOS features. The test cases verify the
 functional behavior, test invalid parameters and call management functions from ISR.
 
 The following CMSIS-RTOS features can be tested with the current release:
- - Thread : Create multiple threads, terminate, restart, yield, change priority 
+ - Thread : Create multiple threads, terminate, restart, yield, change priority
  - Timer : Create periodic and one-shot timers
  - GenWait : Call generic wait functions (osDelay and osWait)
  - WaitFunc : Measure wait ticks (delay, mail, message, mutex, semaphore, signal)
- 
-Moreover the following inter-thread communication functions can be tested: 
+
+Moreover the following inter-thread communication functions can be tested:
  - Signal : Verify signal events
  - Memory Pool : Verify memory allocation
  - Message Queue : Exchange messages between threads
  - Mail Queue : Exchange data between threads
- - Mutex : Synchronize resource access 
- - Semaphore : Access shared resources 
- 
+ - Mutex : Synchronize resource access
+ - Semaphore : Access shared resources
+
 The RTOS Validation output can be printed to a console, output via ITM printf, or output to a memory buffer.
- 
+
 \section test_output Sample Test Output
 \verbatim
-CMSIS-RTOS Test Suite   Oct 21 2015   16:39:16 
+CMSIS-RTOS Test Suite   Oct 21 2015   16:39:16
 
 TEST 01: TC_ThreadCreate                  PASSED
 TEST 02: TC_ThreadMultiInstance           PASSED

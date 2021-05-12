@@ -52,7 +52,7 @@
   section RESET:CODE:NOROOT(2)
   PUBLIC  Vectors
 
-Vectors:  
+Vectors:
   LDR    PC, =Reset_Handler
   LDR    PC, =Undef_Handler
   LDR    PC, =SVC_Handler
@@ -71,7 +71,7 @@ Vectors:
   EXTERN  SystemInit
   EXTERN  __iar_program_start
 
-Reset_Handler:  
+Reset_Handler:
 
   // Mask interrupts
   CPSID   if

@@ -9,7 +9,7 @@
   - A \ref CmdLineBuild "Continuous Integration (CI) work flow" for projects that are based on software components supplied
     in CMSIS-Pack format.
   - Software Layers enable code reuse across different targets. A software layer is a pre-configured software component
-    selection and user source code. 
+    selection and user source code.
   - <a href="../../Driver/html/group__vio__interface__gr.html"><b>CMSIS-Driver VIO</b></a> is a set of generic input/output
     functions for example and test code. It allows to fast migration from evaluation boards to production hardware.
 
@@ -18,8 +18,8 @@ The figure below shows how the <b>CMSIS-Build</b> components may be used to crea
   - The <b>Cloud</b> layer implements the software components that are required to connect to a Cloud Service Provider (CSP).
   - The <b>Application Code</b> may start with a reference example and is expanded to application specific requirements that
     access specialized peripherals.
-  
-\image html "Layer.png" "Software Layers and Virtual I/O"  
+
+\image html "Layer.png" "Software Layers and Virtual I/O"
 
 Software layers and Virtual I/O simplify these use cases:
 

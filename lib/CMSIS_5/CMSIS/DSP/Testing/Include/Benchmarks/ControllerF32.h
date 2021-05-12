@@ -14,12 +14,12 @@ class ControllerF32:public Client::Suite
             Client::Pattern<float32_t> samples;
 
             Client::LocalPattern<float32_t> output;
-            
+
             int nbSamples;
 
             arm_pid_instance_f32  instPid;
             float32_t *pSrc;
             float32_t *pDst;
-            
-            
+
+
     };

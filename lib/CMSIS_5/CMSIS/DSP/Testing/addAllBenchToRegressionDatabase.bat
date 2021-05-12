@@ -19,7 +19,7 @@ python addToRegDB.py SupportBarF32
 echo "Support"
 python addToRegDB.py Support
 echo "Unary Matrix"
-python addToRegDB.py Unary 
+python addToRegDB.py Unary
 echo "Binary Matrix"
 python addToRegDB.py Binary
 echo "Transform"

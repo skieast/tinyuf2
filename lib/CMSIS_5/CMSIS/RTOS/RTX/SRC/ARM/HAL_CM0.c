@@ -136,7 +136,7 @@ __asm void SVC_Handler (void) {
         LDMIA   R0,{R0-R3,R4}           ; Read R0-R3,R12 from stack
         MOV     R12,R4
         MOV     R4,LR
-        BLX     R12                     ; Call SVC Function 
+        BLX     R12                     ; Call SVC Function
 
         MRS     R3,PSP                  ; Read PSP
         STMIA   R3!,{R0-R2}             ; Store return values
@@ -152,14 +152,14 @@ __asm void SVC_Handler (void) {
 
         MRS     R0,PSP                  ; Read PSP
         SUBS    R0,R0,#32               ; Adjust Start Address
-        STR     R0,[R1,#TCB_TSTACK]     ; Update os_tsk.run->tsk_stack       
+        STR     R0,[R1,#TCB_TSTACK]     ; Update os_tsk.run->tsk_stack
         STMIA   R0!,{R4-R7}             ; Save old context (R4-R7)
         MOV     R4,R8
         MOV     R5,R9
         MOV     R6,R10
         MOV     R7,R11
         STMIA   R0!,{R4-R7}             ; Save old context (R8-R11)
-        
+
         PUSH    {R2,R3}
         BL      rt_stk_check            ; Check for Stack overflow
         POP     {R2,R3}
@@ -234,7 +234,7 @@ Sys_Switch
         MOV     R6,R10
         MOV     R7,R11
         STMIA   R0!,{R4-R7}             ; Save old context (R8-R11)
-        
+
         PUSH    {R2,R3}
         BL      rt_stk_check            ; Check for Stack overflow
         POP     {R2,R3}

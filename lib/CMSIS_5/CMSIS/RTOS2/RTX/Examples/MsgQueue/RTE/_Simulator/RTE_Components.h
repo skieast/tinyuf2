@@ -3,8 +3,8 @@
  * Auto generated Run-Time-Environment Configuration File
  *      *** Do not modify ! ***
  *
- * Project: 'MsqQueue' 
- * Target:  'Simulator' 
+ * Project: 'MsqQueue'
+ * Target:  'Simulator'
  */
 
 #ifndef RTE_COMPONENTS_H
@@ -12,7 +12,7 @@
 
 
 /*
- * Define the Device Header File: 
+ * Define the Device Header File:
  */
 #define CMSIS_device_header "ARMCM3.h"
 

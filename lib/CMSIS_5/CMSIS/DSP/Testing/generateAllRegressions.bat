@@ -19,7 +19,7 @@ python summaryBench.py -f bench.txt  -r build_m7\result.txt SupportBarF32
 echo "Support"
 python summaryBench.py -f bench.txt  -r build_m7\result.txt Support
 echo "Unary Matrix"
-python summaryBench.py -f bench.txt  -r build_m7\result.txt Unary 
+python summaryBench.py -f bench.txt  -r build_m7\result.txt Unary
 echo "Binary Matrix"
 python summaryBench.py -f bench.txt  -r build_m7\result.txt Binary
 echo "Transform"

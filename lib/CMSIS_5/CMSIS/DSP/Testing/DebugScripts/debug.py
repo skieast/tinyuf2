@@ -1,7 +1,7 @@
 import numpy as np
 from pylab import figure, clf, plot, xlabel, ylabel, xlim, ylim, title, grid, axes, show,semilogx, semilogy
 import scipy.fftpack
-import os.path 
+import os.path
 import struct
 import argparse
 
@@ -20,7 +20,7 @@ args = parser.parse_args()
 FFTSIZES=[16,32,64,128,256,512,1024,2048,4096]
 
 if int(args.n) >= 19:
-    args.i = True 
+    args.i = True
 
 if args.i:
    n = int(args.n) - 18
@@ -41,30 +41,30 @@ print(inputPath)
 if args.f == "f32":
     inSig = d.readF32Pattern(inputPath)
     inSig=inSig.view(dtype=np.complex128)
-     
+
     refSig = d.readF32Pattern(refPath)
     refSig=refSig.view(dtype=np.complex128)
-     
+
     sig = d.readF32Output(outputPath)
     sig=sig.view(dtype=np.complex128)
 
 if args.f == "q31":
     inSig = d.readQ31Pattern(inputPath)
     inSig=inSig.view(dtype=np.complex128)
-     
+
     refSig = d.readQ31Pattern(refPath)
     refSig=refSig.view(dtype=np.complex128)
-     
+
     sig = d.readQ31Output(outputPath)
     sig=sig.view(dtype=np.complex128)
 
 if args.f == "q15":
     inSig = d.readQ15Pattern(inputPath)
     inSig=inSig.view(dtype=np.complex128)
-     
+
     refSig = d.readQ15Pattern(refPath)
     refSig=refSig.view(dtype=np.complex128)
-     
+
     sig = d.readQ15Output(outputPath)
     sig=sig.view(dtype=np.complex128)
 

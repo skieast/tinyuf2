@@ -583,7 +583,7 @@ int main()
     delete[]test1;
     delete[]test2;
     delete[]test3;
-	
+
 	test2 = new q15_t[RCONV_KER_DIM_Y * RCONV_KER_DIM_X * RCONV_IM_CH * RCONV_OUT_CH + RCONV_OUT_CH]; // weights + bias
 	test4 = new q15_t[2 * RCONV_KER_DIM_Y * RCONV_KER_DIM_X * RCONV_IM_CH   //buffer
 	         + RCONV_IM_DIM_Y * RCONV_IM_DIM_X * RCONV_IM_CH + 2 * RCONV_OUT_DIM_Y * RCONV_OUT_DIM_X * RCONV_OUT_CH]; // i/o
@@ -625,7 +625,7 @@ int main()
                                        RCONV_OUT_DIM_X, RCONV_OUT_DIM_Y, rconv_buf, NULL);
 
     verify_results_q15(rconv_im_out_ref_q15, rconv_im_out_opt_q15, RCONV_OUT_DIM_Y * RCONV_OUT_DIM_X * RCONV_OUT_CH);
-	
+
     delete [] test2;
     delete [] test4;
 #endif

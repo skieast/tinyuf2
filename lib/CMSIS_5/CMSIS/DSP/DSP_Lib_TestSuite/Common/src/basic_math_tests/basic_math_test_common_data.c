@@ -24,9 +24,9 @@ basic_math_output_f32_fut[BASIC_MATH_MAX_INPUT_ELEMENTS];
 /* Block Sizes */
 /*--------------------------------------------------------------------------------*/
 
-/* 
-  To change test parameter values add/remove values inside CURLY and update 
-  the preceeding parameter to reflect the number of values inside CURLY. 
+/*
+  To change test parameter values add/remove values inside CURLY and update
+  the preceeding parameter to reflect the number of values inside CURLY.
 */
 
 ARR_DESC_DEFINE(uint32_t,
@@ -38,9 +38,9 @@ ARR_DESC_DEFINE(uint32_t,
 /* Numbers */
 /*--------------------------------------------------------------------------------*/
 
-/* 
-  To change test parameter values add/remove values inside CURLY and update 
-  the preceeding parameter to reflect the number of values inside CURLY. 
+/*
+  To change test parameter values add/remove values inside CURLY and update
+  the preceeding parameter to reflect the number of values inside CURLY.
 */
 
 ARR_DESC_DEFINE(uint32_t,

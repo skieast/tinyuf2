@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 #include "Driver_USBH.h"
 
 /* USB Host Driver */
@@ -23,7 +23,7 @@
 #define ARM_USBH_DRV_VERSION    ARM_DRIVER_VERSION_MAJOR_MINOR(1, 0) /* driver version */
 
 /* Driver Version */
-static const ARM_DRIVER_VERSION usbh_driver_version = { 
+static const ARM_DRIVER_VERSION usbh_driver_version = {
     ARM_USBH_API_VERSION,
     ARM_USBH_DRV_VERSION
 };
@@ -178,4 +178,3 @@ ARM_DRIVER_USBH Driver_USBH0 = {
   ARM_USBH_PipeTransferAbort,
   ARM_USBH_GetFrameNumber
 };
-

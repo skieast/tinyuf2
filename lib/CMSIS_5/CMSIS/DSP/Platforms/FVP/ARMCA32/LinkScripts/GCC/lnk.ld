@@ -1,9 +1,9 @@
-#include "mem_ARMCA32.h" 
+#include "mem_ARMCA32.h"
 
 MEMORY
 {
   ROM (rx)   : ORIGIN = __ROM_BASE, LENGTH = __ROM_SIZE
-  L_TTB (rw) : ORIGIN = __TTB_BASE, LENGTH = __TTB_SIZE 
+  L_TTB (rw) : ORIGIN = __TTB_BASE, LENGTH = __TTB_SIZE
   RAM (rwx)  : ORIGIN = __RAM_BASE, LENGTH = __RAM_SIZE
 }
 
@@ -46,7 +46,7 @@ SECTIONS
         KEEP(*(.eh_frame*))
     } > ROM
 
-    .ARM.extab : 
+    .ARM.extab :
     {
         *(.ARM.extab* .gnu.linkonce.armextab.*)
     } > ROM
@@ -79,7 +79,7 @@ SECTIONS
     } > ROM
 
     __etext = .;
-        
+
     .ttb :
     {
         Image$$TTB$$ZI$$Base = .;
@@ -122,7 +122,7 @@ SECTIONS
 
     } > RAM
 
-    
+
     .bss ALIGN(0x400):
     {
         Image$$ZI_DATA$$Base = .;
@@ -136,7 +136,7 @@ SECTIONS
         end = __end__;
     } > RAM
 
-#if defined(__HEAP_SIZE) && (__HEAP_SIZE > 0)    
+#if defined(__HEAP_SIZE) && (__HEAP_SIZE > 0)
     .heap (NOLOAD):
     {
         . = ALIGN(8);
@@ -145,14 +145,14 @@ SECTIONS
         . += __HEAP_SIZE;
         Image$$HEAP$$ZI$$Limit = .;
         __HeapLimit = .;
-    } > RAM  
+    } > RAM
 #endif
 
     .stack (NOLOAD):
     {
         . = ORIGIN(RAM) + LENGTH(RAM) - __STACK_SIZE - __FIQ_STACK_SIZE - __IRQ_STACK_SIZE - __SVC_STACK_SIZE - __ABT_STACK_SIZE - __UND_STACK_SIZE;
         . = ALIGN(8);
-        
+
         __StackTop = .;
         Image$$SYS_STACK$$ZI$$Base = .;
         . += __STACK_SIZE;
@@ -178,6 +178,6 @@ SECTIONS
         Image$$UND_STACK$$ZI$$Base = .;
         . += __UND_STACK_SIZE;
         Image$$UND_STACK$$ZI$$Limit = .;
-        
+
     } > RAM
 }

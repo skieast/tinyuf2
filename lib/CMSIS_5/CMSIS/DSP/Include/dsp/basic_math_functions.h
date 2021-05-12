@@ -22,7 +22,7 @@
  * limitations under the License.
  */
 
- 
+
 #ifndef _BASIC_MATH_FUNCTIONS_H_
 #define _BASIC_MATH_FUNCTIONS_H_
 
@@ -615,7 +615,7 @@ extern "C"
 
   /**
    * @brief         Compute the logical bitwise NOT of a fixed-point vector.
-   * @param[in]     pSrc       points to input vector 
+   * @param[in]     pSrc       points to input vector
    * @param[out]    pDst       points to output vector
    * @param[in]     blockSize  number of samples in each vector
    * @return        none
@@ -627,7 +627,7 @@ extern "C"
 
   /**
    * @brief         Compute the logical bitwise NOT of a fixed-point vector.
-   * @param[in]     pSrc       points to input vector 
+   * @param[in]     pSrc       points to input vector
    * @param[out]    pDst       points to output vector
    * @param[in]     blockSize  number of samples in each vector
    * @return        none
@@ -639,7 +639,7 @@ extern "C"
 
   /**
    * @brief         Compute the logical bitwise NOT of a fixed-point vector.
-   * @param[in]     pSrc       points to input vector 
+   * @param[in]     pSrc       points to input vector
    * @param[out]    pDst       points to output vector
    * @param[in]     blockSize  number of samples in each vector
    * @return        none

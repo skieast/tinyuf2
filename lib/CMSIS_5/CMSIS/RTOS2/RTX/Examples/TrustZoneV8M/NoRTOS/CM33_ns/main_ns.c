@@ -17,7 +17,7 @@
  *
  * ----------------------------------------------------------------------
  *
- * main_ns.c      Non-secure main function 
+ * main_ns.c      Non-secure main function
  *
  * Version 1.0
  *    Initial Release
@@ -29,7 +29,7 @@ extern volatile int val1, val2;
 volatile int val1, val2;
 
 /* Non-secure function */
-int func3 (int x); 
+int func3 (int x);
 
 int func3 (int x)  {
   return (x+4);
@@ -37,13 +37,13 @@ int func3 (int x)  {
 
 /* Non-secure main() */
 int main(void) {
- 
+
   /* Call non-secure callable function func1 */
   val1 = func1 (1);
- 
+
   /* Call non-secure callable function func2
      with callback to non-secure function func3 */
   val2 = func2 (func3, 2);
- 
+
   while (1);
 }

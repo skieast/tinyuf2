@@ -200,7 +200,7 @@ SVC_Handler:
 
         MRS     R0,PSP                  /* Read PSP */
         SUBS    R0,R0,#32               /* Adjust Start Address */
-        STR     R0,[R1,#TCB_TSTACK]     /* Update os_tsk.run->tsk_stack */       
+        STR     R0,[R1,#TCB_TSTACK]     /* Update os_tsk.run->tsk_stack */
         STMIA   R0!,{R4-R7}             /* Save old context (R4-R7) */
         MOV     R4,R8
         MOV     R5,R9
@@ -256,7 +256,7 @@ SVC_Done:
 
         .fnend
         .size   SVC_Handler, .-SVC_Handler
-        
+
 
 /*-------------------------- PendSV_Handler ---------------------------------*/
 

@@ -12,18 +12,18 @@
        q15_t *outfftp = outputfft.ptr();
 
        memcpy(outfftp,inp,sizeof(q15_t)*input.nbSamples());
-   
+
        arm_cfft_q15(
              &(this->instCfftQ15),
              outfftp,
              this->ifft,
              1);
-          
+
         ASSERT_SNR(outputfft,ref,(float32_t)SNR_THRESHOLD);
         ASSERT_EMPTY_TAIL(outputfft);
-       
-        
-    } 
+
+
+    }
 
     void TransformCQ15::test_cifft_q15()
     {
@@ -33,7 +33,7 @@
        q15_t *refp = ref.ptr();
 
         memcpy(outfftp,inp,sizeof(q15_t)*input.nbSamples());
-   
+
         arm_cfft_q15(
              &(this->instCfftQ15),
              outfftp,
@@ -44,15 +44,15 @@
         {
           refp[i] >>= this->scaling;
         }
-          
+
         ASSERT_SNR(outputfft,ref,(float32_t)SNR_THRESHOLD);
         ASSERT_EMPTY_TAIL(outputfft);
 
-       
-        
-    } 
 
-  
+
+    }
+
+
     void TransformCQ15::setUp(Testing::testID_t id,std::vector<Testing::param_t>& paramsArgs,Client::PatternMgr *mgr)
     {
 

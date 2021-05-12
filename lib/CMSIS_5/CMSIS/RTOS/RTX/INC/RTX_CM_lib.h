@@ -228,8 +228,8 @@ osMessageQId osMessageQId_osTimerMessageQ;
 
 /* Legacy RTX User Timers not used */
 extern
-uint32_t       os_tmr; 
-uint32_t       os_tmr = 0U; 
+uint32_t       os_tmr;
+uint32_t       os_tmr = 0U;
 extern
 uint32_t const *m_tmr;
 uint32_t const *m_tmr = NULL;
@@ -351,7 +351,7 @@ vect64_t  osSignalWait (int32_t signals, uint32_t millisec);
 osEvent __osSignalWait (int32_t signals, uint32_t millisec) {
   vect64_t v;
   osEvent  e;
-  
+
   v = osSignalWait(signals, millisec);
   e.status  = v[0];
   e.value.v = v[1];
@@ -367,7 +367,7 @@ vect64_t  osMessageGet (osMessageQId queue_id, uint32_t millisec);
 osEvent __osMessageGet (osMessageQId queue_id, uint32_t millisec) {
   vect64_t v;
   osEvent  e;
-  
+
   v = osMessageGet(queue_id, millisec);
   e.status  = v[0];
   e.value.v = v[1];
@@ -383,7 +383,7 @@ vect64_t  osMailGet (osMailQId queue_id, uint32_t millisec);
 osEvent __osMailGet (osMailQId queue_id, uint32_t millisec) {
   vect64_t v;
   osEvent  e;
-  
+
   v = osMailGet(queue_id, millisec);
   e.status  = v[0];
   e.value.v = v[1];
@@ -491,7 +491,7 @@ __attribute ((noreturn)) void __cs3_start_c (void){
     if (src != dst)
       for (count = 0; count != limit; count += sizeof (long long))
         *dst++ = *src++;
-    else 
+    else
       dst = (long long *)((char *)dst + limit);
     limit = rptr->zero_size;
     for (count = 0; count != limit; count += sizeof (long long))
@@ -541,7 +541,7 @@ extern void exit(int arg);
 
 __noreturn __stackless void __cmain(void) {
   int a;
-  
+
   if (__low_level_init() != 0) {
     __iar_data_init3();
   }

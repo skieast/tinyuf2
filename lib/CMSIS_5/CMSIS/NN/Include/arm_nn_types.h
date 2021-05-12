@@ -128,5 +128,3 @@ typedef struct
 } cmsis_nn_svdf_params;
 
 #endif // _ARM_NN_TYPES_H
-
-

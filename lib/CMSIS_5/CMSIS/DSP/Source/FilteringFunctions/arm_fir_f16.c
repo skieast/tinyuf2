@@ -227,9 +227,9 @@ static void arm_fir_f16_5_8_mve(const arm_fir_instance_f16 * S, const float16_t 
 }
 
 
-void arm_fir_f16(const arm_fir_instance_f16 * S, 
-  const float16_t * pSrc, 
-  float16_t * pDst, 
+void arm_fir_f16(const arm_fir_instance_f16 * S,
+  const float16_t * pSrc,
+  float16_t * pDst,
   uint32_t blockSize)
 {
     float16_t *pState = S->pState;  /* State pointer */

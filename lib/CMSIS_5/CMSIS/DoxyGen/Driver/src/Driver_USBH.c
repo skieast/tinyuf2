@@ -12,10 +12,10 @@
 @{
 */
 
-/** 
+/**
 \struct ARM_DRIVER_USBH
-\details 
-The functions of the USB Host driver are accessed by function pointers. Refer to \ref DriverFunctions for 
+\details
+The functions of the USB Host driver are accessed by function pointers. Refer to \ref DriverFunctions for
 overview information.
 
 Each instance of an USBH provides such an access struct. The instance is indicated by
@@ -31,8 +31,8 @@ The default is \token{0}, which connects a middleware to the first instance of a
 *****************************************************************************************************************/
 
 /**
-\struct ARM_USBH_CAPABILITIES 
-\details  
+\struct ARM_USBH_CAPABILITIES
+\details
 A USB Host driver can be implemented with different capabilities.
 The data fields of this structure encode the capabilities implemented by this driver.
 
@@ -43,9 +43,9 @@ The data fields of this structure encode the capabilities implemented by this dr
 *****************************************************************************************************************/
 
 /**
-\struct     ARM_USBH_PORT_STATE 
-\details  
-This structure stores information about the state of the USB Host Port. The data fields encode whether a device 
+\struct     ARM_USBH_PORT_STATE
+\details
+This structure stores information about the state of the USB Host Port. The data fields encode whether a device
 is connected to the port, if port overcurrent is detected, and the port speed.
 
 <b>Returned by:</b>
@@ -54,7 +54,7 @@ is connected to the port, if port overcurrent is detected, and the port speed.
 
 /**
 \typedef    uint32_t ARM_USBH_PIPE_HANDLE
-\details 
+\details
 Each pipe is identified through a unique number, which is created by the function \ref ARM_USBH_PipeCreate.
 
 <b>Parameter for:</b>
@@ -92,7 +92,7 @@ Provides the typedef for the callback function \ref ARM_USBH_SignalPipeEvent.
 \defgroup USBH_port_events USBH Port Events
 \ingroup usbh_host_gr
 \brief The USB Host driver generates Port call back events that are notified via the function \ref ARM_USBH_SignalPortEvent.
-\details 
+\details
 This section provides the event values for the \ref ARM_USBH_SignalPortEvent callback function.
 
 The following call back notification events are generated:
@@ -111,7 +111,7 @@ The following call back notification events are generated:
 \defgroup USBH_pipe_events USBH Pipe Events
 \ingroup usbh_host_gr
 \brief The USB Host driver generates Pipe call back events that are notified via the function \ref ARM_USBH_SignalPipeEvent.
-\details 
+\details
 This section provides the event values for the \ref ARM_USBH_SignalPipeEvent callback function.
 
 The following call back notification events are generated:
@@ -130,7 +130,7 @@ The following call back notification events are generated:
 \defgroup USBH_packets USBH Packet Information
 \ingroup usbh_host_gr
 \brief Specify USB packet information used by the function \ref ARM_USBH_PipeTransfer
-\details 
+\details
 This section provides the packet information values (parameter \em packet) for the \ref ARM_USBH_PipeTransfer function.
 
 The following values are defined:
@@ -162,7 +162,7 @@ Valid only for isochronous OUT and indicates that the High-speed data is all of 
 \def  ARM_USBH_PACKET_CSPLIT
 Used when driver does not support automatic handling of SPLIT packets and indicates Complete-Split packet.
 \def  ARM_USBH_PACKET_PRE
-Generate PRE (Preamble) for low-speed devices within a full/low-speed signaling environment. 
+Generate PRE (Preamble) for low-speed devices within a full/low-speed signaling environment.
 @}
 */
 
@@ -185,11 +185,11 @@ Example:
 \code
 extern ARM_DRIVER_USBH Driver_USBH0;
 ARM_DRIVER_USBH *drv_info;
- 
+
 void setup_usbh (void)  {
   ARM_DRIVER_VERSION  version;
- 
-  drv_info = &Driver_USBH0;  
+
+  drv_info = &Driver_USBH0;
   version = drv_info->GetVersion ();
   if (version.api < 0x10A)   {      // requires at minimum API version 1.10 or higher
     // error handling
@@ -207,21 +207,21 @@ ARM_USBH_CAPABILITIES ARM_USBH_GetCapabilities (void)  {
 \details
 The function \b ARM_USBH_GetCapabilities returns information about capabilities in this driver implementation.
 The data fields of the structure \ref ARM_USBH_CAPABILITIES encode various capabilities, for example
-available HUB ports or if the hardware can generate signal events using the \ref ARM_USBH_SignalPortEvent 
+available HUB ports or if the hardware can generate signal events using the \ref ARM_USBH_SignalPortEvent
 callback function.
- 
+
 Example:
 \code
 extern ARM_DRIVER_USBH Driver_USBH0;
 ARM_DRIVER_USBH *drv_info;
-  
+
 void read_capabilities (void)  {
   ARM_USBH_CAPABILITIES drv_capabilities;
- 
-  drv_info = &Driver_USBH0;  
+
+  drv_info = &Driver_USBH0;
   drv_capabilities = drv_info->GetCapabilities ();
   // interrogate capabilities
- 
+
 }
 \endcode
 *****************************************************************************************************************/
@@ -233,7 +233,7 @@ int32_t ARM_USBH_Initialize (ARM_USBH_SignalPortEvent_t cb_port_event,
 /**
 \fn       int32_t ARM_USBH_Initialize (ARM_USBH_SignalPortEvent_t cb_port_event, ARM_USBH_SignalPipeEvent_t cb_pipe_event)
 \details
-The function \b ARM_USBH_Initialize initializes the USB Host interface. 
+The function \b ARM_USBH_Initialize initializes the USB Host interface.
 It is called when the middleware component starts operation.
 
 The function performs the following operations:
@@ -241,7 +241,7 @@ The function performs the following operations:
   - Registers the \ref ARM_USBH_SignalPortEvent callback function.
   - Registers the \ref ARM_USBH_SignalPipeEvent callback function.
 
-The parameter \em cb_port_event is a pointer to the \ref ARM_USBH_SignalPortEvent callback function; use a NULL pointer 
+The parameter \em cb_port_event is a pointer to the \ref ARM_USBH_SignalPortEvent callback function; use a NULL pointer
 when no port callback signals are required.
 
 The parameter \em cb_pipe_event is a pointer to the \ref ARM_USBH_SignalPipeEvent callback function.
@@ -268,15 +268,15 @@ int32_t ARM_USBH_PowerControl (ARM_POWER_STATE state)  {
 /**
 \fn int32_t ARM_USBH_PowerControl (ARM_POWER_STATE state)
 \details
-The function \b ARM_USBH_PowerControl operates the power modes of the USB Host interface. 
+The function \b ARM_USBH_PowerControl operates the power modes of the USB Host interface.
 
 The parameter \em state sets the operation and can have the following values:
-  - \ref ARM_POWER_FULL : set-up peripheral for data transfers, enable interrupts (NVIC) and optionally DMA. 
-                          Can be called multiple times. If the peripheral is already in this mode the function performs 
+  - \ref ARM_POWER_FULL : set-up peripheral for data transfers, enable interrupts (NVIC) and optionally DMA.
+                          Can be called multiple times. If the peripheral is already in this mode the function performs
 						  no operation and returns with \ref ARM_DRIVER_OK.
   - \ref ARM_POWER_LOW : may use power saving. Returns \ref ARM_DRIVER_ERROR_UNSUPPORTED when not implemented.
   - \ref ARM_POWER_OFF : terminates any pending data transfers, disables peripheral, disables related interrupts and DMA.
-      
+
 Refer to \ref CallSequence for more information.
 *****************************************************************************************************************/
 
@@ -286,7 +286,7 @@ int32_t ARM_USBH_PortVbusOnOff (uint8_t port, bool vbus)  {
 /**
 \fn int32_t ARM_USBH_PortVbusOnOff (uint8_t port, bool vbus)
 \details
-The function \b ARM_USBH_PortVbusOnOff controls the VBUS signal of the specified port.  
+The function \b ARM_USBH_PortVbusOnOff controls the VBUS signal of the specified port.
 *****************************************************************************************************************/
 
 int32_t ARM_USBH_PortReset (uint8_t port)  {
@@ -342,11 +342,11 @@ The function \b ARM_USBH_PipeCreate creates a pipe for transfers (allocates requ
 
 The parameters specify pipe information (connection between host and device endpoint):
  - device: address and speed
- - hub (optional): hub address and number of the hub port to which the device is connected 
+ - hub (optional): hub address and number of the hub port to which the device is connected
  - endpoint: address, type, maximum packet size and polling interval
 
 The function returns an pipe handle that is used for all subsequent operations on that pipe.
-In case of errors an invalid handle (\em NULL) is returned.   
+In case of errors an invalid handle (\em NULL) is returned.
 *****************************************************************************************************************/
 
 int32_t ARM_USBH_PipeModify (ARM_USBH_PIPE_HANDLE pipe_hndl,
@@ -382,7 +382,7 @@ The function \b ARM_USBH_PipeReset clears Halt condition and resets data toggle 
 *****************************************************************************************************************/
 
 int32_t ARM_USBH_PipeTransfer (ARM_USBH_PIPE_HANDLE pipe_hndl,
-                               uint32_t packet,       
+                               uint32_t packet,
                                uint8_t *data,
                                uint32_t num)  {
   return ARM_DRIVER_OK;
@@ -399,7 +399,7 @@ The function is non-blocking and returns as soon as the driver starts the operat
 
 Operation is completed when the the requested number of data bytes have been transferred and is indicated with \ref ARM_USBH_EVENT_TRANSFER_COMPLETE event.
 It can also finish earlier on reception of different handshake tokens which are also indicated through \ref USBH_pipe_events.
- 
+
 Transfer operation can be aborted by calling \ref ARM_USBH_PipeTransferAbort.
 *****************************************************************************************************************/
 
@@ -408,7 +408,7 @@ uint32_t ARM_USBH_PipeTransferGetResult (ARM_USBH_PIPE_HANDLE pipe_hndl)  {
 }
 /**
 \fn uint32_t ARM_USBH_PipeTransferGetResult (ARM_USBH_PIPE_HANDLE pipe_hndl)
-\details       
+\details
 The function \b ARM_USBH_PipeTransferGetResult returns the number of successfully transferred data bytes started by \ref ARM_USBH_PipeTransfer operation.
 *****************************************************************************************************************/
 
@@ -437,13 +437,13 @@ void ARM_USBH_SignalPortEvent (uint8_t port, uint32_t event)  {
 /**
 \fn void ARM_USBH_SignalPortEvent (uint8_t port, uint32_t event)
 \details
-The function \b ARM_USBH_SignalPortEvent is a callback function registered by the function \ref ARM_USBH_Initialize. 
+The function \b ARM_USBH_SignalPortEvent is a callback function registered by the function \ref ARM_USBH_Initialize.
 
 The parameter \em port specifies the root hub port number. \n
 The parameter \em event indicates one or more events that occurred during driver operation.
-Each event is encoded in a separate bit and therefore it is possible to signal multiple events within the same call. 
+Each event is encoded in a separate bit and therefore it is possible to signal multiple events within the same call.
 
-Not every event is necessarily generated by the driver. This depends on the implemented capabilities stored in the 
+Not every event is necessarily generated by the driver. This depends on the implemented capabilities stored in the
 data fields of the structure \ref ARM_USBH_CAPABILITIES, which can be retrieved with the function \ref ARM_USBH_GetCapabilities.
 
 The following events can be generated:
@@ -465,15 +465,15 @@ void ARM_USBH_SignalPipeEvent (ARM_USBH_PIPE_HANDLE pipe_hndl, uint32_t event)  
 /**
 \fn void ARM_USBH_SignalPipeEvent (ARM_USBH_PIPE_HANDLE pipe_hndl, uint32_t event)
 \details
-The function \b ARM_USBH_SignalPipeEvent is a callback function registered by the function \ref ARM_USBH_Initialize. 
+The function \b ARM_USBH_SignalPipeEvent is a callback function registered by the function \ref ARM_USBH_Initialize.
 
 The parameter \em pipe_hndl specifies the pipe handle. \n
 The parameter \em event indicates one or more events that occurred during driver operation.
-Each event is encoded in a separate bit and therefore it is possible to signal multiple events within the same call. 
+Each event is encoded in a separate bit and therefore it is possible to signal multiple events within the same call.
 
 The following events can be generated:
 
-Parameter \em event                       | Bit| Description 
+Parameter \em event                       | Bit| Description
 :-----------------------------------------|---:|:-----------
 \ref ARM_USBH_EVENT_TRANSFER_COMPLETE     | 0  | Occurs after all the data has been transferred without errors.
 \ref ARM_USBH_EVENT_HANDSHAKE_NAK         | 1  | Occurs when NAK Handshake is received before all the data is transferred.
@@ -489,7 +489,7 @@ Parameter \em event                       | Bit| Description
 
 /**
 @}
-*/ 
+*/
 
 
 
@@ -501,14 +501,14 @@ Parameter \em event                       | Bit| Description
 OHCI and EHCI compliant interfaces have memory mapped registers that are used to control the USB host.
 
 Only certain functionalities (interrupts, VBUS control, power control) require device specific interface which is provided through functions
-of the struct \ref ARM_DRIVER_USBH_HCI (functionality accessed with the struct \ref ARM_DRIVER_USBH is not needed). 
+of the struct \ref ARM_DRIVER_USBH_HCI (functionality accessed with the struct \ref ARM_DRIVER_USBH is not needed).
 @{
 */
 
-/** 
+/**
 \struct ARM_DRIVER_USBH_HCI
 \details
-The functions of the USB Host HCI (OHCI/EHCI) driver are accessed by function pointers. Refer to \ref DriverFunctions for 
+The functions of the USB Host HCI (OHCI/EHCI) driver are accessed by function pointers. Refer to \ref DriverFunctions for
 overview information.
 
 Each instance of an USBH provides such an access struct. The instance is indicated by
@@ -564,11 +564,11 @@ Example:
 \code
 extern ARM_DRIVER_USBH Driver_USBH0_HCI;
 ARM_DRIVER_USBH *drv_info;
- 
+
 void setup_usbh (void)  {
   ARM_DRIVER_VERSION  version;
- 
-  drv_info = &Driver_USBH0_HCI;  
+
+  drv_info = &Driver_USBH0_HCI;
   version = drv_info->GetVersion ();
   if (version.api < 0x10A)   {      // requires at minimum API version 1.10 or higher
     // error handling
@@ -587,19 +587,19 @@ ARM_USBH_HCI_CAPABILITIES ARM_USBH_HCI_GetCapabilities (void)  {
 The function \b ARM_USBH_HCI_GetCapabilities returns information about capabilities in this driver implementation.
 The data fields of the structure \ref ARM_USBH_HCI_CAPABILITIES encode various capabilities, for example
 available HUB ports.
- 
+
 Example:
 \code
 extern ARM_DRIVER_USBH_HCI Driver_USBH0_HCI;
 ARM_DRIVER_USBH_HCI *drv_info;
-  
+
 void read_capabilities (void)  {
   ARM_USBH_HCI_CAPABILITIES drv_capabilities;
- 
-  drv_info = &Driver_USBH0_HCI;  
+
+  drv_info = &Driver_USBH0_HCI;
   drv_capabilities = drv_info->GetCapabilities ();
   // interrogate capabilities
- 
+
 }
 \endcode
 *****************************************************************************************************************/
@@ -610,7 +610,7 @@ int32_t ARM_USBH_HCI_Initialize (ARM_USBH_HCI_Interrupt_t *cb_interrupt)  {
 /**
 \fn       int32_t ARM_USBH_HCI_Initialize (ARM_USBH_HCI_Interrupt_t *cb_interrupt)
 \details
-The function \b ARM_USBH_HCI_Initialize initializes the USB Host HCI (OHCI/EHCI) interface. 
+The function \b ARM_USBH_HCI_Initialize initializes the USB Host HCI (OHCI/EHCI) interface.
 It is called when the middleware component starts operation.
 
 The function performs the following operations:
@@ -642,15 +642,15 @@ int32_t ARM_USBH_HCI_PowerControl (ARM_POWER_STATE state)  {
 /**
 \fn int32_t ARM_USBH_HCI_PowerControl (ARM_POWER_STATE state)
 \details
-The function \b ARM_USBH_HCI_PowerControl operates the power modes of the USB Host HCI (OHCI/EHCI) interface.  
+The function \b ARM_USBH_HCI_PowerControl operates the power modes of the USB Host HCI (OHCI/EHCI) interface.
 
 The parameter \em state sets the operation and can have the following values:
-  - \ref ARM_POWER_FULL : set-up peripheral for data transfers, enable interrupts (NVIC) and optionally DMA. 
-                          Can be called multiple times. If the peripheral is already in this mode the function performs 
+  - \ref ARM_POWER_FULL : set-up peripheral for data transfers, enable interrupts (NVIC) and optionally DMA.
+                          Can be called multiple times. If the peripheral is already in this mode the function performs
 						  no operation and returns with \ref ARM_DRIVER_OK.
   - \ref ARM_POWER_LOW : may use power saving. Returns \ref ARM_DRIVER_ERROR_UNSUPPORTED when not implemented.
   - \ref ARM_POWER_OFF : terminates any pending data transfers, disables peripheral, disables related interrupts and DMA.
-      
+
 Refer to \ref CallSequence for more information.
 *****************************************************************************************************************/
 
@@ -677,5 +677,5 @@ The function \b ARM_USBH_HCI_Interrupt is called from the USBH HCI Interrupt Han
 
 /**
 @}
-*/ 
+*/
 // End USBH Interface

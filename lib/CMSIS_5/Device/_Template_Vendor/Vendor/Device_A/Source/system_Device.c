@@ -1,6 +1,6 @@
 /******************************************************************************
  * @file     system_<Device>.c
- * @brief    CMSIS Cortex-A Device Peripheral Access Layer 
+ * @brief    CMSIS Cortex-A Device Peripheral Access Layer
  * @version  V1.00
  * @date     10. January 2018
  ******************************************************************************/
@@ -85,7 +85,7 @@ void SystemInit (void)
 
   //  Invalidate data cache
   L1C_InvalidateDCacheAll();
-  
+
   // Create Translation Table
   MMU_CreateTranslationTable();
 
@@ -96,7 +96,7 @@ void SystemInit (void)
   L1C_EnableCaches();
   L1C_EnableBTAC();
 
-#if (__L2C_PRESENT == 1) 
+#if (__L2C_PRESENT == 1)
   // Enable GIC
   L2C_Enable();
 #endif

@@ -25,7 +25,7 @@ class FIRQ31:public Client::Suite
             arm_fir_instance_q31  instFir;
             arm_lms_instance_q31  instLms;
             arm_lms_norm_instance_q31 instLmsNorm;
-            
+
             const q31_t *pSrc;
             const q31_t *pCoefs;
             q31_t *pDst;

@@ -28,9 +28,9 @@ statistics_output_f32_fut[STATISTICS_MAX_INPUT_ELEMENTS];
 /* Block Sizes */
 /*--------------------------------------------------------------------------------*/
 
-/* 
-  To change test parameter values add/remove values inside CURLY and update 
-  the preceeding parameter to reflect the number of values inside CURLY. 
+/*
+  To change test parameter values add/remove values inside CURLY and update
+  the preceeding parameter to reflect the number of values inside CURLY.
 */
 
 ARR_DESC_DEFINE(uint32_t,

@@ -10,12 +10,12 @@ arm_status ref_mat_add_f32(
 
 	/* Total number of samples in the input matrix */
 	numSamples = (uint32_t) pSrcA->numRows * pSrcA->numCols;
-	
+
 	for(i=0;i<numSamples;i++)
 	{
 		pDst->pData[i] = pSrcA->pData[i] + pSrcB->pData[i];
 	}
-	
+
 	return ARM_MATH_SUCCESS;
 }
 
@@ -29,12 +29,12 @@ arm_status ref_mat_add_q31(
 
 	/* Total number of samples in the input matrix */
 	numSamples = (uint32_t) pSrcA->numRows * pSrcA->numCols;
-	
+
 	for(i=0;i<numSamples;i++)
 	{
 		pDst->pData[i] = ref_sat_q31( (q63_t)pSrcA->pData[i] + pSrcB->pData[i]);
 	}
-	
+
 	return ARM_MATH_SUCCESS;
 }
 
@@ -48,11 +48,11 @@ arm_status ref_mat_add_q15(
 
 	/* Total number of samples in the input matrix */
 	numSamples = (uint32_t) pSrcA->numRows * pSrcA->numCols;
-	
+
 	for(i=0;i<numSamples;i++)
 	{
 		pDst->pData[i] = ref_sat_q15( (q31_t)pSrcA->pData[i] + pSrcB->pData[i]);
 	}
-	
+
 	return ARM_MATH_SUCCESS;
 }

@@ -149,7 +149,7 @@ Skip:   ADD     r10, r10, #2               // Increment the cache number
 
 Finished:
 
-        
+
 
 //----------------------------------------------------------------
 // TCM Configuration

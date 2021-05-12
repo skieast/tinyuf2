@@ -15,7 +15,7 @@ parser.add_argument('-he16', nargs='?',type = str, default="../Include/arm_mve_t
 
 args = parser.parse_args()
 
-COLLIM = 80 
+COLLIM = 80
 
 condition="""#if !defined(ARM_DSP_CONFIG_TABLES) || defined(ARM_ALL_FFT_TABLES) || defined(ARM_TABLE_TWIDDLECOEF_%s_%d) || defined(ARM_TABLE_TWIDDLECOEF_%s_%d)
 """
@@ -142,25 +142,25 @@ def reorderTwiddle(theType,conjugate,f,h,n):
     numStages = 6
     coefs= twiddle(n)
 
-    
-    if n == 4096:                                                                                
-       numStages = 6  
-       arraySize = 1364                                                
-                                                                                                   
-    if n == 1024:                                                                                
-       numStages = 5  
-       arraySize = 340                                                                     
-                                                                                                   
-    if n == 256:                                                                                 
-       numStages = 4
-       arraySize = 84                                                                        
 
-    if n == 64:                                                                                  
-       numStages = 3 
-       arraySize = 20                                                                       
-                                                                                                   
-    if n == 16:                                                                                  
-       numStages = 2 
+    if n == 4096:
+       numStages = 6
+       arraySize = 1364
+
+    if n == 1024:
+       numStages = 5
+       arraySize = 340
+
+    if n == 256:
+       numStages = 4
+       arraySize = 84
+
+    if n == 64:
+       numStages = 3
+       arraySize = 20
+
+    if n == 16:
+       numStages = 2
        arraySize = 4
 
     incr = 1
@@ -182,8 +182,8 @@ def reorderTwiddle(theType,conjugate,f,h,n):
 
 
 
-    for stage in range(0,numStages-1):  
-        nbOfElt = nbOfElt >> 2                                                               
+    for stage in range(0,numStages-1):
+        nbOfElt = nbOfElt >> 2
         pVectCoef1 = 0
         pVectCoef2 = 0
         pVectCoef3 = 0
@@ -191,26 +191,26 @@ def reorderTwiddle(theType,conjugate,f,h,n):
         tab1Offset[stage] = tab1Index
         tab2Offset[stage] = tab2Index
         tab3Offset[stage] = tab3Index
-        
+
         for i in range(0,nbOfElt):
-            tab1[tab1Index] = coefs[pVectCoef1]  
-            if not conjugate:                             
+            tab1[tab1Index] = coefs[pVectCoef1]
+            if not conjugate:
                tab1[tab1Index + 1] = coefs[pVectCoef1 + 1]
             else:
                tab1[tab1Index + 1] = -coefs[pVectCoef1 + 1]
             tab1Index = tab1Index + 2
             pVectCoef1 = pVectCoef1 + (incr * 1 * 2)
 
-            tab2[tab2Index] = coefs[pVectCoef2]      
-            if not conjugate:                         
+            tab2[tab2Index] = coefs[pVectCoef2]
+            if not conjugate:
                tab2[tab2Index + 1] = coefs[pVectCoef2 + 1]
             else:
                tab2[tab2Index + 1] = -coefs[pVectCoef2 + 1]
             tab2Index = tab2Index + 2
             pVectCoef2 = pVectCoef2 + (incr * 2 * 2)
 
-            tab3[tab3Index] = coefs[pVectCoef3] 
-            if not conjugate:                              
+            tab3[tab3Index] = coefs[pVectCoef3]
+            if not conjugate:
                tab3[tab3Index + 1] = coefs[pVectCoef3 + 1]
             else:
               tab3[tab3Index + 1] = -coefs[pVectCoef3 + 1]
@@ -226,20 +226,20 @@ def reorderTwiddle(theType,conjugate,f,h,n):
        print(condition % ("F32",n, "F32",n << 1),file=f)
        print(condition % ("F32",n, "F32",n << 1),file=h)
        printCUInt32Array(f,"rearranged_twiddle_tab_stride1_arr_%d_f32" % n,list(tab1Offset))
-       printHUInt32Array(h,"rearranged_twiddle_tab_stride1_arr_%d_f32" % n,list(tab1Offset)) 
-   
+       printHUInt32Array(h,"rearranged_twiddle_tab_stride1_arr_%d_f32" % n,list(tab1Offset))
+
        printCUInt32Array(f,"rearranged_twiddle_tab_stride2_arr_%d_f32" % n,list(tab2Offset))
        printHUInt32Array(h,"rearranged_twiddle_tab_stride2_arr_%d_f32" % n,list(tab2Offset))
-      
+
        printCUInt32Array(f,"rearranged_twiddle_tab_stride3_arr_%d_f32" % n,list(tab3Offset))
        printHUInt32Array(h,"rearranged_twiddle_tab_stride3_arr_%d_f32" % n,list(tab3Offset))
-   
+
        printCFloat32Array(f,"rearranged_twiddle_stride1_%d_f32" % n,list(tab1))
        printHFloat32Array(h,"rearranged_twiddle_stride1_%d_f32" % n,list(tab1))
-   
+
        printCFloat32Array(f,"rearranged_twiddle_stride2_%d_f32" % n,list(tab2))
        printHFloat32Array(h,"rearranged_twiddle_stride2_%d_f32" % n,list(tab2))
-   
+
        printCFloat32Array(f,"rearranged_twiddle_stride3_%d_f32" % n,list(tab3))
        printHFloat32Array(h,"rearranged_twiddle_stride3_%d_f32" % n,list(tab3))
        print("#endif\n",file=f)
@@ -250,20 +250,20 @@ def reorderTwiddle(theType,conjugate,f,h,n):
        print(condition % ("F16",n, "F16",n << 1),file=f)
        print(condition % ("F16",n, "F16",n << 1),file=h)
        printCUInt32Array(f,"rearranged_twiddle_tab_stride1_arr_%d_f16" % n,list(tab1Offset))
-       printHUInt32Array(h,"rearranged_twiddle_tab_stride1_arr_%d_f16" % n,list(tab1Offset)) 
-   
+       printHUInt32Array(h,"rearranged_twiddle_tab_stride1_arr_%d_f16" % n,list(tab1Offset))
+
        printCUInt32Array(f,"rearranged_twiddle_tab_stride2_arr_%d_f16" % n,list(tab2Offset))
        printHUInt32Array(h,"rearranged_twiddle_tab_stride2_arr_%d_f16" % n,list(tab2Offset))
-      
+
        printCUInt32Array(f,"rearranged_twiddle_tab_stride3_arr_%d_f16" % n,list(tab3Offset))
        printHUInt32Array(h,"rearranged_twiddle_tab_stride3_arr_%d_f16" % n,list(tab3Offset))
-   
+
        printCFloat16Array(f,"rearranged_twiddle_stride1_%d_f16" % n,list(tab1))
        printHFloat16Array(h,"rearranged_twiddle_stride1_%d_f16" % n,list(tab1))
-   
+
        printCFloat16Array(f,"rearranged_twiddle_stride2_%d_f16" % n,list(tab2))
        printHFloat16Array(h,"rearranged_twiddle_stride2_%d_f16" % n,list(tab2))
-   
+
        printCFloat16Array(f,"rearranged_twiddle_stride3_%d_f16" % n,list(tab3))
        printHFloat16Array(h,"rearranged_twiddle_stride3_%d_f16" % n,list(tab3))
        print("#endif\n",file=f)
@@ -274,20 +274,20 @@ def reorderTwiddle(theType,conjugate,f,h,n):
        print(condition % ("Q31",n, "Q31",n << 1),file=f)
        print(condition % ("Q31",n, "Q31",n << 1),file=h)
        printCUInt32Array(f,"rearranged_twiddle_tab_stride1_arr_%d_q31" % n,list(tab1Offset))
-       printHUInt32Array(h,"rearranged_twiddle_tab_stride1_arr_%d_q31" % n,list(tab1Offset)) 
-   
+       printHUInt32Array(h,"rearranged_twiddle_tab_stride1_arr_%d_q31" % n,list(tab1Offset))
+
        printCUInt32Array(f,"rearranged_twiddle_tab_stride2_arr_%d_q31" % n,list(tab2Offset))
        printHUInt32Array(h,"rearranged_twiddle_tab_stride2_arr_%d_q31" % n,list(tab2Offset))
-      
+
        printCUInt32Array(f,"rearranged_twiddle_tab_stride3_arr_%d_q31" % n,list(tab3Offset))
        printHUInt32Array(h,"rearranged_twiddle_tab_stride3_arr_%d_q31" % n,list(tab3Offset))
-   
+
        printCQ31Array(f,"rearranged_twiddle_stride1_%d_q31" % n,list(tab1))
        printHQ31Array(h,"rearranged_twiddle_stride1_%d_q31" % n,list(tab1))
-   
+
        printCQ31Array(f,"rearranged_twiddle_stride2_%d_q31" % n,list(tab2))
        printHQ31Array(h,"rearranged_twiddle_stride2_%d_q31" % n,list(tab2))
-   
+
        printCQ31Array(f,"rearranged_twiddle_stride3_%d_q31" % n,list(tab3))
        printHQ31Array(h,"rearranged_twiddle_stride3_%d_q31" % n,list(tab3))
        print("#endif\n",file=f)
@@ -298,20 +298,20 @@ def reorderTwiddle(theType,conjugate,f,h,n):
        print(condition % ("Q15",n, "Q15",n << 1),file=f)
        print(condition % ("Q15",n, "Q15",n << 1),file=h)
        printCUInt32Array(f,"rearranged_twiddle_tab_stride1_arr_%d_q15" % n,list(tab1Offset))
-       printHUInt32Array(h,"rearranged_twiddle_tab_stride1_arr_%d_q15" % n,list(tab1Offset)) 
-   
+       printHUInt32Array(h,"rearranged_twiddle_tab_stride1_arr_%d_q15" % n,list(tab1Offset))
+
        printCUInt32Array(f,"rearranged_twiddle_tab_stride2_arr_%d_q15" % n,list(tab2Offset))
        printHUInt32Array(h,"rearranged_twiddle_tab_stride2_arr_%d_q15" % n,list(tab2Offset))
-      
+
        printCUInt32Array(f,"rearranged_twiddle_tab_stride3_arr_%d_q15" % n,list(tab3Offset))
        printHUInt32Array(h,"rearranged_twiddle_tab_stride3_arr_%d_q15" % n,list(tab3Offset))
-   
+
        printCQ15Array(f,"rearranged_twiddle_stride1_%d_q15" % n,list(tab1))
        printHQ15Array(h,"rearranged_twiddle_stride1_%d_q15" % n,list(tab1))
-   
+
        printCQ15Array(f,"rearranged_twiddle_stride2_%d_q15" % n,list(tab2))
        printHQ15Array(h,"rearranged_twiddle_stride2_%d_q15" % n,list(tab2))
-   
+
        printCQ15Array(f,"rearranged_twiddle_stride3_%d_q15" % n,list(tab3))
        printHQ15Array(h,"rearranged_twiddle_stride3_%d_q15" % n,list(tab3))
        print("#endif\n",file=f)
@@ -351,7 +351,7 @@ cheader="""/* ------------------------------------------------------------------
  * limitations under the License.
  */
 
- """ 
+ """
 
 cifdeMVEF="""#include "arm_math%s.h"
 
@@ -368,7 +368,7 @@ cfooterMVEF="""
 
 cifdeMVEI="""#include "arm_math.h"
 
-#if defined(ARM_MATH_MVEI) 
+#if defined(ARM_MATH_MVEI)
 
 #if !defined(ARM_DSP_CONFIG_TABLES) || defined(ARM_FFT_ALLOW_TABLES)
 """
@@ -418,7 +418,7 @@ extern "C"
 #endif
 
 
- """ 
+ """
 
 hifdefMVEF="""
 #if defined(ARM_MATH_MVEF) && !defined(ARM_MATH_AUTOVECTORIZE)
@@ -434,7 +434,7 @@ hfooterMVEF="""
 """
 
 hifdefMVEI="""
-#if defined(ARM_MATH_MVEI) 
+#if defined(ARM_MATH_MVEI)
 
 #if !defined(ARM_DSP_CONFIG_TABLES) || defined(ARM_FFT_ALLOW_TABLES)
 """
@@ -480,7 +480,7 @@ with open(args.f,'w') as f:
      print(cheader % "",file=f)
      print(hheader % ("","","",""),file=h)
 
-    
+
      print(cifdeMVEF % "",file=f)
      print(hifdefMVEF,file=h)
      reorderTwiddle(F32,False,f,h,16)

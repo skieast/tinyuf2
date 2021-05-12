@@ -129,9 +129,9 @@ static __inline   t __##f (t1 a1, t2 a2, t3 a3, t4 a4) {                       \
   return _##f(f,a1,a2,a3,a4);                                                  \
 }
 
-#define SVC_1_2 SVC_1_1 
-#define SVC_1_3 SVC_1_1 
-#define SVC_2_3 SVC_2_1 
+#define SVC_1_2 SVC_1_1
+#define SVC_1_3 SVC_1_1
+#define SVC_2_3 SVC_2_1
 
 #elif defined (__GNUC__)        /* GNU Compiler */
 
@@ -263,9 +263,9 @@ static inline  t __##f (t1 a1, t2 a2, t3 a3, t4 a4) {                          \
   return (t) rv;                                                               \
 }
 
-#define SVC_1_2 SVC_1_1 
-#define SVC_1_3 SVC_1_1 
-#define SVC_2_3 SVC_2_1 
+#define SVC_1_2 SVC_1_1
+#define SVC_1_3 SVC_1_1
+#define SVC_2_3 SVC_2_1
 
 #elif defined (__ICCARM__)      /* IAR Compiler */
 
@@ -424,7 +424,7 @@ static uint16_t rt_ms2tick (uint32_t millisec) {
 
   tick = ((1000U * millisec) + os_clockrate - 1U)  / os_clockrate;
   if (tick > 0xFFFEU) { return 0xFFFEU; }
-  
+
   return (uint16_t)tick;
 }
 
@@ -579,7 +579,7 @@ osStatus osKernelStart (void) {
   switch (__get_CONTROL() & 0x03U) {
     case 0x00U:                                 // Privileged Thread mode & MSP
       __set_PSP((uint32_t)(stack + 8));         // Initial PSP
-      if (os_flags & 1U) {                       
+      if (os_flags & 1U) {
         __set_CONTROL(0x02U);                   // Set Privileged Thread mode & PSP
       } else {
         __set_CONTROL(0x03U);                   // Set Unprivileged Thread mode & PSP
@@ -649,8 +649,8 @@ osThreadId svcThreadCreate (const osThreadDef_t *thread_def, void *argument) {
       (thread_def->pthread == NULL) ||
       (thread_def->tpriority < osPriorityIdle) ||
       (thread_def->tpriority > osPriorityRealtime)) {
-    sysThreadError(osErrorParameter); 
-    return NULL; 
+    sysThreadError(osErrorParameter);
+    return NULL;
   }
 
   if (thread_def->stacksize != 0U) {            // Custom stack size
@@ -658,7 +658,7 @@ osThreadId svcThreadCreate (const osThreadDef_t *thread_def, void *argument) {
       os_stack_mem,
       thread_def->stacksize
     );
-    if (stk == NULL) { 
+    if (stk == NULL) {
       sysThreadError(osErrorNoMemory);          // Out of memory
       return NULL;
     }
@@ -706,7 +706,7 @@ osStatus svcThreadTerminate (osThreadId thread_id) {
   void     *stk;
 
   ptcb = rt_tid2ptcb(thread_id);                // Get TCB pointer
-  if (ptcb == NULL) { 
+  if (ptcb == NULL) {
     return osErrorParameter;
   }
 
@@ -718,7 +718,7 @@ osStatus svcThreadTerminate (osThreadId thread_id) {
     return osErrorResource;                     // Delete task failed
   }
 
-  if (stk != NULL) {                            
+  if (stk != NULL) {
     rt_free_mem(os_stack_mem, stk);             // Free private stack
   }
 
@@ -737,8 +737,8 @@ osStatus svcThreadSetPriority (osThreadId thread_id, osPriority priority) {
   P_TCB     ptcb;
 
   ptcb = rt_tid2ptcb(thread_id);                // Get TCB pointer
-  if (ptcb == NULL) { 
-    return osErrorParameter; 
+  if (ptcb == NULL) {
+    return osErrorParameter;
   }
 
   if ((priority < osPriorityIdle) || (priority > osPriorityRealtime)) {
@@ -766,7 +766,7 @@ osPriority svcThreadGetPriority (osThreadId thread_id) {
     return osPriorityError;
   }
 
-  return (osPriority)(ptcb->prio - 1 + osPriorityIdle); 
+  return (osPriority)(ptcb->prio - 1 + osPriorityIdle);
 }
 
 
@@ -774,7 +774,7 @@ osPriority svcThreadGetPriority (osThreadId thread_id) {
 
 /// Create a thread and add it to Active Threads and set it to state READY
 osThreadId osThreadCreate (const osThreadDef_t *thread_def, void *argument) {
-  if (__get_IPSR() != 0U) { 
+  if (__get_IPSR() != 0U) {
     return NULL;                                // Not allowed in ISR
   }
   if (((__get_CONTROL() & 1U) == 0U) && (os_running == 0U)) {
@@ -795,7 +795,7 @@ osThreadId osThreadGetId (void) {
 
 /// Terminate execution of a thread and remove it from ActiveThreads
 osStatus osThreadTerminate (osThreadId thread_id) {
-  if (__get_IPSR() != 0U) { 
+  if (__get_IPSR() != 0U) {
     return osErrorISR;                          // Not allowed in ISR
   }
   return __svcThreadTerminate(thread_id);
@@ -827,8 +827,8 @@ osPriority osThreadGetPriority (osThreadId thread_id) {
 
 /// INTERNAL - Not Public
 /// Auto Terminate Thread on exit (used implicitly when thread exists)
-__NO_RETURN void osThreadExit (void) { 
-  __svcThreadTerminate(__svcThreadGetId()); 
+__NO_RETURN void osThreadExit (void) {
+  __svcThreadTerminate(__svcThreadGetId());
   for (;;);                                     // Should never come here
 }
 
@@ -903,7 +903,7 @@ os_InRegs osEvent osWait (uint32_t millisec) {
 #define osTimerStopped  1U
 #define osTimerRunning  2U
 
-// Timer structures 
+// Timer structures
 
 typedef struct os_timer_cb_ {                   // Timer Control Block
   struct os_timer_cb_ *next;                    // Pointer to next active Timer
@@ -911,7 +911,7 @@ typedef struct os_timer_cb_ {                   // Timer Control Block
   uint8_t              type;                    // Timer Type (Periodic/One-shot)
   uint16_t         reserved;                    // Reserved
   uint32_t             tcnt;                    // Timer Delay Count
-  uint32_t             icnt;                    // Timer Initial Count 
+  uint32_t             icnt;                    // Timer Initial Count
   void                 *arg;                    // Timer Function Argument
   const osTimerDef_t *timer;                    // Pointer to Timer definition
 } os_timer_cb;
@@ -1046,7 +1046,7 @@ osStatus svcTimerStart (osTimerId timer_id, uint32_t millisec) {
     default:
       return osErrorResource;
   }
-  
+
   rt_timer_insert(pt, tcnt);
 
   return osOK;
@@ -1141,7 +1141,7 @@ void sysTimerTick (void) {
   }
 }
 
-/// Get user timers wake-up time 
+/// Get user timers wake-up time
 uint32_t sysUserTimerWakeupTime (void) {
 
   if (os_timer_head) {
@@ -1207,8 +1207,8 @@ osStatus osTimerDelete (osTimerId timer_id) {
 
 /// INTERNAL - Not Public
 /// Get timer callback parameters (used by OS Timer Thread)
-os_InRegs osCallback osTimerCall (osTimerId timer_id) { 
-  return __svcTimerCall(timer_id); 
+os_InRegs osCallback osTimerCall (osTimerId timer_id) {
+  return __svcTimerCall(timer_id);
 }
 
 
@@ -1337,7 +1337,7 @@ int32_t isrSignalSet (osThreadId thread_id, int32_t signals) {
 /// Set the specified Signal Flags of an active thread
 int32_t osSignalSet (osThreadId thread_id, int32_t signals) {
   if (__get_IPSR() != 0U) {                     // in ISR
-    return   isrSignalSet(thread_id, signals); 
+    return   isrSignalSet(thread_id, signals);
   } else {                                      // in Thread
     return __svcSignalSet(thread_id, signals);
   }
@@ -1542,7 +1542,7 @@ osSemaphoreId svcSemaphoreCreate (const osSemaphoreDef_t *semaphore_def, int32_t
   }
 
   rt_sem_init(sem, (uint16_t)count);            // Initialize Semaphore
-  
+
   return sem;
 }
 
@@ -1583,7 +1583,7 @@ osStatus svcSemaphoreRelease (osSemaphoreId semaphore_id) {
   if ((int32_t)((P_SCB)sem)->tokens == osFeature_Semaphore) {
     return osErrorResource;
   }
-  
+
   rt_sem_send(sem);                             // Release Semaphore
 
   return osOK;
@@ -1732,7 +1732,7 @@ void *sysPoolAlloc (osPoolId pool_id) {
 /// Return an allocated memory block back to a specific memory pool
 osStatus sysPoolFree (osPoolId pool_id, void *block) {
   uint32_t res;
-    
+
   if (pool_id == NULL) {
     return osErrorParameter;
   }
@@ -1813,7 +1813,7 @@ osMessageQId svcMessageCreate (const osMessageQDef_t *queue_def, osThreadId thre
     sysThreadError(osErrorParameter);
     return NULL;
   }
-  
+
   if (((P_MCB)queue_def->pool)->cb_type != 0U) {
     sysThreadError(osErrorParameter);
     return NULL;
@@ -1861,7 +1861,7 @@ os_InRegs osEvent_type svcMessageGet (osMessageQId queue_id, uint32_t millisec) 
   }
 
   res = rt_mbx_wait(queue_id, &ret.value.p, rt_ms2tick(millisec));
-  
+
   if (res == OS_R_TMO) {
     ret.status = (millisec != 0U) ? osEventTimeout : osOK;
     return osEvent_ret_value;
@@ -1911,13 +1911,13 @@ os_InRegs osEvent isrMessageGet (osMessageQId queue_id, uint32_t millisec) {
   }
 
   res = isr_mbx_receive(queue_id, &ret.value.p);
-  
+
   if (res != OS_R_MBX) {
     ret.status = osOK;
     return ret;
   }
 
-  ret.status = osEventMessage; 
+  ret.status = osEventMessage;
 
   return ret;
 }
@@ -2011,7 +2011,7 @@ void *sysMailAlloc (osMailQId queue_id, uint32_t millisec, uint32_t isr) {
   pool = *(((void **)queue_id) + 1);
 
   if ((pool == NULL) || (pmcb == NULL)) {
-    return NULL; 
+    return NULL;
   }
 
   if ((isr != 0U) && (millisec != 0U)) {
@@ -2034,7 +2034,7 @@ void *sysMailAlloc (osMailQId queue_id, uint32_t millisec, uint32_t isr) {
     rt_block(rt_ms2tick(millisec), WAIT_MBX);
   }
 
-  return mem;  
+  return mem;
 }
 
 /// Free a memory block from a mail

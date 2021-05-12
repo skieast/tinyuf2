@@ -91,16 +91,16 @@ void arm_cmplx_mult_cmplx_q31(
     {
       /* C[2 * i    ] = A[2 * i] * B[2 * i    ] - A[2 * i + 1] * B[2 * i + 1]. */
       /* C[2 * i + 1] = A[2 * i] * B[2 * i + 1] + A[2 * i + 1] * B[2 * i    ]. */
-  
+
       a = *pSrcA++;
       b = *pSrcA++;
       c = *pSrcB++;
       d = *pSrcB++;
-  
+
       /* store result in 3.29 format in destination buffer. */
       *pDst++ = (q31_t) ( (((q63_t) a * c) >> 33) - (((q63_t) b * d) >> 33) );
       *pDst++ = (q31_t) ( (((q63_t) a * d) >> 33) + (((q63_t) b * c) >> 33) );
-  
+
       /* Decrement loop counter */
       blkCnt--;
     }

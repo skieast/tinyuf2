@@ -2,7 +2,7 @@
 \defgroup   eth_mac_interface_gr Ethernet MAC Interface
 \ingroup    eth_interface_gr
 \brief      Driver API for Ethernet MAC Peripheral (%Driver_ETH_MAC.h)
-\details 
+\details
 The following section describes the Ethernet MAC Interface as defined in the %Driver_ETH_MAC.h header file.
 @{
 */
@@ -10,7 +10,7 @@ The following section describes the Ethernet MAC Interface as defined in the %Dr
 /**
 \struct     ARM_ETH_MAC_CAPABILITIES
 \details
-An Ethernet MAC driver can be implemented with different capabilities.  
+An Ethernet MAC driver can be implemented with different capabilities.
 The data fields of this struct encode the capabilities implemented by this driver.
 
 <b>Returned by:</b>
@@ -20,7 +20,7 @@ The data fields of this struct encode the capabilities implemented by this drive
 /**
 \struct     ARM_DRIVER_ETH_MAC
 \details
-The functions of the Ethernet MAC are accessed by function pointers. Refer to \ref DriverFunctions for 
+The functions of the Ethernet MAC are accessed by function pointers. Refer to \ref DriverFunctions for
 overview information.
 
 Each instance of an Ethernet MAC provides such an access struct. The instance is indicated by
@@ -59,7 +59,7 @@ Provides the typedef for the callback function \ref ARM_ETH_MAC_SignalEvent.
 \defgroup ETH_MAC_events Ethernet MAC Events
 \ingroup eth_mac_interface_gr
 \brief The Ethernet MAC driver generates call back events that are notified via the function \ref ARM_ETH_MAC_SignalEvent.
-\details 
+\details
 This section provides the event values for the \ref ARM_ETH_MAC_SignalEvent callback function.
 
 The following call back notification events are generated:
@@ -89,11 +89,11 @@ Example:
 \code
 extern ARM_DRIVER_ETH_MAC Driver_ETH_MAC0;
 ARM_DRIVER_ETH_MAC *mac;
- 
+
 void setup_ethernet (void)  {
   ARM_DRIVER_VERSION  version;
- 
-  mac = &Driver_ETH_MAC0;  
+
+  mac = &Driver_ETH_MAC0;
   version = mac->GetVersion ();
   if (version.api < 0x10A)   {      // requires at minimum API version 1.10 or higher
     // error handling
@@ -111,39 +111,39 @@ ARM_ETH_MAC_CAPABILITIES ARM_ETH_MAC_GetCapabilities (void)  {
 \details
 The function \b ARM_ETH_MAC_GetCapabilities retrieves information about capabilities in this driver implementation.
 The data fields of the struct \ref ARM_ETH_MAC_CAPABILITIES encode various capabilities, for example
-if a hardware is capable to create checksums in hardware or signal events using the \ref ARM_ETH_MAC_SignalEvent 
+if a hardware is capable to create checksums in hardware or signal events using the \ref ARM_ETH_MAC_SignalEvent
 callback function.
- 
+
 Example:
 \code
 extern ARM_DRIVER_ETH_MAC Driver_ETH_MAC0;
 ARM_DRIVER_ETH_MAC *mac;
-  
+
 void read_capabilities (void)  {
   ARM_ETH_MAC_CAPABILITIES mac_capabilities;
- 
-  mac = &Driver_ETH_MAC0;  
+
+  mac = &Driver_ETH_MAC0;
   mac_capabilities = mac->GetCapabilities ();
   // interrogate capabilities
- 
+
 }
 \endcode
 *******************************************************************************************************************/
 
 int32_t ARM_ETH_MAC_Initialize (ARM_ETH_MAC_SignalEvent_t cb_event)  {
-  
+
 }
 /**
 \fn     int32_t ARM_ETH_MAC_Initialize (ARM_ETH_MAC_SignalEvent_t cb_event)
-\details 
-The function \b ARM_ETH_MAC_Initialize initializes the Ethernet MAC interface. 
+\details
+The function \b ARM_ETH_MAC_Initialize initializes the Ethernet MAC interface.
 It is called when the middleware component starts operation.
 
 The \ref ARM_ETH_MAC_Initialize function performs the following operations:
   - Initializes the resources needed for the Ethernet MAC peripheral.
   - Registers the \ref ARM_ETH_MAC_SignalEvent callback function.
 
-The parameter \em cb_event is a pointer to the \ref ARM_ETH_MAC_SignalEvent callback function; use a NULL pointer 
+The parameter \em cb_event is a pointer to the \ref ARM_ETH_MAC_SignalEvent callback function; use a NULL pointer
 when no callback signals are required.
 
 \b Example:
@@ -151,24 +151,24 @@ when no callback signals are required.
 *******************************************************************************************************************/
 
 int32_t ARM_ETH_MAC_Uninitialize (void)  {
-  
+
 }
 /**
 \fn       int32_t ARM_ETH_MAC_Uninitialize (void)
 \details
 The function \b ARM_ETH_MAC_Uninitialize de-initializes the resources of Ethernet MAC interface.
 
-It is called when the middleware component stops operation and releases the software resources 
+It is called when the middleware component stops operation and releases the software resources
 used by the interface.
 *******************************************************************************************************************/
 
 int32_t ARM_ETH_MAC_PowerControl (ARM_POWER_STATE state)  {
-  
+
 }
 /**
 \fn int32_t ARM_ETH_MAC_PowerControl (ARM_POWER_STATE state)
-\details     
-The function \b ARM_ETH_MAC_PowerControl allows you to configure the power modes of the Ethernet MAC interface.  
+\details
+The function \b ARM_ETH_MAC_PowerControl allows you to configure the power modes of the Ethernet MAC interface.
 
 The parameter \em state can be:
  - ARM_POWER_OFF: Ethernet MAC peripheral is turned off.
@@ -183,7 +183,7 @@ error.
 *******************************************************************************************************************/
 
 int32_t ARM_ETH_MAC_GetMacAddress (ARM_ETH_MAC_ADDR *ptr_addr)  {
-  
+
 }
 /**
 \fn int32_t ARM_ETH_MAC_GetMacAddress (ARM_ETH_MAC_ADDR *ptr_addr)
@@ -192,40 +192,40 @@ The function \b ARM_ETH_MAC_GetMacAddress retrieves the Ethernet MAC own address
 *******************************************************************************************************************/
 
 int32_t ARM_ETH_MAC_SetMacAddress (const ARM_ETH_MAC_ADDR *ptr_addr)  {
-  
+
 }
 /**
 \fn int32_t ARM_ETH_MAC_SetMacAddress (const ARM_ETH_MAC_ADDR *ptr_addr)
 \details
 The function \b ARM_ETH_MAC_SetMacAddress configures Ethernet MAC own address.
-The Ethernet MAC accepts packets <a href="http://en.wikipedia.org/wiki/Ethernet_frame" target="_blank"><b>Ethernet frames</b></a> which contains 
-a MAC destination address that matches the address specified with \em ptr_addr. 
+The Ethernet MAC accepts packets <a href="http://en.wikipedia.org/wiki/Ethernet_frame" target="_blank"><b>Ethernet frames</b></a> which contains
+a MAC destination address that matches the address specified with \em ptr_addr.
 
 The Ethernet MAC receiver will accept also packets with addresses configured by \ref ARM_ETH_MAC_SetAddressFilter function.
 
-MAC receiver can be configured to accept also packets with broadcast address, any multicast address or even all packets regardless of address (Promiscuity Mode). 
+MAC receiver can be configured to accept also packets with broadcast address, any multicast address or even all packets regardless of address (Promiscuity Mode).
 This is configured by function \ref ARM_ETH_MAC_Control with \ref ARM_ETH_MAC_CONFIGURE as control parameter.
 *******************************************************************************************************************/
 
 int32_t ARM_ETH_MAC_SetAddressFilter (const ARM_ETH_MAC_ADDR *ptr_addr, uint32_t num_addr)  {
-  
+
 }
 /**
 \fn int32_t ARM_ETH_MAC_SetAddressFilter (const ARM_ETH_MAC_ADDR *ptr_addr, uint32_t num_addr)
 \details
 The function \b ARM_ETH_MAC_SetAddressFilter configures Ethernet MAC receiver address filtering.
-The Ethernet MAC accepts packets <a href="http://en.wikipedia.org/wiki/Ethernet_frame" target="_blank"><b>Ethernet frames</b></a> which contains 
+The Ethernet MAC accepts packets <a href="http://en.wikipedia.org/wiki/Ethernet_frame" target="_blank"><b>Ethernet frames</b></a> which contains
 a MAC destination address of the list supplied with \em ptr_addr.  The parameter \em ptr_addr provides and array of Ethernet MAC addresses.  The number of addresses
 is supplied by \em num_addr. Specifying \em num_adr = 0 disables address filtering previously set with this function.
 
 The Ethernet MAC receiver will accept packets addressed to its own address and packets with addresses configured by this function.
 
-MAC receiver can be configured to accept also packets with broadcast address, any multicast address or even all packets regardless of address (Promiscuity Mode). 
+MAC receiver can be configured to accept also packets with broadcast address, any multicast address or even all packets regardless of address (Promiscuity Mode).
 This is configured by function \ref ARM_ETH_MAC_Control with \ref ARM_ETH_MAC_CONFIGURE as control parameter.
 *******************************************************************************************************************/
 
 int32_t ARM_ETH_MAC_SendFrame (const uint8_t *frame, uint32_t len, uint32_t flags)  {
-  
+
 }
 /**
 \fn int32_t ARM_ETH_MAC_SendFrame (const uint8_t *frame, uint32_t len, uint32_t flags)
@@ -234,8 +234,8 @@ The function \b ARM_ETH_MAC_SendFrame writes an <a href="http://en.wikipedia.org
 
 The Ethernet MAC transmit engine must be enabled by using the function \ref ARM_ETH_MAC_Control (ARM_ETH_MAC_CONTROL_TX, 1) before a call to this function.
 
-The frame data addressed by \em buf starts with MAC destination and ends with the last Payload data byte. The frame data is copied into 
-the transmit buffer of the Ethernet MAC interface. The function does not wait until the transmission over the Ethernet is complete, 
+The frame data addressed by \em buf starts with MAC destination and ends with the last Payload data byte. The frame data is copied into
+the transmit buffer of the Ethernet MAC interface. The function does not wait until the transmission over the Ethernet is complete,
 however the memory addressed by \em buf is available for the next Ethernet frame after return.
 
 The maximum value for \em len is implied by the size restrictions of the Ethernet frame but is not verified.
@@ -262,7 +262,7 @@ Flag bit                               | Description
 *******************************************************************************************************************/
 
 int32_t ARM_ETH_MAC_ReadFrame (uint8_t *frame, uint32_t len)  {
-  
+
 }
 /**
 \fn int32_t ARM_ETH_MAC_ReadFrame (uint8_t *frame, uint32_t len)
@@ -272,7 +272,7 @@ The function \b ARM_ETH_MAC_ReadFrame reads an <a href="http://en.wikipedia.org/
 The Ethernet MAC receive engine must be enabled using the function \ref ARM_ETH_MAC_Control (ARM_ETH_MAC_CONTROL_RX , 1) before a call to this function.
 The \em len of the Ethernet frame can be checked using the function \ref ARM_ETH_MAC_GetRxFrameSize.
 
-The frame data addressed by \em buf starts with MAC destination and ends with the last Payload data byte. The frame data is read from 
+The frame data addressed by \em buf starts with MAC destination and ends with the last Payload data byte. The frame data is read from
 the receive buffer of the Ethernet MAC interface and the number of bytes written into the memory addressed by \em buf is returned.
 A negative return value indicates an error whereby the status code is defined with driver common return codes.
 
@@ -293,12 +293,12 @@ no memory is available to hold the Ethernet frame.
 *******************************************************************************************************************/
 
 uint32_t ARM_ETH_MAC_GetRxFrameSize (void)  {
-  
+
 }
 /**
 \fn uint32_t ARM_ETH_MAC_GetRxFrameSize (void)
 \details
-The function \b ARM_ETH_MAC_GetRxFrameSize returns the size of a received 
+The function \b ARM_ETH_MAC_GetRxFrameSize returns the size of a received
 <a href="http://en.wikipedia.org/wiki/Ethernet_frame" target="_blank"><b>Ethernet frame</b></a>.
 This function is called before \ref ARM_ETH_MAC_ReadFrame and supplies the value \em len.
 
@@ -313,7 +313,7 @@ indicate an invalid frame which needs to be discarded by calling \ref ARM_ETH_MA
 *******************************************************************************************************************/
 
 int32_t ARM_ETH_MAC_GetRxFrameTime (ARM_ETH_MAC_TIME *time)  {
-  
+
 }
 /**
 \fn int32_t ARM_ETH_MAC_GetRxFrameTime (ARM_ETH_MAC_TIME *time)
@@ -323,7 +323,7 @@ This function must be called before the frame is read using \ref ARM_ETH_MAC_Rea
 *******************************************************************************************************************/
 
 int32_t ARM_ETH_MAC_GetTxFrameTime (ARM_ETH_MAC_TIME *time)  {
-  
+
 }
 /**
 \fn int32_t ARM_ETH_MAC_GetTxFrameTime (ARM_ETH_MAC_TIME *time)
@@ -332,12 +332,12 @@ The function \b returns the time stamp of a transmitted <a href="http://en.wikip
 *******************************************************************************************************************/
 
 int32_t ARM_ETH_MAC_Control (uint32_t control, uint32_t arg)  {
-  
+
 }
 /**
 \fn int32_t ARM_ETH_MAC_Control (uint32_t control, uint32_t arg)
 \details
-The function \b ARM_ETH_MAC_Control controls the Ethernet MAC interface and executes various operations. 
+The function \b ARM_ETH_MAC_Control controls the Ethernet MAC interface and executes various operations.
 After initialization, the Ethernet transceiver and receiver are disabled.
 
 The parameter \em control specifies an operation as defined in the table <b>Parameter \em control</b>. \n
@@ -369,7 +369,7 @@ The values can be ORed in the following way:
 <tr><td>\ref ARM_ETH_MAC_SPEED_1G           </td>                                                                 <td>Set the link speed to \token{1  [Gbps]} </td></tr>
 <tr><td>\ref ARM_ETH_MAC_DUPLEX_HALF        </td><td rowspan="2">   2      </td><td rowspan="2">Link Mode    </td><td>Set the link mode to half duplex        </td></tr>
 <tr><td>\ref ARM_ETH_MAC_DUPLEX_FULL        </td>                                                                 <td>Set the link mode to full duplex        </td></tr>
-<tr><td>n.a.                                </td><td>               3      </td><td>            n.a.         </td><td>\em reserved                            </td></tr>                      
+<tr><td>n.a.                                </td><td>               3      </td><td>            n.a.         </td><td>\em reserved                            </td></tr>
 <tr><td>\ref ARM_ETH_MAC_LOOPBACK           </td><td>               4      </td><td>    Loopback Test Mode   </td><td>Set the interface into a Loop-back test mode</td></tr>
 <tr><td>\ref ARM_ETH_MAC_CHECKSUM_OFFLOAD_RX</td><td>               5      </td><td>Receiver Checksum offload</td><td>Enable Receiver Checksum offload        </td></tr>
 <tr><td>\ref ARM_ETH_MAC_CHECKSUM_OFFLOAD_TX</td><td>               6      </td><td>Transmitter Checksum offload</td><td>Enable Transmitter Checksum offload  </td></tr>
@@ -379,7 +379,7 @@ The values can be ORed in the following way:
 </table>
 
 The table <b>Parameter \em arg for FLUSH</b> lists the \em arg values for the \em control \b ARM_ETH_MAC_FLUSH.
-The \em arg values can be ORed. 
+The \em arg values can be ORed.
 
 <table class="cmtable" summary="">
 <tr><th colspan="4">Parameter \em arg for FLUSH </th></tr>
@@ -389,7 +389,7 @@ The \em arg values can be ORed.
 </table>
 
 The table <b>Parameter \em arg for VLAN Filter</b> lists the \em arg values for the \em control \b ARM_ETH_MAC_VLAN_FILTER.
-The \em arg values can be ORed. 
+The \em arg values can be ORed.
 
 <table class="cmtable" summary="">
 <tr><th colspan="4">Parameter \em arg for VLAN Filter</th></tr>
@@ -409,7 +409,7 @@ The \em arg values can be ORed.
     mac->Control(ARM_ETH_MAC_CONFIGURE, ARM_ETH_MAC_SPEED_100M | ARM_ETH_MAC_DUPLEX_FULL | ARM_ETH_MAC_ADDRESS_BROADCAST);
     mac->Control(ARM_ETH_MAC_CONTROL_TX, 1);
     mac->Control(ARM_ETH_MAC_CONTROL_RX, 1);
-	 
+
 ...                                      // stop transfer
     mac->Control(ARM_ETH_MAC_FLUSH, ARM_ETH_MAC_FLUSH_TX | ARM_ETH_MAC_FLUSH_RX);
     mac->Control(ARM_ETH_MAC_CONTROL_TX, 0);
@@ -423,7 +423,7 @@ For a complete example, refer to  \ref eth_interface_gr - Driver Functions.
 *******************************************************************************************************************/
 
 int32_t ARM_ETH_MAC_ControlTimer (uint32_t control, ARM_ETH_MAC_TIME *time)  {
-  
+
 }
 /**
 \fn int32_t ARM_ETH_MAC_ControlTimer (uint32_t control, ARM_ETH_MAC_TIME *time)
@@ -439,13 +439,13 @@ Mode Parameters: Timer Controls         | Description
 \ref ARM_ETH_MAC_TIMER_SET_TIME         | Set the new time using the values provided with \ref ARM_ETH_MAC_TIME *time.
 \ref ARM_ETH_MAC_TIMER_INC_TIME         | Increment the current time by using the values provided with \ref ARM_ETH_MAC_TIME *time.
 \ref ARM_ETH_MAC_TIMER_DEC_TIME         | Decrement the current time by using the values provided with \ref ARM_ETH_MAC_TIME *time.
-\ref ARM_ETH_MAC_TIMER_SET_ALARM        | Set the alarm time to the values provided with \ref ARM_ETH_MAC_TIME *time.  
+\ref ARM_ETH_MAC_TIMER_SET_ALARM        | Set the alarm time to the values provided with \ref ARM_ETH_MAC_TIME *time.
 \ref ARM_ETH_MAC_TIMER_ADJUST_CLOCK     | Set the clock frequency; the value in time->ns is the <b>correction factor</b> in fractional format q31.
 
 *******************************************************************************************************************/
 
 int32_t ARM_ETH_MAC_PHY_Read (uint8_t phy_addr, uint8_t reg_addr, uint16_t *data)  {
-  
+
 }
 /**
 \fn int32_t ARM_ETH_MAC_PHY_Read (uint8_t phy_addr, uint8_t reg_addr, uint16_t *data)
@@ -459,7 +459,7 @@ The Ethernet PHY driver uses this function to read the value of PHY registers.
 *******************************************************************************************************************/
 
 int32_t ARM_ETH_MAC_PHY_Write (uint8_t phy_addr, uint8_t reg_addr, uint16_t data)  {
-  
+
 }
 /**
 \fn int32_t ARM_ETH_MAC_PHY_Write (uint8_t phy_addr, uint8_t reg_addr, uint16_t data)
@@ -484,14 +484,14 @@ The function \b ARM_ETH_MAC_SignalEvent is a callback function registered by the
 a frame is processed or a special event occurred.
 
 The parameter \a event indicates one or more events that occurred during driver operation.
-Each event is encoded in a separate bit and therefore it is possible to signal multiple events within the same call. 
+Each event is encoded in a separate bit and therefore it is possible to signal multiple events within the same call.
 
-Not every event is necessarily generated by the driver. This depends on the implemented capabilities stored in the 
+Not every event is necessarily generated by the driver. This depends on the implemented capabilities stored in the
 data fields of the structure \ref ARM_ETH_MAC_CAPABILITIES, which can be retrieved with the function \ref ARM_ETH_MAC_GetCapabilities.
 
 The following events can be generated:
 
-Parameter \em event                      | Bit | Description 
+Parameter \em event                      | Bit | Description
 :----------------------------------------|:---:|:----------------------------------------
 \ref ARM_ETH_MAC_EVENT_RX_FRAME          |  0  | Occurs after a frame is received. Frame can be read by calling \ref ARM_ETH_MAC_ReadFrame.
 \ref ARM_ETH_MAC_EVENT_TX_FRAME          |  1  | Occurs after call to \ref ARM_ETH_MAC_SendFrame to indicate that the frame is transmitted.
@@ -505,12 +505,12 @@ Parameter \em event                      | Bit | Description
 \defgroup eth_mac_control Ethernet MAC Control Codes
 \ingroup eth_mac_interface_gr
 \brief Configure and control the Ethernet MAC using the \ref ARM_ETH_MAC_Control.
-\details 
+\details
 @{
 Many parameters of the Ethernet MAC driver are configured using the \ref ARM_ETH_MAC_Control function.
 
 The various Ethernet MAC control codes define:
-  
+
   - \ref eth_mac_ctrls                configures and controls the Ethernet MAC interface
   - \ref eth_mac_configuration_ctrls  specifies speed mode, link mode, checksum, and frame filtering modes
   - \ref eth_mac_flush_flag_ctrls     specify controls to flush a buffer
@@ -524,17 +524,17 @@ Refer to the \ref ARM_ETH_MAC_Control function for further details.
 \brief Configure and control the Ethernet MAC interface.
 \details
 @{
-\def ARM_ETH_MAC_CONFIGURE          
+\def ARM_ETH_MAC_CONFIGURE
 \sa ARM_ETH_MAC_Control
-\def ARM_ETH_MAC_CONTROL_TX         
+\def ARM_ETH_MAC_CONTROL_TX
 \sa ARM_ETH_MAC_Control
-\def ARM_ETH_MAC_CONTROL_RX         
+\def ARM_ETH_MAC_CONTROL_RX
 \sa ARM_ETH_MAC_Control
-\def ARM_ETH_MAC_FLUSH              
+\def ARM_ETH_MAC_FLUSH
 \sa ARM_ETH_MAC_Control
-\def ARM_ETH_MAC_SLEEP              
+\def ARM_ETH_MAC_SLEEP
 \sa ARM_ETH_MAC_Control
-\def ARM_ETH_MAC_VLAN_FILTER        
+\def ARM_ETH_MAC_VLAN_FILTER
 \sa ARM_ETH_MAC_Control
 @}
 */
@@ -548,17 +548,17 @@ Refer to the \ref ARM_ETH_MAC_Control function for further details.
 The function \ref ARM_ETH_MAC_Control with \em control = \ref ARM_ETH_MAC_CONFIGURE configures the Ethernet MAC interface
 as specified with \em arg listed bellow.
 
-\def ARM_ETH_MAC_SPEED_10M           
-\def ARM_ETH_MAC_SPEED_100M          
-\def ARM_ETH_MAC_SPEED_1G            
-\def ARM_ETH_MAC_DUPLEX_HALF         
-\def ARM_ETH_MAC_DUPLEX_FULL         
-\def ARM_ETH_MAC_LOOPBACK            
-\def ARM_ETH_MAC_CHECKSUM_OFFLOAD_RX 
-\def ARM_ETH_MAC_CHECKSUM_OFFLOAD_TX 
-\def ARM_ETH_MAC_ADDRESS_BROADCAST   
-\def ARM_ETH_MAC_ADDRESS_MULTICAST   
-\def ARM_ETH_MAC_ADDRESS_ALL         
+\def ARM_ETH_MAC_SPEED_10M
+\def ARM_ETH_MAC_SPEED_100M
+\def ARM_ETH_MAC_SPEED_1G
+\def ARM_ETH_MAC_DUPLEX_HALF
+\def ARM_ETH_MAC_DUPLEX_FULL
+\def ARM_ETH_MAC_LOOPBACK
+\def ARM_ETH_MAC_CHECKSUM_OFFLOAD_RX
+\def ARM_ETH_MAC_CHECKSUM_OFFLOAD_TX
+\def ARM_ETH_MAC_ADDRESS_BROADCAST
+\def ARM_ETH_MAC_ADDRESS_MULTICAST
+\def ARM_ETH_MAC_ADDRESS_ALL
 @}
 */
 
@@ -570,8 +570,8 @@ as specified with \em arg listed bellow.
 The function \ref ARM_ETH_MAC_Control with \em control = \ref ARM_ETH_MAC_FLUSH flushes the buffer
 which is specified with \em arg listed bellow.
 
-\def ARM_ETH_MAC_FLUSH_RX           
-\def ARM_ETH_MAC_FLUSH_TX           
+\def ARM_ETH_MAC_FLUSH_RX
+\def ARM_ETH_MAC_FLUSH_TX
 @}
 */
 
@@ -585,35 +585,35 @@ The function \ref ARM_ETH_MAC_Control with \em control = \ref ARM_ETH_MAC_VLAN_F
 
 By default the complete VLAN Tag (16-bit) is compared. When \ref ARM_ETH_MAC_VLAN_FILTER_ID_ONLY is specified then only the VLAN Identifier (12-bit) is compared.
 
-Specifying \em arg=0 disables the VLAN Filter. 
+Specifying \em arg=0 disables the VLAN Filter.
 
-\def ARM_ETH_MAC_VLAN_FILTER_ID_ONLY 
+\def ARM_ETH_MAC_VLAN_FILTER_ID_ONLY
 @}
 */
 
 
 /**
-@} */  // end group eth_mac_control 
+@} */  // end group eth_mac_control
 
 
 /**
 \defgroup eth_mac_time_control Ethernet MAC Timer Control Codes
 \ingroup eth_mac_interface_gr
 \brief Control codes for \ref ARM_ETH_MAC_ControlTimer function.
-\details 
+\details
 The following timer controls are used as parameter \em control for the \ref ARM_ETH_MAC_ControlTimer function:
 @{
-\def ARM_ETH_MAC_TIMER_GET_TIME     
+\def ARM_ETH_MAC_TIMER_GET_TIME
 \sa ARM_ETH_MAC_ControlTimer
-\def ARM_ETH_MAC_TIMER_SET_TIME     
+\def ARM_ETH_MAC_TIMER_SET_TIME
 \sa ARM_ETH_MAC_ControlTimer
-\def ARM_ETH_MAC_TIMER_INC_TIME     
+\def ARM_ETH_MAC_TIMER_INC_TIME
 \sa ARM_ETH_MAC_ControlTimer
-\def ARM_ETH_MAC_TIMER_DEC_TIME     
+\def ARM_ETH_MAC_TIMER_DEC_TIME
 \sa ARM_ETH_MAC_ControlTimer
-\def ARM_ETH_MAC_TIMER_SET_ALARM    
+\def ARM_ETH_MAC_TIMER_SET_ALARM
 \sa ARM_ETH_MAC_ControlTimer
-\def ARM_ETH_MAC_TIMER_ADJUST_CLOCK 
+\def ARM_ETH_MAC_TIMER_ADJUST_CLOCK
 \sa ARM_ETH_MAC_ControlTimer
 @}
 */
@@ -624,11 +624,11 @@ The following timer controls are used as parameter \em control for the \ref ARM_
 \brief Specify frame transmit flags
 \details
 @{
-\def ARM_ETH_MAC_TX_FRAME_FRAGMENT  
+\def ARM_ETH_MAC_TX_FRAME_FRAGMENT
 \sa ARM_ETH_MAC_SendFrame
-\def ARM_ETH_MAC_TX_FRAME_EVENT     
+\def ARM_ETH_MAC_TX_FRAME_EVENT
 \sa ARM_ETH_MAC_SendFrame
-\def ARM_ETH_MAC_TX_FRAME_TIMESTAMP 
+\def ARM_ETH_MAC_TX_FRAME_TIMESTAMP
 \sa ARM_ETH_MAC_SendFrame
 @}
 */
@@ -637,5 +637,5 @@ The following timer controls are used as parameter \em control for the \ref ARM_
 
 /**
 @}
-*/ 
+*/
 // End ETH MAC Interface

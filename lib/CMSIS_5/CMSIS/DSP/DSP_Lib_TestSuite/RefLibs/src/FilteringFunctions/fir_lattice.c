@@ -41,7 +41,7 @@ void ref_fir_lattice_f32(
     /* save f0(n) in state buffer */
     *px++ = fcurr;
 
-    /* f1(n) is saved in fcurr            
+    /* f1(n) is saved in fcurr
        for next stage processing */
     fcurr = fnext;
 
@@ -62,7 +62,7 @@ void ref_fir_lattice_f32(
       /* g2(n) = f1(n) * K2  +  g1(n-1) */
       gnext = (fcurr * (*pk++)) + gcurr;
 
-      /* f1(n) is saved in fcurr1            
+      /* f1(n) is saved in fcurr1
          for next stage processing */
       fcurr = fnext;
 
@@ -116,7 +116,7 @@ void ref_fir_lattice_q31(
     /* save g1(n) in state buffer */
     *px++ = fcurr;
 
-    /* f1(n) is saved in fcurr1            
+    /* f1(n) is saved in fcurr1
        for next stage processing */
     fcurr = fnext;
 
@@ -137,7 +137,7 @@ void ref_fir_lattice_q31(
       /* g2(n) = f1(n) * K2  +  g1(n-1) */
       gnext = (q31_t) (((q63_t) fcurr * (*pk++)) >> 31) + gcurr;
 
-      /* f1(n) is saved in fcurr1            
+      /* f1(n) is saved in fcurr1
          for next stage processing */
       fcurr = fnext;
 
@@ -198,7 +198,7 @@ void ref_fir_lattice_q15(
     /* save f0(n) in state buffer */
     *px++ = (q15_t) fcurnt;
 
-    /* f1(n) is saved in fcurnt            
+    /* f1(n) is saved in fcurnt
        for next stage processing */
     fcurnt = fnext;
 
@@ -223,7 +223,7 @@ void ref_fir_lattice_q15(
       gnext = ref_sat_q15(gnext);
 
 
-      /* f1(n) is saved in fcurnt            
+      /* f1(n) is saved in fcurnt
          for next stage processing */
       fcurnt = fnext;
 

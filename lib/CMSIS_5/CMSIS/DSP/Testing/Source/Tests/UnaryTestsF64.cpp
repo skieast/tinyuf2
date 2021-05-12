@@ -4,7 +4,7 @@
 
 #define SNR_THRESHOLD 120
 
-/* 
+/*
 
 Reference patterns are generated with
 a double precision computation.
@@ -74,15 +74,15 @@ a double precision computation.
 
 
 void UnaryTestsF64::test_mat_inverse_f64()
-    {     
-      const float64_t *inp1=input1.ptr();    
-                                             
-      float64_t *ap=a.ptr();                 
-                                             
-      float64_t *outp=output.ptr();          
-      int16_t *dimsp = dims.ptr();           
+    {
+      const float64_t *inp1=input1.ptr();
+
+      float64_t *ap=a.ptr();
+
+      float64_t *outp=output.ptr();
+      int16_t *dimsp = dims.ptr();
       int nbMatrixes = dims.nbSamples();
-      int rows,columns;                      
+      int rows,columns;
       int i;
 
       for(i=0;i < nbMatrixes ; i ++)
@@ -109,7 +109,7 @@ void UnaryTestsF64::test_mat_inverse_f64()
 
     void UnaryTestsF64::setUp(Testing::testID_t id,std::vector<Testing::param_t>& params,Client::PatternMgr *mgr)
     {
-    
+
       (void)params;
       switch(id)
       {
@@ -123,9 +123,9 @@ void UnaryTestsF64::test_mat_inverse_f64()
             a.create(ref.nbSamples(),UnaryTestsF64::TMPA_F64_ID,mgr);
          break;
       }
-       
 
-    
+
+
     }
 
     void UnaryTestsF64::tearDown(Testing::testID_t id,Client::PatternMgr *mgr)

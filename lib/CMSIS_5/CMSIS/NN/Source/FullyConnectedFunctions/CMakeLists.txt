@@ -14,6 +14,3 @@ configDsp(CMSISNNFullyConnected ${ROOT})
 ### Includes
 target_include_directories(CMSISNNFullyConnected PUBLIC "${NN}/Include")
 target_include_directories(CMSISNNFullyConnected PUBLIC "${ROOT}/CMSIS/DSP/Include")
-
-
-

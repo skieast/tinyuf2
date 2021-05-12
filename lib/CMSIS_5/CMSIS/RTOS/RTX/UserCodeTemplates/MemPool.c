@@ -4,7 +4,7 @@
 /*----------------------------------------------------------------------------
  *      Memory Pool creation & usage
  *---------------------------------------------------------------------------*/
- 
+
 #define MEMPOOL_OBJECTS      16                                 // number of Memory Pool Objects
 
 typedef struct {                                                // object data type
@@ -26,10 +26,10 @@ int Init_MemPool (void) {
   if (!mpid_MemPool) {
     ; // MemPool object not created, handle failure
   }
-  
+
   tid_Thread_MemPool = osThreadCreate (osThread(Thread_MemPool), NULL);
   if (!tid_Thread_MemPool) return(-1);
-  
+
   return(0);
 }
 
@@ -43,8 +43,8 @@ void Thread_MemPool (void const *argument) {
     pMem = (MEM_BLOCK_t *)osPoolCAlloc (mpid_MemPool);          // get Mem Block
     if (pMem) {                                                 // Mem Block was available
       pMem->Buf[0] = 0x55;                                      // do some work...
-      pMem->Idx    = 0;      
-      
+      pMem->Idx    = 0;
+
       status = osPoolFree (mpid_MemPool, pMem);                 // free mem block
       switch (status)  {
         case osOK:

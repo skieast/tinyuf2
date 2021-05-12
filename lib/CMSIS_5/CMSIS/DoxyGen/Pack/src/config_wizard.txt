@@ -16,7 +16,7 @@ line:
 // <<< end of configuration section >>>
 \endcode
 - Annotations are written as comments in the code. Each annotation line must start with a double forward slash (//).
-- By default, the next code symbol that follows the annotation is modified. 
+- By default, the next code symbol that follows the annotation is modified.
 - Items marked with * in the table below can be followed by a skip-value. A skip-value omits a number of code symbols (see
   <i>skip example</i> in table). This overwrites the previous rule.
 - A descriptive text can be added to items. This text is displayed on screen (see table).
@@ -35,8 +35,8 @@ The following table lists the Configuration Wizard Annotations:
       <td>\<h></td>
       <td>yes</td>
       <td>Heading. Creates a header section. All items and options enclosed by \<h> and \</h> belong to one group and can be expanded.
-      This entry makes no changes to code symbols. It is just used to group other items and modifiers. 
-      \n Excerpt from the \ref configWizard_codeExample 
+      This entry makes no changes to code symbols. It is just used to group other items and modifiers.
+      \n Excerpt from the \ref configWizard_codeExample
       \code
       // <h>Thread Configuration                               -- header without checkbox to group other items
       //   ...
@@ -66,7 +66,7 @@ The following table lists the Configuration Wizard Annotations:
       #endif
       // </e>
       \endcode
-      The entry <code>\<e>Round-Robin Thread switching ... \</e></code> sets OS_ROBIN to \token{1} (checkbox enabled) or \token{0} (checkbox disabled) 
+      The entry <code>\<e>Round-Robin Thread switching ... \</e></code> sets OS_ROBIN to \token{1} (checkbox enabled) or \token{0} (checkbox disabled)
       and encloses the <i>OS_ROBINTOUT</i> (Round-Robin Timeout) setting. See screen outcome in \ref configWizard_display.
       </td>
     </tr>
@@ -94,7 +94,7 @@ The following table lists the Configuration Wizard Annotations:
       <td>Notification text displayed
       \code
       // <n> This is shown as plain text
-      \endcode      
+      \endcode
       </td>
     </tr>
     <tr>
@@ -114,11 +114,11 @@ The following table lists the Configuration Wizard Annotations:
       \code
       // <c1> Comment sequence block until block end when disabled
       //<i> This may carry the block's description
-      
+
       foo
-      
+
       +bar
-      
+
       -xFoo
       // </c>
       \endcode
@@ -154,7 +154,7 @@ The following table lists the Configuration Wizard Annotations:
       //      <i> Enables the FSMC to use the wait signal even during an asynchronous protocol.
       // </h>
       #define RTE_FSMC_BCR1_ASYNCWAIT         0                             -- this is changed via a checkbox
-      \endcode  
+      \endcode
       </td>
     </tr>
     <tr>
@@ -162,7 +162,7 @@ The following table lists the Configuration Wizard Annotations:
       <td>yes</td>
       <td>Option with selection or number entry.
       \code
-      // <o>Round-Robin Timeout [ticks] <1-1000>                             -- text displayed on screen. Range of [ticks] is [1..1000] 
+      // <o>Round-Robin Timeout [ticks] <1-1000>                             -- text displayed on screen. Range of [ticks] is [1..1000]
       // \<i> Defines how long a thread will execute before a thread switch.  -- tooltip info
       // \<i> Default: 5                                                      -- tooltip info. Both displayed in one tooltip.
       #ifndef OS_ROBINTOUT
@@ -181,23 +181,23 @@ The following table lists the Configuration Wizard Annotations:
       //   <o TIMESTAMP_SRC>Time Stamp Source
       //      <dwt=>     DWT Cycle Counter
       //      <systick=> SysTick
-      //      <user=>    User Timer 
+      //      <user=>    User Timer
       //   <i>Selects source for 32-bit time stamp
       #define TIMESTAMP_SRC  dwt
       \endcode
-      The example creates an option with the text \token{Time Stamp Source} and a drop down-list showing the text items 
+      The example creates an option with the text \token{Time Stamp Source} and a drop down-list showing the text items
       \token{DWT Cycle Counter}, \token{SysTick} and \token{User Timer}. The corresponding identifier within the tag \<...=> will be used for replacement.
-      
+
       Use case for an assignment of an enumeration to a variable:
       \code
-      //   <o redPortMode> Red port mode 
+      //   <o redPortMode> Red port mode
       //     <OutPushPull_GPIO=>  PushPull
       //     <OutOpenDrain_GPIO=> OpenDrain
       //   <i>Selects GPIO output
       ledConf.redPortMode = OutOpenDrain_GPIO;
       \endcode
       The example creates an option with the text \token{Red port mode} and a drop down-list showing the text items
-      \token{PushPull} and \token{OpenDrain}. The corresponding identifier \token{OutPushPull_GPIO} or \token{OutOpenDrain_GPIO} will be used to replace the 
+      \token{PushPull} and \token{OpenDrain}. The corresponding identifier \token{OutPushPull_GPIO} or \token{OutOpenDrain_GPIO} will be used to replace the
       identifier after the key-identifier \token{redPortMode}.
     </tr>
     <tr>
@@ -238,14 +238,14 @@ The following table lists the Configuration Wizard Annotations:
       //  <i>String Descriptor describing Manufacturer.
       #define USBD0_STR_DESC_MAN              L"Keil Software"
       \endcode
-      Displays an option with the text \token{Manufacturer String} and creates a field in which the user can enter a text. 
+      Displays an option with the text \token{Manufacturer String} and creates a field in which the user can enter a text.
       The size of the string is not limited.
       </td>
     </tr>
     <tr>
       <td>\<s.<i>i</i>><sup>*</sup></td>
       <td>yes</td>
-      <td>Option with ASCII string entry and a size limit of <i>i</i> characters. 
+      <td>Option with ASCII string entry and a size limit of <i>i</i> characters.
       \code
       //  <s.126>Manufacturer String
       //  <i>String Descriptor describing Manufacturer.
@@ -256,8 +256,8 @@ The following table lists the Configuration Wizard Annotations:
     </tr>
     <tr>
       <td><i>skip example</i>
-      <br> \<q\em i>; 
-      <br> \<o\em i>;  \<o\em i.\em x>; 
+      <br> \<q\em i>;
+      <br> \<o\em i>;  \<o\em i.\em x>;
       <br> \<s\em i>;  \<s\em i.\em x>
       </td>
       <td>yes</td>
@@ -267,7 +267,7 @@ The following table lists the Configuration Wizard Annotations:
       #define VALUE1       1000
       #define VALUE2       2000
       #define MODIFY_THIS  3000
-      \endcode 
+      \endcode
       The example skips 2 items and modifies the third.
       </td>
     </tr>
@@ -308,7 +308,7 @@ The following table lists the Configuration Wizard Annotations:
       #define OS_TIMERPRIO   5
       #endif
       \endcode
-      In this example, the screen would show the option \token{Timer Thread Priority}. The field Value would display the text \token{High}. 
+      In this example, the screen would show the option \token{Timer Thread Priority}. The field Value would display the text \token{High}.
       OS_TIMERPRIO is set to \token{5}. When clicking on the field, a drop-down would show all options.
       See \ref configWizard_display.
       </td>
@@ -323,13 +323,13 @@ The following table lists the Configuration Wizard Annotations:
       //   <o TIMESTAMP_SRC>Time Stamp Source
       //      <dwt=>     DWT Cycle Counter
       //      <systick=> SysTick
-      //      <user=>    User Timer 
+      //      <user=>    User Timer
       //   <i>Selects source for 32-bit time stamp
       #define TIMESTAMP_SRC  dwt
       \endcode
-      In this example, the screen would show the option \token{Time Stamp Source}. The field value would display the text \token{DWT Cycle Counter}. 
+      In this example, the screen would show the option \token{Time Stamp Source}. The field value would display the text \token{DWT Cycle Counter}.
       TIMESTAMP_SRC is set to \token{dwt}. When clicking on the field, a drop-down would show all options. See \ref configWizard_display.
-    </tr>  
+    </tr>
     <tr>
       <td>\<#+1>&nbsp;&nbsp; \<#-1><br>
           \<#*8>&nbsp;&nbsp; \<#/3></td>
@@ -344,7 +344,7 @@ The following table lists the Configuration Wizard Annotations:
       #define OS_STKSIZE 50
       #endif
       \endcode
-      The option <i>Default Thread stack size [bytes]</i> accepts values in the range \token{[64..4096]}. The value (here \token{200}) set in the field is divided by \token{4} (<#/4>) . 
+      The option <i>Default Thread stack size [bytes]</i> accepts values in the range \token{[64..4096]}. The value (here \token{200}) set in the field is divided by \token{4} (<#/4>) .
       The result of the division (200/4) is put into the code symbol \em OS_STKSIZE, which was set to \token{50}. The screen will display the number \token{200}.
       See \ref configWizard_display.
       </td>
@@ -403,8 +403,8 @@ You can copy the code into a C-file and check the outcome in the uVision Editor.
  #define OS_STKCHECK    1
 #endif
 
-// <o>Processor mode for thread execution 
-//   <0=> Unprivileged mode 
+// <o>Processor mode for thread execution
+//   <0=> Unprivileged mode
 //   <1=> Privileged mode
 // <i> Default: Privileged mode
 #ifndef OS_RUNPRIV

@@ -7,7 +7,7 @@ void ref_rms_f32(
 {
 	uint32_t i;
 	float32_t sumsq=0;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 			sumsq += pSrc[i] * pSrc[i];
@@ -24,9 +24,9 @@ void ref_rms_q31(
     uint64_t sumsq = 0;             /* accumulator (can get never negative. changed type from q63 to uint64 */
 	q63_t tmp1;
 	q31_t tmp2;
-  
+
   float help_float;
-  
+
 	for(i=0;i<blockSize;i++)
 	{
 			sumsq += (q63_t)pSrc[i] * pSrc[i];
@@ -54,7 +54,7 @@ void ref_rms_q15(
 	q63_t sumsq=0;
 	q31_t tmp1;
 	q15_t tmp2;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 			sumsq += (q63_t)pSrc[i] * pSrc[i];

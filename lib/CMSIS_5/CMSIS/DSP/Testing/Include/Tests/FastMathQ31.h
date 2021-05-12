@@ -11,7 +11,7 @@ class FastMathQ31:public Client::Suite
             virtual void tearDown(Testing::testID_t,Client::PatternMgr *mgr);
         private:
             #include "FastMathQ31_decl.h"
-            
+
             Client::Pattern<q31_t> input;
 
             Client::LocalPattern<q31_t> output;
@@ -19,5 +19,5 @@ class FastMathQ31:public Client::Suite
             // Reference patterns are not loaded when we are in dump mode
             Client::RefPattern<q31_t> ref;
 
-           
+
     };

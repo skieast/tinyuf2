@@ -21,7 +21,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include "mem_ARMCM33.h" 
+#include "mem_ARMCM33.h"
 
 __STACK_SIZE = 0x2000;
 __HEAP_SIZE  = 0x5000;
@@ -119,7 +119,7 @@ SECTIONS
   /**
    * Location counter can end up 2byte aligned with narrow Thumb code but
    * __etext is assumed by startup code to be the LMA of a section in RAM
-   * which must be 4byte aligned 
+   * which must be 4byte aligned
    */
   __etext = ALIGN (4);
 
@@ -236,6 +236,3 @@ SECTIONS
   /* Check if data + heap + stack exceeds RAM limit */
   ASSERT(__StackLimit >= __HeapLimit, "region RAM overflowed with stack")
 }
-
-
-

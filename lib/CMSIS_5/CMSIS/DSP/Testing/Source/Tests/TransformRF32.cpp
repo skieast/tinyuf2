@@ -17,19 +17,19 @@
        float32_t *outp = outputfft.ptr();
 
        memcpy(tmp,inp,sizeof(float32_t)*input.nbSamples());
-   
+
         arm_rfft_fast_f32(
              &this->instRfftF32,
              tmp,
              outp,
              this->ifft);
-          
+
         ASSERT_SNR(outputfft,ref,(float32_t)SNR_THRESHOLD);
         ASSERT_EMPTY_TAIL(outputfft);
-        
-    } 
 
-  
+    }
+
+
     void TransformRF32::setUp(Testing::testID_t id,std::vector<Testing::param_t>& paramsArgs,Client::PatternMgr *mgr)
     {
 
@@ -460,9 +460,9 @@
 
        }
 
-       
+
       outputfft.create(ref.nbSamples(),TransformRF32::OUTPUT_RFFT_F32_ID,mgr);
-       
+
 
     }
 

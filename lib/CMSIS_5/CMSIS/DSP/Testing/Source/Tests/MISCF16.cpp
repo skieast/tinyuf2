@@ -5,7 +5,7 @@
 #include "Test.h"
 
 #define SNR_THRESHOLD 60
-/* 
+/*
 
 Reference patterns are generated with
 a double precision computation.
@@ -16,8 +16,8 @@ a double precision computation.
 
     void MISCF16::test_correlate_f16()
     {
-        const float16_t *inpA=inputA.ptr(); 
-        const float16_t *inpB=inputB.ptr(); 
+        const float16_t *inpA=inputA.ptr();
+        const float16_t *inpB=inputB.ptr();
         float16_t *outp=output.ptr();
 
         arm_correlate_f16(inpA, inputA.nbSamples(),
@@ -32,8 +32,8 @@ a double precision computation.
 /*
     void MISCF16::test_conv_f16()
     {
-        const float16_t *inpA=inputA.ptr(); 
-        const float16_t *inpB=inputB.ptr(); 
+        const float16_t *inpA=inputA.ptr();
+        const float16_t *inpB=inputB.ptr();
         float16_t *outp=output.ptr();
 
         arm_conv_f16(inpA, inputA.nbSamples(),
@@ -46,7 +46,7 @@ a double precision computation.
     }
 */
 
-  
+
     void MISCF16::setUp(Testing::testID_t id,std::vector<Testing::param_t>& paramsArgs,Client::PatternMgr *mgr)
     {
         (void)paramsArgs;
@@ -701,12 +701,12 @@ a double precision computation.
        inputB.reload(MISCF16::INPUTB_F16_ID,mgr,nbb);
 
        output.create(ref.nbSamples(),MISCF16::OUT_F16_ID,mgr);
-        
+
     }
 
     void MISCF16::tearDown(Testing::testID_t id,Client::PatternMgr *mgr)
     {
       (void)id;
       output.dump(mgr);
-      
+
     }

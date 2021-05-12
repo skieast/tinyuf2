@@ -12,4 +12,3 @@ const char *patternData=(const char*)patterns;
 #ifdef   __cplusplus
 }
 #endif
-

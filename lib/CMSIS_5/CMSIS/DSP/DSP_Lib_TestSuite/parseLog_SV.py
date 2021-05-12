@@ -3,7 +3,7 @@
 import sys
 
 toolchain_list = ["ARM", "GCC", "ARMCLANG"]
-core_list      = ["cortexM0l", "cortexM3l", "cortexM4l", "cortexM4lf", "cortexM7l", "cortexM7lfsp", "cortexM7lfdp", 
+core_list      = ["cortexM0l", "cortexM3l", "cortexM4l", "cortexM4lf", "cortexM7l", "cortexM7lfsp", "cortexM7lfdp",
                   "ARMv8MBLl", "ARMv8MMLl", "ARMv8MMLlfsp", "ARMv8MMLlfdp", "ARMv8MMLld", "ARMv8MMLldfsp", "ARMv8MMLldfdp" ]
 test_list      = ["MPS2", "FVP", "Simulator"]
 error          = 1

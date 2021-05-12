@@ -4,7 +4,7 @@
 /*----------------------------------------------------------------------------
  *      Mutex creation & usage
  *---------------------------------------------------------------------------*/
- 
+
 void Thread_Mutex (void const *argument);                       // thread function
 osThreadId tid_Thread_Mutex;                                    // thread id
 osThreadDef (Thread_Mutex, osPriorityNormal, 1, 0);             // thread object
@@ -19,10 +19,10 @@ int Init_Mutex (void) {
   if (!tid_Thread_Mutex) {
     ; // Mutex object not created, handle failure
   }
-  
+
   tid_Thread_Mutex = osThreadCreate (osThread(Thread_Mutex), NULL);
   if (!tid_Thread_Mutex) return(-1);
-  
+
   return(0);
 }
 

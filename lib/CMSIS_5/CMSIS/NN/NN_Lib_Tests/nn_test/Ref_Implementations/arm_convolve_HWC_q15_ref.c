@@ -21,7 +21,7 @@
 void arm_convolve_HWC_q15_ref(const q15_t * Im_in,  // input image
                               const uint16_t dim_im_in, // input image dimention
                               const uint16_t ch_im_in,  // number of input image channels
-                              const q15_t * wt, // kernel weights 
+                              const q15_t * wt, // kernel weights
                               const uint16_t ch_im_out, // number of filters, i.e., output image channels
                               const uint16_t dim_kernel,    // filter kernel size
                               const uint16_t padding,   // padding sizes

@@ -77,7 +77,7 @@ __ASM void Vectors(void) {
 __ASM void Reset_Handler(void) {
 
   // Mask interrupts
-  CPSID   if                           
+  CPSID   if
 
   // Put any cores other than 0 to sleep
   MRC     p15, 0, R0, c0, c0, 5       // Read MPIDR

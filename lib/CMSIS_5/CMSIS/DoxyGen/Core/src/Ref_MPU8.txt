@@ -8,23 +8,23 @@ The MPU is used to prevent from illegal memory accesses that are typically cause
 
 <b>Example:</b>
 \code
-void main() 
+void main()
 {
   // Set Region 0 using Attr 0
   ARM_MPU_SetMemAttr(0UL, ARM_MPU_ATTR(       /* Normal memory */
     ARM_MPU_ATTR_MEMORY_(0UL, 1UL, 1UL, 1UL), /* Outer Write-Back transient with read and write allocate */
     ARM_MPU_ATTR_MEMORY_(0UL, 0UL, 1UL, 1UL)  /* Inner Write-Through transient with read and write allocate */
   ));
-  
+
   ARM_MPU_SetRegion(0UL,
     ARM_MPU_RBAR(0x08000000UL, ARM_MPU_SH_NON, 0UL, 1UL, 1UL),  /* Non-shareable, read/write, non-privileged, execute-never */
     ARM_MPU_RLAR(0x080FFFFFUL, 0UL)                             /* 1MB memory block using Attr 0 */
   );
-  
+
   ARM_MPU_Enable(0);
-  
+
   // Execute application code that is access protected by the MPU
-  
+
   ARM_MPU_Disable();
 }
 \endcode
@@ -47,7 +47,7 @@ void main()
 #define ARM_MPU_ATTR_MEMORY_(NT, WB, RA, WA)
 
 /** \brief Device memory type non Gathering, non Re-ordering, non Early Write Acknowledgement */
-#define ARM_MPU_ATTR_DEVICE_nGnRnE 
+#define ARM_MPU_ATTR_DEVICE_nGnRnE
 
 /** \brief Device memory type non Gathering, non Re-ordering, Early Write Acknowledgement */
 #define ARM_MPU_ATTR_DEVICE_nGnRE
@@ -105,7 +105,7 @@ typedef struct {
   uint32_t RBAR;                   /*!< Region Base Address Register value */
   uint32_t RLAR;                   /*!< Region Limit Address Register value */
 } ARM_MPU_Region_t;
-    
+
 /** Enable the MPU.
 * \param MPU_Control Default access permissions for unconfigured regions.
 */
@@ -164,21 +164,21 @@ __STATIC_INLINE void ARM_MPU_ClrRegion_NS(uint32_t rnr);
 * \param rnr Region number to be configured.
 * \param rbar Value for RBAR register.
 * \param rlar Value for RLAR register.
-*/   
+*/
 __STATIC_INLINE void ARM_MPU_SetRegionEx(MPU_Type* mpu, uint32_t rnr, uint32_t rbar, uint32_t rlar);
 
 /** Configure the given MPU region.
 * \param rnr Region number to be configured.
 * \param rbar Value for RBAR register.
 * \param rlar Value for RLAR register.
-*/   
+*/
 __STATIC_INLINE void ARM_MPU_SetRegion(uint32_t rnr, uint32_t rbar, uint32_t rlar);
 
 /** Configure the given Non-secure MPU region.
 * \param rnr Region number to be configured.
 * \param rbar Value for RBAR register.
 * \param rlar Value for RLAR register.
-*/   
+*/
 __STATIC_INLINE void ARM_MPU_SetRegion_NS(uint32_t rnr, uint32_t rbar, uint32_t rlar);
 
 /** Memcopy with strictly ordered memory access, e.g. for register targets.
@@ -205,14 +205,14 @@ __STATIC_INLINE void ARM_MPU_LoadEx(MPU_Type* mpu, uint32_t rnr, ARM_MPU_Region_
 * \code
 * const ARM_MPU_Region_t mpuTable[1][4] = {
 *   {
-*     //                     BASE          SH              RO   NP   XN                         LIMIT         ATTR 
+*     //                     BASE          SH              RO   NP   XN                         LIMIT         ATTR
 *     { .RBAR = ARM_MPU_RBAR(0x08000000UL, ARM_MPU_SH_NON, 0UL, 1UL, 0UL), .RLAR = ARM_MPU_RLAR(0x080FFFFFUL, 0UL) },
 *     { .RBAR = ARM_MPU_RBAR(0x20000000UL, ARM_MPU_SH_NON, 0UL, 1UL, 1UL), .RLAR = ARM_MPU_RLAR(0x20007FFFUL, 0UL) },
 *     { .RBAR = ARM_MPU_RBAR(0x40020000UL, ARM_MPU_SH_NON, 0UL, 1UL, 1UL), .RLAR = ARM_MPU_RLAR(0x40021FFFUL, 1UL) },
 *     { .RBAR = ARM_MPU_RBAR(0x40022000UL, ARM_MPU_SH_NON, 0UL, 1UL, 1UL), .RLAR = ARM_MPU_RLAR(0x40022FFFUL, 1UL) }
 *   }
 * };
-*  
+*
 * void UpdateMpu(uint32_t idx)
 * {
 *    ARM_MPU_Load(0, mpuTable[idx], 4);
@@ -229,4 +229,3 @@ __STATIC_INLINE void ARM_MPU_Load(uint32_t rnr, ARM_MPU_Region_t const* table, u
 __STATIC_INLINE void ARM_MPU_Load_NS(uint32_t rnr, ARM_MPU_Region_t const* table, uint32_t cnt);
 
 /** @} */
-

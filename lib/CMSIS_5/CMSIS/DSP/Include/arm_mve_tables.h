@@ -37,7 +37,7 @@ extern "C"
 #endif
 
 
- 
+
 
 #if defined(ARM_MATH_MVEF) && !defined(ARM_MATH_AUTOVECTORIZE)
 
@@ -227,4 +227,3 @@ extern q15_t rearranged_twiddle_stride3_4096_q15[2728];
 #endif
 
 #endif /*_ARM_MVE_TABLES_H*/
-

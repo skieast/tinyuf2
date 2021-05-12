@@ -51,4 +51,4 @@ HKR,,DeviceInterfaceGUIDs,0x10000,"{CDB3B5AD-293B-4663-AA36-1AAE46463776}"
 [Strings]
 ClassName        = "Universal Serial Bus devices"
 ManufacturerName = "KEIL - Tools By ARM"
-DeviceName       = "CMSIS-DAP v2" 
+DeviceName       = "CMSIS-DAP v2"

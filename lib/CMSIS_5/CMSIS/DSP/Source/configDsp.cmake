@@ -1,7 +1,7 @@
 function(configDsp project root)
 
 if (CONFIGTABLE)
-    # Public because initialization for FFT may be defined in client code 
+    # Public because initialization for FFT may be defined in client code
     # and needs access to the table.
     target_compile_definitions(${project} PUBLIC ARM_DSP_CONFIG_TABLES)
 endif()
@@ -19,7 +19,7 @@ if (MATRIXCHECK)
 endif()
 
 if (AUTOVECTORIZE)
-    target_compile_definitions(${project} PRIVATE ARM_MATH_AUTOVECTORIZE) 
+    target_compile_definitions(${project} PRIVATE ARM_MATH_AUTOVECTORIZE)
 endif()
 
 if (NEON OR NEONEXPERIMENTAL)
@@ -28,7 +28,7 @@ if (NEON OR NEONEXPERIMENTAL)
 endif()
 
 if (MVEFLOAT16)
-    target_compile_definitions(${project} PRIVATE ARM_MATH_MVE_FLOAT16) 
+    target_compile_definitions(${project} PRIVATE ARM_MATH_MVE_FLOAT16)
 endif()
 
 if (HELIUM OR MVEF OR SUPPORT)
@@ -36,7 +36,7 @@ if (HELIUM OR MVEF OR SUPPORT)
 endif()
 
 if (DISABLEFLOAT16)
-    target_compile_definitions(${project} PRIVATE DISABLEFLOAT16) 
+    target_compile_definitions(${project} PRIVATE DISABLEFLOAT16)
 endif()
 
 

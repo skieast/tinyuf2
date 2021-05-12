@@ -57,7 +57,7 @@ LR_ROM __RO_BASE __RO_SIZE  {                       ; load region size_region
    *(InRoot$$Sections)
    .ANY (+RO)
   }
-  
+
   RW_RAM __RW_BASE __RW_SIZE  {                     ; RW data
    .ANY (+RW +ZI)
   }
@@ -65,6 +65,6 @@ LR_ROM __RO_BASE __RO_SIZE  {                       ; load region size_region
   ARM_LIB_HEAP  __HEAP_BASE EMPTY  __HEAP_SIZE  { ; Reserve empty region for heap
   }
 
-  ARM_LIB_STACK __STACK_TOP EMPTY -__STACK_SIZE { ; Reserve empty region for stack 
+  ARM_LIB_STACK __STACK_TOP EMPTY -__STACK_SIZE { ; Reserve empty region for stack
   }
 }

@@ -14,12 +14,12 @@ The complete file collection along with the PDSC file is shipped in ZIP-format (
 for software development environments and describes the user and device relevant context for the files supplied within such
 a pack file.
 
-The CMSIS-Pack system solves several problems: 
+The CMSIS-Pack system solves several problems:
 
 - It provides meta-data of files that relate to a software component. All files that belong to a software component can be
-  identified and information about the original provider is preserved. 
+  identified and information about the original provider is preserved.
 - It enables consistent software component upgrade and identifies incompatible configuration files that may be part of the
-  user application. 
+  user application.
 - Software component providers can specify the interfaces and relationship to other software components.
 - The meta-data of a software component can include dependency information for toolchains, devices, and processors which
   simplifies the integration into application programs.
@@ -34,7 +34,7 @@ The \subpage pack_revisionHistory lists the main changes between versions.
 \section SWPackVariants Software Pack Use Cases
 
 A pack can be used for multiple purposes:
- 
+
 \image html SPVariants_small.png  "Software Pack Use Cases"
 
 The figure above shows the following use cases for Software Packs:
@@ -67,7 +67,7 @@ The following sections provide more information:
 CMSIS-Pack in ARM::CMSIS Pack
 -----------------------------
 Files relevant to CMSIS-Pack are present in the following \b ARM::CMSIS directories:
-|Folder          |Content                                       | 
+|Folder          |Content                                       |
 |----------------|----------------------------------------------|
 |Utilities       | \ref createPackUtil                          |
 |Pack\\Tutorials | Tutorials for \ref cp_Packs "Creating Packs" |
@@ -76,7 +76,7 @@ Files relevant to CMSIS-Pack are present in the following \b ARM::CMSIS director
 
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
-\page pack_revisionHistory Revision History of CMSIS-Pack 
+\page pack_revisionHistory Revision History of CMSIS-Pack
 
 <table class="cmtable" summary="Revision History">
   <tr>
@@ -86,7 +86,7 @@ Files relevant to CMSIS-Pack are present in the following \b ARM::CMSIS director
   <tr>
     <td>1.6.3</td>
 	<td>
-- removed CMSIS Project Description format (cpdsc) from CMSIS-Pack. Format has been superseeded by new format specification located in the CMSIS 
+- removed CMSIS Project Description format (cpdsc) from CMSIS-Pack. Format has been superseeded by new format specification located in the CMSIS
   <a href="../../Build/html/cprjFormat_pg.html"><b>Build</b></a> tab.
 - added \ref dbg_setup_tutorial "debug setup tutorial" to the documentation.
 - updated documentation of PackChk \ref packChkMessages "errors and warnings".
@@ -105,7 +105,7 @@ Files relevant to CMSIS-Pack are present in the following \b ARM::CMSIS director
 	<td>Modifications compared to Version 1.6.1
   - added \ref element_accessportV1 "\<accessportV1>" and \ref element_accessportV2 "\<accessportV2>" to describe CoreSight access port parameters.
   - added attribute '__apid' to \ref element_debug "\<debug>" and \ref element_dbg_datapatch "\<datapatch>" to reference \<accessportV1> and \<accessportV2> elements.
-  - added attribute 'dormant' to \ref element_debugconfig "\<debugconfig>" element.	
+  - added attribute 'dormant' to \ref element_debugconfig "\<debugconfig>" element.
 	</td>
   </tr>
   <tr>
@@ -192,9 +192,9 @@ Files relevant to CMSIS-Pack are present in the following \b ARM::CMSIS director
     - &lt;compiler&gt; defining required toolchains
 - added: &lt;create&gt; section used for tool independent project description
     - attributes: name, documentation, condition
-    - &lt;target&gt; specifies the board and device targeted by the project 
-    - &lt;options&gt; 
-    - &lt;files&gt; specifies the grouped files 
+    - &lt;target&gt; specifies the board and device targeted by the project
+    - &lt;options&gt;
+    - &lt;files&gt; specifies the grouped files
 - updated: &lt;algorith&gt; element
     - added attributes: style, parameter and endian
 - updated: &lt;memory&gt; element
@@ -211,7 +211,7 @@ Files relevant to CMSIS-Pack are present in the following \b ARM::CMSIS director
   <tr>
     <td>1.4.1</td>
     <td>Modifications compared to Version 1.4.0
-- pName, Dname, Dvariant type changed from xs:string to RestrictedString 
+- pName, Dname, Dvariant type changed from xs:string to RestrictedString
     </td>
   </tr>
   <tr>
@@ -236,10 +236,10 @@ Files relevant to CMSIS-Pack are present in the following \b ARM::CMSIS director
   - check presence of board image files
   - check for duplicate device features
   - check for duplicate device definitions
-  - check for 
+  - check for
   - minor bug fixes
     </td>
-  </tr> 
+  </tr>
   <tr>
     <td>1.3.1</td>
     <td>Modifications compared to Version 1.3:
@@ -250,7 +250,7 @@ Files relevant to CMSIS-Pack are present in the following \b ARM::CMSIS director
 - <em>Updated</em> XML file header encoding tag set to capital "UTF8"
 - <em>Deprecated</em> init attribute of &lt;memory&gt; element in &lt;devices&gt; section deprecated
     </td>
-  </tr> 
+  </tr>
   <tr>
     <td>1.3</td>
     <td>Modifications compared to Version 1.2:
@@ -275,7 +275,7 @@ Files relevant to CMSIS-Pack are present in the following \b ARM::CMSIS director
  - <em>new</em> Debug description
  - <em>revised</em> Device Feature capture
  - <em>new</em> Generator description
- - <em>new</em> Flash Algorithm Specification 
+ - <em>new</em> Flash Algorithm Specification
  - <em>new</em> Configuration Wizard Annotation Specification</td>
   </tr>
   <tr>
@@ -288,6 +288,3 @@ Files relevant to CMSIS-Pack are present in the following \b ARM::CMSIS director
   </tr>
 </table>
 */
-
-
-

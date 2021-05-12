@@ -1,4 +1,4 @@
-/* -------------------------------------------------------------------------- 
+/* --------------------------------------------------------------------------
  * Copyright (c) 2013-2019 ARM Limited. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
@@ -100,7 +100,7 @@ void app_msg (void *argument) {
         cnt = *((uint32_t*)(msg->data));
       }
       printf("app_msg: received [cmd = %d, data = 0x%0X]\n", msg->cmd, cnt);
-      
+
       // Free memory of the message
       status = osMemoryPoolFree(memPool, msg);
       if (status != osOK) {
@@ -126,7 +126,7 @@ int main (void) {
 
   // Create message queue used to pass pointers to msg_t
   msgQueue = osMessageQueueNew(10U, sizeof(msg_t*), NULL);
-  
+
   // Create memory pool for actual message objects
   memPool = osMemoryPoolNew(10U, sizeof(msg_t), NULL);
 

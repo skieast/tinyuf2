@@ -112,16 +112,16 @@ void arm_cmplx_mult_cmplx_f32(
     {
       /* C[2 * i    ] = A[2 * i] * B[2 * i    ] - A[2 * i + 1] * B[2 * i + 1]. */
       /* C[2 * i + 1] = A[2 * i] * B[2 * i + 1] + A[2 * i + 1] * B[2 * i    ]. */
-  
+
       a = *pSrcA++;
       b = *pSrcA++;
       c = *pSrcB++;
       d = *pSrcB++;
-  
+
       /* store result in destination buffer. */
       *pDst++ = (a * c) - (b * d);
       *pDst++ = (a * d) + (b * c);
-  
+
       /* Decrement loop counter */
       blkCnt--;
     }
@@ -153,7 +153,7 @@ void arm_cmplx_mult_cmplx_f32(
 	/* Increment pointers */
         pSrcA += 8;
         pSrcB += 8;
-	
+
 	/* Re{C} = Re{A}*Re{B} - Im{A}*Im{B} */
         outCplx.val[0] = vmulq_f32(va.val[0], vb.val[0]);
         outCplx.val[0] = vmlsq_f32(outCplx.val[0], va.val[1], vb.val[1]);

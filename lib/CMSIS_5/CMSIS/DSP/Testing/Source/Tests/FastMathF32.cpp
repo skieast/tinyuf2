@@ -6,7 +6,7 @@
 
 
 #define SNR_THRESHOLD 120
-/* 
+/*
 
 Reference patterns are generated with
 a double precision computation.
@@ -73,7 +73,7 @@ a double precision computation.
         float32_t *outp  = output.ptr();
 
         arm_vlog_f32(inp,outp,ref.nbSamples());
-    
+
         ASSERT_SNR(ref,output,(float32_t)SNR_THRESHOLD);
         ASSERT_CLOSE_ERROR(ref,output,ABS_ERROR,REL_ERROR);
         ASSERT_EMPTY_TAIL(output);
@@ -86,14 +86,14 @@ a double precision computation.
         float32_t *outp  = output.ptr();
 
         arm_vexp_f32(inp,outp,ref.nbSamples());
-    
+
         ASSERT_SNR(ref,output,(float32_t)SNR_THRESHOLD);
         ASSERT_CLOSE_ERROR(ref,output,ABS_ERROR,REL_ERROR);
         ASSERT_EMPTY_TAIL(output);
 
     }
 
-  
+
     void FastMathF32::setUp(Testing::testID_t id,std::vector<Testing::param_t>& paramsArgs,Client::PatternMgr *mgr)
     {
         (void)paramsArgs;
@@ -198,12 +198,12 @@ a double precision computation.
             }
             break;
         }
-        
+
     }
 
     void FastMathF32::tearDown(Testing::testID_t id,Client::PatternMgr *mgr)
     {
       (void)id;
       output.dump(mgr);
-      
+
     }

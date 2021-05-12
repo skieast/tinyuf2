@@ -21,14 +21,14 @@ system view of a device. These are "expert" settings that cannot be specified in
     <platform>
         <!-- Description of the scanchain -->
         <scanchain>
-        
+
             <!-- ARM Cortex-M0APP -->
             <dap name="ARMCS-DP_CM0APP" type="ARMCS-DP" irLength="4" protocol="JTAG">
                 <!-- CoreSight DAP Info -->
                 <device_info_items>
                     <device_info_item name="JTAG_IDCODE">0x0BA01477</device_info_item>
                 </device_info_items>
-                
+
                 <!-- Access Ports -->
                 <device name="CM0APP_AHB-AP" type="CSMEMAP"> <!-- Cortex-M0APP AHB-AP -->
                     <config_items>
@@ -39,7 +39,7 @@ system view of a device. These are "expert" settings that cannot be specified in
                         <device_info_item name="ROM_TABLE_BASE_ADDRESS">0xE00FF000</device_info_item>
                     </device_info_items>
                 </device>
-                
+
                 <!-- Cortex-M0APP AHB-AP Components -->
                 <device name="CM0APP_CPU" type="Cortex-M0">
                     <config_items>
@@ -60,14 +60,14 @@ system view of a device. These are "expert" settings that cannot be specified in
                     </config_items>
                 </device>
             </dap>
-            
+
             <!-- ARM Cortex-M4 -->
             <dap name="ARMCS-DP_CM4" type="ARMCS-DP" irLength="4" protocol="SWD:JTAG">
                 <!-- CoreSight DAP Info -->
                 <device_info_items>
                     <device_info_item name="JTAG_IDCODE">0x4BA00477</device_info_item>
                 </device_info_items>
-                
+
                 <!-- Access Ports -->
                 <device name="CM4_AHB-AP" type="CSMEMAP"> <!-- Cortex-M4 AHB-AP -->
                     <config_items>
@@ -78,7 +78,7 @@ system view of a device. These are "expert" settings that cannot be specified in
                         <device_info_item name="ROM_TABLE_BASE_ADDRESS">0xE00FF000</device_info_item>
                     </device_info_items>
                 </device>
-                
+
                 <!-- Cortex-M4 AHB-AP Components -->
                 <device name="CM4_CPU" type="Cortex-M4">
                     <config_items>
@@ -136,9 +136,9 @@ system view of a device. These are "expert" settings that cannot be specified in
                     </config_items>
                 </device>
             </dap>
-            
+
         </scanchain>
-    
+
         <topology>
             <!-- Trace Links -->
             <!-- Core Trace - Cortex-M4 -->
@@ -180,7 +180,7 @@ can be found under the ARM.CMSIS.*.Pack in the .\\CMSIS\\Utilities-directory.
     <td>schemaVersion</td>
     <td>Version of sdf_schema.xsd the description is compatible with</td>
     <td>xs:decimal</td>
-    <td>required</td>  
+    <td>required</td>
   </tr>
   <tr>
     <th>Child Elements</th>
@@ -202,7 +202,7 @@ can be found under the ARM.CMSIS.*.Pack in the .\\CMSIS\\Utilities-directory.
   </tr>
 </table>
 
-\delim 
+\delim
 
 \section sdf_element_debug_and_trace_config /system_description/debug_and_trace_config
 
@@ -227,13 +227,13 @@ Describes the recommended debug and trace configuration for the device.
     <td>\ref sdf_element_debug</td>
     <td>Describes the debug connection configuration</td>
     <td>complexType</td>
-    <td>0..1</td>  
+    <td>0..1</td>
   </tr>
   <tr>
     <td>\ref sdf_element_trace</td>
     <td>Describes the trace configuration</td>
     <td>complexType</td>
-    <td>0..1</td>  
+    <td>0..1</td>
   </tr>
 </table>
 
@@ -262,7 +262,7 @@ Describes the recommended debug configuration for the device.
     <td>\ref sdf_element_config_item</td>
     <td>Describes a configuration item attribute/value pair</td>
     <td>xs:string</td>
-    <td>0..*</td>  
+    <td>0..*</td>
   </tr>
 </table>
 
@@ -301,7 +301,7 @@ A <b>config_item</b> can appear in various SDF elements. This group contains ind
     <td>Name of the configuration item.</td>
     <td>xs:string</td>
     <td>required</td>
-  </tr>  
+  </tr>
 </table>
 
 Debug element
@@ -309,7 +309,7 @@ Debug element
 
 The \b config_items applicable to the \ref sdf_element_debug "debug" element are the following:
 
-| Item                   | Description | 
+| Item                   | Description |
 |------------------------|-------------|
 | TRSTOnConnect          | Debugger should perform TAP reset on connect (True/False) - Default Value:True |
 | SRSTOnConnect          | Debugger should perform a System reset on connect (True/False) - Default Value:False |
@@ -344,10 +344,10 @@ The \b config_items applicable to the \ref sdf_element_trace "trace" element are
    | CLOCK_EDGE             | Set to 0 or 1 to specify the clock edge on which to capture data | 1 |
    | DELAY_TRACE_CLOCK      | Adjust the sampling point for the trace clock by the specified number of picoseconds | 0 |
    | DELAY_TRACE_SIGNAL_1 to DELAY_TRACE_SIGNAL_n | Adjust the sampling point for parallel trace signal 'n' by the specified number of picoseconds | 0 |
-   
+
 -# High-speed serial trace configuration items ("type"="HSSTP"). These configuration items do not have any default values. If
    they are not present in the SDF file then HSSTP trace is not supported by the target.
-   | Item                   | Description | 
+   | Item                   | Description |
    |------------------------|-------------|
    | HSSTP_LANES            | The number of lanes (1-6) |
    | HSSTP_SPEED            | The HSSTP link speed (HSSTP_2_5Gbps, , HSSTP_3_0Gbps, HSSTP_3_125Gbps, HSSTP_4_25Gbps, HSSTP_5_0Gbps, HSSTP_6_0Gbps, HSSTP_6_25Gbps, HSSTP_8_0Gbps, HSSTP_10_0Gbps, HSSTP_10_3125Gbps, HSSTP_12_0Gbps, HSSTP_12_5Gbps, HSSTP_SETM_1_5Gbps, HSSTP_SETM_3_0Gbps, HSSTP_SETM_6_0Gbps)
@@ -372,7 +372,7 @@ The \b config_items applicable to the \ref sdf_element_trace "trace" element are
     </config_items>
 </device>
 ...
-\endcode   
+\endcode
 \delim
 
 \section sdf_element_trace /system_description/debug_and_trace_config/trace
@@ -398,7 +398,7 @@ Describes the recommended trace configuration for the device.
     <td>\ref sdf_element_trace_capture</td>
     <td>Describes the trace capture device</td>
     <td>complexType</td>
-    <td>0..*</td>  
+    <td>0..*</td>
   </tr>
 </table>
 
@@ -427,7 +427,7 @@ Describes settings for the trace capture device.
     <td>\ref sdf_element_config_item</td>
     <td>Describes a configuration item attribute/value pair</td>
     <td>complexType</td>
-    <td>0..*</td>  
+    <td>0..*</td>
   </tr>
   <tr>
     <th>Attributes</th>
@@ -468,19 +468,19 @@ Describes the platform configuration (scanchain, topology and cluster arrangemen
     <td>\ref sdf_element_scanchain</td>
     <td>Lists all DAPs/Devices in the order that they appear on the scanchain (Note - order is reverse to DAP references in PDSC files). The first device in the scanchain is one closest to target's TDI pin.</td>
     <td>complexType</td>
-    <td>0..*</td>  
+    <td>0..*</td>
   </tr>
   <tr>
     <td>\ref sdf_element_topology</td>
     <td>Describes the system topology</td>
     <td>complexType</td>
-    <td>0..1</td>  
+    <td>0..1</td>
   </tr>
   <tr>
     <td>\ref sdf_element_clusters</td>
     <td>Describes the cluster arrangement</td>
     <td>complexType</td>
-    <td>0..1</td>  
+    <td>0..1</td>
   </tr>
 </table>
 
@@ -512,13 +512,13 @@ target's TDI pin.
     <td>\ref sdf_element_dap</td>
     <td>Describes a DAP and a list of devices associated with that DAP.</td>
     <td>complexType</td>
-    <td>0..*</td>  
+    <td>0..*</td>
   </tr>
   <tr>
     <td>\ref sdf_element_device</td>
     <td>Describes a single device on the scan chain.</td>
     <td>complexType</td>
-    <td>0..*</td>  
+    <td>0..*</td>
   </tr>
 </table>
 
@@ -534,7 +534,7 @@ target's TDI pin.
         <device_info_items>
             <device_info_item name="JTAG_IDCODE">0x0BA01477</device_info_item>
         </device_info_items>
-        
+
         <!-- Access Ports -->
         <device name="CM0APP_AHB-AP" type="CSMEMAP"> <!-- Cortex-M0APP AHB-AP -->
             <config_items>
@@ -545,7 +545,7 @@ target's TDI pin.
                 <device_info_item name="ROM_TABLE_BASE_ADDRESS">0xE00FF000</device_info_item>
             </device_info_items>
         </device>
-        
+
         <!-- Cortex-M0APP AHB-AP Components -->
         <device name="CM0APP_CPU" type="Cortex-M0">
             <config_items>
@@ -566,14 +566,14 @@ target's TDI pin.
             </config_items>
         </device>
     </dap>
-    
+
     <!-- ARM Cortex-M4 -->
     <dap name="ARMCS-DP_CM4" type="ARMCS-DP" irLength="4" protocol="SWD:JTAG">
         <!-- CoreSight DAP Info -->
         <device_info_items>
             <device_info_item name="JTAG_IDCODE">0x4BA00477</device_info_item>
         </device_info_items>
-        
+
         <!-- Access Ports -->
         <device name="CM4_AHB-AP" type="CSMEMAP"> <!-- Cortex-M4 AHB-AP -->
             <config_items>
@@ -584,7 +584,7 @@ target's TDI pin.
                 <device_info_item name="ROM_TABLE_BASE_ADDRESS">0xE00FF000</device_info_item>
             </device_info_items>
         </device>
-        
+
         <!-- Cortex-M4 AHB-AP Components -->
         <device name="CM4_CPU" type="Cortex-M4">
             <config_items>
@@ -642,7 +642,7 @@ target's TDI pin.
             </config_items>
         </device>
     </dap>
-    
+
 </scanchain>
 ...
 \endcode
@@ -671,20 +671,20 @@ Describes a DAP and a list of devices associated with that DAP.
     <td>\ref sdf_element_device</td>
     <td>List of devices associated with this DAP.</td>
     <td>complexType</td>
-    <td>0..*</td>  
+    <td>0..*</td>
   </tr>
   <tr>
     <td>\ref sdf_element_device_info_items</td>
     <td>Contains implementation details for the DAP. Applicable items for a DAP are "JTAG_IDCODE" (the JTAG ID code for the
 	    DAP) or "DPIDR" (the Debug Port Identification Register contents).</td>
     <td>complexType</td>
-    <td>0..*</td>  
+    <td>0..*</td>
   </tr>
   <tr>
     <td>\ref sdf_element_config_items</td>
     <td>Configuration items specific to a DAP type.</td>
     <td>complexType</td>
-    <td>0..*</td>  
+    <td>0..*</td>
   </tr>
   <tr>
     <th>Attributes</th>
@@ -697,31 +697,31 @@ Describes a DAP and a list of devices associated with that DAP.
     <td>Unique name of the DAP.</td>
     <td>xs:string</td>
     <td>required</td>
-  </tr>  
+  </tr>
   <tr>
     <td>type</td>
     <td>Specifies the type of the DAP (e.g. ARMCS-DP).</td>
     <td>xs:string</td>
     <td>required</td>
-  </tr>  
+  </tr>
   <tr>
     <td>irLength</td>
     <td>Specifies the IR length of the DAP (default value: 4).</td>
     <td>xs:string</td>
     <td>optional</td>
-  </tr>  
+  </tr>
   <tr>
     <td>protocol</td>
     <td>Colon delimited list of protocols via which the DAP can be use. Possible values are SWD, JTAG, and cJTAG.</td>
     <td>xs:string</td>
     <td>optional</td>
-  </tr>  
+  </tr>
   <tr>
     <td>targetsel</td>
     <td>Specifies the SW-DPv2 TARGETSEL register value that selects this DAP in a serial-wire debug multi-drop system.</td>
     <td>xs:string</td>
     <td>optional</td>
-  </tr>  
+  </tr>
 </table>
 
 \b Example:
@@ -735,14 +735,14 @@ Describes a DAP and a list of devices associated with that DAP.
     <platform>
         <!-- Description of the scanchain -->
         <scanchain>
-        
+
             <!-- ARM Cortex-M0APP -->
             <dap name="ARMCS-DP_CM0APP" type="ARMCS-DP" irLength="4" protocol="JTAG">
                 <!-- CoreSight DAP Info -->
                 <device_info_items>
                     <device_info_item name="JTAG_IDCODE">0x0BA01477</device_info_item>
                 </device_info_items>
-                
+
                 <!-- Access Ports -->
                 <device name="CM0APP_AHB-AP" type="CSMEMAP"> <!-- Cortex-M0APP AHB-AP -->
                     <config_items>
@@ -753,7 +753,7 @@ Describes a DAP and a list of devices associated with that DAP.
                         <device_info_item name="ROM_TABLE_BASE_ADDRESS">0xE00FF000</device_info_item>
                     </device_info_items>
                 </device>
-                
+
                 <!-- Cortex-M0APP AHB-AP Components -->
                 <device name="CM0APP_CPU" type="Cortex-M0">
                     <config_items>
@@ -805,19 +805,19 @@ Describes a DAP and a list of devices associated with that DAP.
     <td>\ref sdf_element_device</td>
     <td>Describes a single nested device associated with this device.</td>
     <td>complexType</td>
-    <td>0..*</td>  
+    <td>0..*</td>
   </tr>
   <tr>
     <td>\ref sdf_element_device_info_items</td>
     <td>Describes a sequence of device information items.</td>
     <td>complexType</td>
-    <td>0..*</td>  
+    <td>0..*</td>
   </tr>
   <tr>
     <td>\ref sdf_element_config_items</td>
     <td>Configuration items specific to this device.</td>
     <td>complexType</td>
-    <td>0..*</td>  
+    <td>0..*</td>
   </tr>
   <tr>
     <th>Attributes</th>
@@ -830,19 +830,19 @@ Describes a DAP and a list of devices associated with that DAP.
     <td>Unique name of the device.</td>
     <td>xs:string</td>
     <td>required</td>
-  </tr>  
+  </tr>
   <tr>
     <td>type</td>
     <td>Specifies the device type (see below).</td>
     <td>xs:string</td>
     <td>required</td>
-  </tr>  
+  </tr>
   <tr>
     <td>irLength</td>
     <td>Specifies the IR length of the device (default value: 4).</td>
     <td>xs:string</td>
     <td>optional</td>
-  </tr>  
+  </tr>
 </table>
 
 Depending on the context, a device type can be one of the following types:
@@ -916,7 +916,7 @@ device information items and a code example.
     <td>\ref sdf_element_config_item</td>
     <td>Describes a configuration item.</td>
     <td>complexType</td>
-    <td>0..*</td>  
+    <td>0..*</td>
   </tr>
 </table>
 
@@ -950,7 +950,7 @@ The device information items are specific to the type of device or DAP and descr
     <td>\ref sdf_element_device_info_item</td>
     <td>Describes a sequence of device information items.</td>
     <td>xs:string</td>
-    <td>0..*</td>  
+    <td>0..*</td>
   </tr>
 </table>
 
@@ -980,7 +980,7 @@ Describes implementation specific details of the specified device or DAP.
     <td>Unique name for the device information item.</td>
     <td>xs:string</td>
     <td>required</td>
-  </tr>  
+  </tr>
 </table>
 
 The following device information items are applicable for each type of "device":
@@ -1068,7 +1068,7 @@ Describes the system topology.
     <td>\ref sdf_element_topology_link</td>
     <td>Describes how CoreSight devices and cores are connected.</td>
     <td>complexType</td>
-    <td>0..*</td>  
+    <td>0..*</td>
   </tr>
 </table>
 
@@ -1119,43 +1119,43 @@ Describes how CoreSight devices and cores are connected.
     <td>Unique name for the link.</td>
     <td>xs:string</td>
     <td>optional</td>
-  </tr>  
+  </tr>
   <tr>
     <td>type</td>
     <td>Specifies the link type. Can be on of the following: ATB, CoreTrace, or CTITrigger.</td>
     <td>xs:string</td>
     <td>required</td>
-  </tr>  
+  </tr>
   <tr>
     <td>master</td>
     <td>Unique name of the master device in the link.</td>
     <td>xs:string</td>
     <td>required</td>
-  </tr>  
+  </tr>
   <tr>
     <td>slave</td>
     <td>Unique name of the slave device in the link.</td>
     <td>xs:string</td>
     <td>required</td>
-  </tr>  
+  </tr>
   <tr>
     <td>mater_interface</td>
     <td>Specifies the mater interface number.</td>
     <td>xs:string</td>
     <td>optional</td>
-  </tr>  
+  </tr>
   <tr>
     <td>slave_interface</td>
     <td>Specifies the slave interface number.</td>
     <td>xs:string</td>
     <td>optional</td>
-  </tr>  
+  </tr>
   <tr>
     <td>trigger</td>
     <td>Specifies the trigger number.</td>
     <td>xs:string</td>
     <td>optional</td>
-  </tr>  
+  </tr>
 </table>
 
 \b Example:
@@ -1195,7 +1195,7 @@ Describes the cluster arrangement.
     <td>\ref sdf_element_cluster</td>
     <td>Lists the devices that make up the cluster and a unique name for the cluster.</td>
     <td>complexType</td>
-    <td>0..*</td>  
+    <td>0..*</td>
   </tr>
 </table>
 
@@ -1225,13 +1225,13 @@ Lists the devices that make up the cluster.
     <td>Unique name for the cluster (for example Cortex-A15_SMP_0).</td>
     <td>xs:string</td>
     <td>required</td>
-  </tr>  
+  </tr>
   <tr>
     <td>devices</td>
     <td>Colon separated list of named devices in the cluster, for example "Cortex-A15_0:Cortex-A15_1:Cortex-A15_2:Cortex-A15_3".</td>
     <td>xs:string</td>
     <td>required</td>
-  </tr>  
+  </tr>
 </table>
 
 \delim

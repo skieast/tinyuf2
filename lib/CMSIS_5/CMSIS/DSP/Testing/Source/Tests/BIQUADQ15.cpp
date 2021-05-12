@@ -19,13 +19,13 @@ It will have to be reworked
 
         q15_t *statep = state.ptr();
         const q15_t *coefsp = coefs.ptr();
-        
+
         const q15_t *inputp = inputs.ptr();
         q15_t *outp = output.ptr();
 
         int blockSize;
 
-        
+
 
         /*
 
@@ -35,7 +35,7 @@ It will have to be reworked
         We loop on those configs.
 
         */
-        
+
            blockSize = inputs.nbSamples() >> 1;
 
            /*
@@ -48,7 +48,7 @@ It will have to be reworked
 
 
            /*
-           
+
            Python script is filtering a 2*blockSize number of samples.
            We do the same filtering in two pass to check (indirectly that
            the state management of the fir is working.)
@@ -57,7 +57,7 @@ It will have to be reworked
 
            arm_biquad_cascade_df1_q15(&this->S,inputp,outp,blockSize);
            outp += blockSize;
-           
+
            inputp += blockSize;
            arm_biquad_cascade_df1_q15(&this->S,inputp,outp,blockSize);
            outp += blockSize;
@@ -70,14 +70,14 @@ It will have to be reworked
            ASSERT_SNR(output,ref,(q15_t)SNR_THRESHOLD);
 
            ASSERT_NEAR_EQ(output,ref,ABS_ERROR_Q15);
-  
 
-    } 
 
- 
+    }
+
+
     void BIQUADQ15::setUp(Testing::testID_t id,std::vector<Testing::param_t>& params,Client::PatternMgr *mgr)
     {
-      
+
 
        (void)params;
        switch(id)
@@ -86,7 +86,7 @@ It will have to be reworked
         break;
 
        }
-      
+
 
        inputs.reload(BIQUADQ15::BIQUADINPUTS_Q15_ID,mgr);
        coefs.reload(BIQUADQ15::BIQUADCOEFS_Q15_ID,mgr);

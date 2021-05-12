@@ -35,7 +35,7 @@
 __NO_RETURN void app_main (void *argument) {
   (void)argument;
 
-  DAP_Setup();                          // DAP Setup 
+  DAP_Setup();                          // DAP Setup
 
   USBD_Initialize(0U);                  // USB Device Initialization
   USBD_Connect(0U);                     // USB Device Connect

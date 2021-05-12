@@ -38,7 +38,7 @@
 typedef enum  {
   IR_UNKNOW,  /* unknown reason                                        */
   IR_DIVBY0,  /* UsageFault, divide by zero when CCR.DIV_0_TRP is 1    */
-  IR_STKOF,   /* UsageFault, stack overflow                            */ 
+  IR_STKOF,   /* UsageFault, stack overflow                            */
   IR_INVEP,   /* SecureFault, invalid Secure state entry point         */
   IR_WDTEXP,  /* secure systick watchdog timeout                       */
   IR_SECDAT   /* pointer pointing to secure instead non-secure memory  */
@@ -50,7 +50,7 @@ typedef enum  {
 
 
 typedef struct  {
-  IncidentReason_t       Reason;  // incident reason 
+  IncidentReason_t       Reason;  // incident reason
   uint8_t                 Flags;  // secure / non-secure state
 	uint16_t             Reserved;  // reserved (not used)
   uint32_t                 Time;  // time stamp

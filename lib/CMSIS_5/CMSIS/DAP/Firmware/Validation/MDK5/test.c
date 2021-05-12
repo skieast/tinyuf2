@@ -30,7 +30,7 @@ volatile int  test_state = 0;
 volatile int  test_success = 0;
 volatile int  bpTestCounter = 0;
 volatile char mem_rw_success = 0;
-         int  test_array1[256] = {0}; 
+         int  test_array1[256] = {0};
          int  test_array2[256] = {0};
 
 // Breakpoint Test function

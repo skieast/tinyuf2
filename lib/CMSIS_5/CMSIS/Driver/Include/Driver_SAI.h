@@ -74,9 +74,9 @@ extern "C"
 /*----- SAI Control Codes: Configuration Parameters: Protocol -----*/
 #define ARM_SAI_PROTOCOL_Pos             10
 #define ARM_SAI_PROTOCOL_Msk            (7UL << ARM_SAI_PROTOCOL_Pos)
-#define ARM_SAI_PROTOCOL_USER           (0UL << ARM_SAI_PROTOCOL_Pos)           ///< User defined (default) 
+#define ARM_SAI_PROTOCOL_USER           (0UL << ARM_SAI_PROTOCOL_Pos)           ///< User defined (default)
 #define ARM_SAI_PROTOCOL_I2S            (1UL << ARM_SAI_PROTOCOL_Pos)           ///< I2S
-#define ARM_SAI_PROTOCOL_MSB_JUSTIFIED  (2UL << ARM_SAI_PROTOCOL_Pos)           ///< MSB (left) justified 
+#define ARM_SAI_PROTOCOL_MSB_JUSTIFIED  (2UL << ARM_SAI_PROTOCOL_Pos)           ///< MSB (left) justified
 #define ARM_SAI_PROTOCOL_LSB_JUSTIFIED  (3UL << ARM_SAI_PROTOCOL_Pos)           ///< LSB (right) justified
 #define ARM_SAI_PROTOCOL_PCM_SHORT      (4UL << ARM_SAI_PROTOCOL_Pos)           ///< PCM with short frame
 #define ARM_SAI_PROTOCOL_PCM_LONG       (5UL << ARM_SAI_PROTOCOL_Pos)           ///< PCM with long frame

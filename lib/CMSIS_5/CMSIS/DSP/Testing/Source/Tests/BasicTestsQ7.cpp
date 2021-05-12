@@ -24,14 +24,14 @@ uint8_t *outp=outputLogical.ptr();
         GET_Q7_PTR();
 
         arm_add_q7(inp1,inp2,outp,input1.nbSamples());
-        
+
         ASSERT_EMPTY_TAIL(output);
 
         ASSERT_SNR(output,ref,(float32_t)SNR_THRESHOLD);
 
         ASSERT_NEAR_EQ(output,ref,ABS_ERROR_Q7);
 
-    } 
+    }
 
     void BasicTestsQ7::test_sub_q7()
     {
@@ -40,12 +40,12 @@ uint8_t *outp=outputLogical.ptr();
         arm_sub_q7(inp1,inp2,outp,input1.nbSamples());
 
         ASSERT_EMPTY_TAIL(output);
-        
+
         ASSERT_SNR(output,ref,(float32_t)SNR_THRESHOLD);
 
         ASSERT_NEAR_EQ(output,ref,ABS_ERROR_Q7);
-       
-    } 
+
+    }
 
     void BasicTestsQ7::test_mult_q7()
     {
@@ -58,8 +58,8 @@ uint8_t *outp=outputLogical.ptr();
         ASSERT_SNR(output,ref,(float32_t)SNR_THRESHOLD);
 
         ASSERT_NEAR_EQ(output,ref,ABS_ERROR_Q7);
-       
-    } 
+
+    }
 
     /*
 
@@ -79,8 +79,8 @@ uint8_t *outp=outputLogical.ptr();
         ASSERT_SNR(output,ref,(float32_t)SNR_THRESHOLD - 1.0f);
 
         ASSERT_NEAR_EQ(output,ref,ABS_ERROR_Q7);
-       
-    } 
+
+    }
 
     void BasicTestsQ7::test_negate_q7()
     {
@@ -94,8 +94,8 @@ uint8_t *outp=outputLogical.ptr();
         ASSERT_SNR(output,ref,(float32_t)SNR_THRESHOLD);
 
         ASSERT_NEAR_EQ(output,ref,ABS_ERROR_Q7);
-       
-    } 
+
+    }
 
     void BasicTestsQ7::test_offset_q7()
     {
@@ -109,8 +109,8 @@ uint8_t *outp=outputLogical.ptr();
         ASSERT_SNR(output,ref,(float32_t)SNR_THRESHOLD);
 
         ASSERT_NEAR_EQ(output,ref,ABS_ERROR_Q7);
-       
-    } 
+
+    }
 
     void BasicTestsQ7::test_scale_q7()
     {
@@ -124,8 +124,8 @@ uint8_t *outp=outputLogical.ptr();
         ASSERT_SNR(output,ref,(float32_t)SNR_THRESHOLD);
 
         ASSERT_NEAR_EQ(output,ref,ABS_ERROR_Q7);
-       
-    } 
+
+    }
 
     void BasicTestsQ7::test_dot_prod_q7()
     {
@@ -145,8 +145,8 @@ uint8_t *outp=outputLogical.ptr();
 
         ASSERT_EMPTY_TAIL(dotOutput);
 
-       
-    } 
+
+    }
 
     void BasicTestsQ7::test_abs_q7()
     {
@@ -161,8 +161,8 @@ uint8_t *outp=outputLogical.ptr();
         ASSERT_SNR(output,ref,(float32_t)SNR_THRESHOLD);
 
         ASSERT_NEAR_EQ(output,ref,ABS_ERROR_Q7);
-       
-    } 
+
+    }
 
     void BasicTestsQ7::test_shift_q7()
     {
@@ -176,8 +176,8 @@ uint8_t *outp=outputLogical.ptr();
         ASSERT_SNR(output,ref,(float32_t)SNR_THRESHOLD);
 
         ASSERT_NEAR_EQ(output,ref,ABS_ERROR_Q7);
-       
-    } 
+
+    }
 
     void BasicTestsQ7::test_and_u8()
     {
@@ -186,25 +186,25 @@ uint8_t *outp=outputLogical.ptr();
 
 
         arm_and_u8(inp1,inp2,outp,inputLogical1.nbSamples());
-        
+
         ASSERT_EMPTY_TAIL(outputLogical);
 
         ASSERT_EQ(outputLogical, refLogical);
 
 
-    } 
+    }
 
     void BasicTestsQ7::test_or_u8()
     {
         GET_LOGICAL_UINT8_PTR();
 
         arm_or_u8(inp1,inp2,outp,inputLogical1.nbSamples());
-        
+
         ASSERT_EMPTY_TAIL(outputLogical);
 
         ASSERT_EQ(outputLogical, refLogical);
 
-    } 
+    }
 
     void BasicTestsQ7::test_not_u8()
     {
@@ -213,35 +213,35 @@ uint8_t *outp=outputLogical.ptr();
         (void)inp2;
 
         arm_not_u8(inp1,outp,inputLogical1.nbSamples());
-        
+
         ASSERT_EMPTY_TAIL(outputLogical);
 
         ASSERT_EQ(outputLogical, refLogical);
 
-    } 
+    }
 
     void BasicTestsQ7::test_xor_u8()
     {
         GET_LOGICAL_UINT8_PTR();
 
         arm_xor_u8(inp1,inp2,outp,inputLogical1.nbSamples());
-        
+
         ASSERT_EMPTY_TAIL(outputLogical);
 
         ASSERT_EQ(outputLogical, refLogical);
 
-    } 
+    }
 
     void BasicTestsQ7::setUp(Testing::testID_t id,std::vector<Testing::param_t>& params,Client::PatternMgr *mgr)
     {
-      
-       Testing::nbSamples_t nb=MAX_NB_SAMPLES; 
+
+       Testing::nbSamples_t nb=MAX_NB_SAMPLES;
 
        this->scalar = ONEHALF;
 
        (void)params;
 
-       
+
        switch(id)
        {
         case BasicTestsQ7::TEST_ADD_Q7_1:
@@ -594,58 +594,58 @@ uint8_t *outp=outputLogical.ptr();
           input1.reload(BasicTestsQ7::INPUT1_Q7_ID,mgr,nb);
           input2.reload(BasicTestsQ7::INPUT2_Q7_ID,mgr,nb);
         break;
-        
+
         case BasicTestsQ7::TEST_SUB_Q7_50:
           ref.reload(BasicTestsQ7::REF_SUB_Q7_ID,mgr,nb);
           output.create(ref.nbSamples(),BasicTestsQ7::OUT_SAMPLES_ID,mgr);
           input1.reload(BasicTestsQ7::INPUT1_Q7_ID,mgr,nb);
           input2.reload(BasicTestsQ7::INPUT2_Q7_ID,mgr,nb);
         break;
-        
+
         case BasicTestsQ7::TEST_MULT_Q7_51:
           ref.reload(BasicTestsQ7::REF_MULT_Q7_ID,mgr,nb);
           output.create(ref.nbSamples(),BasicTestsQ7::OUT_SAMPLES_ID,mgr);
           input1.reload(BasicTestsQ7::INPUT1_Q7_ID,mgr,nb);
           input2.reload(BasicTestsQ7::INPUT2_Q7_ID,mgr,nb);
         break;
-        
+
         case BasicTestsQ7::TEST_NEGATE_Q7_52:
           ref.reload(BasicTestsQ7::REF_NEGATE_Q7_ID,mgr,nb);
           output.create(ref.nbSamples(),BasicTestsQ7::OUT_SAMPLES_ID,mgr);
           input1.reload(BasicTestsQ7::INPUT1_Q7_ID,mgr,nb);
         break;
-        
+
         case BasicTestsQ7::TEST_OFFSET_Q7_53:
           ref.reload(BasicTestsQ7::REF_OFFSET_Q7_ID,mgr,nb);
           output.create(ref.nbSamples(),BasicTestsQ7::OUT_SAMPLES_ID,mgr);
           input1.reload(BasicTestsQ7::INPUT1_Q7_ID,mgr,nb);
         break;
-        
+
         case BasicTestsQ7::TEST_SCALE_Q7_54:
           ref.reload(BasicTestsQ7::REF_SCALE_Q7_ID,mgr,nb);
           output.create(ref.nbSamples(),BasicTestsQ7::OUT_SAMPLES_ID,mgr);
           input1.reload(BasicTestsQ7::INPUT1_Q7_ID,mgr,nb);
         break;
-        
+
         case BasicTestsQ7::TEST_DOT_PROD_Q7_55:
           dotRef.reload(BasicTestsQ7::REF_DOT_LONG_Q7_ID,mgr);
           dotOutput.create(dotRef.nbSamples(),BasicTestsQ7::OUT_SAMPLES_ID,mgr);
           input1.reload(BasicTestsQ7::INPUT1_Q7_ID,mgr,nb);
           input2.reload(BasicTestsQ7::INPUT2_Q7_ID,mgr,nb);
         break;
-        
+
         case BasicTestsQ7::TEST_ABS_Q7_56:
           ref.reload(BasicTestsQ7::REF_ABS_Q7_ID,mgr,nb);
           output.create(ref.nbSamples(),BasicTestsQ7::OUT_SAMPLES_ID,mgr);
           input1.reload(BasicTestsQ7::INPUT1_Q7_ID,mgr,nb);
           input2.reload(BasicTestsQ7::INPUT2_Q7_ID,mgr,nb);
         break;
-        
+
 
        }
-    
 
-       
+
+
 
     }
 
@@ -674,10 +674,10 @@ uint8_t *outp=outputLogical.ptr();
          case BasicTestsQ7::TEST_XOR_U8_48:
             outputLogical.dump(mgr);
          break;
-         
+
          default:
             output.dump(mgr);
        }
 
-        
+
     }

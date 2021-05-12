@@ -14,6 +14,3 @@ configDsp(CMSISNNConvolutions ${ROOT})
 ### Includes
 target_include_directories(CMSISNNConvolutions PUBLIC "${NN}/Include")
 target_include_directories(CMSISNNConvolutions PUBLIC "${ROOT}/CMSIS/DSP/Include")
-
-
-

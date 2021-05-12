@@ -25,103 +25,103 @@ void SupportTestsF16::test_weighted_sum_f16()
  float16_t *refp = ref.ptr();
 
  float16_t *outp = output.ptr();
- 
- 
+
+
  *outp=arm_weighted_sum_f16(inp, coefsp,this->nbSamples);
 
  ASSERT_CLOSE_ERROR(*outp,refp[this->offset],ABS_WEIGHTEDSUM_ERROR,REL_WEIGHTEDSUM_ERROR);
  ASSERT_EMPTY_TAIL(output);
 
-} 
+}
 
 
 void SupportTestsF16::test_copy_f16()
 {
  const float16_t *inp = input.ptr();
  float16_t *outp = output.ptr();
- 
- 
+
+
  arm_copy_f16(inp, outp,this->nbSamples);
- 
- 
+
+
  ASSERT_EQ(input,output);
  ASSERT_EMPTY_TAIL(output);
 
-} 
+}
 
 void SupportTestsF16::test_fill_f16()
 {
  float16_t *outp = output.ptr();
  float16_t val = 1.1;
  int i;
- 
+
 
  arm_fill_f16(val, outp,this->nbSamples);
- 
- 
+
+
  for(i=0 ; i < this->nbSamples; i++)
  {
   ASSERT_EQ(val,outp[i]);
 }
 ASSERT_EMPTY_TAIL(output);
 
-} 
+}
 
 void SupportTestsF16::test_f16_q15()
 {
  const float16_t *inp = input.ptr();
  q15_t *outp = outputQ15.ptr();
- 
- 
+
+
  arm_f16_to_q15(inp, outp,this->nbSamples);
- 
- 
+
+
  ASSERT_NEAR_EQ(refQ15,outputQ15,ABS_Q15_ERROR);
  ASSERT_EMPTY_TAIL(outputQ15);
 
-} 
+}
 
 void SupportTestsF16::test_f16_f32()
 {
  const float16_t *inp = input.ptr();
  float32_t *outp = outputF32.ptr();
- 
- 
+
+
  arm_f16_to_float(inp, outp,this->nbSamples);
- 
- 
+
+
  ASSERT_REL_ERROR(refF32,outputF32,REL_ERROR_F32);
  ASSERT_EMPTY_TAIL(outputF32);
 
-} 
+}
 
 void SupportTestsF16::test_q15_f16()
 {
  const q15_t *inp = inputQ15.ptr();
  float16_t *outp = output.ptr();
- 
- 
+
+
  arm_q15_to_f16(inp, outp,this->nbSamples);
- 
- 
+
+
  ASSERT_REL_ERROR(ref,output,REL_ERROR);
  ASSERT_EMPTY_TAIL(outputF32);
 
-} 
+}
 
 void SupportTestsF16::test_f32_f16()
 {
  const float32_t *inp = inputF32.ptr();
  float16_t *outp = output.ptr();
- 
- 
+
+
  arm_float_to_f16(inp, outp,this->nbSamples);
- 
- 
+
+
  ASSERT_REL_ERROR(ref,output,REL_ERROR);
  ASSERT_EMPTY_TAIL(outputF32);
 
-} 
+}
 
 
 void SupportTestsF16::setUp(Testing::testID_t id,std::vector<Testing::param_t>& paramsArgs,Client::PatternMgr *mgr)
@@ -129,7 +129,7 @@ void SupportTestsF16::setUp(Testing::testID_t id,std::vector<Testing::param_t>& 
 
   (void)paramsArgs;
   switch(id)
-  {    
+  {
 
     case TEST_WEIGHTED_SUM_F16_1:
     this->nbSamples = 7;
@@ -306,7 +306,7 @@ void SupportTestsF16::setUp(Testing::testID_t id,std::vector<Testing::param_t>& 
     break;
 
 
-  }       
+  }
 
 }
 

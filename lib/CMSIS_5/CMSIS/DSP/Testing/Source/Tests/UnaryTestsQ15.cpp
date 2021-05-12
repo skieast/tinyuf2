@@ -4,7 +4,7 @@
 
 #define SNR_THRESHOLD 70
 
-/* 
+/*
 
 Reference patterns are generated with
 a double precision computation.
@@ -116,7 +116,7 @@ a double precision computation.
 
 
     void UnaryTestsQ15::test_mat_vec_mult_q15()
-    {     
+    {
 
 
       LOADVECDATA2();
@@ -140,10 +140,10 @@ a double precision computation.
 
       ASSERT_NEAR_EQ(output,ref,ABS_ERROR_Q15);
 
-    } 
+    }
 
     void UnaryTestsQ15::test_mat_add_q15()
-    {     
+    {
       LOADDATA2();
 
       for(i=0;i < nbMatrixes ; i ++)
@@ -165,10 +165,10 @@ a double precision computation.
 
       ASSERT_NEAR_EQ(output,ref,ABS_ERROR_Q15);
 
-    } 
+    }
 
 void UnaryTestsQ15::test_mat_sub_q15()
-    {     
+    {
       LOADDATA2();
 
       for(i=0;i < nbMatrixes ; i ++)
@@ -190,10 +190,10 @@ void UnaryTestsQ15::test_mat_sub_q15()
 
       ASSERT_NEAR_EQ(output,ref,ABS_ERROR_Q15);
 
-    } 
+    }
 
 void UnaryTestsQ15::test_mat_scale_q15()
-    {     
+    {
       LOADDATA1();
 
       for(i=0;i < nbMatrixes ; i ++)
@@ -215,10 +215,10 @@ void UnaryTestsQ15::test_mat_scale_q15()
 
       ASSERT_NEAR_EQ(output,ref,ABS_ERROR_Q15);
 
-    } 
+    }
 
 void UnaryTestsQ15::test_mat_trans_q15()
-    {     
+    {
       LOADDATA1();
 
       for(i=0;i < nbMatrixes ; i ++)
@@ -240,10 +240,10 @@ void UnaryTestsQ15::test_mat_trans_q15()
 
       ASSERT_NEAR_EQ(output,ref,ABS_ERROR_Q15);
 
-    } 
+    }
 
 void UnaryTestsQ15::test_mat_cmplx_trans_q15()
-    {     
+    {
       LOADDATA1();
 
       for(i=0;i < nbMatrixes ; i ++)
@@ -341,11 +341,11 @@ void UnaryTestsQ15::test_mat_cmplx_trans_q15()
             a.create(MAXMATRIXDIM*MAXMATRIXDIM,UnaryTestsQ15::TMPA_Q15_ID,mgr);
          break;
 
-        
-      }
-       
 
-    
+      }
+
+
+
     }
 
     void UnaryTestsQ15::tearDown(Testing::testID_t id,Client::PatternMgr *mgr)

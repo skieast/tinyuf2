@@ -20,9 +20,9 @@ group Root {
                   Formula "NB"
               }
 
-              Pattern INPUT1_F32_ID : InputBench1_f32.txt 
-              Pattern INPUT2_F32_ID : InputBench2_f32.txt 
-              
+              Pattern INPUT1_F32_ID : InputBench1_f32.txt
+              Pattern INPUT2_F32_ID : InputBench2_f32.txt
+
               Output  OUT_F32_ID : Output
               Output  OUT_S16_ID : Index
               Output  TMP_F32_ID : Temp
@@ -59,8 +59,8 @@ group Root {
                   Formula "NB"
               }
 
-              Pattern INPUT1_F64_ID : InputBench1_f64.txt 
-              Pattern INPUT2_F64_ID : InputBench2_f64.txt 
+              Pattern INPUT1_F64_ID : InputBench1_f64.txt
+              Pattern INPUT2_F64_ID : InputBench2_f64.txt
 
               Output  OUT_F64_ID : Output
               Output  OUT_S16_ID : Index
@@ -88,9 +88,9 @@ group Root {
                   Formula "NB"
               }
 
-              Pattern INPUT1_Q31_ID : InputBench1_q31.txt 
-              Pattern INPUT2_Q31_ID : InputBench2_q31.txt 
-              
+              Pattern INPUT1_Q31_ID : InputBench1_q31.txt
+              Pattern INPUT2_Q31_ID : InputBench2_q31.txt
+
               Output  OUT_Q31_ID : Output
               Output  OUT_Q63_ID : Output
               Output  OUT_S16_ID : Index
@@ -123,9 +123,9 @@ group Root {
                   Formula "NB"
               }
 
-              Pattern INPUT1_Q15_ID : InputBench1_q15.txt 
-              Pattern INPUT2_Q15_ID : InputBench2_q15.txt 
-              
+              Pattern INPUT1_Q15_ID : InputBench1_q15.txt
+              Pattern INPUT2_Q15_ID : InputBench2_q15.txt
+
 
               Output  OUT_Q15_ID : Output
               Output  OUT_Q63_ID : Output
@@ -159,9 +159,9 @@ group Root {
                   Formula "NB"
               }
 
-              Pattern INPUT1_Q7_ID : InputBench1_q7.txt 
-              Pattern INPUT2_Q7_ID : InputBench2_q7.txt 
-              
+              Pattern INPUT1_Q7_ID : InputBench1_q7.txt
+              Pattern INPUT2_Q7_ID : InputBench2_q7.txt
+
 
               Output  OUT_Q7_ID : Output
               Output  OUT_Q31_ID : Output
@@ -189,21 +189,21 @@ group Root {
            suite Basic Maths Benchmarks F32 {
               class = BasicMathsBenchmarksF32
               folder = BasicMathsF32
-  
+
               ParamList {
                   NB
                   Summary NB
                   Names "NB Samples"
                   Formula "NB"
               }
-  
-              Pattern INPUT1_F32_ID : Input1_f32.txt 
-              Pattern INPUT2_F32_ID : Input2_f32.txt 
+
+              Pattern INPUT1_F32_ID : Input1_f32.txt
+              Pattern INPUT2_F32_ID : Input2_f32.txt
               Output  OUT_SAMPLES_F32_ID : Output
               Params PARAM1_ID = {
                   A = [16,32,64,128,256]
               }
-  
+
               Functions {
                  Elementwise multiplication:vec_mult_f32
                  Vector addition:vec_add_f32
@@ -219,21 +219,21 @@ group Root {
            suite Basic Maths Benchmarks Q31 {
               class = BasicMathsBenchmarksQ31
               folder = BasicMathsQ31
-  
+
               ParamList {
                   NB
                   Summary NB
                   Names "NB Samples"
                   Formula "NB"
               }
-  
-              Pattern INPUT1_Q31_ID : Input1_q31.txt 
-              Pattern INPUT2_Q31_ID : Input2_q31.txt 
+
+              Pattern INPUT1_Q31_ID : Input1_q31.txt
+              Pattern INPUT2_Q31_ID : Input2_q31.txt
               Output  OUT_SAMPLES_Q31_ID : Output
               Params PARAM1_ID = {
                   A = [16,32,64,128,256]
               }
-  
+
               Functions {
                  Elementwise multiplication:vec_mult_q31
                  Vector addition:vec_add_q31
@@ -249,21 +249,21 @@ group Root {
            suite Basic Maths Benchmarks Q15 {
               class = BasicMathsBenchmarksQ15
               folder = BasicMathsQ15
-  
+
               ParamList {
                   NB
                   Summary NB
                   Names "NB Samples"
                   Formula "NB"
               }
-  
-              Pattern INPUT1_Q15_ID : Input1_q15.txt 
-              Pattern INPUT2_Q15_ID : Input2_q15.txt 
+
+              Pattern INPUT1_Q15_ID : Input1_q15.txt
+              Pattern INPUT2_Q15_ID : Input2_q15.txt
               Output  OUT_SAMPLES_Q15_ID : Output
               Params PARAM1_ID = {
                   A = [16,32,64,128,256]
               }
-  
+
               Functions {
                  Elementwise multiplication:vec_mult_q15
                  Vector addition:vec_add_q15
@@ -279,21 +279,21 @@ group Root {
            suite Basic Maths Benchmarks Q7 {
               class = BasicMathsBenchmarksQ7
               folder = BasicMathsQ7
-  
+
               ParamList {
                   NB
                   Summary NB
                   Names "NB Samples"
                   Formula "NB"
               }
-  
-              Pattern INPUT1_Q7_ID : Input1_q7.txt 
-              Pattern INPUT2_Q7_ID : Input2_q7.txt 
+
+              Pattern INPUT1_Q7_ID : Input1_q7.txt
+              Pattern INPUT2_Q7_ID : Input2_q7.txt
               Output  OUT_SAMPLES_Q7_ID : Output
               Params PARAM1_ID = {
                   A = [16,32,64,128,256]
               }
-  
+
               Functions {
                  Elementwise multiplication:vec_mult_q7
                  Vector addition:vec_add_q7
@@ -314,22 +314,22 @@ group Root {
            suite ComplexMaths Benchmarks F32 {
               class = ComplexMathsBenchmarksF32
               folder = ComplexMathsF32
-  
+
               ParamList {
                   NB
                   Summary NB
                   Names "NB Samples"
                   Formula "NB"
               }
-  
-              Pattern INPUT1_F32_ID : Input1_f32.txt 
-              Pattern INPUT2_F32_ID : Input2_f32.txt 
-              Pattern INPUT3_F32_ID : Input3_f32.txt 
+
+              Pattern INPUT1_F32_ID : Input1_f32.txt
+              Pattern INPUT2_F32_ID : Input2_f32.txt
+              Pattern INPUT3_F32_ID : Input3_f32.txt
               Output  OUT_SAMPLES_F32_ID : Output
               Params PARAM1_ID = {
                   A = [16,32,64,128,256]
               }
-  
+
               Functions {
                  Elementwise conjugate:vec_conj_f32
                  Complex dot product:vec_dot_prod_f32
@@ -343,22 +343,22 @@ group Root {
            suite ComplexMaths Benchmarks Q31 {
               class = ComplexMathsBenchmarksQ31
               folder = ComplexMathsQ31
-  
+
               ParamList {
                   NB
                   Summary NB
                   Names "NB Samples"
                   Formula "NB"
               }
-  
-              Pattern INPUT1_Q31_ID : Input1_q31.txt 
-              Pattern INPUT2_Q31_ID : Input2_q31.txt 
-              Pattern INPUT3_Q31_ID : Input3_q31.txt 
+
+              Pattern INPUT1_Q31_ID : Input1_q31.txt
+              Pattern INPUT2_Q31_ID : Input2_q31.txt
+              Pattern INPUT3_Q31_ID : Input3_q31.txt
               Output  OUT_SAMPLES_Q31_ID : Output
               Params PARAM1_ID = {
                   A = [16,32,64,128,256]
               }
-  
+
               Functions {
                  Elementwise conjugate:vec_conj_q31
                  Complex dot product:vec_dot_prod_q31
@@ -372,22 +372,22 @@ group Root {
            suite ComplexMaths Benchmarks Q15 {
               class = ComplexMathsBenchmarksQ15
               folder = ComplexMathsQ15
-  
+
               ParamList {
                   NB
                   Summary NB
                   Names "NB Samples"
                   Formula "NB"
               }
-  
-              Pattern INPUT1_Q15_ID : Input1_q15.txt 
-              Pattern INPUT2_Q15_ID : Input2_q15.txt 
-              Pattern INPUT3_Q15_ID : Input3_q15.txt 
+
+              Pattern INPUT1_Q15_ID : Input1_q15.txt
+              Pattern INPUT2_Q15_ID : Input2_q15.txt
+              Pattern INPUT3_Q15_ID : Input3_q15.txt
               Output  OUT_SAMPLES_Q15_ID : Output
               Params PARAM1_ID = {
                   A = [16,32,64,128,256]
               }
-  
+
               Functions {
                  Elementwise conjugate:vec_conj_q15
                  Complex dot product:vec_dot_prod_q15
@@ -400,15 +400,15 @@ group Root {
         }
 
         group Filtering {
-           class = DSPFiltering 
-           folder = Filtering 
+           class = DSPFiltering
+           folder = Filtering
 
            group FIR {
-             class = FIR 
+             class = FIR
              folder = FIR
 
              suite FIR F32 {
-                class = FIRF32 
+                class = FIRF32
                 folder = FIRF32
 
                 ParamList {
@@ -418,9 +418,9 @@ group Root {
                   Formula "NumTaps * NB"
                 }
 
-                Pattern SAMPLES1_F32_ID : Samples1_f32.txt 
-                Pattern REFS1_F32_ID : Refs1_f32.txt 
-                Pattern COEFS1_F32_ID : Coefs1_f32.txt 
+                Pattern SAMPLES1_F32_ID : Samples1_f32.txt
+                Pattern REFS1_F32_ID : Refs1_f32.txt
+                Pattern COEFS1_F32_ID : Coefs1_f32.txt
 
                 Output  OUT_SAMPLES_F32_ID : Output
                 Output  STATE_F32_ID : State
@@ -449,9 +449,9 @@ group Root {
                   Formula "NumTaps * NB"
                 }
 
-                Pattern SAMPLES1_Q31_ID : Samples1_q31.txt 
-                Pattern REFS1_Q31_ID : Refs1_q31.txt 
-                Pattern COEFS1_Q31_ID : Coefs1_q31.txt 
+                Pattern SAMPLES1_Q31_ID : Samples1_q31.txt
+                Pattern REFS1_Q31_ID : Refs1_q31.txt
+                Pattern COEFS1_Q31_ID : Coefs1_q31.txt
 
                 Output  OUT_SAMPLES_Q31_ID : Output
                 Output  STATE_Q31_ID : State
@@ -480,9 +480,9 @@ group Root {
                   Formula "NumTaps * NB"
                 }
 
-                Pattern SAMPLES1_Q15_ID : Samples1_q15.txt 
-                Pattern REFS1_Q15_ID : Refs1_q15.txt 
-                Pattern COEFS1_Q15_ID : Coefs1_q15.txt 
+                Pattern SAMPLES1_Q15_ID : Samples1_q15.txt
+                Pattern REFS1_Q15_ID : Refs1_q15.txt
+                Pattern COEFS1_Q15_ID : Coefs1_q15.txt
 
                 Output  OUT_SAMPLES_Q15_ID : Output
                 Output  STATE_Q15_ID : State
@@ -502,11 +502,11 @@ group Root {
            }
 
            group Convolutions / Correlations {
-             class = MISC 
+             class = MISC
              folder = MISC
 
              suite Convolutions / Correlations F32 {
-                class = MISCF32 
+                class = MISCF32
                 folder = MISCF32
 
                 ParamList {
@@ -516,8 +516,8 @@ group Root {
                   Formula "NBA * NBB"
                 }
 
-                Pattern INPUTSA1_F32_ID : InputsA1_f32.txt 
-                Pattern INPUTSB1_F32_ID : InputsB1_f32.txt 
+                Pattern INPUTSA1_F32_ID : InputsA1_f32.txt
+                Pattern INPUTSB1_F32_ID : InputsB1_f32.txt
 
                 Output  OUT_SAMPLES_F32_ID : Output
 
@@ -533,7 +533,7 @@ group Root {
               }
 
              suite Convolutions / Correlations Q31 {
-                class = MISCQ31 
+                class = MISCQ31
                 folder = MISCQ31
 
                 ParamList {
@@ -543,8 +543,8 @@ group Root {
                   Formula "NBA * NBB"
                 }
 
-                Pattern INPUTSA1_Q31_ID : InputsA1_q31.txt 
-                Pattern INPUTSB1_Q31_ID : InputsB1_q31.txt 
+                Pattern INPUTSA1_Q31_ID : InputsA1_q31.txt
+                Pattern INPUTSB1_Q31_ID : InputsB1_q31.txt
 
                 Output  OUT_SAMPLES_Q31_ID : Output
 
@@ -560,7 +560,7 @@ group Root {
               }
 
              suite Convolutions / Correlations Q15 {
-                class = MISCQ15 
+                class = MISCQ15
                 folder = MISCQ15
 
                 ParamList {
@@ -570,8 +570,8 @@ group Root {
                   Formula "NBA * NBB"
                 }
 
-                Pattern INPUTSA1_Q15_ID : InputsA1_q15.txt 
-                Pattern INPUTSB1_Q15_ID : InputsB1_q15.txt 
+                Pattern INPUTSA1_Q15_ID : InputsA1_q15.txt
+                Pattern INPUTSB1_Q15_ID : InputsB1_q15.txt
 
                 Output  OUT_SAMPLES_Q15_ID : Output
 
@@ -587,7 +587,7 @@ group Root {
               }
 
              suite Convolutions / Correlations Q7 {
-                class = MISCQ7 
+                class = MISCQ7
                 folder = MISCQ7
 
                 ParamList {
@@ -597,8 +597,8 @@ group Root {
                   Formula "NBA * NBB"
                 }
 
-                Pattern INPUTSA1_Q7_ID : InputsA1_q7.txt 
-                Pattern INPUTSB1_Q7_ID : InputsB1_q7.txt 
+                Pattern INPUTSA1_Q7_ID : InputsA1_q7.txt
+                Pattern INPUTSB1_Q7_ID : InputsB1_q7.txt
 
                 Output  OUT_SAMPLES_Q7_ID : Output
 
@@ -615,11 +615,11 @@ group Root {
            }
 
            group Decimations / Interpolations {
-             class = DECIM 
+             class = DECIM
              folder = DECIM
 
              suite Decimations / Interpolations F32 {
-                class = DECIMF32 
+                class = DECIMF32
                 folder = DECIMF32
 
                 ParamList {
@@ -629,8 +629,8 @@ group Root {
                   Formula "NumTaps * NB * Factor"
                 }
 
-                Pattern SAMPLES1_F32_ID : Samples1_f32.txt 
-                Pattern COEFS1_F32_ID : Coefs1_f32.txt 
+                Pattern SAMPLES1_F32_ID : Samples1_f32.txt
+                Pattern COEFS1_F32_ID : Coefs1_f32.txt
 
                 Output  OUT_SAMPLES_F32_ID : Output
                 Output  STATE_F32_ID : State
@@ -655,8 +655,8 @@ group Root {
                   Formula "NumTaps * NB * Factor"
                 }
 
-                Pattern SAMPLES1_Q31_ID : Samples1_q31.txt 
-                Pattern COEFS1_Q31_ID : Coefs1_q31.txt 
+                Pattern SAMPLES1_Q31_ID : Samples1_q31.txt
+                Pattern COEFS1_Q31_ID : Coefs1_q31.txt
 
                 Output  OUT_SAMPLES_Q31_ID : Output
                 Output  STATE_Q31_ID : State
@@ -681,8 +681,8 @@ group Root {
                   Formula "NumTaps * NB * Factor"
                 }
 
-                Pattern SAMPLES1_Q15_ID : Samples1_q15.txt 
-                Pattern COEFS1_Q15_ID : Coefs1_q15.txt 
+                Pattern SAMPLES1_Q15_ID : Samples1_q15.txt
+                Pattern COEFS1_Q15_ID : Coefs1_q15.txt
 
                 Output  OUT_SAMPLES_Q15_ID : Output
                 Output  STATE_Q15_ID : State
@@ -698,11 +698,11 @@ group Root {
            }
 
            group BiQuads {
-             class = BIQUAD 
+             class = BIQUAD
              folder = BIQUAD
 
              suite BiQuads F32 {
-                class = BIQUADF32 
+                class = BIQUADF32
                 folder = BIQUADF32
 
                 ParamList {
@@ -712,8 +712,8 @@ group Root {
                   Formula "NumStages * NB"
                 }
 
-                Pattern SAMPLES1_F32_ID : Samples1_f32.txt 
-                Pattern COEFS1_F32_ID : Coefs1_f32.txt 
+                Pattern SAMPLES1_F32_ID : Samples1_f32.txt
+                Pattern COEFS1_F32_ID : Coefs1_f32.txt
 
                 Output  OUT_SAMPLES_F32_ID : Output
                 Output  STATE_F32_ID : State
@@ -732,7 +732,7 @@ group Root {
               }
 
              suite BiQuads F64 {
-                class = BIQUADF64 
+                class = BIQUADF64
                 folder = BIQUADF64
 
                 ParamList {
@@ -742,8 +742,8 @@ group Root {
                   Formula "NumStages * NB"
                 }
 
-                Pattern SAMPLES1_F64_ID : Samples1_f64.txt 
-                Pattern COEFS1_F64_ID : Coefs1_f64.txt 
+                Pattern SAMPLES1_F64_ID : Samples1_f64.txt
+                Pattern COEFS1_F64_ID : Coefs1_f64.txt
 
                 Output  OUT_SAMPLES_F64_ID : Output
                 Output  STATE_F64_ID : State
@@ -761,11 +761,11 @@ group Root {
         }
 
         group Controller {
-           class = Controller 
-           folder = Controller 
+           class = Controller
+           folder = Controller
 
            suite Controller F32 {
-                class = ControllerF32 
+                class = ControllerF32
                 folder = ControllerF32
 
                 ParamList {
@@ -775,7 +775,7 @@ group Root {
                   Formula "NB"
                 }
 
-                Pattern SAMPLES_F32_ID : Samples1_f32.txt 
+                Pattern SAMPLES_F32_ID : Samples1_f32.txt
                 Output  OUT_SAMPLES_F32_ID : Output
 
                 Params PARAM1_ID = {
@@ -793,7 +793,7 @@ group Root {
              }
 
            suite Controller Q31 {
-                class = ControllerQ31 
+                class = ControllerQ31
                 folder = ControllerQ31
 
                 ParamList {
@@ -803,7 +803,7 @@ group Root {
                   Formula "NB"
                 }
 
-                Pattern SAMPLES_Q31_ID : Samples1_q31.txt 
+                Pattern SAMPLES_Q31_ID : Samples1_q31.txt
                 Output  OUT_SAMPLES_Q31_ID : Output
 
                 Params PARAM1_ID = {
@@ -831,7 +831,7 @@ group Root {
                   Formula "NB"
                 }
 
-                Pattern SAMPLES_Q15_ID : Samples1_q15.txt 
+                Pattern SAMPLES_Q15_ID : Samples1_q15.txt
                 Output  OUT_SAMPLES_Q15_ID : Output
 
                 Params PARAM1_ID = {
@@ -845,11 +845,11 @@ group Root {
         }
 
         group Fast Maths {
-           class = FastMath 
-           folder = FastMath 
+           class = FastMath
+           folder = FastMath
 
            suite Fast Maths F32 {
-                class = FastMathF32 
+                class = FastMathF32
                 folder = FastMathF32
 
                 ParamList {
@@ -859,7 +859,7 @@ group Root {
                   Formula "NB"
                 }
 
-                Pattern SAMPLES_F32_ID : Samples1_f32.txt 
+                Pattern SAMPLES_F32_ID : Samples1_f32.txt
                 Output  OUT_SAMPLES_F32_ID : Output
 
                 Params PARAM1_ID = {
@@ -874,7 +874,7 @@ group Root {
              }
 
            suite Fast Maths Q31 {
-                class = FastMathQ31 
+                class = FastMathQ31
                 folder = FastMathQ31
 
                 ParamList {
@@ -884,7 +884,7 @@ group Root {
                   Formula "NB"
                 }
 
-                Pattern SAMPLES_Q31_ID : Samples1_q31.txt 
+                Pattern SAMPLES_Q31_ID : Samples1_q31.txt
                 Output  OUT_SAMPLES_Q31_ID : Output
 
                 Params PARAM1_ID = {
@@ -909,7 +909,7 @@ group Root {
                   Formula "NB"
                 }
 
-                Pattern SAMPLES_Q15_ID : Samples1_q15.txt 
+                Pattern SAMPLES_Q15_ID : Samples1_q15.txt
                 Output  OUT_SAMPLES_Q15_ID : Output
 
                 Params PARAM1_ID = {
@@ -926,7 +926,7 @@ group Root {
 
         group Bayes{
            class = Bayes
-           folder = Bayes 
+           folder = Bayes
 
            suite Bayes F32 {
               class = BayesF32
@@ -939,9 +939,9 @@ group Root {
                   Formula "VECDIM*NBCLASSES"
                 }
 
-              Pattern DIMS2_S16_ID : DimsBench2_s16.txt 
-              Pattern INPUTS2_F32_ID : Inputs2_f32.txt 
-              Pattern PARAMS2_F32_ID : Params2_f32.txt 
+              Pattern DIMS2_S16_ID : DimsBench2_s16.txt
+              Pattern INPUTS2_F32_ID : Inputs2_f32.txt
+              Pattern PARAMS2_F32_ID : Params2_f32.txt
               Pattern PREDICTS2_S16_ID : Predicts2_s16.txt
 
               Output  OUT_PROBA_F32_ID : Probas
@@ -973,7 +973,7 @@ group Root {
                   Names "NB Samples"
                   Formula "NB"
               }
-              
+
               Pattern INPUTA_F32_ID : InputBenchA1_f32.txt
               Pattern INPUTB_F32_ID : InputBenchB1_f32.txt
 
@@ -1010,11 +1010,11 @@ group Root {
                   Names "NB Bits"
                   Formula "NB"
               }
-              
+
               Pattern INPUTA_U32_ID : InputBenchA1_u32.txt
               Pattern INPUTB_U32_ID : InputBenchB1_u32.txt
 
-        
+
               Params PARAM1_ID = {
                   NB = [512, 1024, 2048, 4096, 8192]
               }
@@ -1036,7 +1036,7 @@ group Root {
 
         group SVM  {
            class = SVM
-           folder = SVM 
+           folder = SVM
 
            suite SVM F32 {
               class = SVMF32
@@ -1049,18 +1049,18 @@ group Root {
                   Formula "VECDIM*NBVECS"
               }
 
-              Pattern INPUT_F32_ID : InputsBench6_f32.txt 
-              
-              Pattern DIMS_LINEAR_S16_ID : DimsLinear6_s16.txt 
+              Pattern INPUT_F32_ID : InputsBench6_f32.txt
+
+              Pattern DIMS_LINEAR_S16_ID : DimsLinear6_s16.txt
               Pattern PARAMS_LINEAR_F32_ID : ParamsLinear6_f32.txt
 
-              Pattern DIMS_POLY_S16_ID : DimsPoly6_s16.txt 
+              Pattern DIMS_POLY_S16_ID : DimsPoly6_s16.txt
               Pattern PARAMS_POLY_F32_ID : ParamsPoly6_f32.txt
 
-              Pattern DIMS_RBF_S16_ID : DimsRBF6_s16.txt 
+              Pattern DIMS_RBF_S16_ID : DimsRBF6_s16.txt
               Pattern PARAMS_RBF_F32_ID : ParamsRBF6_f32.txt
 
-              Pattern DIMS_SIGMOID_S16_ID : DimsSigmoid6_s16.txt 
+              Pattern DIMS_SIGMOID_S16_ID : DimsSigmoid6_s16.txt
               Pattern PARAMS_SIGMOID_F32_ID : ParamsSigmoid6_f32.txt
 
               Output  OUT_S32_ID : Output
@@ -1081,10 +1081,10 @@ group Root {
         }
 
         group Barycenter {
-           class = Barycenter 
-           
+           class = Barycenter
+
            suite Barycenter {
-                class = SupportBarF32 
+                class = SupportBarF32
                 folder = SupportBarF32
 
                 ParamList {
@@ -1094,8 +1094,8 @@ group Root {
                   Formula "NB*VECDIM"
                 }
 
-                Pattern SAMPLES_F32_ID : Samples1_f32.txt 
-                Pattern COEFS_F32_ID : Coefs1_f32.txt 
+                Pattern SAMPLES_F32_ID : Samples1_f32.txt
+                Pattern COEFS_F32_ID : Coefs1_f32.txt
                 Output  OUT_SAMPLES_F32_ID : Output
 
                 Params PARAM1_ID = {
@@ -1106,17 +1106,17 @@ group Root {
                 Functions {
                    Barycenter:test_barycenter_f32
                 } -> PARAM1_ID
-   
+
            }
 
         }
 
         group Support Functions {
-           class = Support 
-           folder = Support 
+           class = Support
+           folder = Support
 
            suite Support Functions F32 {
-                class = SupportF32 
+                class = SupportF32
                 folder = SupportF32
 
                 ParamList {
@@ -1126,13 +1126,13 @@ group Root {
                   Formula "NB"
                 }
 
-                Pattern SAMPLES_F32_ID : Samples1_f32.txt 
-                Pattern SAMPLES_Q15_ID : Samples3_q15.txt 
-                Pattern SAMPLES_Q31_ID : Samples4_q31.txt 
-                Pattern SAMPLES_Q7_ID : Samples5_q7.txt 
+                Pattern SAMPLES_F32_ID : Samples1_f32.txt
+                Pattern SAMPLES_Q15_ID : Samples3_q15.txt
+                Pattern SAMPLES_Q31_ID : Samples4_q31.txt
+                Pattern SAMPLES_Q7_ID : Samples5_q7.txt
 
-                Pattern INPUTS6_F32_ID : Inputs6_f32.txt 
-                Pattern WEIGHTS6_F32_ID : Weights6_f32.txt 
+                Pattern INPUTS6_F32_ID : Inputs6_f32.txt
+                Pattern WEIGHTS6_F32_ID : Weights6_f32.txt
                 Pattern REF6_F32_ID : Ref6_f32.txt
 
                 Output  OUT_SAMPLES_F32_ID : Output
@@ -1152,7 +1152,7 @@ group Root {
              }
 
            suite Support Functions Q31 {
-                class = SupportQ31 
+                class = SupportQ31
                 folder = SupportQ31
 
                 ParamList {
@@ -1162,9 +1162,9 @@ group Root {
                   Formula "NB"
                 }
 
-                Pattern SAMPLES_Q31_ID : Samples4_q31.txt 
-                Pattern SAMPLES_Q15_ID : Samples3_q15.txt 
-                Pattern SAMPLES_Q7_ID : Samples5_q7.txt 
+                Pattern SAMPLES_Q31_ID : Samples4_q31.txt
+                Pattern SAMPLES_Q15_ID : Samples3_q15.txt
+                Pattern SAMPLES_Q7_ID : Samples5_q7.txt
                 Output  OUT_SAMPLES_Q31_ID : Output
 
                 Params PARAM1_ID = {
@@ -1190,9 +1190,9 @@ group Root {
                   Formula "NB"
                 }
 
-                Pattern SAMPLES_Q15_ID : Samples3_q15.txt 
-                Pattern SAMPLES_Q31_ID : Samples4_q31.txt 
-                Pattern SAMPLES_Q7_ID : Samples5_q7.txt 
+                Pattern SAMPLES_Q15_ID : Samples3_q15.txt
+                Pattern SAMPLES_Q31_ID : Samples4_q31.txt
+                Pattern SAMPLES_Q7_ID : Samples5_q7.txt
                 Output  OUT_SAMPLES_Q15_ID : Output
 
                 Params PARAM1_ID = {
@@ -1218,9 +1218,9 @@ group Root {
                   Formula "NB"
                 }
 
-                Pattern SAMPLES_Q7_ID : Samples5_q7.txt 
-                Pattern SAMPLES_Q31_ID : Samples4_q31.txt 
-                Pattern SAMPLES_Q15_ID : Samples3_q15.txt 
+                Pattern SAMPLES_Q7_ID : Samples5_q7.txt
+                Pattern SAMPLES_Q31_ID : Samples4_q31.txt
+                Pattern SAMPLES_Q15_ID : Samples3_q15.txt
                 Output  OUT_SAMPLES_Q7_ID : Output
 
                 Params PARAM1_ID = {
@@ -1237,15 +1237,15 @@ group Root {
         }
 
         group Matrix {
-           class = Matrix 
-           folder = Matrix 
+           class = Matrix
+           folder = Matrix
 
            group Matrix Operators with one matrix size {
-              class = Unary 
-              folder = Unary 
+              class = Unary
+              folder = Unary
 
               suite Unary Matrix Operators F32 {
-                class = UnaryF32 
+                class = UnaryF32
                 folder = UnaryF32
 
                 ParamList {
@@ -1255,9 +1255,9 @@ group Root {
                   Formula "NBR*NBC"
                 }
 
-                Pattern INPUTA_F32_ID : InputA1_f32.txt 
-                Pattern INPUTAC_F32_ID : InputAC1_f32.txt 
-                Pattern INPUTVEC1_F32_ID : InputVec1_f32.txt 
+                Pattern INPUTA_F32_ID : InputA1_f32.txt
+                Pattern INPUTAC_F32_ID : InputAC1_f32.txt
+                Pattern INPUTVEC1_F32_ID : InputVec1_f32.txt
 
                 Output  OUT_F32_ID : Output
 
@@ -1278,7 +1278,7 @@ group Root {
               }
 
               suite Unary Matrix Operators Q31 {
-                class = UnaryQ31 
+                class = UnaryQ31
                 folder = UnaryQ31
 
                 ParamList {
@@ -1288,9 +1288,9 @@ group Root {
                   Formula "NBR*NBC"
                 }
 
-                Pattern INPUTA_Q31_ID : InputA1_q31.txt 
-                Pattern INPUTAC_Q31_ID : InputAC1_q31.txt 
-                Pattern INPUTVEC1_Q31_ID : InputVec1_q31.txt 
+                Pattern INPUTA_Q31_ID : InputA1_q31.txt
+                Pattern INPUTAC_Q31_ID : InputAC1_q31.txt
+                Pattern INPUTVEC1_Q31_ID : InputVec1_q31.txt
 
                 Output  OUT_Q31_ID : Output
 
@@ -1310,7 +1310,7 @@ group Root {
               }
 
               suite Unary Matrix Operators Q15 {
-                class = UnaryQ15 
+                class = UnaryQ15
                 folder = UnaryQ15
 
                 ParamList {
@@ -1320,9 +1320,9 @@ group Root {
                   Formula "NBR*NBC"
                 }
 
-                Pattern INPUTA_Q15_ID : InputA1_q15.txt 
-                Pattern INPUTAC_Q15_ID : InputAC1_q15.txt 
-                Pattern INPUTVEC1_Q15_ID : InputVec1_q15.txt 
+                Pattern INPUTA_Q15_ID : InputA1_q15.txt
+                Pattern INPUTAC_Q15_ID : InputAC1_q15.txt
+                Pattern INPUTVEC1_Q15_ID : InputVec1_q15.txt
                 Output  OUT_Q15_ID : Output
 
                 Params PARAM1_ID = {
@@ -1341,7 +1341,7 @@ group Root {
               }
 
               suite Unary Matrix Operators Q7 {
-                class = UnaryQ7 
+                class = UnaryQ7
                 folder = UnaryQ7
 
                 ParamList {
@@ -1351,8 +1351,8 @@ group Root {
                   Formula "NBR*NBC"
                 }
 
-                Pattern INPUTA_Q7_ID : InputA1_q7.txt 
-                Pattern INPUTVEC1_Q7_ID : InputVec1_q7.txt 
+                Pattern INPUTA_Q7_ID : InputA1_q7.txt
+                Pattern INPUTVEC1_Q7_ID : InputVec1_q7.txt
                 Output  OUT_Q7_ID : Output
 
                 Params PARAM1_ID = {
@@ -1368,7 +1368,7 @@ group Root {
 
 
               suite Unary Matrix Operators F64 {
-                class = UnaryF64 
+                class = UnaryF64
                 folder = UnaryF64
 
                 ParamList {
@@ -1378,7 +1378,7 @@ group Root {
                   Formula "NBR*NBC"
                 }
 
-                Pattern INPUTA_F64_ID : InputA1_f64.txt 
+                Pattern INPUTA_F64_ID : InputA1_f64.txt
                 Output  OUT_F64_ID : Output
 
                 Params PARAM1_ID = {
@@ -1393,11 +1393,11 @@ group Root {
            }
 
            group Matrix Operators with two matrix sizes {
-              class = Binary 
-              folder = Binary 
+              class = Binary
+              folder = Binary
 
              suite Binary Matrix Operators F32 {
-                class = BinaryF32 
+                class = BinaryF32
                 folder = BinaryF32
 
                 ParamList {
@@ -1407,11 +1407,11 @@ group Root {
                   Formula "NBR*NBI*NBC"
                 }
 
-                Pattern INPUTA_F32_ID : InputA1_f32.txt 
-                Pattern INPUTB_F32_ID : InputB1_f32.txt 
+                Pattern INPUTA_F32_ID : InputA1_f32.txt
+                Pattern INPUTB_F32_ID : InputB1_f32.txt
 
-                Pattern INPUTAC_F32_ID : InputAC1_f32.txt 
-                Pattern INPUTBC_F32_ID : InputBC1_f32.txt 
+                Pattern INPUTAC_F32_ID : InputAC1_f32.txt
+                Pattern INPUTBC_F32_ID : InputBC1_f32.txt
                 Output  OUT_F32_ID : Output
 
                 Params PARAM1_ID = {
@@ -1428,7 +1428,7 @@ group Root {
              }
 
              suite Binary Matrix Operators Q31 {
-                class = BinaryQ31 
+                class = BinaryQ31
                 folder = BinaryQ31
 
                 ParamList {
@@ -1438,10 +1438,10 @@ group Root {
                   Formula "NBR*NBI*NBC"
                 }
 
-                Pattern INPUTA_Q31_ID : InputA1_q31.txt 
-                Pattern INPUTB_Q31_ID : InputB1_q31.txt 
-                Pattern INPUTAC_Q31_ID : InputAC1_q31.txt 
-                Pattern INPUTBC_Q31_ID : InputBC1_q31.txt 
+                Pattern INPUTA_Q31_ID : InputA1_q31.txt
+                Pattern INPUTB_Q31_ID : InputB1_q31.txt
+                Pattern INPUTAC_Q31_ID : InputAC1_q31.txt
+                Pattern INPUTBC_Q31_ID : InputBC1_q31.txt
                 Output  OUT_Q31_ID : Output
 
                 Params PARAM1_ID = {
@@ -1459,7 +1459,7 @@ group Root {
              }
 
              suite Binary Matrix Operators Q15 {
-                class = BinaryQ15 
+                class = BinaryQ15
                 folder = BinaryQ15
 
                 ParamList {
@@ -1469,10 +1469,10 @@ group Root {
                   Formula "NBR*NBI*NBC"
                 }
 
-                Pattern INPUTA_Q15_ID : InputA1_q15.txt 
-                Pattern INPUTB_Q15_ID : InputB1_q15.txt 
-                Pattern INPUTAC_Q15_ID : InputAC1_q15.txt 
-                Pattern INPUTBC_Q15_ID : InputBC1_q15.txt 
+                Pattern INPUTA_Q15_ID : InputA1_q15.txt
+                Pattern INPUTB_Q15_ID : InputB1_q15.txt
+                Pattern INPUTAC_Q15_ID : InputAC1_q15.txt
+                Pattern INPUTBC_Q15_ID : InputBC1_q15.txt
                 Output  OUT_Q15_ID : Output
 
                 Params PARAM1_ID = {
@@ -1489,7 +1489,7 @@ group Root {
              }
 
              suite Binary Matrix Operators Q7 {
-                class = BinaryQ7 
+                class = BinaryQ7
                 folder = BinaryQ7
 
                 ParamList {
@@ -1499,10 +1499,10 @@ group Root {
                   Formula "NBR*NBI*NBC"
                 }
 
-                Pattern INPUTA_Q7_ID : InputA1_q7.txt 
-                Pattern INPUTB_Q7_ID : InputB1_q7.txt 
-                Pattern INPUTAC_Q7_ID : InputAC1_q7.txt 
-                Pattern INPUTBC_Q7_ID : InputBC1_q7.txt 
+                Pattern INPUTA_Q7_ID : InputA1_q7.txt
+                Pattern INPUTB_Q7_ID : InputB1_q7.txt
+                Pattern INPUTAC_Q7_ID : InputAC1_q7.txt
+                Pattern INPUTBC_Q7_ID : InputBC1_q7.txt
                 Output  OUT_Q7_ID : Output
 
                 Params PARAM1_ID = {
@@ -1520,11 +1520,11 @@ group Root {
         }
 
         group Spectral Transformations {
-           class = Transform 
-           folder = Transform 
+           class = Transform
+           folder = Transform
 
            suite Spectral Transformations F32 {
-                class = TransformF32 
+                class = TransformF32
                 folder = TransformF32
 
                 ParamList {
@@ -1534,14 +1534,14 @@ group Root {
                   Formula "I(NB*log2(NB))"
                 }
 
-                Pattern INPUTR_F32_ID : RealInputSamples19_f32.txt 
-                Pattern INPUTC_F32_ID : ComplexInputSamples_Noisy_512_6_f32.txt 
-                
+                Pattern INPUTR_F32_ID : RealInputSamples19_f32.txt
+                Pattern INPUTC_F32_ID : ComplexInputSamples_Noisy_512_6_f32.txt
+
                 Output  TMP_F32_ID : Temp
                 Output  OUT_F32_ID : Output
                 Output  STATE_F32_ID : Output
 
-                
+
                 Params CFFT_PARAM_ID = {
                   NB = [64,128,256]
                   IFFT = [0,1]
@@ -1576,7 +1576,7 @@ group Root {
            }
 
            suite Spectral Transformations Q31 {
-                class = TransformQ31 
+                class = TransformQ31
                 folder = TransformQ31
 
                 ParamList {
@@ -1586,12 +1586,12 @@ group Root {
                   Formula "I(NB*log2(NB))"
                 }
 
-                Pattern INPUTR_Q31_ID : RealInputSamples19_q31.txt 
-                Pattern INPUTC_Q31_ID : ComplexInputSamples_Noisy_512_6_q31.txt 
+                Pattern INPUTR_Q31_ID : RealInputSamples19_q31.txt
+                Pattern INPUTC_Q31_ID : ComplexInputSamples_Noisy_512_6_q31.txt
                 Output  OUT_Q31_ID : Output
                 Output  STATE_Q31_ID : Output
 
-                
+
                 Params CFFT_PARAM_ID = {
                   NB = [64,128,256]
                   IFFT = [0,1]
@@ -1626,7 +1626,7 @@ group Root {
            }
 
            suite Spectral Transformations Q15 {
-                class = TransformQ15 
+                class = TransformQ15
                 folder = TransformQ15
 
                 ParamList {
@@ -1636,12 +1636,12 @@ group Root {
                   Formula "I(NB*log2(NB))"
                 }
 
-                Pattern INPUTR_Q15_ID : RealInputSamples19_q15.txt 
-                Pattern INPUTC_Q15_ID : ComplexInputSamples_Noisy_512_6_q15.txt 
+                Pattern INPUTR_Q15_ID : RealInputSamples19_q15.txt
+                Pattern INPUTC_Q15_ID : ComplexInputSamples_Noisy_512_6_q15.txt
                 Output  OUT_Q15_ID : Output
                 Output  STATE_Q15_ID : Output
 
-                
+
                 Params CFFT_PARAM_ID = {
                   NB = [64,128,256]
                   IFFT = [0,1]
@@ -1684,7 +1684,7 @@ group Root {
        folder = NN
 
        suite Fully Connected Benchmarks {
-         class = FullyConnectedBench 
+         class = FullyConnectedBench
          folder = FullyConnected
 
          ParamList {
@@ -1712,7 +1712,7 @@ group Root {
        }
 
        suite Pooling Benchmarks {
-         class = PoolingBench 
+         class = PoolingBench
          folder = Pooling
 
          ParamList {
@@ -1741,31 +1741,31 @@ group Root {
 
     group Compiler Benchmarks {
       class = CompilerBenchmarks
-      folder = DSP 
+      folder = DSP
 
       group Micro Benchmarks {
         class = MicroBenchmarks
-        folder = BasicMaths 
+        folder = BasicMaths
 
         suite MicroBenchmarksF32 {
           class = MicroBenchmarksF32
           folder = BasicMathsF32
-  
+
           ParamList {
                     NB
                     Summary NB
                     Names "NB Samples"
                     Formula "NB"
           }
-  
-          Pattern INPUT1_F32_ID : Input1_f32.txt 
-          Pattern INPUT2_F32_ID : Input2_f32.txt 
+
+          Pattern INPUT1_F32_ID : Input1_f32.txt
+          Pattern INPUT2_F32_ID : Input2_f32.txt
           Output  OUT_SAMPLES_F32_ID : Output
-  
+
           Params PARAM1_ID = {
                     A = [16,32,64,128,256]
           }
-  
+
           Functions {
                   While loop:test_while_f32
                   For loop:test_for_f32
@@ -1776,22 +1776,22 @@ group Root {
         suite MicroBenchmarksQ31 {
           class = MicroBenchmarksQ31
           folder = BasicMathsQ31
-  
+
           ParamList {
                     NB
                     Summary NB
                     Names "NB Samples"
                     Formula "NB"
           }
-  
-          Pattern INPUT1_Q31_ID : Input1_q31.txt 
-          Pattern INPUT2_Q31_ID : Input2_q31.txt 
+
+          Pattern INPUT1_Q31_ID : Input1_q31.txt
+          Pattern INPUT2_Q31_ID : Input2_q31.txt
           Output  OUT_SAMPLES_Q31_ID : Output
-  
+
           Params PARAM1_ID = {
                     A = [16,32,64,128,256]
           }
-  
+
           Functions {
                   While loop:test_while_q31
                   For loop:test_for_q31
@@ -1802,22 +1802,22 @@ group Root {
         suite MicroBenchmarksQ15 {
           class = MicroBenchmarksQ15
           folder = BasicMathsQ15
-  
+
           ParamList {
                     NB
                     Summary NB
                     Names "NB Samples"
                     Formula "NB"
           }
-  
-          Pattern INPUT1_Q15_ID : Input1_q15.txt 
-          Pattern INPUT2_Q15_ID : Input2_q15.txt 
+
+          Pattern INPUT1_Q15_ID : Input1_q15.txt
+          Pattern INPUT2_Q15_ID : Input2_q15.txt
           Output  OUT_SAMPLES_Q15_ID : Output
-  
+
           Params PARAM1_ID = {
                     A = [16,32,64,128,256]
           }
-  
+
           Functions {
                   While loop:test_while_q15
                   For loop:test_for_q15
@@ -1828,22 +1828,22 @@ group Root {
         suite MicroBenchmarksQ7 {
           class = MicroBenchmarksQ7
           folder = BasicMathsQ7
-  
+
           ParamList {
                     NB
                     Summary NB
                     Names "NB Samples"
                     Formula "NB"
           }
-  
-          Pattern INPUT1_Q7_ID : Input1_q7.txt 
-          Pattern INPUT2_Q7_ID : Input2_q7.txt 
+
+          Pattern INPUT1_Q7_ID : Input1_q7.txt
+          Pattern INPUT2_Q7_ID : Input2_q7.txt
           Output  OUT_SAMPLES_Q7_ID : Output
-  
+
           Params PARAM1_ID = {
                     A = [16,32,64,128,256]
           }
-  
+
           Functions {
                   While loop:test_while_q7
                   For loop:test_for_q7

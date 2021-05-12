@@ -2,7 +2,7 @@
 # Test status (like passed, or failed with error code)
 
 import argparse
-import re 
+import re
 import TestScripts.NewParser as parse
 import TestScripts.CodeGen
 from collections import deque
@@ -11,7 +11,7 @@ import csv
 import TestScripts.ParseTrace
 import colorama
 from colorama import init,Fore, Back, Style
-import sys 
+import sys
 
 resultStatus=0
 
@@ -47,23 +47,23 @@ def errorStr(id):
 
 def findItem(root,path):
         """ Find a node in a tree
-      
+
         Args:
           path (list) : A list of node ID
             This list is describing a path in the tree.
             By starting from the root and following this path,
             we can find the node in the tree.
         Raises:
-          Nothing 
+          Nothing
         Returns:
           TreeItem : A node
         """
         # The list is converted into a queue.
-        q = deque(path) 
+        q = deque(path)
         q.popleft()
         c = root
         while q:
-            n = q.popleft() 
+            n = q.popleft()
             # We get the children based on its ID and continue
             c = c[n-1]
         return(c)
@@ -79,7 +79,7 @@ def joinit(iterable, delimiter):
 # Return test result as a text tree
 class TextFormatter:
       def start(self):
-          None 
+          None
 
       def printGroup(self,elem,theId):
         if elem is None:
@@ -123,7 +123,7 @@ class HTMLFormatter:
         self.suite=False
 
       def start(self):
-          print("<html><head><title>Test Results</title></head><body>") 
+          print("<html><head><title>Test Results</title></head><body>")
 
       def printGroup(self,elem,theId):
         if elem is None:
@@ -135,9 +135,9 @@ class HTMLFormatter:
            if elem.kind == TestScripts.Parser.TreeElem.GROUP:
               kind = "Group"
            if kind == "Group":
-              print("<h%d> %s (%d) </h%d>" % (self.nb,message,theId,self.nb)) 
+              print("<h%d> %s (%d) </h%d>" % (self.nb,message,theId,self.nb))
            else:
-              print("<h%d> %s (%d) </h%d>" % (self.nb,message,theId,self.nb)) 
+              print("<h%d> %s (%d) </h%d>" % (self.nb,message,theId,self.nb))
               self.suite=True
               print("<table style=\"width:100%\">")
               print("<tr>")
@@ -191,8 +191,8 @@ class CSVFormatter:
         self._start=True
 
       def start(self):
-          print("CATEGORY,NAME,ID,STATUS,CYCLES,PARAMS") 
-          
+          print("CATEGORY,NAME,ID,STATUS,CYCLES,PARAMS")
+
       def printGroup(self,elem,theId):
         if elem is None:
            elem = root
@@ -212,7 +212,7 @@ class CSVFormatter:
           message=elem.data["message"]
           if not elem.data["deprecated"]:
              kind = "Test"
-             name=elem.data["class"] 
+             name=elem.data["class"]
              category= "".join(list(joinit(self.name,":")))
              print("%s,%s,%d,%d,%d,\"%s\"" % (category,name,theId,passed,cycles,params))
 
@@ -235,8 +235,8 @@ class MathematicaFormatter:
       def printGroup(self,elem,theId):
         if self._hasContent[len(self._hasContent)-1]:
            print(",",end="")
-        
-        print("<|") 
+
+        print("<|")
         self._hasContent[len(self._hasContent)-1] = True
         self._hasContent.append(False)
         if elem is None:
@@ -281,7 +281,7 @@ class MathematicaFormatter:
       def end(self):
         None
 
-NORMAL = 1 
+NORMAL = 1
 INTEST = 2
 TESTPARAM = 3
 ERRORDESC = 4
@@ -303,7 +303,7 @@ def extractDataFiles(results,outputDir):
       if re.match(r'^.*D:[ ].*$',l):
           if infile:
             if re.match(r'^.*D:[ ]END$',l):
-               infile = False 
+               infile = False
                if f:
                  f.close()
             else:
@@ -316,18 +316,18 @@ def extractDataFiles(results,outputDir):
           else:
             m = re.match(r'^.*D:[ ](.*)$',l)
             path = str(m.group(1))
-            infile = True 
+            infile = True
             destPath = os.path.join(outputDir,correctPath(path))
             createMissingDir(destPath)
             f = open(destPath,"w")
 
-         
+
 
 def writeBenchmark(elem,benchFile,theId,theError,passed,cycles,params,config):
   if benchFile:
-    testname=elem.data["class"] 
+    testname=elem.data["class"]
     #category= elem.categoryDesc()
-    name=elem.data["message"] 
+    name=elem.data["message"]
     category=elem.getSuiteMessage()
     old=""
     if "testData" in elem.data:
@@ -379,7 +379,7 @@ def analyseResult(resultPath,root,results,embedded,benchmark,trace,formatter):
     # D:[ ] before data dump (output patterns)
 
     for l in results:
-        l = l.strip() 
+        l = l.strip()
         if not re.match(r'^.*D:[ ].*$',l):
            if state == NORMAL:
               if len(l) > 0:
@@ -422,14 +422,14 @@ def analyseResult(resultPath,root,results,embedded,benchmark,trace,formatter):
                           config = "".join(list(joinit(configList[0],",")))
                           configHeaders = "".join(list(joinit(csvheaders,",")))
                        benchFile.write("CATEGORY,TESTNAME,NAME,ID,OLDID,%s,CYCLES,%s\n" % (header,configHeaders))
-   
+
                     formatter.printGroup(elem,theId)
-      
+
                  # If we have detected a test, we switch to test mode
                  if re.match(r'^%s[t][ ]*$' % prefix,l):
                     state = INTEST
-                 
-      
+
+
                  # Pop
                  # End of suite or group
                  if re.match(r'^%sp.*$' % prefix,l):
@@ -447,28 +447,28 @@ def analyseResult(resultPath,root,results,embedded,benchmark,trace,formatter):
                if re.match(passRe,l):
                     # If we have found a test status then we will start again
                     # in normal mode after this.
-                    
+
                     m = re.match(passRe,l)
-                    
+
                     # Extract test ID, test error code, line number and status
                     theId=m.group(1)
                     theId=int(theId)
-      
+
                     theError=m.group(2)
                     theError=int(theError)
-      
+
                     theLine=m.group(3)
                     theLine=int(theLine)
-      
+
                     maybeCycles = m.group(4)
                     if maybeCycles == "t":
                        cycles = getCyclesFromTrace(trace) - calibration
                     else:
                        cycles = int(maybeCycles)
-   
+
                     status=m.group(5)
                     passed=0
-      
+
                     # Convert status to number as used by formatter.
                     if status=="Y":
                        passed = 1
@@ -479,8 +479,8 @@ def analyseResult(resultPath,root,results,embedded,benchmark,trace,formatter):
                     newPath.append(theId)
                     # Find the node in the Tree
                     elem = findItem(root,newPath)
-   
-                    
+
+
                     state = ERRORDESC
                else:
                  if re.match(r'^%sp.*$' % prefix,l):
@@ -504,7 +504,7 @@ def analyseResult(resultPath,root,results,embedded,benchmark,trace,formatter):
                           state = TESTPARAM
            else:
              if len(l) > 0:
-                state = INTEST 
+                state = INTEST
                 params=""
                 if re.match(r'^.*b[ ]+([0-9,]+)$',l):
                    m=re.match(r'^.*b[ ]+([0-9,]+)$',l)
@@ -521,8 +521,8 @@ def analyseResult(resultPath,root,results,embedded,benchmark,trace,formatter):
                    resultStatus=1
                 formatter.printTest(elem,theId,theError,errorDetail,theLine,passed,cycles,params)
 
-             
-    formatter.end()          
+
+    formatter.end()
 
 
 def analyze(root,results,args,trace):
@@ -581,6 +581,6 @@ if args.f is not None:
           extractDataFiles(results,args.o)
 
     sys.exit(resultStatus)
-    
+
 else:
     parser.print_help()

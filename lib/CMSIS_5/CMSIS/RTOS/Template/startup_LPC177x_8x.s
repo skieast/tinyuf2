@@ -1,7 +1,7 @@
 ;/*****************************************************************************
 ; * @file:    startup_LPC177x_8x.s
 ; * @purpose: CMSIS Cortex-M3 Core Device Startup File
-; *           for the NXP LPC177x_8x Device Series 
+; *           for the NXP LPC177x_8x Device Series
 ; * @version: V1.20
 ; * @date:    07. October 2010
 ; *------- <<< Use Configuration Wizard in Context Menu >>> ------------------
@@ -236,7 +236,7 @@ PWM1_IRQHandler
 I2C0_IRQHandler
 I2C1_IRQHandler
 I2C2_IRQHandler
-SPIFI_IRQHandler            
+SPIFI_IRQHandler
 SSP0_IRQHandler
 SSP1_IRQHandler
 PLL0_IRQHandler
@@ -252,7 +252,7 @@ CAN_IRQHandler
 DMA_IRQHandler
 I2S_IRQHandler
 ENET_IRQHandler
-MCI_IRQHandler          
+MCI_IRQHandler
 MCPWM_IRQHandler
 QEI_IRQHandler
 PLL1_IRQHandler

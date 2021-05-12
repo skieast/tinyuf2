@@ -4,7 +4,7 @@
 
 #define SNR_THRESHOLD 120
 
-/* 
+/*
 
 Reference patterns are generated with
 a double precision computation.
@@ -124,11 +124,11 @@ But big matrix needed for checking the vectorized code */
       in1.pData = ap;                                                    \
                                                                          \
       memcpy((void*)bp,(const void*)inp2,2*sizeof(float32_t)*internal);
-                            
+
 
 
 void UnaryTestsF32::test_mat_vec_mult_f32()
-    {     
+    {
       LOADVECDATA2();
 
       for(i=0;i < nbMatrixes ; i ++)
@@ -150,10 +150,10 @@ void UnaryTestsF32::test_mat_vec_mult_f32()
 
       ASSERT_CLOSE_ERROR(output,ref,ABS_ERROR,REL_ERROR);
 
-    } 
+    }
 
     void UnaryTestsF32::test_mat_add_f32()
-    {     
+    {
       LOADDATA2();
 
       for(i=0;i < nbMatrixes ; i ++)
@@ -175,10 +175,10 @@ void UnaryTestsF32::test_mat_vec_mult_f32()
 
       ASSERT_CLOSE_ERROR(output,ref,ABS_ERROR,REL_ERROR);
 
-    } 
+    }
 
 void UnaryTestsF32::test_mat_sub_f32()
-    {     
+    {
       LOADDATA2();
 
       for(i=0;i < nbMatrixes ; i ++)
@@ -200,10 +200,10 @@ void UnaryTestsF32::test_mat_sub_f32()
 
       ASSERT_CLOSE_ERROR(output,ref,ABS_ERROR,REL_ERROR);
 
-    } 
+    }
 
 void UnaryTestsF32::test_mat_scale_f32()
-    {     
+    {
       LOADDATA1();
 
       for(i=0;i < nbMatrixes ; i ++)
@@ -225,10 +225,10 @@ void UnaryTestsF32::test_mat_scale_f32()
 
       ASSERT_CLOSE_ERROR(output,ref,ABS_ERROR,REL_ERROR);
 
-    } 
+    }
 
 void UnaryTestsF32::test_mat_trans_f32()
-    {     
+    {
       LOADDATA1();
 
       for(i=0;i < nbMatrixes ; i ++)
@@ -250,10 +250,10 @@ void UnaryTestsF32::test_mat_trans_f32()
 
       ASSERT_CLOSE_ERROR(output,ref,ABS_ERROR,REL_ERROR);
 
-    } 
+    }
 
 void UnaryTestsF32::test_mat_cmplx_trans_f32()
-    {     
+    {
       LOADDATA1();
 
       for(i=0;i < nbMatrixes ; i ++)
@@ -278,15 +278,15 @@ void UnaryTestsF32::test_mat_cmplx_trans_f32()
     }
 
 void UnaryTestsF32::test_mat_inverse_f32()
-    {     
-      const float32_t *inp1=input1.ptr();    
-                                             
-      float32_t *ap=a.ptr();                 
-                                             
-      float32_t *outp=output.ptr();          
-      int16_t *dimsp = dims.ptr();           
+    {
+      const float32_t *inp1=input1.ptr();
+
+      float32_t *ap=a.ptr();
+
+      float32_t *outp=output.ptr();
+      int16_t *dimsp = dims.ptr();
       int nbMatrixes = dims.nbSamples();
-      int rows,columns;                      
+      int rows,columns;
       int i;
       arm_status status;
 
@@ -396,9 +396,9 @@ void UnaryTestsF32::test_mat_inverse_f32()
             a.create(MAXMATRIXDIM*MAXMATRIXDIM,UnaryTestsF32::TMPA_F32_ID,mgr);
          break;
       }
-       
 
-    
+
+
     }
 
     void UnaryTestsF32::tearDown(Testing::testID_t id,Client::PatternMgr *mgr)

@@ -2,7 +2,7 @@
 # Test status (like passed, or failed with error code)
 
 import argparse
-import re 
+import re
 import TestScripts.NewParser as parse
 import TestScripts.CodeGen
 from collections import deque
@@ -15,7 +15,7 @@ import csv
 import TestScripts.Deprecate as d
 import sqlite3
 import datetime, time
-import re 
+import re
 
 # For sql table creation
 MKSTRFIELD=[]
@@ -23,11 +23,11 @@ MKBOOLFIELD=['HARDFP', 'FASTMATH', 'NEON', 'HELIUM','UNROLL', 'ROUNDING','OPTIMI
 MKINTFIELD=['ID', 'CYCLES']
 MKDATEFIELD=[]
 MKKEYFIELD=['DATE','NAME','CATEGORY', 'PLATFORM', 'CORE', 'COMPILER','TYPE',"RUN"]
-MKKEYFIELDID={'CATEGORY':'categoryid', 
+MKKEYFIELDID={'CATEGORY':'categoryid',
    'NAME':'testnameid',
    'DATE':'testdateid',
-   'PLATFORM':'platformid', 
-   'CORE':'coreid', 
+   'PLATFORM':'platformid',
+   'CORE':'coreid',
    'COMPILER':'compilerid',
    'TYPE':'typeid',
    'RUN':'runid'}
@@ -60,8 +60,8 @@ def getColumns(elem,full):
   colsToKeep=[]
   cols = list(full.columns)
   params = list(elem.params.full)
-  common = diff(cols + ["TYPE","RUN"] , ['OLDID'] + params)  
- 
+  common = diff(cols + ["TYPE","RUN"] , ['OLDID'] + params)
+
   for field in common:
        if field in MKSTRFIELD:
           colsToKeep.append(field)
@@ -83,7 +83,7 @@ def createTableIfMissing(conn,elem,tableName,full):
      common = diff(cols + ["TYPE","RUN"] , ['OLDID'] + params)
 
      sql += "%sid INTEGER PRIMARY KEY"  % (tableName)
-     start = ","   
+     start = ","
 
      for field in params:
        sql += " %s\n  %s INTEGER"  % (start,field)
@@ -155,13 +155,13 @@ def addRows(conn,elem,tableName,full,runid=0):
    # List of columns we have in DB which is
    # different from the columns in the table
    compilerid = 0
-   platformid = 0 
+   platformid = 0
    coreid = 0
    keep = getColumns(elem,full)
    cols = list(full.columns)
    params = list(elem.params.full)
-   common = diff(["TYPE"] + cols , ['OLDID'] + params)  
-   colNameList = [] 
+   common = diff(["TYPE"] + cols , ['OLDID'] + params)
+   colNameList = []
    for c in params + keep:
       if c in MKKEYFIELD:
           colNameList.append(MKKEYFIELDID[c])
@@ -212,15 +212,15 @@ def addRows(conn,elem,tableName,full,runid=0):
                   keys["TYPE"] = "s64"
                 if re.match(r'^.*_u64',testname):
                   keys["TYPE"] = "u64"
-            
+
         if field in VALINTFIELD:
             keys[field]=row[field]
         if field in VALDATEFIELD:
             keys[field]=row[field]
         if field in VALBOOLFIELD:
             keys[field]=row[field]
-        
-         
+
+
        keys['RUN']=runid
        # Get foreign keys and create missing data
        for field in common:
@@ -256,11 +256,11 @@ def addRows(conn,elem,tableName,full,runid=0):
               compilerid = compiler
 
        # Generate sql command
-       start = ""  
+       start = ""
        for field in params:
          sql += " %s\n  %d"  % (start,row[field])
          start = ","
-         
+
        for field in keep:
          if field in MKSTRFIELD or field in MKDATEFIELD:
             sql += " %s\n  \"%s\""  % (start,keys[field])
@@ -270,8 +270,8 @@ def addRows(conn,elem,tableName,full,runid=0):
 
        sql += "  )"
        #print(sql)
-       conn.execute(sql)  
-   conn.commit() 
+       conn.execute(sql)
+   conn.commit()
    return({'compilerid':compilerid,'platformid':platformid,'coreid':coreid})
 
 def addConfig(conn,config,fullDate):
@@ -304,7 +304,7 @@ def addToDB(benchmark,dbpath,elem,group,runid):
          benchPath = os.path.join(benchmark,elem.fullPath(),"fullBenchmark.csv")
          print("Processing %s" % benchPath)
          addOneBenchmark(elem,benchPath,dbpath,group,runid)
-         
+
      for c in elem.children:
        addToDB(benchmark,dbpath,c,group,runid)
 
@@ -329,10 +329,10 @@ if args.f is not None:
     root=parse.loadRoot(args.f)
     d.deprecate(root,args.others)
     if args.others:
-      group=args.others[0] 
+      group=args.others[0]
     else:
       group=None
     addToDB(args.b,args.o,root,group,args.r)
-    
+
 else:
     parser.print_help()

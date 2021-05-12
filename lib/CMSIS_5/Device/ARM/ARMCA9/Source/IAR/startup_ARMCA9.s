@@ -71,7 +71,7 @@ Vectors:
   EXTERN  SystemInit
   EXTERN  __iar_program_start
 
-Reset_Handler:  
+Reset_Handler:
 
   // Mask interrupts
   CPSID   if

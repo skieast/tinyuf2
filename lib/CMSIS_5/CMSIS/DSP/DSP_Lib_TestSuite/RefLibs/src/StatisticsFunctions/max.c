@@ -8,7 +8,7 @@ void ref_max_f32(
 {
 	uint32_t i, ind=0;
 	float32_t max=-FLT_MAX;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 		if (max < pSrc[i])
@@ -29,7 +29,7 @@ void ref_max_q31(
 {
 	uint32_t i, ind=0;
 	q31_t max=INT_MIN;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 		if (max < pSrc[i])
@@ -50,7 +50,7 @@ void ref_max_q15(
 {
 	uint32_t i, ind=0;
 	q15_t max=SHRT_MIN;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 		if (max < pSrc[i])
@@ -71,7 +71,7 @@ void ref_max_q7(
 {
 	uint32_t i, ind=0;
 	q7_t max=SCHAR_MIN;
-	
+
 	for(i=0;i<blockSize;i++)
 	{
 		if (max < pSrc[i])

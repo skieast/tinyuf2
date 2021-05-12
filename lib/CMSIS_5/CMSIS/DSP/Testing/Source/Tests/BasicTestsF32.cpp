@@ -4,7 +4,7 @@
 
 #define SNR_THRESHOLD 120
 
-/* 
+/*
 
 Reference patterns are generated with
 a double precision computation.
@@ -29,7 +29,7 @@ float32_t *outp=output.ptr();
 
         ASSERT_REL_ERROR(output,ref,REL_ERROR);
 
-    } 
+    }
 
     void BasicTestsF32::test_sub_f32()
     {
@@ -38,12 +38,12 @@ float32_t *outp=output.ptr();
         arm_sub_f32(inp1,inp2,outp,input1.nbSamples());
 
         ASSERT_EMPTY_TAIL(output);
-        
+
         ASSERT_SNR(output,ref,(float32_t)SNR_THRESHOLD);
 
         ASSERT_REL_ERROR(output,ref,REL_ERROR);
-       
-    } 
+
+    }
 
     void BasicTestsF32::test_mult_f32()
     {
@@ -56,8 +56,8 @@ float32_t *outp=output.ptr();
         ASSERT_SNR(output,ref,(float32_t)SNR_THRESHOLD);
 
         ASSERT_REL_ERROR(output,ref,REL_ERROR);
-       
-    } 
+
+    }
 
     void BasicTestsF32::test_negate_f32()
     {
@@ -72,8 +72,8 @@ float32_t *outp=output.ptr();
         ASSERT_SNR(output,ref,(float32_t)SNR_THRESHOLD);
 
         ASSERT_REL_ERROR(output,ref,REL_ERROR);
-       
-    } 
+
+    }
 
     void BasicTestsF32::test_offset_f32()
     {
@@ -88,8 +88,8 @@ float32_t *outp=output.ptr();
         ASSERT_SNR(output,ref,(float32_t)SNR_THRESHOLD);
 
         ASSERT_REL_ERROR(output,ref,REL_ERROR);
-       
-    } 
+
+    }
 
     void BasicTestsF32::test_scale_f32()
     {
@@ -104,8 +104,8 @@ float32_t *outp=output.ptr();
         ASSERT_SNR(output,ref,(float32_t)SNR_THRESHOLD);
 
         ASSERT_REL_ERROR(output,ref,REL_ERROR);
-       
-    } 
+
+    }
 
     void BasicTestsF32::test_dot_prod_f32()
     {
@@ -123,8 +123,8 @@ float32_t *outp=output.ptr();
 
         ASSERT_EMPTY_TAIL(output);
 
-       
-    } 
+
+    }
 
     void BasicTestsF32::test_abs_f32()
     {
@@ -139,18 +139,18 @@ float32_t *outp=output.ptr();
         ASSERT_SNR(output,ref,(float32_t)SNR_THRESHOLD);
 
         ASSERT_REL_ERROR(output,ref,REL_ERROR);
-       
-    } 
 
- 
+    }
+
+
     void BasicTestsF32::setUp(Testing::testID_t id,std::vector<Testing::param_t>& params,Client::PatternMgr *mgr)
     {
-      
+
        (void)params;
 
-       Testing::nbSamples_t nb=MAX_NB_SAMPLES; 
+       Testing::nbSamples_t nb=MAX_NB_SAMPLES;
 
-       
+
        switch(id)
        {
         case BasicTestsF32::TEST_ADD_F32_1:
@@ -292,7 +292,7 @@ float32_t *outp=output.ptr();
         break;
 
        }
-      
+
 
        input1.reload(BasicTestsF32::INPUT1_F32_ID,mgr,nb);
        input2.reload(BasicTestsF32::INPUT2_F32_ID,mgr,nb);

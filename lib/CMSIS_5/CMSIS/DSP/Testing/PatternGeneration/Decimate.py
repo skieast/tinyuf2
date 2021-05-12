@@ -3,7 +3,7 @@ import numpy as np
 import itertools
 import Tools
 from scipy.signal import firwin
-import scipy.signal 
+import scipy.signal
 import math
 from scipy.signal import upfirdn
 
@@ -31,58 +31,58 @@ def writeBenchmarks(config):
 
     samples = Tools.normalize(samples)
     taps =Tools.normalize(taps)
-    
+
 
     config.writeInput(1, samples,"Samples")
     config.writeInput(1, taps,"Coefs")
 
-    
+
 def generateBenchmarkPatterns():
     PATTERNDIR = os.path.join("Patterns","DSP","Filtering","DECIM","DECIM")
     PARAMDIR = os.path.join("Parameters","DSP","Filtering","DECIM","DECIM")
-    
+
     configf32=Tools.Config(PATTERNDIR,PARAMDIR,"f32")
     configf16=Tools.Config(PATTERNDIR,PARAMDIR,"f16")
     configq31=Tools.Config(PATTERNDIR,PARAMDIR,"q31")
     configq15=Tools.Config(PATTERNDIR,PARAMDIR,"q15")
-    
-    
-    
+
+
+
     writeBenchmarks(configf32)
     writeBenchmarks(configf16)
     writeBenchmarks(configq31)
     writeBenchmarks(configq15)
-    
-    
+
+
     # For decimation, number of samples must be a multiple of decimation factor.
     # So we cannot use a generator in the test description.
     numTaps = [1,2,4,8,16]
     blockSizeFactor = [1,2,4,8,16]
-    decimationFactor = [4,5,8] 
-    
+    decimationFactor = [4,5,8]
+
     combinations = [numTaps,blockSizeFactor,decimationFactor]
     finalLength = 3 * len(numTaps) * len(decimationFactor) * len(blockSizeFactor)
-    
+
     r=np.array([(n,blFactor*dFactor,dFactor) for (n,blFactor,dFactor) in itertools.product(*combinations)])
     r = r.reshape(finalLength)
-    
+
     configf32.writeParam(1, r)
     configf16.writeParam(1, r)
     configq31.writeParam(1, r)
     configq15.writeParam(1, r)
-    
+
     # For interpolation, number taps must be a multiple of interpolation factor.
     # So we cannot use a generator in the test description.
     numTapsFactor = [1,2,4,8]
     blockSize = [16,64]
-    interpolationFactor = [2,4,5,8,9] 
-    
+    interpolationFactor = [2,4,5,8,9]
+
     combinations = [numTapsFactor,blockSize,interpolationFactor]
     finalLength = 3 * len(numTapsFactor) * len(interpolationFactor) * len(blockSize)
-    
+
     r=np.array([(nFactor * iFactor,bl,iFactor) for (nFactor,bl,iFactor) in itertools.product(*combinations)])
     r = r.reshape(finalLength)
-    
+
     configf32.writeParam(2, r)
     configf16.writeParam(2, r)
     configq31.writeParam(2, r)
@@ -107,7 +107,7 @@ def writeDecimateTests(config,startNb,format):
     #decimates=[2]
     #blocks=[1]
     #numTaps =[8,16]
-    
+
 
     #if format==15:
     #    factor=5
@@ -115,7 +115,7 @@ def writeDecimateTests(config,startNb,format):
     #    factor=6
     factor = 1
     ref = []
-   
+
     allConfigs=cartesian(decimates,blocksFactor,numTaps)
 
     allsamples=[]
@@ -130,7 +130,7 @@ def writeDecimateTests(config,startNb,format):
         samples=np.random.randn(nbsamples)
         samples=Tools.normalize(samples)
 
-        
+
         #output=scipy.signal.decimate(samples,q,ftype=scipy.signal.dlti(b,1.0),zero_phase=False)
         output=upfirdn(b,samples,up=1,down=q,axis=-1,mode='constant',cval=0)
         output=output[0:factor*blockF]
@@ -141,7 +141,7 @@ def writeDecimateTests(config,startNb,format):
         allcoefs += list(reversed(b))
 
 
-        
+
         ref += [q,len(b),len(samples),len(output)]
 
 
@@ -169,7 +169,7 @@ def writeInterpolateTests(config,startNb,format):
 
 
     ref = []
-   
+
     allConfigs=cartesian(interpolate,blocks,numTapsFactor)
 
     allsamples=[]
@@ -185,7 +185,7 @@ def writeInterpolateTests(config,startNb,format):
         samples=np.random.randn(nbsamples)
         samples=Tools.normalize(samples)
 
-        
+
         #output=scipy.signal.decimate(samples,q,ftype=scipy.signal.dlti(b,1.0),zero_phase=False)
         output=upfirdn(b,samples,up=q,down=1,axis=-1,mode='constant',cval=0)
         output=output[0:blockSize*q]
@@ -196,7 +196,7 @@ def writeInterpolateTests(config,startNb,format):
         allcoefs += list(reversed(b))
 
 
-        
+
         ref += [q,len(b),len(samples),len(output)]
 
 
@@ -218,12 +218,12 @@ def writeTests(config,format):
     startNb=writeDecimateTests(config,startNb,format)
     startNb=writeInterpolateTests(config,startNb,format)
 
-    
+
 
 def generateTestPatterns():
     PATTERNDIR = os.path.join("Patterns","DSP","Filtering","DECIM","DECIM")
     PARAMDIR = os.path.join("Parameters","DSP","Filtering","DECIM","DECIM")
-    
+
     configf32=Tools.Config(PATTERNDIR,PARAMDIR,"f32")
     configf16=Tools.Config(PATTERNDIR,PARAMDIR,"f16")
     configq31=Tools.Config(PATTERNDIR,PARAMDIR,"q31")
@@ -237,5 +237,3 @@ def generateTestPatterns():
 if __name__ == '__main__':
   generateBenchmarkPatterns()
   generateTestPatterns()
-
-

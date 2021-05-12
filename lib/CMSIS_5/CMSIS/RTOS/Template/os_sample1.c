@@ -1,17 +1,17 @@
-/* ----------------------------------------------------------------------  
- * Copyright (C) 2011 ARM Limited. All rights reserved.  
- *  
+/* ----------------------------------------------------------------------
+ * Copyright (C) 2011 ARM Limited. All rights reserved.
+ *
  * $Date:        30. November 2011
  * $Revision:    V0.02
- *  
+ *
  * Project: 	    CMSIS-RTOS API
  * Title:	    os_sample1.c
- *  
+ *
  * Description:	This file shows the usage of the CMSIS-RTOS API.
- *  
+ *
  * Version 0.02
- *    Initial Proposal Phase 
- * -------------------------------------------------------------------- */ 
+ *    Initial Proposal Phase
+ * -------------------------------------------------------------------- */
 
 
 #define osObjectsExternal

@@ -9,9 +9,9 @@ void MCI_SignalEvent_Callback (uint32_t event);
 
 void init_driver (ARM_DRIVER_MCI *drv) {
   int32_t status;
-  
+
   status = drv->Initialize (&MCI_SignalEvent_Callback);
-  
+
   if (status != ARM_DRIVER_OK) {
     // Initialization and event callback registration failed
   }
@@ -21,9 +21,9 @@ void init_driver (ARM_DRIVER_MCI *drv) {
 
 void uninit_driver (ARM_DRIVER_MCI *drv) {
   int32_t status;
-  
+
   status = drv->Uninitialize ();
-  
+
   if (status == ARM_DRIVER_OK) {
     // Driver successfully uninitialized
   }
@@ -33,14 +33,14 @@ void uninit_driver (ARM_DRIVER_MCI *drv) {
 
 void control_driver_power (ARM_DRIVER_MCI *drv, bool enable) {
   int32_t status;
-  
+
   if (enable == true) {
     status = drv->PowerControl (ARM_POWER_FULL);
   }
   else {
     status = drv->PowerControl (ARM_POWER_OFF);
   }
-  
+
   if (status == ARM_DRIVER_OK) {
     // Driver power enabled/disabled
   }
@@ -52,11 +52,11 @@ ARM_MCI_CAPABILITIES drv_capabilities;
 
 void set_card_vdd_3v3 (ARM_DRIVER_MCI *drv) {
   int32_t status;
-  
+
   if (drv_capabilities.vdd == 1U) {
     // Power switching to 3.3V supported
     status = drv->CardPower (ARM_MCI_POWER_VDD_3V3);
-    
+
     if (status == ARM_DRIVER_OK) {
       // Card power set to 3.3V
     }
@@ -67,9 +67,9 @@ void set_card_vdd_3v3 (ARM_DRIVER_MCI *drv) {
 
 void read_card_detect_state (ARM_DRIVER_MCI *drv) {
   int32_t status;
-  
+
   status = drv->ReadCD();
-  
+
   if (status == 1) {
     // Memory card is detected
   }
@@ -87,9 +87,9 @@ void read_card_detect_state (ARM_DRIVER_MCI *drv) {
 
 void read_write_protect_state (ARM_DRIVER_MCI *drv) {
   int32_t status;
-  
+
   status = drv->ReadWP();
-  
+
   if (status == 1) {
     // Memory card write protection is enabled
   }
@@ -180,7 +180,7 @@ void abort_data_transfer (ARM_DRIVER_MCI *drv) {
   ARM_MCI_STATUS drv_status;
 
   drv_status = drv->GetStatus();
-  
+
   if (drv_status.transfer_active == 1U) {
     // Data transfer is active, abort the transfer
     if (drv->AbortTransfer() == ARM_DRIVER_OK) {
@@ -200,11 +200,11 @@ void check_transfer_status (ARM_DRIVER_MCI *drv) {
   if (drv_status.transfer_active == 1U) {
     // Data transfer is active
   }
-  
+
   if (drv_status.transfer_timeout == 1U) {
     // Data not received, timeout expired
   }
-  
+
   if (drv_status.transfer_error == 1U) {
     // Data transfer ended with error
   }
@@ -239,11 +239,11 @@ void MCI_SignalEvent_Callback (uint32_t event) {
   if ((event & ARM_MCI_EVENT_TRANSFER_ERROR) != 0U) {
     // Data transfer ended with errors
   }
-  
+
   if ((event & ARM_MCI_EVENT_SDIO_INTERRUPT) != 0U) {
     // SD I/O card sent interrupt request
   }
-  
+
   if ((event & ARM_MCI_EVENT_CCS) != 0U) {
     // CE-ATA command completion signal received
   }

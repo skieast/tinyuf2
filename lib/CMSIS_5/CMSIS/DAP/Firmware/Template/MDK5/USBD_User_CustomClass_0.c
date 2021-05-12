@@ -7,13 +7,13 @@
  * Rev.:    V6.7.3
  *----------------------------------------------------------------------------*/
 /*
- * USBD_User_CustomClass_0.c is a code template for the Custom Class 0 
- * class request handling. It allows user to handle all Custom Class class 
+ * USBD_User_CustomClass_0.c is a code template for the Custom Class 0
+ * class request handling. It allows user to handle all Custom Class class
  * requests.
  *
- * Uncomment "Example code" lines to see example that receives data on 
+ * Uncomment "Example code" lines to see example that receives data on
  * Endpoint 1 OUT and echoes it back on Endpoint 1 IN.
- * To try the example you also have to enable Bulk Endpoint 1 IN/OUT in Custom 
+ * To try the example you also have to enable Bulk Endpoint 1 IN/OUT in Custom
  * Class configuration in USBD_Config_CustomClass_0.h file.
  */
 
@@ -97,7 +97,7 @@ void USBD_CustomClass0_EndpointStop (uint8_t ep_addr) {
 }
 
 // \brief Callback function called when Custom Class 0 received SETUP PACKET on Control Endpoint 0
-//        (this callback will be called only for Class Requests (USB_REQUEST_CLASS) if it was not processed 
+//        (this callback will be called only for Class Requests (USB_REQUEST_CLASS) if it was not processed
 //         previously by Device callback)
 // \param[in]     setup_packet            pointer to received setup packet.
 // \param[out]    buf                     pointer to data buffer used for data stage requested by setup packet.
@@ -126,7 +126,7 @@ usbdRequestStatus USBD_CustomClass0_Endpoint0_SetupPacketReceived (const USB_SET
 }
 
 // \brief Callback function called when SETUP PACKET was processed by USB library
-//        (this callback will be called only for Class Requests (USB_REQUEST_CLASS) if it was not processed 
+//        (this callback will be called only for Class Requests (USB_REQUEST_CLASS) if it was not processed
 //         previously by Device callback nor by Custom Class callback)
 // \param[in]     setup_packet            pointer to processed setup packet.
 void USBD_CustomClass0_Endpoint0_SetupPacketProcessed (const USB_SETUP_PACKET *setup_packet) {
@@ -145,7 +145,7 @@ void USBD_CustomClass0_Endpoint0_SetupPacketProcessed (const USB_SETUP_PACKET *s
 }
 
 // \brief Callback function called when Custom Class 0 received OUT DATA on Control Endpoint 0
-//        (this callback will be called only for Class Requests (USB_REQUEST_CLASS) if it was not processed 
+//        (this callback will be called only for Class Requests (USB_REQUEST_CLASS) if it was not processed
 //         previously by Device callback)
 // \param[in]     len                     number of received data bytes.
 // \return        usbdRequestStatus       enumerator value indicating the function execution status
@@ -159,7 +159,7 @@ usbdRequestStatus USBD_CustomClass0_Endpoint0_OutDataReceived (uint32_t len) {
 }
 
 // \brief Callback function called when Custom Class 0 sent IN DATA on Control Endpoint 0
-//        (this callback will be called only for Class Requests (USB_REQUEST_CLASS) if it was not processed 
+//        (this callback will be called only for Class Requests (USB_REQUEST_CLASS) if it was not processed
 //         previously by Device callback)
 // \param[in]     len                     number of sent data bytes.
 // \return        usbdRequestStatus       enumerator value indicating the function execution status

@@ -159,7 +159,7 @@ void ref_fir_sparse_q31(
 
   /* Working pointer for scratch buffer of output values */
   pOut = pDst;
-  
+
   blkCnt = blockSize;
 
   while (blkCnt > 0U)
@@ -176,7 +176,7 @@ void ref_fir_sparse_q31(
 
   while (tapCnt > 0U)
   {
-    /* Load the coefficient value and           
+    /* Load the coefficient value and
      * increment the coefficient buffer for the next set of state values */
     coeff = *pCoeffs++;
 
@@ -304,7 +304,7 @@ void ref_fir_sparse_q15(
 
   while (tapCnt > 0U)
   {
-    /* Load the coefficient value and           
+    /* Load the coefficient value and
      * increment the coefficient buffer for the next set of state values */
     coeff = *pCoeffs++;
 
@@ -345,7 +345,7 @@ void ref_fir_sparse_q15(
     tapCnt--;
   }
 
-  /* All the output values are in pScratchOut buffer.       
+  /* All the output values are in pScratchOut buffer.
      Convert them into 1.15 format, saturate and store in the destination buffer. */
   /* Loop over the blockSize. */
   blkCnt = blockSize;
@@ -427,7 +427,7 @@ void ref_fir_sparse_q7(
 
   while (tapCnt > 0U)
   {
-    /* Load the coefficient value and           
+    /* Load the coefficient value and
      * increment the coefficient buffer for the next set of state values */
     coeff = *pCoeffs++;
 
@@ -470,7 +470,7 @@ void ref_fir_sparse_q7(
     tapCnt--;
   }
 
-  /* All the output values are in pScratchOut buffer.       
+  /* All the output values are in pScratchOut buffer.
      Convert them into 1.15 format, saturate and store in the destination buffer. */
   /* Loop over the blockSize. */
   blkCnt = blockSize;

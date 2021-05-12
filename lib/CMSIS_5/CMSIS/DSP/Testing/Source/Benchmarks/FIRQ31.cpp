@@ -1,24 +1,24 @@
 #include "FIRQ31.h"
 #include "Error.h"
 
-   
+
     void FIRQ31::test_fir_q31()
     {
-       arm_fir_q31(&instFir, pSrc, pDst, this->nbSamples); 
-    } 
+       arm_fir_q31(&instFir, pSrc, pDst, this->nbSamples);
+    }
 
     void FIRQ31::test_lms_q31()
     {
-      arm_lms_q31(&instLms, pSrc, (q31_t*)pRef, pDst, pErr,this->nbSamples); 
-    } 
+      arm_lms_q31(&instLms, pSrc, (q31_t*)pRef, pDst, pErr,this->nbSamples);
+    }
 
     void FIRQ31::test_lms_norm_q31()
     {
-      arm_lms_norm_q31(&instLmsNorm, pSrc, (q31_t*)pRef, pDst, pErr,this->nbSamples); 
-    } 
+      arm_lms_norm_q31(&instLmsNorm, pSrc, (q31_t*)pRef, pDst, pErr,this->nbSamples);
+    }
 
-   
-    
+
+
     void FIRQ31::setUp(Testing::testID_t id,std::vector<Testing::param_t>& params,Client::PatternMgr *mgr)
     {
 
@@ -51,7 +51,7 @@
 
               this->pSrc=samples.ptr();
               this->pRef=refs.ptr();
-      
+
               this->pDst=output.ptr();
               this->pErr=error.ptr();
            break;
@@ -64,12 +64,12 @@
 
               this->pSrc=samples.ptr();
               this->pRef=refs.ptr();
-      
+
               this->pDst=output.ptr();
               this->pErr=error.ptr();
            break;
        }
-       
+
     }
 
     void FIRQ31::tearDown(Testing::testID_t id,Client::PatternMgr *mgr)

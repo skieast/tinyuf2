@@ -1,8 +1,8 @@
 #include "ref.h"
 #include "arm_const_structs.h"
-	 
+
 void ref_cfft_f32(
-   const arm_cfft_instance_f32 * S, 
+   const arm_cfft_instance_f32 * S,
    float32_t * p1,
    uint8_t ifftFlag,
    uint8_t bitReverseFlag)
@@ -75,52 +75,52 @@ void ref_cfft_q31(
 {
 	uint32_t i;
 	float32_t *fSrc = (float32_t*)p1;
-	
+
 	for(i=0;i<S->fftLen*2;i++)
 	{
 		//read the q31 data, cast to float, scale down for float
 		fSrc[i] = (float32_t)p1[i] / 2147483648.0f;
 	}
-	
+
 	switch(S->fftLen)
 	{
-   case 16: 
+   case 16:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len16, fSrc, ifftFlag, bitReverseFlag);
 		 break;
-   
-   case 32: 
+
+   case 32:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len32, fSrc, ifftFlag, bitReverseFlag);
 		 break;
-   
-   case 64: 
+
+   case 64:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len64, fSrc, ifftFlag, bitReverseFlag);
 		 break;
-   
-   case 128: 
+
+   case 128:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len128, fSrc, ifftFlag, bitReverseFlag);
 		 break;
-   
-   case 256: 
+
+   case 256:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len256, fSrc, ifftFlag, bitReverseFlag);
 		 break;
-   
-   case 512: 
+
+   case 512:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len512, fSrc, ifftFlag, bitReverseFlag);
 		 break;
-   
-   case 1024: 
+
+   case 1024:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len1024, fSrc, ifftFlag, bitReverseFlag);
 		 break;
-   
-   case 2048: 
+
+   case 2048:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len2048, fSrc, ifftFlag, bitReverseFlag);
 		 break;
-   
-   case 4096: 
+
+   case 4096:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len4096, fSrc, ifftFlag, bitReverseFlag);
 		 break;
 	}
-	
+
 	if (ifftFlag)
 	{
 		for(i=0;i<S->fftLen*2;i++)
@@ -147,58 +147,58 @@ void ref_cfft_q15(
 {
 	uint32_t i;
 	float32_t *fSrc = (float32_t*)pSrc;
-	
+
 	for(i=0;i<S->fftLen*2;i++)
 	{
 		//read the q15 data, cast to float, scale down for float, place in temporary buffer
 		scratchArray[i] = (float32_t)pSrc[i] / 32768.0f;
 	}
-	
+
 	for(i=0;i<S->fftLen*2;i++)
 	{
 		//copy from temp buffer to final buffer
 		fSrc[i] = scratchArray[i];
 	}
-	
+
 	switch(S->fftLen)
 	{
-   case 16: 
+   case 16:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len16, fSrc, ifftFlag, bitReverseFlag);
 		 break;
-   
-   case 32: 
+
+   case 32:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len32, fSrc, ifftFlag, bitReverseFlag);
 		 break;
-   
-   case 64: 
+
+   case 64:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len64, fSrc, ifftFlag, bitReverseFlag);
 		 break;
-   
-   case 128: 
+
+   case 128:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len128, fSrc, ifftFlag, bitReverseFlag);
 		 break;
-   
-   case 256: 
+
+   case 256:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len256, fSrc, ifftFlag, bitReverseFlag);
 		 break;
-   
-   case 512: 
+
+   case 512:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len512, fSrc, ifftFlag, bitReverseFlag);
 		 break;
-   
-   case 1024: 
+
+   case 1024:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len1024, fSrc, ifftFlag, bitReverseFlag);
 		 break;
-   
-   case 2048: 
+
+   case 2048:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len2048, fSrc, ifftFlag, bitReverseFlag);
 		 break;
-   
-   case 4096: 
+
+   case 4096:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len4096, fSrc, ifftFlag, bitReverseFlag);
 		 break;
 	}
-	
+
 	if (ifftFlag)
 	{
 		for(i=0;i<S->fftLen*2;i++)
@@ -223,39 +223,39 @@ void ref_cfft_radix2_f32(
 {
 	switch(S->fftLen)
 	{
-   case 16: 
+   case 16:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len16, pSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 32: 
+
+   case 32:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len32, pSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 64: 
+
+   case 64:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len64, pSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 128: 
+
+   case 128:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len128, pSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 256: 
+
+   case 256:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len256, pSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 512: 
+
+   case 512:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len512, pSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 1024: 
+
+   case 1024:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len1024, pSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 2048: 
+
+   case 2048:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len2048, pSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 4096: 
+
+   case 4096:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len4096, pSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
 	}
@@ -267,52 +267,52 @@ void ref_cfft_radix2_q31(
 {
 	uint32_t i;
 	float32_t *fSrc = (float32_t*)pSrc;
-	
+
 	for(i=0;i<S->fftLen*2;i++)
 	{
 		//read the q31 data, cast to float, scale down for float
 		fSrc[i] = (float32_t)pSrc[i] / 2147483648.0f;
 	}
-	
+
 	switch(S->fftLen)
 	{
-   case 16: 
+   case 16:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len16, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 32: 
+
+   case 32:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len32, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 64: 
+
+   case 64:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len64, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 128: 
+
+   case 128:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len128, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 256: 
+
+   case 256:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len256, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 512: 
+
+   case 512:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len512, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 1024: 
+
+   case 1024:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len1024, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 2048: 
+
+   case 2048:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len2048, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 4096: 
+
+   case 4096:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len4096, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
 	}
-	
+
 	if (S->ifftFlag)
 	{
 		for(i=0;i<S->fftLen*2;i++)
@@ -337,58 +337,58 @@ void ref_cfft_radix2_q15(
 {
 	uint32_t i;
 	float32_t *fSrc = (float32_t*)pSrc;
-	
+
 	for(i=0;i<S->fftLen*2;i++)
 	{
 		//read the q15 data, cast to float, scale down for float, place in temporary buffer
 		scratchArray[i] = (float32_t)pSrc[i] / 32768.0f;
 	}
-	
+
 	for(i=0;i<S->fftLen*2;i++)
 	{
 		//copy from temp buffer to final buffer
 		fSrc[i] = scratchArray[i];
 	}
-	
+
 	switch(S->fftLen)
 	{
-   case 16: 
+   case 16:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len16, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 32: 
+
+   case 32:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len32, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 64: 
+
+   case 64:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len64, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 128: 
+
+   case 128:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len128, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 256: 
+
+   case 256:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len256, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 512: 
+
+   case 512:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len512, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 1024: 
+
+   case 1024:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len1024, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 2048: 
+
+   case 2048:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len2048, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 4096: 
+
+   case 4096:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len4096, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
 	}
-	
+
 	if (S->ifftFlag)
 	{
 		for(i=0;i<S->fftLen*2;i++)
@@ -410,42 +410,42 @@ void ref_cfft_radix2_q15(
 void ref_cfft_radix4_f32(
 	const arm_cfft_radix4_instance_f32 * S,
 	float32_t * pSrc)
-{		
+{
 	switch(S->fftLen)
 	{
-   case 16: 
+   case 16:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len16, pSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 32: 
+
+   case 32:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len32, pSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 64: 
+
+   case 64:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len64, pSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 128: 
+
+   case 128:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len128, pSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 256: 
+
+   case 256:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len256, pSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 512: 
+
+   case 512:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len512, pSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 1024: 
+
+   case 1024:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len1024, pSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 2048: 
+
+   case 2048:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len2048, pSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 4096: 
+
+   case 4096:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len4096, pSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
 	}
@@ -457,52 +457,52 @@ void ref_cfft_radix4_q31(
 {
 	uint32_t i;
 	float32_t *fSrc = (float32_t*)pSrc;
-	
+
 	for(i=0;i<S->fftLen*2;i++)
 	{
 		//read the q31 data, cast to float, scale down for float
 		fSrc[i] = (float32_t)pSrc[i] / 2147483648.0f;
 	}
-	
+
 	switch(S->fftLen)
 	{
-   case 16: 
+   case 16:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len16, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 32: 
+
+   case 32:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len32, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 64: 
+
+   case 64:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len64, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 128: 
+
+   case 128:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len128, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 256: 
+
+   case 256:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len256, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 512: 
+
+   case 512:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len512, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 1024: 
+
+   case 1024:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len1024, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 2048: 
+
+   case 2048:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len2048, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 4096: 
+
+   case 4096:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len4096, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
 	}
-	
+
 	if (S->ifftFlag)
 	{
 		for(i=0;i<S->fftLen*2;i++)
@@ -527,58 +527,58 @@ void ref_cfft_radix4_q15(
 {
 	uint32_t i;
 	float32_t *fSrc = (float32_t*)pSrc;
-	
+
 	for(i=0;i<S->fftLen*2;i++)
 	{
 		//read the q15 data, cast to float, scale down for float, place in temporary buffer
 		scratchArray[i] = (float32_t)pSrc[i] / 32768.0f;
 	}
-	
+
 	for(i=0;i<S->fftLen*2;i++)
 	{
 		//copy from temp buffer to final buffer
 		fSrc[i] = scratchArray[i];
 	}
-	
+
 	switch(S->fftLen)
 	{
-   case 16: 
+   case 16:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len16, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 32: 
+
+   case 32:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len32, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 64: 
+
+   case 64:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len64, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 128: 
+
+   case 128:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len128, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 256: 
+
+   case 256:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len256, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 512: 
+
+   case 512:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len512, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 1024: 
+
+   case 1024:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len1024, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 2048: 
+
+   case 2048:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len2048, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
-   
-   case 4096: 
+
+   case 4096:
 		 ref_cfft_f32(&arm_cfft_sR_f32_len4096, fSrc, S->ifftFlag, S->bitReverseFlag);
 		 break;
 	}
-	
+
 	if (S->ifftFlag)
 	{
 		for(i=0;i<S->fftLen*2;i++)

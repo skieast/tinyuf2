@@ -17,19 +17,19 @@
        float16_t *outp = outputfft.ptr();
 
        memcpy(tmp,inp,sizeof(float16_t)*input.nbSamples());
-   
+
         arm_rfft_fast_f16(
              &this->instRfftF16,
              tmp,
              outp,
              this->ifft);
-          
+
         ASSERT_SNR(outputfft,ref,(float16_t)SNR_THRESHOLD);
         ASSERT_EMPTY_TAIL(outputfft);
-        
-    } 
 
-  
+    }
+
+
     void TransformRF16::setUp(Testing::testID_t id,std::vector<Testing::param_t>& paramsArgs,Client::PatternMgr *mgr)
     {
 
@@ -460,9 +460,9 @@
 
        }
 
-       
+
       outputfft.create(ref.nbSamples(),TransformRF16::OUTPUT_RFFT_F16_ID,mgr);
-       
+
 
     }
 

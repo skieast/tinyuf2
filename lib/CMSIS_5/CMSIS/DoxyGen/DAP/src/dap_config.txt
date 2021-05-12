@@ -23,10 +23,10 @@ requirements:
   - 7 standard I/O pins for JTAG/SWD Device Interface.
   - optional 2 I/O pins for Status LEDs.
   - optional UART to support SWO capturing (Rx pin connected to SWO)
-  
+
 CMSIS-DAP Firmware
 ------------------
-The CMSIS-DAP Firmware can be configured for a new Debug Unit using at least the 
+The CMSIS-DAP Firmware can be configured for a new Debug Unit using at least the
 <a href="https://www.keil.com/mdk5" target="_blank">Keil MDK-Plus or MDK-Professional Edition</a>.
 Reference implementations are provided as source code with complete project files
 and may be used as starting point for the firmware deployment to a new Debug Unit.
@@ -39,7 +39,7 @@ Folders and Files                       | Description
 .\\Firmware\\Example\\V1\\LPC-Link-II   | CMSIS-DAP Firmware using USB HID adapted to the NXP LPC-Link-II Debug Unit that is part of the LPCxpresso-II platform.
 .\\Firmware\\Example\\V2\\LPC-Link-II   | CMSIS-DAP Firmware using WinUSB adapted to the NXP LPC-Link-II Debug Unit that is part of the LPCxpresso-II platform.
 
-The CMSIS-DAP Firmware is designed to execute on a Debug Unit that is using a Cortex-M0, Cortex-M0+, Cortex-M3, or Cortex-M4 
+The CMSIS-DAP Firmware is designed to execute on a Debug Unit that is using a Cortex-M0, Cortex-M0+, Cortex-M3, or Cortex-M4
 processor-based microcontroller. To deploy the firmware to a new Debug Unit copy an existing firmware adaptation to a new folder.
 For example, copy the folder .\\Firmware\\XMC4200 to a folder called .\\Firmware\\MyDebugUnit.
 
@@ -60,8 +60,8 @@ To following steps describe the adaptation of the CMSIS-DAP Firmware to a new De
 @{
 CMSIS-DAP Firmware runs on Debug Units with a Cortex-M microcontroller.
 
-The CMSIS-DAP Firmware is designed to execute on a Debug Unit that is using a Cortex-M0, Cortex-M0+, Cortex-M3, or Cortex-M4 
-processor-based microcontroller. 
+The CMSIS-DAP Firmware is designed to execute on a Debug Unit that is using a Cortex-M0, Cortex-M0+, Cortex-M3, or Cortex-M4
+processor-based microcontroller.
 
 The following steps describe how to change the microcontroller in the CMSIS-DAP Firmware project:
 
@@ -101,7 +101,7 @@ The USB communication is implemented via MDK middleware components that access t
 
 The CMSIS-DAP Firmware is able to communicate with the host computer using one of the following USB classes:
   - \ref USBHID (Human Interface Device) does not require any USB driver installation.
-  - \ref WinUSB provides higher speed communication but may require an *.inf file for USB installation. 
+  - \ref WinUSB provides higher speed communication but may require an *.inf file for USB installation.
 
 For the USB interface it is important to provide correct configuration information for the USB Peripheral as described in this section.
 
@@ -117,8 +117,8 @@ The following steps describe how to change and configure the USB peripheral in t
   - Update <b>String Settings - Product String</b> to indicate the Debug Unit. Note that "CMSIS-DAP" must be part of that string to allow identification by debuggers (or part of interface string for USB composite device).
   - Optionally each Debug Unit may provide a unique <b>Serial Number String</b>. If the <b>String Settings - Serial Number String</b> is not provided, only one Debug Unit can be connected at the same time to a host computer since it is impossible to identify multiple Debug Units.
 
-  
-\note 
+
+\note
   - The USB Device setting high-speed / full-speed USB must be reflected in the \b DAP_config.h file as described under \ref DAP_Config_gr.
   - The <b>String Settings - Product String</b> must contain "CMSIS-DAP" somewhere in the string. This is used by the debuggers to identify a CMSIS-DAP compliant Debug Unit that is connected to a host computer.
 
@@ -127,8 +127,8 @@ The following steps describe how to change and configure the USB peripheral in t
 
 \page USBHID Communication via USB HID
 
-CMSIS-DAP with V1 configuration uses USB HID and is therefore compatible with previous versions of CMSIS-DAP.  There is no modification at the debugger required as all the additions are fully upward compatible. To 
-configure CMSIS-DAP for V1 interface, add to the compiler options the \#define DAP_FW_V1 as shown below: 
+CMSIS-DAP with V1 configuration uses USB HID and is therefore compatible with previous versions of CMSIS-DAP.  There is no modification at the debugger required as all the additions are fully upward compatible. To
+configure CMSIS-DAP for V1 interface, add to the compiler options the \#define DAP_FW_V1 as shown below:
 
 <br>
 \image html "MDK_DAP_FW_V1.png" "Compiler CMSIS-DAP Firmware for USB HID interface"
@@ -155,22 +155,22 @@ To identify a CMSIS-DAP V2 configuration by debuggers the following WinUSB GUID 
 \code
 {CDB3B5AD-293B-4663-AA36-1AAE46463776}
 \endcode
-The picture below shows the configuration of the USB custom class. 
+The picture below shows the configuration of the USB custom class.
 
 \image html "MDK_USB_Custom.png" "Adapt CMSIS-DAP to the WinUSB class"
 
 <b>USB Driver and *.inf file</b>
 <br><br>
-Windows 8 and Windows 10 does not require a WinUSB driver provided that the USB firmware stack supports Microsoft descriptors. 
+Windows 8 and Windows 10 does not require a WinUSB driver provided that the USB firmware stack supports Microsoft descriptors.
 CMSIS-DAP v2 device should be configured as WCID (Windows Compatible ID) device which provides extra information to a Windows system
-to facilitate automated driver installation. 
+to facilitate automated driver installation.
 <br><br>
-For Windows 7, the CMSIS-DAP v2 device will install automatically if PC is connected to the Internet and Device Installation Settings 
-of PC are set to automatically download and install drivers for devices. Automatically installed device will be seen in 
+For Windows 7, the CMSIS-DAP v2 device will install automatically if PC is connected to the Internet and Device Installation Settings
+of PC are set to automatically download and install drivers for devices. Automatically installed device will be seen in
 Device Manager under Universal Serial Bus devices as WinUsb Device
 <br><br>
-If no Internet connection is available or you want device to show with different name under Device Manager you should 
-provide an .inf file and sign it to generate .cat files. More information is available from Microsoft under the topic  
+If no Internet connection is available or you want device to show with different name under Device Manager you should
+provide an .inf file and sign it to generate .cat files. More information is available from Microsoft under the topic
 <a href="https://technet.microsoft.com/en-us/library/dd919238(v=ws.10).aspx" target="_blank">Steps for Signing a Device Driver Package</a>.
 <br><br>
 
@@ -216,7 +216,7 @@ You may change this define with a compiler option.
 @{
 A CMSIS-DAP conforming Debug Unit must be validated.
 
-A CMSIS-DAP Debug Unit must be validate using the Keil MDK Debugger. 
+A CMSIS-DAP Debug Unit must be validate using the Keil MDK Debugger.
 A validation project for MDK is provided in the folder <b>.\\Validation\\MDK</b>.
 The project <b>Blinky.uvproj</b> is a "Blinky" application and needs to be adapted for the target hardware
 that is connected to the Debug Unit. Once the adaptation is complete, you may open a Command Prompt and
@@ -241,5 +241,3 @@ Vendor Commands may implement additional functionality such as interfaces to ser
 The RDDI-DAP interface offers the function CMSIS_DAP_Commands to exchange information with vendor-specific commands.
 @}
 **************************************************************************************************/
-
-

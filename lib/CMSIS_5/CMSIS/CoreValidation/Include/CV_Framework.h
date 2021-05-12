@@ -1,5 +1,5 @@
 /*-----------------------------------------------------------------------------
- *      Name:         CV_Framework.h 
+ *      Name:         CV_Framework.h
  *      Purpose:      Framework header
  *----------------------------------------------------------------------------
  *      Copyright (c) 2017 ARM Limited. All rights reserved.
@@ -31,7 +31,7 @@ typedef struct __TestSuite {
   const char *Time;                   /* Compilation time                     */
   const char *ReportTitle;            /* Title or name of module under test   */
   void (*Init)(void);                 /* Init function callback               */
-  
+
   uint32_t TCBaseNum;                 /* Base number for test case numbering  */
   TEST_CASE *TC;                      /* Array of test cases                  */
   uint32_t NumOfTC;                   /* Number of test cases (sz of TC array)*/

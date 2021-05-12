@@ -12,10 +12,10 @@ JTEST_DEFINE_TEST(arm_mat_inverse_f32_test, arm_mat_inverse_f32)
     TEMPLATE_DO_ARR_DESC(
         mat_idx, arm_matrix_instance_f32 *, mat_ptr, matrix_f32_invertible_inputs
         ,
-        JTEST_DUMP_STRF("Matrix Dimensions: %dx%d\n",                
-                 (int)mat_ptr->numRows,                         
-                 (int)mat_ptr->numCols); 
-      
+        JTEST_DUMP_STRF("Matrix Dimensions: %dx%d\n",
+                 (int)mat_ptr->numRows,
+                 (int)mat_ptr->numCols);
+
         if (MATRIX_TEST_VALID_SQUARE_DIMENSIONS(arm_matrix_instance_f32 *, mat_ptr))
         {
             MATRIX_TEST_CONFIG_SAMESIZE_OUTPUT(arm_matrix_instance_f32 *, mat_ptr);
@@ -48,10 +48,10 @@ JTEST_DEFINE_TEST(arm_mat_inverse_f64_test, arm_mat_inverse_f64)
     TEMPLATE_DO_ARR_DESC(
         mat_idx, arm_matrix_instance_f64 *, mat_ptr, matrix_f64_invertible_inputs
         ,
-        JTEST_DUMP_STRF("Matrix Dimensions: %dx%d\n",                
-                         (int)mat_ptr->numRows,                         
-                         (int)mat_ptr->numCols);    
-                         
+        JTEST_DUMP_STRF("Matrix Dimensions: %dx%d\n",
+                         (int)mat_ptr->numRows,
+                         (int)mat_ptr->numCols);
+
         if (MATRIX_TEST_VALID_SQUARE_DIMENSIONS(arm_matrix_instance_f64 *, mat_ptr))
         {
             MATRIX_TEST_CONFIG_SAMESIZE_OUTPUT(arm_matrix_instance_f64 *, mat_ptr);

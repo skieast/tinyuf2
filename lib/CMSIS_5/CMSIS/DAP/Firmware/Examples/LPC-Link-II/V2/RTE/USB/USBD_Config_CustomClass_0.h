@@ -134,7 +134,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -219,7 +219,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -304,7 +304,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -389,7 +389,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -474,7 +474,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -559,7 +559,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -644,7 +644,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -729,7 +729,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -1034,7 +1034,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -1119,7 +1119,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -1204,7 +1204,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -1289,7 +1289,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -1374,7 +1374,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -1459,7 +1459,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -1544,7 +1544,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -1629,7 +1629,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -1934,7 +1934,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -2019,7 +2019,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -2104,7 +2104,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -2189,7 +2189,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -2274,7 +2274,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -2359,7 +2359,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -2444,7 +2444,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -2529,7 +2529,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -2834,7 +2834,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -2919,7 +2919,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -3004,7 +3004,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -3089,7 +3089,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -3174,7 +3174,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -3259,7 +3259,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -3344,7 +3344,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt
@@ -3429,7 +3429,7 @@
 //         <o.0..1>Type
 //           <i>Select Endpoint Type.
 //           <i>Endpoint Descriptor: bmAttributes field bits 0 .. 1.
-//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type 
+//           <i>If required, for Isochronous Endpoint, Synchronization and Usage Type
 //           <i>can be set by manually editing define value of BMATTRIBUTES.
 //           <2=>Bulk
 //           <3=>Interrupt

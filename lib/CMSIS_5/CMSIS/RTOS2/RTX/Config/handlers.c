@@ -54,7 +54,7 @@ void CDAbtHandler(uint32_t DFSR, uint32_t DFAR, uint32_t LR) {
     uint32_t FS = (DFSR & (1U << 10U)) >> 6U | (DFSR & 0x0FU); //Store Fault Status
     (void)DFAR;
     (void)LR;
-  
+
     switch(FS) {
         //Synchronous parity errors - retry
         case FSR_SYNC_PARITY_ERROR:
@@ -91,7 +91,7 @@ void CPAbtHandler(uint32_t IFSR, uint32_t IFAR, uint32_t LR) {
     uint32_t FS = (IFSR & (1U << 10U)) >> 6U | (IFSR & 0x0FU); //Store Fault Status
     (void)IFAR;
     (void)LR;
-    
+
     switch(FS) {
         //Synchronous parity errors - retry
         case FSR_SYNC_PARITY_ERROR:

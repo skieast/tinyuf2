@@ -40,8 +40,8 @@ void ref_fir_f32(
       blockSize--;
    }
 
-   /* Processing is complete.         
-   ** Now copy the last numTaps - 1 samples to the starting of the state buffer.       
+   /* Processing is complete.
+   ** Now copy the last numTaps - 1 samples to the starting of the state buffer.
    ** This prepares the state buffer for the next function call. */
 
    /* Points to the start of the state buffer */
@@ -94,8 +94,8 @@ void ref_fir_q31(
       blockSize--;
    }
 
-   /* Processing is complete.         
-   ** Now copy the last numTaps - 1 samples to the starting of the state buffer.       
+   /* Processing is complete.
+   ** Now copy the last numTaps - 1 samples to the starting of the state buffer.
    ** This prepares the state buffer for the next function call. */
 
    /* Points to the start of the state buffer */
@@ -148,8 +148,8 @@ void ref_fir_fast_q31(
       blockSize--;
    }
 
-   /* Processing is complete.         
-   ** Now copy the last numTaps - 1 samples to the starting of the state buffer.       
+   /* Processing is complete.
+   ** Now copy the last numTaps - 1 samples to the starting of the state buffer.
    ** This prepares the state buffer for the next function call. */
 
    /* Points to the start of the state buffer */
@@ -202,8 +202,8 @@ void ref_fir_q15(
       blockSize--;
    }
 
-   /* Processing is complete.         
-   ** Now copy the last numTaps - 1 samples to the starting of the state buffer.       
+   /* Processing is complete.
+   ** Now copy the last numTaps - 1 samples to the starting of the state buffer.
    ** This prepares the state buffer for the next function call. */
 
    /* Points to the start of the state buffer */
@@ -256,8 +256,8 @@ void ref_fir_fast_q15(
       blockSize--;
    }
 
-   /* Processing is complete.         
-   ** Now copy the last numTaps - 1 samples to the starting of the state buffer.       
+   /* Processing is complete.
+   ** Now copy the last numTaps - 1 samples to the starting of the state buffer.
    ** This prepares the state buffer for the next function call. */
 
    /* Points to the start of the state buffer */
@@ -310,8 +310,8 @@ void ref_fir_q7(
       blockSize--;
    }
 
-   /* Processing is complete.         
-   ** Now copy the last numTaps - 1 samples to the starting of the state buffer.       
+   /* Processing is complete.
+   ** Now copy the last numTaps - 1 samples to the starting of the state buffer.
    ** This prepares the state buffer for the next function call. */
 
    /* Points to the start of the state buffer */

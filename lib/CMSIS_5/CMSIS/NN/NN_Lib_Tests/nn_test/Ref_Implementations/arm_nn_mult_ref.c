@@ -19,10 +19,10 @@
 #include "arm_math.h"
 #include "arm_nnfunctions.h"
 
-void      arm_nn_mult_q7_ref(q7_t * pSrcA, 
-                             q7_t * pSrcB, 
-                             q7_t * pDst, 
-                             const uint16_t out_shift, 
+void      arm_nn_mult_q7_ref(q7_t * pSrcA,
+                             q7_t * pSrcB,
+                             q7_t * pDst,
+                             const uint16_t out_shift,
                              uint32_t blockSize) {
     uint16_t  i;
 
@@ -37,10 +37,10 @@ for (i = 0; i < blockSize; i++)
     }
 }
 
-void     arm_nn_mult_q15_ref(q15_t * pSrcA, 
-                             q15_t * pSrcB, 
-                             q15_t * pDst, 
-                             const uint16_t out_shift, 
+void     arm_nn_mult_q15_ref(q15_t * pSrcA,
+                             q15_t * pSrcB,
+                             q15_t * pDst,
+                             const uint16_t out_shift,
                              uint32_t blockSize) {
     uint16_t  i;
 

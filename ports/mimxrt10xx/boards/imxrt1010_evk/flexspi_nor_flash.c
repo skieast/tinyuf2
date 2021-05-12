@@ -50,7 +50,7 @@ uint32_t flexspi_nor_read_status() {
     bool isParallelMode = flexspi_is_parallel_mode(memCfg);
     uint32_t readValue = 0;
 
-    // Write enable 
+    // Write enable
     flashXfer.baseAddress = 0;
     flashXfer.operation = kFlexSpiOperation_Read;
     flashXfer.seqNum = 1;

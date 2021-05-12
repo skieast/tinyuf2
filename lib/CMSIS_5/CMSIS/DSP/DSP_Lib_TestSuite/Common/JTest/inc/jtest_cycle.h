@@ -75,5 +75,3 @@ extern const char * JTEST_CYCLE_STRF;
 #endif
 
 #endif /* _JTEST_CYCLE_H_ */
-
-

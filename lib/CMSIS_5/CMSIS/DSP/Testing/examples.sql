@@ -4,10 +4,10 @@ Build the table with the platform, compiler and core names.
 
 */
 .headers ON
-.mode csv 
+.mode csv
 
 
-select NB,CATEGORY.category,NAME,CYCLES,PLATFORM.platform,CORE.core,COMPILERKIND.compiler,COMPILER.version,BasicMathsBenchmarksF32.DATE 
+select NB,CATEGORY.category,NAME,CYCLES,PLATFORM.platform,CORE.core,COMPILERKIND.compiler,COMPILER.version,BasicMathsBenchmarksF32.DATE
   from BasicMathsBenchmarksF32
   INNER JOIN CATEGORY USING(categoryid)
   INNER JOIN PLATFORM USING(platformid)
@@ -18,7 +18,7 @@ select NB,CATEGORY.category,NAME,CYCLES,PLATFORM.platform,CORE.core,COMPILERKIND
 
 
 /*
-select Regression,MAX,MAXREGCOEF,CATEGORY.category,NAME,PLATFORM.platform,CORE.core,COMPILERKIND.compiler,COMPILER.version,BasicMathsBenchmarksF32.DATE 
+select Regression,MAX,MAXREGCOEF,CATEGORY.category,NAME,PLATFORM.platform,CORE.core,COMPILERKIND.compiler,COMPILER.version,BasicMathsBenchmarksF32.DATE
   from BasicMathsBenchmarksF32
   INNER JOIN CATEGORY USING(categoryid)
   INNER JOIN PLATFORM USING(platformid)
@@ -27,7 +27,7 @@ select Regression,MAX,MAXREGCOEF,CATEGORY.category,NAME,PLATFORM.platform,CORE.c
   INNER JOIN COMPILERKIND USING(compilerkindid)
   ;
 */
-/* 
+/*
 
 Compute the max cycles for a test configuration (category + name)
 
@@ -58,7 +58,7 @@ See diff.sql for example
 */
 
 /*
-select NB,CATEGORY.category,NAME,CYCLES,PLATFORM.platform,CORE.core,COMPILERKIND.compiler,COMPILER.version,BasicMathsBenchmarksF32.DATE 
+select NB,CATEGORY.category,NAME,CYCLES,PLATFORM.platform,CORE.core,COMPILERKIND.compiler,COMPILER.version,BasicMathsBenchmarksF32.DATE
   from BasicMathsBenchmarksF32
   INNER JOIN CATEGORY USING(categoryid)
   INNER JOIN PLATFORM USING(platformid)

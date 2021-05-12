@@ -19,7 +19,7 @@
 #elif defined ARMCM4_FP
   #include "ARMCM4_FP.h"
 #elif defined ARMCM7
-  #include "ARMCM7.h" 
+  #include "ARMCM7.h"
 #elif defined ARMCM7_SP
   #include "ARMCM7_SP.h"
 #elif defined ARMCM7_DP
@@ -90,5 +90,5 @@
  */
 #define JTEST_SYSTICK_VALUE(systick_ptr)                    \
     ((systick_ptr)->VAL)
-           
+
 #endif /* _JTEST_SYSTICK_H_ */

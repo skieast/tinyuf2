@@ -23,26 +23,26 @@
 
         ASSERT_NEAR_EQ(output,ref,ABS_ERROR_Q7);
 
-    } 
+    }
 
 
- 
+
     void ExampleCategoryQ7::setUp(Testing::testID_t id,std::vector<Testing::param_t>& params,Client::PatternMgr *mgr)
     {
-      
-       Testing::nbSamples_t nb=MAX_NB_SAMPLES; 
+
+       Testing::nbSamples_t nb=MAX_NB_SAMPLES;
        (void)params;
-       
+
        switch(id)
        {
         case ExampleCategoryQ7::TEST_OP_Q7_1:
              ref.reload(ExampleCategoryQ7::REF_OUT_Q7_ID,mgr);
           break;
 
- 
+
 
        }
-      
+
 
        input1.reload(ExampleCategoryQ7::INPUT1_Q7_ID,mgr,nb);
        input2.reload(ExampleCategoryQ7::INPUT2_Q7_ID,mgr,nb);

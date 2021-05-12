@@ -22,5 +22,5 @@ class BinaryF16:public Client::Suite
             arm_matrix_instance_f16 in1;
             arm_matrix_instance_f16 in2;
             arm_matrix_instance_f16 out;
-            
+
     };

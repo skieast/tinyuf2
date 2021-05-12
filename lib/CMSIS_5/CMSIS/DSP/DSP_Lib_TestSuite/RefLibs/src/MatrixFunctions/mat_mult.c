@@ -7,26 +7,26 @@ arm_status ref_mat_mult_f32(
 {
 	uint32_t r,c,i,outR,outC,innerSize;
 	float32_t sum;
-	
+
 	outR = pSrcA->numRows;
 	outC = pSrcB->numCols;
 	innerSize = pSrcA->numCols;
-	
+
 	for(r=0;r<outR;r++)
 	{
 		for(c=0;c<outC;c++)
 		{
 			sum = 0;
-			
+
 			for(i=0;i<innerSize;i++)
 			{
 				sum += pSrcA->pData[r*innerSize + i] * pSrcB->pData[i*outC + c];
 			}
-			
+
 			pDst->pData[r*outC + c] = sum;
 		}
 	}
-	
+
 	return ARM_MATH_SUCCESS;
 }
 
@@ -37,26 +37,26 @@ arm_status ref_mat_mult_q31(
 {
 	uint32_t r,c,i,outR,outC,innerSize;
 	q63_t sum;
-	
+
 	outR = pSrcA->numRows;
 	outC = pSrcB->numCols;
 	innerSize = pSrcA->numCols;
-	
+
 	for(r=0;r<outR;r++)
 	{
 		for(c=0;c<outC;c++)
 		{
 			sum = 0;
-			
+
 			for(i=0;i<innerSize;i++)
 			{
 				sum += (q63_t)(pSrcA->pData[r*innerSize + i]) * pSrcB->pData[i*outC + c];
 			}
-			
+
 			pDst->pData[r*outC + c] = ref_sat_q31(sum >> 31);
 		}
 	}
-	
+
 	return ARM_MATH_SUCCESS;
 }
 
@@ -67,25 +67,25 @@ arm_status ref_mat_mult_q15(
 {
 	uint32_t r,c,i,outR,outC,innerSize;
 	q63_t sum;
-	
+
 	outR = pSrcA->numRows;
 	outC = pSrcB->numCols;
 	innerSize = pSrcA->numCols;
-	
+
 	for(r=0;r<outR;r++)
 	{
 		for(c=0;c<outC;c++)
 		{
 			sum = 0;
-			
+
 			for(i=0;i<innerSize;i++)
 			{
 				sum += (q31_t)(pSrcA->pData[r*innerSize + i]) * pSrcB->pData[i*outC + c];
 			}
-			
+
 			pDst->pData[r*outC + c] = ref_sat_q15(sum >> 15);
 		}
 	}
-	
+
 	return ARM_MATH_SUCCESS;
 }

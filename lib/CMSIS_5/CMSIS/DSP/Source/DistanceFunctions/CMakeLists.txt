@@ -49,4 +49,4 @@ target_sources(CMSISDSPDistance PRIVATE arm_jensenshannon_distance_f16.c)
 target_sources(CMSISDSPDistance PRIVATE arm_minkowski_distance_f16.c)
 endif()
 
- 
+

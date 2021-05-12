@@ -15,7 +15,7 @@ include(interpol)
 interpol(CMSISDSPFastMath)
 
 if (CONFIGTABLE AND ALLFAST)
-    target_compile_definitions(CMSISDSPFastMath PUBLIC ARM_ALL_FAST_TABLES)  
+    target_compile_definitions(CMSISDSPFastMath PUBLIC ARM_ALL_FAST_TABLES)
 endif()
 
 if (NOT CONFIGTABLE OR ALLFAST OR ARM_COS_F32)
@@ -56,6 +56,3 @@ endif()
 
 ### Includes
 target_include_directories(CMSISDSPFastMath PUBLIC "${DSP}/Include")
-
-
-

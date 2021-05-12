@@ -292,6 +292,3 @@ endif()
 
 ### Includes
 target_include_directories(CMSISDSP INTERFACE "${DSP}/Include")
-
-
-

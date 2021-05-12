@@ -8,7 +8,7 @@ peripheral types, but can not take every potential use-case into account. Over t
 CMSIS-Driver API with further groups to cover new use-cases.
 
 The CMSIS Software Pack publishes the API Interface under the Component Class \b CMSIS \b Driver with header files and a
-documentation. These header files are the reference for the implementation of the standardized peripheral driver interfaces. 
+documentation. These header files are the reference for the implementation of the standardized peripheral driver interfaces.
 These implementations are published typically in the Device Family Pack of a related microcontroller family under the
 Component Class \b CMSIS \b Driver. A Device Family Pack may contain additional interfaces in the Component Class \b Device
 to extend the standard Peripheral Drivers covered by this CMSIS-Driver specification with additional device specific
@@ -93,7 +93,7 @@ The following files relevant to CMSIS-Driver are present in the <b>ARM::CMSIS</b
     <tr>
       <td>2.05</td>
       <td>
-        - Changed: All typedefs related to status have been made volatile. 
+        - Changed: All typedefs related to status have been made volatile.
       </td>
     </tr>
     <tr>
@@ -147,9 +147,9 @@ via a CMSIS-Driver) has one \ref DriverInstances "Driver Instance".
 Each CMSIS-Driver contains these functions:
 
  - \b GetVersion: can be called at any time to obtain version information of the driver interface.
- 
+
  - \b GetCapabilities: can be called at any time to obtain capabilities of the driver interface.
- 
+
  - \b Initialize: must be called before powering the peripheral using \b PowerControl. This function performs the following:
      - allocate I/O resources.
 	 - register an optional \b SignalEvent callback function.
@@ -165,7 +165,7 @@ Each CMSIS-Driver contains these functions:
        external events and wake-up.
      - \c ARM_POWER_OFF: Peripheral is turned off and not operational (pending operations are terminated). This is the state
        after device reset.
- 
+
  - \b Uninitialize: Complementary function to Initialize. Releases the I/O pin resources used by the interface.
 
  - \b Control: Several drivers provide a control function to configure communication parameters or execute miscellaneous
@@ -182,7 +182,7 @@ When calling CMSIS-Driver functions from RTOS threads, it should be ensure that 
 
 \section CallSequence Function Call Sequence
 
-For normal operation of the driver, the API functions \b GetVersion, \b GetCapabilities, \b Initialize, \b PowerControl, \b Uninitialize are 
+For normal operation of the driver, the API functions \b GetVersion, \b GetCapabilities, \b Initialize, \b PowerControl, \b Uninitialize are
 called in the following order:
 
 \msc
@@ -226,7 +226,7 @@ To start working with a peripheral the functions \b Initialize and \b PowerContr
   if the I/O resources are already initialized it performs no operation and just returns with \ref ARM_DRIVER_OK.
 - \b PowerControl (\c ARM_POWER_FULL) sets the peripheral registers including interrupt (NVIC) and optionally DMA.
   The function can be called multiple times; if the registers are already set it performs no operation and just returns with \ref ARM_DRIVER_OK.
-  
+
 \subsection CS_stop Stop Sequence
 
 To stop working with a peripheral the functions \b PowerControl and \b Uninitialize need to be called in this order:
@@ -238,7 +238,7 @@ The functions \b PowerControl and \b Uninitialize always execute and can be used
 for example after any data transmission errors.  To restart the peripheral in a error condition, you should first execute
 the \ref CS_stop and then the \ref CS_start.
 
-- \b PowerControl (\c ARM_POWER_OFF) terminates any pending data transfers with the peripheral, disables the peripheral and 
+- \b PowerControl (\c ARM_POWER_OFF) terminates any pending data transfers with the peripheral, disables the peripheral and
   leaves it in a defined mode (typically the reset state).
     - when DMA is used it is disabled (including the interrupts)
     - peripheral interrupts are disabled on NVIC level
@@ -249,10 +249,10 @@ the \ref CS_stop and then the \ref CS_start.
 
 \section Share_IO Shared I/O Pins
 
-All CMSIS-Driver provide a \ref CS_start and \ref CS_stop. Therefore two different drivers can share the same I/O pins, 
+All CMSIS-Driver provide a \ref CS_start and \ref CS_stop. Therefore two different drivers can share the same I/O pins,
 for example UART1 and SPI1 can have overlapping I/O pins. In this case the communication channels can be used as shown below:
 
-\code 
+\code
   SPI1drv->Initialize (...);                // Start SPI1
   SPI1drv->PowerControl (ARM_POWER_FULL);
    ...                                      // Do operations with SPI1
@@ -265,7 +265,7 @@ for example UART1 and SPI1 can have overlapping I/O pins. In this case the commu
   USART1drv->PowerControl (ARM_POWER_OFF);  // Stop USART1
   USART1drv->Uninitialize ();
 \endcode
- 
+
 \section Data_Xfer_Functions Data Transfer Functions
 
 A CMSIS-Driver implements non-blocking functions to transfer data to a peripheral. This means that the driver configures the
@@ -284,7 +284,7 @@ During the data exchange with the peripheral, the application can decide to:
  - Use polling functions that return the number of transferred data items to show progress information or partly read or fill
    data transfer buffers.
  - Prepare another data transfer buffer for the next data transfer.
- 
+
 The following diagram shows the basic communication flow when using the \b _Send function in an application.
 
 \image html Non_blocking_transmit_small.png  "Non-blocking Send Function"
@@ -354,7 +354,7 @@ void init_middleware (ARM_DRIVER_SPI *Drv_spi) ...
 \\ inside the middleware the SPI driver functions are called with:
 \\   Drv_spi->function (...);
 \endcode
- 
+
 \code
 \\ setup middleware
 init_middleware (&Driver_SPI1);      // connect middleware to SPI1 interface
@@ -389,7 +389,7 @@ ARM offers also a Software Pack for CMSIS-Driver Validation as described in \ref
 \section DriverHeaderFiles Driver Header Files
 
 The API of each CMSIS-Driver is published in a header file. It is recommended to include the header file that is part of the
-CMSIS specification in the implementation file of the CMSIS-Driver. 
+CMSIS specification in the implementation file of the CMSIS-Driver.
 
 The following header files are available in the directory <b>.\\CMSIS\\Driver\\Include</b>.
 
@@ -416,7 +416,7 @@ The following header files are available in the directory <b>.\\CMSIS\\Driver\\I
 
 \section DriverTemplates Driver Template Files
 
-Driver template files are code skeletons that provide the structure of a CMSIS-Driver.  The following templates are 
+Driver template files are code skeletons that provide the structure of a CMSIS-Driver.  The following templates are
 available in the directory <b>.\\CMSIS\\Driver\\DriverTemplates</b>.
 
 | Source File       | Description
@@ -438,7 +438,7 @@ available in the directory <b>.\\CMSIS\\Driver\\DriverTemplates</b>.
 \section DriverExamples Driver Examples
 
 The driver examples are full working CMSIS-Drivers that may be adapted to a different hardware. Examples are currently
-available for the NXP LPC1800 series and provide the implementation of a complete CMSIS-Driver. The following examples are 
+available for the NXP LPC1800 series and provide the implementation of a complete CMSIS-Driver. The following examples are
 available in the directory <b>.\\CMSIS\\Pack\\Example\\CMSIS_Driver</b>.
 
 | Source File       | Header File       | Description
@@ -464,9 +464,9 @@ These CMSIS-Drivers use additional modules for GPIO and DMA control:
 
 The CMSIS-Drivers for the LPC1800 device have also many configuration options that are controls using \#define statements in
 the file <b>.\\CMSIS\\Pack\\Example\\CMSIS_Driver\\Config\\RTE_Device.h</b>. Using this file, the I/O pin and DMA assignment
-can be set among other parameters such as USB speed and PHY interfaces. 
+can be set among other parameters such as USB speed and PHY interfaces.
 
-Further driver reference implementations are available in Device Family Packs (DFP) labeled with version 2.0.0 or higher. 
+Further driver reference implementations are available in Device Family Packs (DFP) labeled with version 2.0.0 or higher.
 */
 
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
@@ -496,23 +496,23 @@ The following CMSIS-Drivers can be tested with the current release:
  - \ref usbd_interface_gr : only API and setup; does not test data transfer.
  - \ref usbh_interface_gr : only API and setup; does not test data transfer.
  - \ref wifi_interface_gr : extensive tests for WiFi Driver.
- 
+
 The Driver Validation output can be printed to a console or saved in an XML file, via standard output (usually ITM).
- 
+
 \section test_output Sample Test Output
 \verbatim
-CMSIS-Driver USART Test Report   Dec  6 2019   11:44:30 
+CMSIS-Driver USART Test Report   Dec  6 2019   11:44:30
 
 TEST 01: USART_GetCapabilities            PASSED
 TEST 02: USART_Initialization             PASSED
-TEST 03: USART_PowerControl               
+TEST 03: USART_PowerControl
   DV_USART.c (301): [WARNING] Low power is not supported
                                           PASSED
 TEST 04: USART_Config_PolarityPhase       PASSED
-TEST 05: USART_Config_DataBits            
+TEST 05: USART_Config_DataBits
   DV_USART.c (387): [WARNING] Data Bits = 9 are not supported
                                           PASSED
-TEST 06: USART_Config_StopBits            
+TEST 06: USART_Config_StopBits
   DV_USART.c (425): [WARNING] Stop Bits = 1.5 are not supported
   DV_USART.c (429): [WARNING] Stop Bits = 0.5 are not supported
                                           PASSED
@@ -542,7 +542,7 @@ USART            | Connect TX with RX
 The following picture shows the necessary external loop back connections for the Keil MCBSTM32F400 evaluation board:
  - SPI: PB14 (SPI2_MISO) and PB15 (SPI2_MOSI)
  - USART: PB6 (USART1_TX) and PB7 (USART1_RX)
- - Ethernet: Pin 1 (TX+) and Pin 3 (RX+), Pin 2 (TX-) and Pin 6 (RX-) 
+ - Ethernet: Pin 1 (TX+) and Pin 3 (RX+), Pin 2 (TX-) and Pin 6 (RX-)
 
 \image html image006.png  "Connections for Loop Back Communication Tests on Keil MCBSTM32F400"
 

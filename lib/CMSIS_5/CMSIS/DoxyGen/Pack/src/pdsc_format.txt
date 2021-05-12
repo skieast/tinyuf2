@@ -1,6 +1,6 @@
 /*=======0=========1=========2=========3=========4=========5=========6=========7=========8=========9=========0=========1====*/
 /**
-\page packFormat Pack Description (*.pdsc) Format 
+\page packFormat Pack Description (*.pdsc) Format
 
 [TOC]
 
@@ -25,13 +25,13 @@ A \ref cp_SWComponents "Software Pack" must have a unique filename which uses th
    package names.
  - <b>\<release version="X.Y.Z"\></b>: \ref VersionType "version number" of the \ref cp_SWComponents "Software Pack".
  - <b>.pack</b>: file extension identifying a \ref cp_SWComponents "Software Pack".
- 
+
 \note \<vendor\> and \<name\> \em must \em not contain spaces.
 
 \n
 The <b>Pack Description</b> (*.pdsc) file belonging to such a \ref cp_SWComponents "Software Pack" file (\<vendor\>.\<name\>.\<version\>.pack)
 is version independent and has the format:
-<b>\<vendor\>.\<name\>.pdsc</b>. 
+<b>\<vendor\>.\<name\>.pdsc</b>.
 
 \b Where:
  - <b>\<vendor\></b>: name of the supplier or vendor of the \ref cp_SWComponents "Software Pack".
@@ -45,7 +45,7 @@ Example filenames for software packs:
 Software Pack for CMSIS Version 4.0 released by Arm.
  - <b>ARM.CMSIS.4.0.0.pack</b>: filename of the \ref cp_SWComponents "Software Pack".
  - <b>ARM.CMSIS.pdsc</b>: filename of the <b>Pack Description</b> (*.pdsc) file.
- 
+
 Device Family Pack for STM32F4 Version 1.0.0 released by ST Microelectronics.
  - <b>ST.STM32F4xx_DFP.1.0.0.pack</b>: filename of the \ref cp_SWComponents "Software Pack".
  - <b>ST.STM32F4xx.pdsc</b>: filename of the <b>Pack Description</b> (*.pdsc) file.
@@ -53,19 +53,19 @@ Device Family Pack for STM32F4 Version 1.0.0 released by ST Microelectronics.
 \note All elements are case sensitive and must be consistently spelled in all places, i.e. the definition in the PDSC
 file must match the filenames of the *.pdsc and *.pack files. The file extensions (*.pdsc and *.pack) must be lower case.
 
-\section PackSchema Pack Schema 
+\section PackSchema Pack Schema
 
 The XML schema file <b>PACK.xsd</b> defines the sections used in a <b>*.pdsc</b> file. The current <b>PACK.xsd</b> can be
 found in the ARM.CMSIS pack in the directory .\\CMSIS\\Utilities.
 
 The \ref packFormat is structured using grouping elements and contains the following top level elements:
- - \subpage pdsc_package_pg "<package>": describes package related information like vendor, package name, description, version. Is the root element. 
- - \subpage element_keywords "<keywords>": lists keywords to search for packages. Can be used for search engines. 
+ - \subpage pdsc_package_pg "<package>": describes package related information like vendor, package name, description, version. Is the root element.
+ - \subpage element_keywords "<keywords>": lists keywords to search for packages. Can be used for search engines.
  - \subpage element_repository "<repository>": specifies the URL and repository type of a public repository where the pack originates from.
  - \subpage element_dominate "<dominate>": the pack contains one or more device, API, or component that overrules other packs with identical items.
  - \subpage element_releases "<releases>": lists release versions with descriptions.
  - \subpage element_requirements_pg "<requirements>": lists required packs, compiler, programming language standards and their version or version range.
- - \subpage element_taxonomy "<taxonomy>": lists description elements that define component classes and component group names. 
+ - \subpage element_taxonomy "<taxonomy>": lists description elements that define component classes and component group names.
  - \subpage pdsc_apis_pg "<apis>": describes Application Programming Interfaces (API) Specifications contained in the \ref cp_SWComponents "Software Pack".
  - \subpage pdsc_generators_pg "<generators>": specifies the tools that have been used to generate the PDSC file.
  - \subpage pdsc_devices_pg "<devices>": lists the devices supported by this \ref cp_SWComponents "Software Pack". It specifies the device attributes and
@@ -111,7 +111,7 @@ assists searching for packages.
       Beta version of STM32F2 Device Family Pack.
     </release>
   </releases>
-	
+
   <keywords>                                                                  <!-- keywords for indexing -->
     <keyword>ST</keyword>
     <keyword>Device Support</keyword>
@@ -119,7 +119,7 @@ assists searching for packages.
     <keyword>STM32F2</keyword>
     <keyword>STM32F2xx</keyword>
   </keywords>
-	
+
   <taxonomy>                                                                  <!-- class and group descriptions -->
     <description Cclass="Board Support">
       Generic Interfaces and Templates for Evaluation and Development Boards
@@ -209,7 +209,7 @@ assists searching for packages.
     <td>xs:string </td>
     <td>1..1 </td>
   </tr>
-  \anchor package_description  
+  \anchor package_description
   <tr>
     <td>description</td>
     <td>Brief description of the \ref cp_SWComponents "Software Pack".</td>
@@ -219,9 +219,9 @@ assists searching for packages.
   \anchor package_url
   <tr>
     <td>url</td>
-    <td><a href="https://en.wikipedia.org/wiki/Uniform_resource_locator" target="_blank">HTTP URL</a> 
-        or <a href="https://en.wikipedia.org/wiki/File_URI_scheme" target="_blank">file URI</a> location 
-        of the \ref cp_SWComponents "Software Pack". The URL can be used by installers for downloading, 
+    <td><a href="https://en.wikipedia.org/wiki/Uniform_resource_locator" target="_blank">HTTP URL</a>
+        or <a href="https://en.wikipedia.org/wiki/File_URI_scheme" target="_blank">file URI</a> location
+        of the \ref cp_SWComponents "Software Pack". The URL can be used by installers for downloading,
         updating, or checking versions. If left empty, the Pack cannot be updated automatically from a server location.</td>
     <td>xs:anyURI </td>
     <td>1..1 </td>
@@ -313,7 +313,7 @@ assists searching for packages.
   <tr>
     <td>\ref element_conditions "conditions"</td>
     <td>Is a group that contains dependency definitions used within the Pack.
-    These rules can describe dependencies on various levels: device attributes, components, or tools. 
+    These rules can describe dependencies on various levels: device attributes, components, or tools.
     Conditions are referenced by components and files.</td>
     <td>ConditionsType</td>
     <td>0..1 </td>
@@ -343,7 +343,7 @@ assists searching for packages.
 
 CMSIS-Pack version specification is inspired by the <a href="http://semver.org" target="_blank">Semantic Versioning 2.0.0</a>.
 Under this scheme, version numbers and the way they are incremented convey a meaning about the underlying content quality and the significance
-of changes from one version to the next. A version consists of 3 mandatory and 2 optional sections: 
+of changes from one version to the next. A version consists of 3 mandatory and 2 optional sections:
 
 \code
 MAJOR.MINOR.PATCH[-Pre Release][+Build Metadata]
@@ -370,7 +370,7 @@ MAJOR.MINOR.PATCH[-Pre Release][+Build Metadata]
     \code
     ARM.CMSIS.1.1.pack equal to ARM.CMSIS.1.1.0.pack
     \endcode
-4. <em>pre release:</em> the optional pre-release string must start with a hyphen ('-') immediately after the <em>PATCH</em> and consists of a series 
+4. <em>pre release:</em> the optional pre-release string must start with a hyphen ('-') immediately after the <em>PATCH</em> and consists of a series
    of dot separated ASCII alphanumerics and hyphen ([0-9A-Za-z-]).
   - accepted: the pre-release string immediately following the PATCH without a hyphen if the first item is a character.
   \code
@@ -379,7 +379,7 @@ MAJOR.MINOR.PATCH[-Pre Release][+Build Metadata]
 5. <em>build metadata:</em> the optional build metadata must be denoted by appending a plus sign ('+') and a series of dot separated identifiers.
    Identifiers comprise only ASCII alphanumerics and hyphen [0-9A-Za-z-]+. Two versions that differ only in the build metadata, have the same precedence.
    \code
-   ARM.CMSIS.4.3.0-alpha.1+build.102   
+   ARM.CMSIS.4.3.0-alpha.1+build.102
    \endcode
 
 The above is extending the recommendation that was given in previous version of this specification.:
@@ -416,15 +416,15 @@ Keywords can be exported to web pages to provide information for search engines,
 <package>
   ...
   <keywords>
-    <keyword>ARM</keyword>     
-    <keyword>Cortex-M</keyword>     
-    <keyword>TCP/IP Stack</keyword>     
+    <keyword>ARM</keyword>
+    <keyword>Cortex-M</keyword>
+    <keyword>TCP/IP Stack</keyword>
   </keywords>
   ...
 </package>
 \endcode
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 <table class="cmtable" summary="Root Element: Package">
   <tr>
@@ -514,7 +514,7 @@ Contributing to a software pack hosted on GitHub:
 /**************************************************************************************************/
 /**
 \page element_dominate /package/dominate element
-The \ref element_dominate specifies that the Pack contains one or more \ref element_devices "device", \ref element_apis "API", or \ref element_components "component" that overrules 
+The \ref element_dominate specifies that the Pack contains one or more \ref element_devices "device", \ref element_apis "API", or \ref element_components "component" that overrules
 other packs that contain identical named \ref element_devices "device", \ref element_apis "API", or \ref element_components "component".
 
 This attribute is useful for framing packs that:
@@ -564,8 +564,8 @@ This attribute is useful for framing packs that:
 /**
 \page element_releases /package/releases element
 
-Contains the release history of the Pack. This element is mandatory. No more than one such group can exist in a Pack. 
-It contains the full release history of the Pack. 
+Contains the release history of the Pack. This element is mandatory. No more than one such group can exist in a Pack.
+It contains the full release history of the Pack.
 
 \b Example:
 \code
@@ -615,11 +615,11 @@ The latest release version is always listed on top.
 \code
 <releases>
   <release version="1.1.1">Fixed a problem with the feature xyz.
-  </release>     
+  </release>
   <release version="1.1.0">Introduces a new feature xyz.
-  </release>     
+  </release>
   <release version="1.0.0">First published version.
-  </release>     
+  </release>
 </releases>
 \endcode
 
@@ -631,13 +631,13 @@ The latest release version is always listed on top.
   <releases>
     <release version="2.1.0" tag="2.1.0" url="https://github.com/ARM-software/CMSIS-Driver/archive/2.1.0.zip">
       Added LAN9220 Ethernet MAC+PHY driver.
-    </release>     
+    </release>
     <release version="2.0.0" tag="2.0.0" url="https://github.com/ARM-software/CMSIS-Driver/archive/2.0.0.zip">
       First published version.
-    </release>     
+    </release>
   </releases>
   ...
-</package> 
+</package>
 \endcode
 
 <p>&nbsp;</p>
@@ -673,17 +673,17 @@ The latest release version is always listed on top.
     <td>tag</td>
     <td>In case the repository element is specified, the tag attribute is used to specify the repository tag that corresponds to this release of the pack.</td>
     <td>xs:string</td>
-    <td>optional</td>    
+    <td>optional</td>
   </tr>
   <tr>
     <td>url</td>
     <td>URL specifying the location of the pack of the specified version. This can be used to override the default location being \c \<url>/\<vendor>.\<name>.\<version>.pack</td>
     <td>xs:anyURI</td>
-    <td>optional</td>    
+    <td>optional</td>
   </tr>
   <tr>
     <td>deprecated</td>
-    <td>Pack is no longer officially supported after the set date. It will be excluded from checks for update. 
+    <td>Pack is no longer officially supported after the set date. It will be excluded from checks for update.
         Deprecated packs may remain available for download from the server. Tools will continue to work but may provide indicators
         highlighting end of support for the pack and its content. Not recommended for use with new projects.
         Note this attribute is only relevant when set for the latest release located on top of the releases section.
@@ -708,7 +708,7 @@ The latest release version is always listed on top.
 <hr>
 */
 
-/** 
+/**
 \page element_requirements_pg /package/requirements
 \anchor element_requirements
 
@@ -782,7 +782,7 @@ There are three different requirement types:
   </tr>
 </table>
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 <hr>
 
 \section element_packages /package/requirements/packages
@@ -835,13 +835,13 @@ There are three different requirement types:
        - Version range specified with <em>min_version</em><b>:</b><em>max_version</em>. <em>min_version</em> must be lower or
          equal than <em>max_version</em>. If <em>min_version</em> and <em>max_version</em> are equal, the version must match.
        - If no version is specified, the latest available version is assumed.
-    </td>	 
+    </td>
    <td>\ref VersionType</td>
     <td>optional</td>
   </tr>
 </table>
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 <hr>
 
 \section element_compilers /package/requirements/compilers
@@ -888,14 +888,14 @@ There are three different requirement types:
        - Version range specified with <em>min_version</em><b>:</b><em>max_version</em>. <em>min_version</em> must be lower or
          equal than <em>max_version</em>. If <em>min_version</em> and <em>max_version</em> are equal, the version must match.
          <br>
-    </td>	 
+    </td>
     <td>\ref VersionType</td>
     <td>required</td>
   </tr>
 </table>
 
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 <hr>
 
 \section element_languages /package/requirements/languages
@@ -943,7 +943,7 @@ There are three different requirement types:
   </tr>
 </table>
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 <hr>
 
 */
@@ -953,7 +953,7 @@ There are three different requirement types:
 \page element_taxonomy /package/taxonomy element
 
 Group to list description elements that define component classes and component group names used within a package description.
-This element is optional. 
+This element is optional.
 
 \b Example:
 \code
@@ -1082,7 +1082,7 @@ software components in projects. Reserved characters are:
   </tr>
   <tr>
     <td>public</td>
-    <td>Set publishing permissions for the documentation. If \tagem{public} is \token{true}, then the vendor gives permission 
+    <td>Set publishing permissions for the documentation. If \tagem{public} is \token{true}, then the vendor gives permission
         to extract the documentation from the pack and publish it on a web-page. Links to web pages are assumed to be public.
         The default value is \token{false}.</td>
     <td>xs:boolean</td>
@@ -1090,7 +1090,7 @@ software components in projects. Reserved characters are:
   </tr>
 </table>
 
-<p>&nbsp;</p>		
+<p>&nbsp;</p>
 
 \anchor CclassType <b>Table: Component Classes</b>
 
@@ -1112,7 +1112,7 @@ These values can be used in the elements:
   <... Cclass="CMSIS" ...>
 \endcode
 <p>&nbsp;</p>
-	
+
 The table lists predefined Component Classes.
 <table class="cmtable" summary="Predefined Cclass names">
   <tr>
@@ -1197,9 +1197,9 @@ The table lists predefined Component Classes.
 
 \anchor CgroupType <b>Table: Component Groups</b>
 
-Component Group names are specified by the element <b>Cgroup</b> and create categories within a Component Class specified by the element <b>Cclass</b>. 
-The creator of the Pack can define the names in the element \ref element_taxonomyDescription. 
-A Component Group name is string with a length between 3 and 32 characters. 
+Component Group names are specified by the element <b>Cgroup</b> and create categories within a Component Class specified by the element <b>Cclass</b>.
+The creator of the Pack can define the names in the element \ref element_taxonomyDescription.
+A Component Group name is string with a length between 3 and 32 characters.
 
 \b Example:
 \code

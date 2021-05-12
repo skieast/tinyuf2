@@ -64,7 +64,7 @@ FPGA driver. Used to read a C array describing how to drive the test.
       virtual void ImportPattern_f32(Testing::PatternID_t,char*,Testing::nbSamples_t nb);
 #if !defined( __CC_ARM ) && defined(ARM_FLOAT16_SUPPORTED)
       virtual void ImportPattern_f16(Testing::PatternID_t,char*,Testing::nbSamples_t nb);
-#endif   
+#endif
       virtual void ImportPattern_q63(Testing::PatternID_t,char*,Testing::nbSamples_t nb);
       virtual void ImportPattern_q31(Testing::PatternID_t,char*,Testing::nbSamples_t nb);
       virtual void ImportPattern_q15(Testing::PatternID_t,char*,Testing::nbSamples_t nb);
@@ -82,7 +82,7 @@ FPGA driver. Used to read a C array describing how to drive the test.
       virtual void DumpPattern_f32(Testing::outputID_t,Testing::nbSamples_t nb, float32_t* data);
 #if !defined( __CC_ARM ) && defined(ARM_FLOAT16_SUPPORTED)
       virtual void DumpPattern_f16(Testing::outputID_t,Testing::nbSamples_t nb, float16_t* data);
-#endif     
+#endif
       virtual void DumpPattern_q63(Testing::outputID_t,Testing::nbSamples_t nb, q63_t* data);
       virtual void DumpPattern_q31(Testing::outputID_t,Testing::nbSamples_t nb, q31_t* data);
       virtual void DumpPattern_q15(Testing::outputID_t,Testing::nbSamples_t nb, q15_t* data);
@@ -90,7 +90,7 @@ FPGA driver. Used to read a C array describing how to drive the test.
       virtual void DumpPattern_u32(Testing::outputID_t,Testing::nbSamples_t nb, uint32_t* data);
       virtual void DumpPattern_u16(Testing::outputID_t,Testing::nbSamples_t nb, uint16_t* data);
       virtual void DumpPattern_u8(Testing::outputID_t,Testing::nbSamples_t nb, uint8_t* data);
-      
+
       virtual Testing::testID_t CurrentTestID();
      private:
       void recomputeTestDir();

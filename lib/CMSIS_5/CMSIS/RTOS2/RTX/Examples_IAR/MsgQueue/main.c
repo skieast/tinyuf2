@@ -1,4 +1,4 @@
-/* -------------------------------------------------------------------------- 
+/* --------------------------------------------------------------------------
  * Copyright (c) 2013-2019 ARM Limited. All rights reserved.
  *
  * SPDX-License-Identifier: Apache-2.0
@@ -114,7 +114,7 @@ int main (void) {
 
   // Create message queue for up to 10 messages of type msg_t
   msgQueue = osMessageQueueNew(10, sizeof(msg_t), NULL);
-  
+
   osKernelStart();                      // Start thread execution
   for (;;) {}
 }

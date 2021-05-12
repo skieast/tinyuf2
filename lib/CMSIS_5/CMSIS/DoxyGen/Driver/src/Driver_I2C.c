@@ -3,8 +3,8 @@
 \brief    Driver API for I2C Bus Peripheral (%Driver_I2C.h)
 \details
 
-I<sup>2</sup>C (Inter-Integrated Circuit, referred to as I-squared-C, I-two-C, or IIC) is a multi-master serial single-ended bus and is mostly used 
-on single boards, but can also connect to components which are linked via cable. 
+I<sup>2</sup>C (Inter-Integrated Circuit, referred to as I-squared-C, I-two-C, or IIC) is a multi-master serial single-ended bus and is mostly used
+on single boards, but can also connect to components which are linked via cable.
 
 Most significant features of the I<sup>2</sup>C bus include:
  - Only two bus lines are required
@@ -19,23 +19,23 @@ For more information about I<sup>2</sup>C refer to the following web pages:
 
 Devices can operation in Master or Slave mode:
 
- - To operate in Master mode call the functions \ref ARM_I2C_MasterTransmit or \ref ARM_I2C_MasterReceive. These functions get as argument a <em>slave address</em>. 
- 
+ - To operate in Master mode call the functions \ref ARM_I2C_MasterTransmit or \ref ARM_I2C_MasterReceive. These functions get as argument a <em>slave address</em>.
+
  - To operate in Slave mode set the <em>slave address</em> using the function \ref ARM_I2C_Control. The functions \ref ARM_I2C_SlaveTransmit or \ref ARM_I2C_SlaveReceive are used to transfer data in Slave mode.
 
 <b>I<sup>2</sup>C Slave Address</b>
- 
-Depending on the device, I<sup>2</sup>C supports 7-bit and 10-bit Slaves addresses. 
+
+Depending on the device, I<sup>2</sup>C supports 7-bit and 10-bit Slaves addresses.
 The element <em>address_10_bit</em> in \ref ARM_I2C_CAPABILITIES indicates that the driver is able to handle 10-bit addresses.
 A 10-bit Slave address is ORed with \ref ARM_I2C_ADDRESS_10BIT.
- 
+
 I<sup>2</sup>C also supports a General Call to all Slaves by using the slave address value \token{0}.
-A General Call is recognized by Slaves have a slave address value \ref ARM_I2C_ADDRESS_GC registered with the 
+A General Call is recognized by Slaves have a slave address value \ref ARM_I2C_ADDRESS_GC registered with the
 function \ref ARM_I2C_Control.
 
 <b>Block Diagram</b>
 
-The I2C driver allows you to connect low-speed peripherals to a motherboard, embedded system, cellphone, or other electronic device. 
+The I2C driver allows you to connect low-speed peripherals to a motherboard, embedded system, cellphone, or other electronic device.
 
 \image html I2C_BlockDiagram.png  "Master/Slave connected via I2C interface"
 
@@ -45,7 +45,7 @@ The I2C driver allows you to connect low-speed peripherals to a motherboard, emb
 The following header files define the Application Programming Interface (API) for the I<sup>2</sup>C interface:
   - \b %Driver_I2C.h : Driver API for I2C Bus Peripheral
 
-The driver implementation is a typical part of the Device Family Pack (DFP) that supports the 
+The driver implementation is a typical part of the Device Family Pack (DFP) that supports the
 peripherals of the microcontroller family.
 
 
@@ -72,7 +72,7 @@ The following example code shows the usage of the I<sup>2</sup>C interface in Sl
 /**
 \struct     ARM_DRIVER_I2C
 \details
-The functions of the I2C interface are accessed by function pointers exposed by this structure. Refer to \ref DriverFunctions for 
+The functions of the I2C interface are accessed by function pointers exposed by this structure. Refer to \ref DriverFunctions for
 overview information.
 
 Each instance of an I2C provides such an access structure. The instance is indicated by
@@ -138,7 +138,7 @@ Provides the typedef for the callback function \ref ARM_I2C_SignalEvent.
 \defgroup I2C_events I2C Events
 \ingroup i2c_interface_gr
 \brief The I2C driver generates call back events that are notified via the function \ref ARM_I2C_SignalEvent.
-\details 
+\details
 This section provides the event values for the \ref ARM_I2C_SignalEvent callback function.
 
 The following call back notification events are generated:
@@ -174,11 +174,11 @@ Example:
 \code
 extern ARM_DRIVER_I2C Driver_I2C0;
 ARM_DRIVER_I2C *drv_info;
- 
+
 void setup_i2c (void)  {
   ARM_DRIVER_VERSION  version;
- 
-  drv_info = &Driver_I2C0;  
+
+  drv_info = &Driver_I2C0;
   version = drv_info->GetVersion ();
   if (version.api < 0x10A)   {      // requires at minimum API version 1.10 or higher
     // error handling
@@ -196,19 +196,19 @@ ARM_I2C_CAPABILITIES ARM_I2C_GetCapabilities (void)  {
 \details
 The function \b ARM_I2C_GetCapabilities returns information about capabilities of this driver implementation.
 The data fields of the struct \ref ARM_I2C_CAPABILITIES encodes the driver capabilities.
- 
+
 Example:
 \code
 extern ARM_DRIVER_I2C Driver_I2C0;
 ARM_DRIVER_I2C *drv_info;
-  
+
 void read_capabilities (void)  {
   ARM_I2C_CAPABILITIES drv_capabilities;
- 
-  drv_info = &Driver_I2C0;  
+
+  drv_info = &Driver_I2C0;
   drv_capabilities = drv_info->GetCapabilities ();
   // interrogate capabilities
- 
+
 }
 \endcode
 *******************************************************************************************************************/
@@ -218,8 +218,8 @@ int32_t ARM_I2C_Initialize (ARM_I2C_SignalEvent_t cb_event) {
 };
 /**
 \fn       int32_t ARM_I2C_Initialize (ARM_I2C_SignalEvent_t cb_event)
-\details 
-The function \b ARM_I2C_Initialize initializes the I2C interface. 
+\details
+The function \b ARM_I2C_Initialize initializes the I2C interface.
 It is called when the middleware component starts operation.
 
 The function performs the following operations:
@@ -229,7 +229,7 @@ The function performs the following operations:
 The parameter \em cb_event is a pointer to the \ref ARM_I2C_SignalEvent callback function.
 Use a NULL pointer when no callback events are required.
 
-Can be called multiple times. If the peripheral is already initialized the function performs no operation and 
+Can be called multiple times. If the peripheral is already initialized the function performs no operation and
 returns with \ref ARM_DRIVER_OK. Refer to \ref CallSequence for more information.
 
 \sa ARM_I2C_PowerControl
@@ -237,7 +237,7 @@ returns with \ref ARM_DRIVER_OK. Refer to \ref CallSequence for more information
 
 \b Example:
  - refer to \ref example "Example Code"
- 
+
 *******************************************************************************************************************/
 
 int32_t ARM_I2C_Uninitialize (void)  {
@@ -265,12 +265,12 @@ int32_t ARM_I2C_PowerControl (ARM_POWER_STATE state)  {
 The function \b ARM_I2C_PowerControl operates the power modes of the I2C interface.
 
 The parameter \em state can have the following values:
-  - \ref ARM_POWER_FULL : set-up peripheral for data transfers, enable interrupts (NVIC) and optionally DMA. 
-                          Can be called multiple times. If the peripheral is already in this mode, 
+  - \ref ARM_POWER_FULL : set-up peripheral for data transfers, enable interrupts (NVIC) and optionally DMA.
+                          Can be called multiple times. If the peripheral is already in this mode,
 						  then the function performs no operation and returns with \ref ARM_DRIVER_OK.
   - \ref ARM_POWER_LOW : may use power saving. Returns \ref ARM_DRIVER_ERROR_UNSUPPORTED when not implemented.
   - \ref ARM_POWER_OFF : terminates any pending data transfers, disables peripheral, disables related interrupts and DMA.
-      
+
 Refer to \ref CallSequence for more information.
 
 \sa ARM_I2C_Initialize
@@ -292,13 +292,13 @@ The operation consists of:
  - Master transmits data to the addressed Slave
  - Master generates STOP condition (if \em xfer_pending is "false")
 
-The parameter \em addr is the address of the slave to transmit the data to. The value can be ORed with \ref ARM_I2C_ADDRESS_10BIT to 
+The parameter \em addr is the address of the slave to transmit the data to. The value can be ORed with \ref ARM_I2C_ADDRESS_10BIT to
 identify a 10-bit address value. \n
 The parameter \em data and \em num specify the address of a data buffer and the number of bytes to transmit. \n
 Set the parameter \em xfer_pending to 'true' if another transfer operation follows. With \em xfer_pending set to 'false' a STOP condition is generated.
 
 The function is non-blocking and returns as soon as the driver has started the operation.
-During the operation it is not allowed to call any Master function again. Also the data buffer must stay allocated and the contents of data must not be modified. 
+During the operation it is not allowed to call any Master function again. Also the data buffer must stay allocated and the contents of data must not be modified.
 When transmit operation has finished the \ref ARM_I2C_EVENT_TRANSFER_DONE event is generated.
 When not all the data is transferred then the \ref ARM_I2C_EVENT_TRANSFER_INCOMPLETE flag is set at the same time.
 
@@ -328,13 +328,13 @@ The operation consists of:
  - Master receives data from the addressed Slave
  - Master generates STOP condition (if \em xfer_pending is "false")
 
-The parameter \em addr is the address of the slave to receive the data from. The value can be ORed with \ref ARM_I2C_ADDRESS_10BIT to 
+The parameter \em addr is the address of the slave to receive the data from. The value can be ORed with \ref ARM_I2C_ADDRESS_10BIT to
 identify a 10-bit address value. \n
 The parameter \em data and \em num specify the address of a data buffer and the number of bytes to receive. \n
 Set the parameter \em xfer_pending to 'true' if another transfer operation follows. With \em xfer_pending set to 'false' a STOP condition is generated.
 
 The function is non-blocking and returns as soon as the driver has started the operation.
-During the operation it is not allowed to call any Master function again. Also the data buffer must stay allocated. 
+During the operation it is not allowed to call any Master function again. Also the data buffer must stay allocated.
 When receive operation has finished the \ref ARM_I2C_EVENT_TRANSFER_DONE event is generated.
 When not all the data is transferred then the \ref ARM_I2C_EVENT_TRANSFER_INCOMPLETE flag is set at the same time.
 
@@ -365,7 +365,7 @@ The function is non-blocking and returns as soon as the driver has registered th
 The actual operation will start after being addressed by the master as a Slave Transmitter. If the operation has not been registered at that point the \ref ARM_I2C_EVENT_SLAVE_TRANSMIT event is generated.
 The same event is also generated if the operation has finished (specified number of bytes transmitted) but more data is requested by the master.
 
-It is not allowed to call this function again if the operation has started until it finishes. Also the data buffer must stay allocated and the contents of data must not be modified. 
+It is not allowed to call this function again if the operation has started until it finishes. Also the data buffer must stay allocated and the contents of data must not be modified.
 When transmit operation has finished the \ref ARM_I2C_EVENT_TRANSFER_DONE event is generated.
 When not all the data is transferred then the \ref ARM_I2C_EVENT_TRANSFER_INCOMPLETE flag is set at the same time.
 
@@ -375,7 +375,7 @@ In case that a General call has been detected the \ref ARM_I2C_EVENT_GENERAL_CAL
 
 In case that bus error has been detected then the operation is aborted and the \ref ARM_I2C_EVENT_BUS_ERROR event is generated together with \ref ARM_I2C_EVENT_TRANSFER_DONE.
 
-Slave will only respond to its own address (or General call if enabled) that is specified by calling \ref ARM_I2C_Control with \ref ARM_I2C_OWN_ADDRESS as control parameter. 
+Slave will only respond to its own address (or General call if enabled) that is specified by calling \ref ARM_I2C_Control with \ref ARM_I2C_OWN_ADDRESS as control parameter.
 Using address \token{0} disables the slave.
 
 Status can be monitored by calling the \ref ARM_I2C_GetStatus and checking the flags.
@@ -397,7 +397,7 @@ The parameter \em num specifies the number of bytes to receive.
 The function is non-blocking and returns as soon as the driver has registered the operation.
 The actual operation will start after being addressed by the master as a Slave Receiver. If the operation has not been registered at that point the \ref ARM_I2C_EVENT_SLAVE_RECEIVE event is generated.
 
-It is not allowed to call this function again if the operation has started until it finishes. Also the data buffer must stay allocated. 
+It is not allowed to call this function again if the operation has started until it finishes. Also the data buffer must stay allocated.
 When receive operation has finished the \ref ARM_I2C_EVENT_TRANSFER_DONE event is generated.
 When not all the data is transferred then the \ref ARM_I2C_EVENT_TRANSFER_INCOMPLETE flag is set at the same time.
 
@@ -407,7 +407,7 @@ In case that a General call has been detected the \ref ARM_I2C_EVENT_GENERAL_CAL
 
 In case that bus error has been detected then the operation is aborted and the \ref ARM_I2C_EVENT_BUS_ERROR event is generated together with \ref ARM_I2C_EVENT_TRANSFER_DONE.
 
-Slave will only respond to its own address (or General call if enabled) that is specified by calling \ref ARM_I2C_Control with \ref ARM_I2C_OWN_ADDRESS as control parameter. 
+Slave will only respond to its own address (or General call if enabled) that is specified by calling \ref ARM_I2C_Control with \ref ARM_I2C_OWN_ADDRESS as control parameter.
 Using address \token{0} disables the slave.
 
 Status can be monitored by calling the \ref ARM_I2C_GetStatus and checking the flags.
@@ -436,7 +436,7 @@ int32_t ARM_I2C_Control (uint32_t control, uint32_t arg)  {
 /**
 \fn int32_t ARM_I2C_Control (uint32_t control, uint32_t arg)
 \details
-The function \b ARM_I2C_Control operates the I2C interface and executes various operations. 
+The function \b ARM_I2C_Control operates the I2C interface and executes various operations.
 
 The parameter \em control specifies various operations as listed in the table below.  \n
 The parameter \em arg provides, depending on the operation,  additional information. \n
@@ -446,15 +446,15 @@ Parameter \em control            | Operation
 \ref ARM_I2C_OWN_ADDRESS         | Set Own Slave Address; \em arg = slave address
 \ref ARM_I2C_BUS_SPEED           | Set Bus Speed; \em arg = bus speed
 \ref ARM_I2C_BUS_CLEAR           | Clear the bus by sending nine clock pulses
-\ref ARM_I2C_ABORT_TRANSFER      | Aborts the data transfer between Master and Slave for Transmit or Receive 
+\ref ARM_I2C_ABORT_TRANSFER      | Aborts the data transfer between Master and Slave for Transmit or Receive
 
 <b>Set Own Slave Address</b>
 
-After initialization, the I2C Device has no slave address assigned and does not accept any requests from 
+After initialization, the I2C Device has no slave address assigned and does not accept any requests from
 an I2C Master.
 
 The \em control operation \ref ARM_I2C_OWN_ADDRESS sets the slave address with the parameter \em arg.
-The slave address can be ORed with \ref ARM_I2C_ADDRESS_10BIT to indicate a 10-bit address.  
+The slave address can be ORed with \ref ARM_I2C_ADDRESS_10BIT to indicate a 10-bit address.
 
 The slave address can be ORed with \ref ARM_I2C_ADDRESS_GC to indicate that the slave accepts a General Call.
 If the slave address value is only \ref ARM_I2C_ADDRESS_GC, then the slave only accepts a General Call.
@@ -512,11 +512,11 @@ The function \b ARM_I2C_SignalEvent is a callback function registered by the fun
 It is called by the I2C driver to notify the application about \ref I2C_events occured during operation.
 
 The parameter \a event indicates one or more events that occurred during driver operation.
-Each event is encoded in a separate bit and therefore it is possible to signal multiple events within the same call. 
+Each event is encoded in a separate bit and therefore it is possible to signal multiple events within the same call.
 
 The following events can be generated:
 
-Parameter \em event                       |     Bit   | Description 
+Parameter \em event                       |     Bit   | Description
 :---------------------------------------- |:---------:|:----------------------------------------------------------
 \ref ARM_I2C_EVENT_TRANSFER_DONE          | 1UL&nbsp;<<&nbsp;0  | Occurs after Master/Slave Transmit/Receive operation has finished.
 \ref ARM_I2C_EVENT_TRANSFER_INCOMPLETE    | 1UL << 1  | Occurs together with \ref ARM_I2C_EVENT_TRANSFER_DONE when less data is transferred then requested.
@@ -536,11 +536,11 @@ Parameter \em event                       |     Bit   | Description
 \ingroup i2c_interface_gr
 \brief Many parameters of the I2C driver are configured using the \ref ARM_I2C_Control function.
 @{
-\details 
+\details
 The various I2C control codes define:
   - \ref i2c_control_codes           specify operation parameters and various controls
   - \ref i2c_bus_speed_ctrls         specify the I2C bus speed
-  
+
 Refer to the \ref ARM_I2C_Control function for further details.
 */
 
@@ -580,7 +580,7 @@ Speed is specified using the following values: \ref i2c_bus_speed_ctrls
 */
 /**
 @}
-*/ 
+*/
 
 /**
 \defgroup i2c_address_flags I2C Address Flags
@@ -593,7 +593,7 @@ Specifies the address type for the functions \ref ARM_I2C_MasterReceive, \ref AR
 \sa ARM_I2C_OWN_ADDRESS
 \sa ARM_I2C_MasterTransmit
 \sa ARM_I2C_MasterReceive
-\def ARM_I2C_ADDRESS_GC     
+\def ARM_I2C_ADDRESS_GC
 \sa ARM_I2C_OWN_ADDRESS
 @}
 */
@@ -601,5 +601,5 @@ Specifies the address type for the functions \ref ARM_I2C_MasterReceive, \ref AR
 
 /**
 @}
-*/ 
+*/
 // End I2C Interface

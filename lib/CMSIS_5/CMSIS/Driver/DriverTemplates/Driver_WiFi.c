@@ -23,11 +23,11 @@
 // Driver Version
 static const ARM_DRIVER_VERSION driver_version = {
   ARM_WIFI_API_VERSION,
-  ARM_WIFI_DRV_VERSION 
+  ARM_WIFI_DRV_VERSION
 };
 
 // Driver Capabilities
-static const ARM_WIFI_CAPABILITIES driver_capabilities = { 
+static const ARM_WIFI_CAPABILITIES driver_capabilities = {
   0U,                                   // Station supported
   0U,                                   // Access Point supported
   0U,                                   // Concurrent Station and Access Point not supported
@@ -46,7 +46,7 @@ static ARM_DRIVER_VERSION ARM_WiFi_GetVersion (void) {
   return driver_version;
 }
 
-static ARM_WIFI_CAPABILITIES ARM_WiFi_GetCapabilities (void) { 
+static ARM_WIFI_CAPABILITIES ARM_WiFi_GetCapabilities (void) {
   return driver_capabilities;
 }
 
@@ -176,7 +176,7 @@ static int32_t ARM_WiFi_Ping (const uint8_t *ip, uint32_t ip_len) {
 /* WiFi Driver Control Block */
 extern \
 ARM_DRIVER_WIFI Driver_WiFi0;
-ARM_DRIVER_WIFI Driver_WiFi0 = { 
+ARM_DRIVER_WIFI Driver_WiFi0 = {
   ARM_WiFi_GetVersion,
   ARM_WiFi_GetCapabilities,
   ARM_WiFi_Initialize,

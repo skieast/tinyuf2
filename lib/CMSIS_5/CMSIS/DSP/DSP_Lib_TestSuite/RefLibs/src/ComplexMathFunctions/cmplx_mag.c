@@ -6,7 +6,7 @@ void ref_cmplx_mag_f32(
   uint32_t numSamples)
 {
 	uint32_t i;
-	
+
 	for(i=0;i<numSamples*2;i+=2)
 	{
 		*pDst++ = sqrtf(pSrc[i] * pSrc[i] + pSrc[i+1] * pSrc[i+1]);
@@ -20,7 +20,7 @@ void ref_cmplx_mag_q31(
 {
 	uint32_t i;
 	q31_t acc0,acc1,out;
-	
+
 	for(i=0;i<numSamples*2;i+=2)
 	{
 		acc0 = (q31_t)(((q63_t)pSrc[i] * pSrc[i]) >> 33);
@@ -38,7 +38,7 @@ void ref_cmplx_mag_q15(
 	uint32_t i;
 	q31_t acc0,acc1;
 	q15_t out;
-	
+
 	for(i=0;i<numSamples*2;i+=2)
 	{
 		acc0 = pSrc[i] * pSrc[i];

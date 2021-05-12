@@ -43,7 +43,7 @@ U32 rt_init_mem (void *pool, U32 size) {
   ptr = (MEMP *)pool;
   ptr->next = (MEMP *)((U32)pool + size - sizeof(MEMP *));
   ptr->next->next = NULL;
-  ptr->len = 0U; 
+  ptr->len = 0U;
 
   return (0U);
 }
@@ -106,7 +106,7 @@ U32 rt_free_mem (void *pool, void *mem) {
   if ((pool == NULL) || (mem == NULL)) { return (1U); }
 
   p_return = (MEMP *)((U32)mem - sizeof(MEMP));
-  
+
   /* Set list header */
   p_prev = NULL;
   p_search = (MEMP *)pool;

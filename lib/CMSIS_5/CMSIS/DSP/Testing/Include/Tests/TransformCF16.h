@@ -11,7 +11,7 @@ class TransformCF16:public Client::Suite
             virtual void tearDown(Testing::testID_t,Client::PatternMgr *mgr);
         private:
             #include "TransformCF16_decl.h"
-            
+
             Client::Pattern<float16_t> input;
             Client::LocalPattern<float16_t> outputfft;
 
@@ -22,5 +22,5 @@ class TransformCF16:public Client::Suite
             int ifft;
 
             arm_status status;
-            
+
     };

@@ -3,7 +3,7 @@
 \brief   USB common definitions (%Driver_USB.h)
 \details
 The <b>Universal Serial Bus</b> (USB) implements a serial bus for data exchange. It is a host controlled, plug-and-play interface
-between a USB host and USB devices using a tiered star topology. 
+between a USB host and USB devices using a tiered star topology.
 In microcontroller (MCU) applications, the interface is often used to connect a device to a host for data exchange or control purposes.
 
  - Wikipedia offers more information about the <a href="http://en.wikipedia.org/wiki/Universal_Serial_Bus" target="_blank"><b>Universal Serial Bus</b></a>.
@@ -27,7 +27,7 @@ The following header files define the Application Programming Interface (API) fo
   - \b %Driver_USBD.h : Driver API for USB Device Peripheral
   - \b %Driver_USBH.h : Driver API for USB Host Peripheral
 
-The driver implementation is a typical part of the Device Family Pack (DFP) that supports the 
+The driver implementation is a typical part of the Device Family Pack (DFP) that supports the
 peripherals of the microcontroller family.
 
 
@@ -42,17 +42,17 @@ The driver functions are published in the access struct as explained in \ref Dri
 
 
 /**
-\addtogroup usbd_interface_gr 
+\addtogroup usbd_interface_gr
 \ingroup usb_interface_gr
 \details
 
 <b>USB Device API</b>
 
 The header file \b Driver_USBD.h defines the API for the <b>USB Device Driver</b> interface used by middleware components.
-The driver implementation itself is a typical part of the Device Family Pack, which provides entry points to the interface 
+The driver implementation itself is a typical part of the Device Family Pack, which provides entry points to the interface
 as function pointers in the struct \ref ARM_DRIVER_USBD. This structure can be available several times in each interface to control multiple USBD interfaces.
 
-Header file \b Driver_USBD.h also defines callback routines that can be categorized as 
+Header file \b Driver_USBD.h also defines callback routines that can be categorized as
 <b>device event callbacks</b> and <b>endpoint event callbacks</b>.
 Callbacks are called by the driver, in interrupt context when an appropriate event occurs, to signal device related events (\ref USBD_dev_events)
 and endpoint related events (\ref USBD_ep_events).
@@ -93,13 +93,13 @@ To use the USBD driver invoke the API functions in the following order:
 <b>USB Host API</b>
 
 The header file \b Driver_USBH.h defines the API for the <b>USB Host Driver</b> interface used by middleware components.
-The driver implementation itself is a typical part of the Device Family Pack, which provides entry points to the interface 
+The driver implementation itself is a typical part of the Device Family Pack, which provides entry points to the interface
 as function pointers in the struct \ref ARM_DRIVER_USBH. This structure can be available several times in each interface to control multiple USBH interfaces.
 
-\b Driver_USBH.h also defines callback routines, which are categorized in 
+\b Driver_USBH.h also defines callback routines, which are categorized in
 <b>port event callbacks</b> and <b>pipe event callbacks</b>.
 Callbacks are called by the driver, in interrupt context when an appropriate event occurs, to signal port related events (\ref ARM_USBH_SignalPortEvent)
-and pipe related events (\ref ARM_USBH_SignalPipeEvent). 
+and pipe related events (\ref ARM_USBH_SignalPipeEvent).
 
 \cond
 

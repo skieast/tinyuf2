@@ -7,12 +7,12 @@ SET(PLATFORMFOLDER ${ROOT}/CMSIS/DSP/Platforms/FVP)
 include(configPlatform)
 include(configBoot)
 
-define_property(TARGET 
+define_property(TARGET
                 PROPERTY DISABLEOPTIMIZATION
                  BRIEF_DOCS "Force disabling of optimizations"
                  FULL_DOCS "Force disabling of optimizations")
 
-define_property(TARGET 
+define_property(TARGET
                 PROPERTY DISABLEHALFFLOATSUPPORT
                  BRIEF_DOCS "Force disabling of f16 support"
                  FULL_DOCS "Force disabling of f16 support")
@@ -31,9 +31,9 @@ endfunction()
 
 # Config app
 function (configApp project cmsisRoot)
-  # When the C compiler is used to process ASM files, the fp16 option 
+  # When the C compiler is used to process ASM files, the fp16 option
   # is not always recognized.
-  # So, FP16 option is ignored when building boot code 
+  # So, FP16 option is ignored when building boot code
   # which is containing ASM
   disableHasfFloat(${project})
   configcore(${project} ${cmsisRoot})

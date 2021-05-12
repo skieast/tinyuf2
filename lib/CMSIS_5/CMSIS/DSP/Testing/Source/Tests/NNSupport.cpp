@@ -8,11 +8,11 @@
 
     void NNSupport::test_nn_elementwise_add_s8()
     {
-       
-    } 
 
-  
-  
+    }
+
+
+
     void NNSupport::setUp(Testing::testID_t id,std::vector<Testing::param_t>& paramsArgs,Client::PatternMgr *mgr)
     {
 
@@ -20,19 +20,19 @@
        {
           case NNSupport::TEST_NN_ELEMENTWISE_ADD_S8_1:
           {
-             
+
           }
-          break; 
-          
-         
+          break;
+
+
 
        }
 
-       
+
 
     }
 
     void NNSupport::tearDown(Testing::testID_t id,Client::PatternMgr *mgr)
     {
-       
+
     }

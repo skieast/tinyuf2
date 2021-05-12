@@ -198,7 +198,7 @@ void TC_CoreFunc_IRQVect(void) {
   static VECTOR_TABLE_Type vectors[sizeof(__VECTOR_TABLE)/sizeof(__VECTOR_TABLE[0])] __ALIGNED(512);
 
   memcpy(vectors, __VECTOR_TABLE, sizeof(__VECTOR_TABLE));
-  
+
   const uint32_t orig_vtor = SCB->VTOR;
   const uint32_t vtor = ((uint32_t)vectors) & SCB_VTOR_TBLOFF_Msk;
   SCB->VTOR = vtor;

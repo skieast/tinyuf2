@@ -28,8 +28,8 @@
 #define NPY_NO_DEPRECATED_API NPY_1_15_API_VERSION
 
 #ifdef WIN
-#pragma warning( disable : 4013 ) 
-#pragma warning( disable : 4244 ) 
+#pragma warning( disable : 4013 )
+#pragma warning( disable : 4244 )
 #endif
 
 #include <Python.h>
@@ -43,7 +43,7 @@
 #include "arm_math.h"
 #define MODNAME "cmsisdsp"
 #define MODINITNAME cmsisdsp
-#endif 
+#endif
 
 #include <numpy/arrayobject.h>
 #include <numpy/ndarraytypes.h>
@@ -96,14 +96,14 @@ static PyObject *                                                             \
 Method_##NAME##_##FIELD(ml_##NAME##Object *self, PyObject *ignored)\
 {                                                                             \
     return(Py_BuildValue(FORMAT,self->instance->FIELD));                      \
-}                                                                             
-    
+}
+
 #define GETFIELDARRAY(NAME,FIELD,FORMAT)                                           \
 static PyObject *                                                             \
 Method_##NAME##_##FIELD(ml_##NAME##Object *self, PyObject *ignored)\
 {                                                                             \
     return(specific_##NAME##_##FIELD(self->instance));                      \
-}  
+}
 
 #define INITARRAYFIELD(FIELD,FORMAT,SRCFORMAT,DSTFORMAT)                         \
     if (FIELD)                                                                \
@@ -311,7 +311,7 @@ static PyObject *cmsisml_test(PyObject *obj, PyObject *args)
             int result;
             float32_t *input=NULL;
             GETCARRAY(vector,input,NPY_DOUBLE,double,float32_t);
-            
+
             arm_svm_linear_predict_f32(self->instance,input,&result);
             /*
             printf("Dual\n");
@@ -392,7 +392,7 @@ void CAT(init,MODINITNAME)(void)
   if (module == NULL)
       INITERROR;
   struct module_state *st = GETSTATE(module);
-  
+
   st->error = PyErr_NewException(MODNAME".Error", NULL, NULL);
   if (st->error == NULL) {
       Py_DECREF(module);

@@ -803,7 +803,7 @@ static osThreadId_t svcRtxThreadNew (osThreadFunc_t func, void *argument, const 
   } else {
     EvrRtxThreadError(NULL, (int32_t)osErrorNoMemory);
   }
-  
+
   if (thread != NULL) {
     osRtxThreadDispatch(thread);
   }

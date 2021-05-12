@@ -20,9 +20,9 @@ group Root {
                   Formula "NB"
               }
 
-              Pattern INPUT1_F16_ID : InputBench1_f16.txt 
-              Pattern INPUT2_F16_ID : InputBench2_f16.txt 
-              
+              Pattern INPUT1_F16_ID : InputBench1_f16.txt
+              Pattern INPUT2_F16_ID : InputBench2_f16.txt
+
               Output  OUT_F16_ID : Output
               Output  OUT_S16_ID : Index
               Output  TMP_F16_ID : Temp
@@ -57,21 +57,21 @@ group Root {
            suite Basic Maths Benchmarks F16 {
               class = BasicMathsBenchmarksF16
               folder = BasicMathsF16
-  
+
               ParamList {
                   NB
                   Summary NB
                   Names "NB Samples"
                   Formula "NB"
               }
-  
-              Pattern INPUT1_F16_ID : Input1_f16.txt 
-              Pattern INPUT2_F16_ID : Input2_f16.txt 
+
+              Pattern INPUT1_F16_ID : Input1_f16.txt
+              Pattern INPUT2_F16_ID : Input2_f16.txt
               Output  OUT_SAMPLES_F16_ID : Output
               Params PARAM1_ID = {
                   A = [16,32,64,128,256]
               }
-  
+
               Functions {
                  Elementwise multiplication:vec_mult_f16
                  Vector addition:vec_add_f16
@@ -93,22 +93,22 @@ group Root {
            suite ComplexMaths Benchmarks F16 {
               class = ComplexMathsBenchmarksF16
               folder = ComplexMathsF16
-  
+
               ParamList {
                   NB
                   Summary NB
                   Names "NB Samples"
                   Formula "NB"
               }
-  
-              Pattern INPUT1_F16_ID : Input1_f16.txt 
-              Pattern INPUT2_F16_ID : Input2_f16.txt 
-              Pattern INPUT3_F16_ID : Input3_f16.txt 
+
+              Pattern INPUT1_F16_ID : Input1_f16.txt
+              Pattern INPUT2_F16_ID : Input2_f16.txt
+              Pattern INPUT3_F16_ID : Input3_f16.txt
               Output  OUT_SAMPLES_F16_ID : Output
               Params PARAM1_ID = {
                   A = [16,32,64,128,256]
               }
-  
+
               Functions {
                  Elementwise conjugate:vec_conj_f16
                  Complex dot product:vec_dot_prod_f16
@@ -122,15 +122,15 @@ group Root {
         }
 
         group Filtering {
-           class = DSPFiltering 
-           folder = Filtering 
+           class = DSPFiltering
+           folder = Filtering
 
            group FIR {
-             class = FIR 
+             class = FIR
              folder = FIR
 
              suite FIR F16 {
-                class = FIRF16 
+                class = FIRF16
                 folder = FIRF16
 
                 ParamList {
@@ -140,9 +140,9 @@ group Root {
                   Formula "NumTaps * NB"
                 }
 
-                Pattern SAMPLES1_F16_ID : Samples1_f16.txt 
-                Pattern REFS1_F16_ID : Refs1_f16.txt 
-                Pattern COEFS1_F16_ID : Coefs1_f16.txt 
+                Pattern SAMPLES1_F16_ID : Samples1_f16.txt
+                Pattern REFS1_F16_ID : Refs1_f16.txt
+                Pattern COEFS1_F16_ID : Coefs1_f16.txt
 
                 Output  OUT_SAMPLES_F16_ID : Output
                 Output  STATE_F16_ID : State
@@ -161,11 +161,11 @@ group Root {
            }
 
            group Convolutions / Correlations {
-             class = MISC 
+             class = MISC
              folder = MISC
 
              suite Convolutions / Correlations F16 {
-                class = MISCF16 
+                class = MISCF16
                 folder = MISCF16
 
                 ParamList {
@@ -175,8 +175,8 @@ group Root {
                   Formula "NBA * NBB"
                 }
 
-                Pattern INPUTSA1_F16_ID : InputsA1_f16.txt 
-                Pattern INPUTSB1_F16_ID : InputsB1_f16.txt 
+                Pattern INPUTSA1_F16_ID : InputsA1_f16.txt
+                Pattern INPUTSB1_F16_ID : InputsB1_f16.txt
 
                 Output  OUT_SAMPLES_F16_ID : Output
 
@@ -196,11 +196,11 @@ group Root {
 
 
            group BiQuads {
-             class = BIQUAD 
+             class = BIQUAD
              folder = BIQUAD
 
              suite BiQuads F16 {
-                class = BIQUADF16 
+                class = BIQUADF16
                 folder = BIQUADF16
 
                 ParamList {
@@ -210,8 +210,8 @@ group Root {
                   Formula "NumStages * NB"
                 }
 
-                Pattern SAMPLES1_F16_ID : Samples1_f16.txt 
-                Pattern COEFS1_F16_ID : Coefs1_f16.txt 
+                Pattern SAMPLES1_F16_ID : Samples1_f16.txt
+                Pattern COEFS1_F16_ID : Coefs1_f16.txt
 
                 Output  OUT_SAMPLES_F16_ID : Output
                 Output  STATE_F16_ID : State
@@ -233,11 +233,11 @@ group Root {
         }
 
         group Fast Maths {
-           class = FastMath 
-           folder = FastMath 
+           class = FastMath
+           folder = FastMath
 
            suite Fast Maths F16 {
-                class = FastMathF16 
+                class = FastMathF16
                 folder = FastMathF16
 
                 ParamList {
@@ -247,7 +247,7 @@ group Root {
                   Formula "NB"
                 }
 
-                Pattern SAMPLES_F16_ID : Samples1_f16.txt 
+                Pattern SAMPLES_F16_ID : Samples1_f16.txt
                 Output  OUT_SAMPLES_F16_ID : Output
 
                 Params PARAM1_ID = {
@@ -265,7 +265,7 @@ group Root {
 
         group Bayes{
            class = Bayes
-           folder = Bayes 
+           folder = Bayes
 
            suite Bayes F16 {
               class = BayesF16
@@ -278,9 +278,9 @@ group Root {
                   Formula "VECDIM*NBCLASSES"
                 }
 
-              Pattern DIMS2_S16_ID : DimsBench2_s16.txt 
-              Pattern INPUTS2_F16_ID : Inputs2_f16.txt 
-              Pattern PARAMS2_F16_ID : Params2_f16.txt 
+              Pattern DIMS2_S16_ID : DimsBench2_s16.txt
+              Pattern INPUTS2_F16_ID : Inputs2_f16.txt
+              Pattern PARAMS2_F16_ID : Params2_f16.txt
               Pattern PREDICTS2_S16_ID : Predicts2_s16.txt
 
               Output  OUT_PROBA_F16_ID : Probas
@@ -312,7 +312,7 @@ group Root {
                   Names "NB Samples"
                   Formula "NB"
               }
-              
+
               Pattern INPUTA_F16_ID : InputBenchA1_f16.txt
               Pattern INPUTB_F16_ID : InputBenchB1_f16.txt
 
@@ -343,7 +343,7 @@ group Root {
 
         group SVM  {
            class = SVM
-           folder = SVM 
+           folder = SVM
 
            suite SVM F16 {
               class = SVMF16
@@ -356,18 +356,18 @@ group Root {
                   Formula "VECDIM*NBVECS"
               }
 
-              Pattern INPUT_F16_ID : InputsBench6_f16.txt 
-              
-              Pattern DIMS_LINEAR_S16_ID : DimsLinear6_s16.txt 
+              Pattern INPUT_F16_ID : InputsBench6_f16.txt
+
+              Pattern DIMS_LINEAR_S16_ID : DimsLinear6_s16.txt
               Pattern PARAMS_LINEAR_F16_ID : ParamsLinear6_f16.txt
 
-              Pattern DIMS_POLY_S16_ID : DimsPoly6_s16.txt 
+              Pattern DIMS_POLY_S16_ID : DimsPoly6_s16.txt
               Pattern PARAMS_POLY_F16_ID : ParamsPoly6_f16.txt
 
-              Pattern DIMS_RBF_S16_ID : DimsRBF6_s16.txt 
+              Pattern DIMS_RBF_S16_ID : DimsRBF6_s16.txt
               Pattern PARAMS_RBF_F16_ID : ParamsRBF6_f16.txt
 
-              Pattern DIMS_SIGMOID_S16_ID : DimsSigmoid6_s16.txt 
+              Pattern DIMS_SIGMOID_S16_ID : DimsSigmoid6_s16.txt
               Pattern PARAMS_SIGMOID_F16_ID : ParamsSigmoid6_f16.txt
 
               Output  OUT_S32_ID : Output
@@ -388,10 +388,10 @@ group Root {
         }
 
         group Barycenter {
-           class = Barycenter 
-           
+           class = Barycenter
+
            suite Barycenter {
-                class = SupportBarF16 
+                class = SupportBarF16
                 folder = SupportBarF16
 
                 ParamList {
@@ -401,8 +401,8 @@ group Root {
                   Formula "NB*VECDIM"
                 }
 
-                Pattern SAMPLES_F16_ID : Samples1_f16.txt 
-                Pattern COEFS_F16_ID : Coefs1_f16.txt 
+                Pattern SAMPLES_F16_ID : Samples1_f16.txt
+                Pattern COEFS_F16_ID : Coefs1_f16.txt
                 Output  OUT_SAMPLES_F16_ID : Output
 
                 Params PARAM1_ID = {
@@ -413,17 +413,17 @@ group Root {
                 Functions {
                    Barycenter:test_barycenter_f16
                 } -> PARAM1_ID
-   
+
            }
 
         }
 
         group Support Functions {
-           class = Support 
-           folder = Support 
+           class = Support
+           folder = Support
 
            suite Support Functions F16 {
-                class = SupportF16 
+                class = SupportF16
                 folder = SupportF16
 
                 ParamList {
@@ -433,12 +433,12 @@ group Root {
                   Formula "NB"
                 }
 
-                Pattern SAMPLES_F32_ID : Samples1_f32.txt 
-                Pattern SAMPLES_F16_ID : Samples11_f16.txt 
-                Pattern SAMPLES_Q15_ID : Samples3_q15.txt 
+                Pattern SAMPLES_F32_ID : Samples1_f32.txt
+                Pattern SAMPLES_F16_ID : Samples11_f16.txt
+                Pattern SAMPLES_Q15_ID : Samples3_q15.txt
 
-                Pattern INPUTS6_F16_ID : Inputs6_f16.txt 
-                Pattern WEIGHTS6_F16_ID : Weights6_f16.txt 
+                Pattern INPUTS6_F16_ID : Inputs6_f16.txt
+                Pattern WEIGHTS6_F16_ID : Weights6_f16.txt
                 Pattern REF6_F16_ID : Ref6_f16.txt
 
                 Output  OUT_SAMPLES_F16_ID : Output
@@ -459,15 +459,15 @@ group Root {
         }
 
         group Matrix {
-           class = Matrix 
-           folder = Matrix 
+           class = Matrix
+           folder = Matrix
 
            group Matrix Operators with one matrix size {
-              class = Unary 
-              folder = Unary 
+              class = Unary
+              folder = Unary
 
               suite Unary Matrix Operators F16 {
-                class = UnaryF16 
+                class = UnaryF16
                 folder = UnaryF16
 
                 ParamList {
@@ -477,9 +477,9 @@ group Root {
                   Formula "NBR*NBC"
                 }
 
-                Pattern INPUTA_F16_ID : InputA1_f16.txt 
-                Pattern INPUTAC_F16_ID : InputAC1_f16.txt 
-                Pattern INPUTVEC1_F16_ID : InputVec1_f16.txt 
+                Pattern INPUTA_F16_ID : InputA1_f16.txt
+                Pattern INPUTAC_F16_ID : InputAC1_f16.txt
+                Pattern INPUTVEC1_F16_ID : InputVec1_f16.txt
 
                 Output  OUT_F16_ID : Output
 
@@ -502,11 +502,11 @@ group Root {
            }
 
            group Matrix Operators with two matrix sizes {
-              class = Binary 
-              folder = Binary 
+              class = Binary
+              folder = Binary
 
              suite Binary Matrix Operators F16 {
-                class = BinaryF16 
+                class = BinaryF16
                 folder = BinaryF16
 
                 ParamList {
@@ -516,11 +516,11 @@ group Root {
                   Formula "NBR*NBI*NBC"
                 }
 
-                Pattern INPUTA_F16_ID : InputA1_f16.txt 
-                Pattern INPUTB_F16_ID : InputB1_f16.txt 
+                Pattern INPUTA_F16_ID : InputA1_f16.txt
+                Pattern INPUTB_F16_ID : InputB1_f16.txt
 
-                Pattern INPUTAC_F16_ID : InputAC1_f16.txt 
-                Pattern INPUTBC_F16_ID : InputBC1_f16.txt 
+                Pattern INPUTAC_F16_ID : InputAC1_f16.txt
+                Pattern INPUTBC_F16_ID : InputBC1_f16.txt
                 Output  OUT_F16_ID : Output
 
                 Params PARAM1_ID = {
@@ -539,11 +539,11 @@ group Root {
         }
 
         group Spectral Transformations {
-           class = Transform 
-           folder = Transform 
+           class = Transform
+           folder = Transform
 
            suite Spectral Transformations F16 {
-                class = TransformF16 
+                class = TransformF16
                 folder = TransformF16
 
                 ParamList {
@@ -553,20 +553,20 @@ group Root {
                   Formula "I(NB*log2(NB))"
                 }
 
-                Pattern INPUTR_F16_ID : RealInputSamples19_f16.txt 
-                Pattern INPUTC_F16_ID : ComplexInputSamples_Noisy_512_6_f16.txt 
-                
+                Pattern INPUTR_F16_ID : RealInputSamples19_f16.txt
+                Pattern INPUTC_F16_ID : ComplexInputSamples_Noisy_512_6_f16.txt
+
                 Output  OUT_F16_ID : Temp
                 Output  TMP_F16_ID : Output
                 Output  STATE_F16_ID : Output
 
-                
+
                 Params CFFT_PARAM_ID = {
                   NB = [64,128,256]
                   IFFT = [0,1]
                   REV = [0,1]
                 }
- 
+
                 Params CFFT4_PARAM_ID = {
                   NB = [16,64,256]
                   IFFT = [0,1]
@@ -579,7 +579,7 @@ group Root {
                   REV = [1]
                 }
 
-   
+
 
                 Functions {
                    Complex FFT:test_cfft_f16 -> CFFT_PARAM_ID

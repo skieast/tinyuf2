@@ -7,7 +7,7 @@ void ref_cmplx_mult_real_f32(
   uint32_t numSamples)
 {
 	uint32_t i;
-	
+
 	for(i=0;i<numSamples;i++)
 	{
 		pCmplxDst[2*i+0] = pSrcCmplx[2*i+0] * pSrcReal[i];
@@ -23,7 +23,7 @@ void ref_cmplx_mult_real_q31(
 {
 	uint32_t i;
 	q31_t tempR, tempI;
-	
+
 	for(i=0;i<numSamples;i++)
 	{
 		tempR = ((q63_t) pSrcCmplx[2*i+0] * pSrcReal[i]) >> 32;
@@ -41,7 +41,7 @@ void ref_cmplx_mult_real_q15(
 {
 	uint32_t i;
 	q31_t tempR, tempI;
-	
+
 	for(i=0;i<numSamples;i++)
 	{
 		tempR = ((q31_t) pSrcCmplx[2*i+0] * pSrcReal[i]) >> 15;

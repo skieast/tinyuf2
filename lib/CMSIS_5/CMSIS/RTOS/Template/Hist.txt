@@ -28,7 +28,7 @@ osKernelStart changed to osKernelStart (void)
 Version 1.02
   Control functions for short timeouts in microsecond resolution:
   Added: osKernelSysTick, osKernelSysTickFrequency, osKernelSysTick_uSec
-  Removed: osSignalGet 
+  Removed: osSignalGet
 
 Still open for discussion
 =========================

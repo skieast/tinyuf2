@@ -41,7 +41,7 @@ void arm_vlog_f16(
         float16_t * pDst,
         uint32_t blockSize)
 {
-   uint32_t blkCnt; 
+   uint32_t blkCnt;
 
 #if (defined(ARM_MATH_MVEF) || defined(ARM_MATH_HELIUM)) && !defined(ARM_MATH_AUTOVECTORIZE)
 
@@ -70,14 +70,13 @@ void arm_vlog_f16(
    while (blkCnt > 0U)
    {
       /* C = log(A) */
-  
+
       /* Calculate log and store result in destination buffer. */
       *pDst++ = logf(*pSrc++);
-  
+
       /* Decrement loop counter */
       blkCnt--;
    }
 }
 
-#endif /* #if defined(ARM_FLOAT16_SUPPORTED) */ 
-
+#endif /* #if defined(ARM_FLOAT16_SUPPORTED) */

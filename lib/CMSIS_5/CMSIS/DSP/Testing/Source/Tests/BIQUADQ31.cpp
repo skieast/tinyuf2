@@ -18,13 +18,13 @@
 
         q31_t *statep = state.ptr();
         const q31_t *coefsp = coefs.ptr();
-        
+
         const q31_t *inputp = inputs.ptr();
         q31_t *outp = output.ptr();
 
         int blockSize;
 
-        
+
 
         /*
 
@@ -34,7 +34,7 @@
         We loop on those configs.
 
         */
-        
+
            blockSize = inputs.nbSamples() >> 1;
 
            /*
@@ -47,7 +47,7 @@
 
 
            /*
-           
+
            Python script is filtering a 2*blockSize number of samples.
            We do the same filtering in two pass to check (indirectly that
            the state management of the fir is working.)
@@ -56,7 +56,7 @@
 
            arm_biquad_cascade_df1_q31(&this->S,inputp,outp,blockSize);
            outp += blockSize;
-           
+
            inputp += blockSize;
            arm_biquad_cascade_df1_q31(&this->S,inputp,outp,blockSize);
            outp += blockSize;
@@ -69,21 +69,21 @@
            ASSERT_SNR(output,ref,(q31_t)SNR_THRESHOLD);
 
            ASSERT_NEAR_EQ(output,ref,ABS_ERROR_Q31);
-  
 
-    } 
+
+    }
 
     void BIQUADQ31::test_biquad_cascade_df1_32x64()
     {
         q63_t *statep = state64.ptr();
         const q31_t *coefsp = coefs.ptr();
-        
+
         q31_t *inputp = inputs.ptr();
         q31_t *outp = output.ptr();
 
         int blockSize;
 
-        
+
 
         /*
 
@@ -93,7 +93,7 @@
         We loop on those configs.
 
         */
-        
+
            blockSize = inputs.nbSamples() >> 1;
 
            /*
@@ -106,7 +106,7 @@
 
 
            /*
-           
+
            Python script is filtering a 2*blockSize number of samples.
            We do the same filtering in two pass to check (indirectly that
            the state management of the fir is working.)
@@ -115,7 +115,7 @@
 
            arm_biquad_cas_df1_32x64_q31(&this->S32x64,inputp,outp,blockSize);
            outp += blockSize;
-           
+
            inputp += blockSize;
            arm_biquad_cas_df1_32x64_q31(&this->S32x64,inputp,outp,blockSize);
            outp += blockSize;
@@ -128,13 +128,13 @@
            ASSERT_SNR(output,ref,(q31_t)SNR_32x64_THRESHOLD);
 
            ASSERT_NEAR_EQ(output,ref,ABS_32x64_ERROR_Q31);
-  
+
     }
 
- 
+
     void BIQUADQ31::setUp(Testing::testID_t id,std::vector<Testing::param_t>& params,Client::PatternMgr *mgr)
     {
-      
+
        (void)params;
        switch(id)
        {
@@ -144,7 +144,7 @@
              it may overwrite the output
           */
           state.create(32,BIQUADQ31::OUT_Q31_ID,mgr);
-          
+
         break;
 
         case BIQUADQ31::TEST_BIQUAD_CASCADE_DF1_32X64_2:
@@ -152,13 +152,13 @@
         break;
 
        }
-      
+
        inputs.reload(BIQUADQ31::BIQUADINPUTS_Q31_ID,mgr);
        coefs.reload(BIQUADQ31::BIQUADCOEFS_Q31_ID,mgr);
        ref.reload(BIQUADQ31::BIQUADREFS_Q31_ID,mgr);
        output.create(ref.nbSamples(),BIQUADQ31::OUT_Q31_ID,mgr);
 
-       
+
     }
 
     void BIQUADQ31::tearDown(Testing::testID_t id,Client::PatternMgr *mgr)

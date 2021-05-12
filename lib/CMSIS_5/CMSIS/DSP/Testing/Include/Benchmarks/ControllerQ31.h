@@ -14,12 +14,12 @@ class ControllerQ31:public Client::Suite
             Client::Pattern<q31_t> samples;
 
             Client::LocalPattern<q31_t> output;
-            
+
             int nbSamples;
 
             arm_pid_instance_q31  instPid;
             q31_t *pSrc;
             q31_t *pDst;
-            
-            
+
+
     };

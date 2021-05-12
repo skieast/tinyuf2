@@ -1,12 +1,12 @@
 #!/bin/bash
-# Version: 1.1 
+# Version: 1.1
 # Date: 2020-04-29
 # This bash script generates a CMSIS Software Pack:
 #
 # Pre-requisites:
 # - bash shell (for Windows: install git for Windows)
 # - 7z in path (zip archiving utility)
-#   e.g. Ubuntu: sudo apt-get install p7zip-full p7zip-rar) 
+#   e.g. Ubuntu: sudo apt-get install p7zip-full p7zip-rar)
 # - PackChk in path with execute permission
 #   (see CMSIS-Pack: CMSIS/Utilities/<os>/PackChk)
 # - xmllint in path (XML schema validation)
@@ -28,7 +28,7 @@ fi
 echo $PATH_TO_ADD appended to PATH
 echo " "
 
-# Pack warehouse directory - destination 
+# Pack warehouse directory - destination
 PACK_WAREHOUSE=output/
 
 # Temporary pack build directory
@@ -46,7 +46,7 @@ PACK_DIRS=${PACK_DIRS//$PACK_WAREHOUSE/}
 #  Source
 #  Include
 #"
-  
+
 # Specify file names to be added to pack base directory
 PACK_BASE_FILES="
   License.txt
@@ -55,7 +55,7 @@ PACK_BASE_FILES="
 
 ############ DO NOT EDIT BELOW ###########
 echo Starting CMSIS-Pack Generation: `date`
-# Zip utility check 
+# Zip utility check
 ZIP=7z
 type -a $ZIP
 errorlevel=$?
@@ -147,8 +147,8 @@ echo Adding files to pack:
 echo $PACK_BASE_FILES
 echo " "
 for f in $PACK_BASE_FILES
-do 
-  cp -f  "$f" $PACK_BUILD/ 
+do
+  cp -f  "$f" $PACK_BUILD/
 done
 
 # Run Schema Check (for Linux only):

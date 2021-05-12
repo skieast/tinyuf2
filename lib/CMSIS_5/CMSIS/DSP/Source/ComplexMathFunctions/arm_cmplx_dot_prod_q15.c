@@ -80,7 +80,7 @@ void arm_cmplx_dot_prod_q15(
 
   /* Compute 4 complex samples at a time */
   blkCnt = blockSize >> 3;
-  while (blkCnt > 0U) 
+  while (blkCnt > 0U)
   {
       q15x8_t vecSrcC, vecSrcD;
 
@@ -107,10 +107,10 @@ void arm_cmplx_dot_prod_q15(
 
   /* Tail */
   pSrcA -= 8;
-  pSrcB -= 8; 
+  pSrcB -= 8;
 
   blkCnt = (blockSize & 7) >> 1;
-  
+
   while (blkCnt > 0U)
   {
     a0 = *pSrcA++;

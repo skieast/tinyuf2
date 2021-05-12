@@ -4,7 +4,7 @@
 
 #define SNR_THRESHOLD 100
 
-/* 
+/*
 
 Reference patterns are generated with
 a double precision computation.
@@ -30,26 +30,26 @@ a double precision computation.
 
         ASSERT_NEAR_EQ(output,ref,ABS_ERROR_Q31);
 
-    } 
+    }
 
 
- 
+
     void ExampleCategoryQ31::setUp(Testing::testID_t id,std::vector<Testing::param_t>& params,Client::PatternMgr *mgr)
     {
-      
-       Testing::nbSamples_t nb=MAX_NB_SAMPLES; 
+
+       Testing::nbSamples_t nb=MAX_NB_SAMPLES;
        (void)params;
-       
+
        switch(id)
        {
         case ExampleCategoryQ31::TEST_OP_Q31_1:
              ref.reload(ExampleCategoryQ31::REF_OUT_Q31_ID,mgr);
           break;
 
- 
+
 
        }
-      
+
 
        input1.reload(ExampleCategoryQ31::INPUT1_Q31_ID,mgr,nb);
        input2.reload(ExampleCategoryQ31::INPUT2_Q31_ID,mgr,nb);

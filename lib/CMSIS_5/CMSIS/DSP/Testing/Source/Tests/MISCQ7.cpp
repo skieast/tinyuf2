@@ -5,7 +5,7 @@
 #include "Test.h"
 
 #define SNR_THRESHOLD 15
-/* 
+/*
 
 Reference patterns are generated with
 a double precision computation.
@@ -15,8 +15,8 @@ a double precision computation.
 
     void MISCQ7::test_correlate_q7()
     {
-        const q7_t *inpA=inputA.ptr(); 
-        const q7_t *inpB=inputB.ptr(); 
+        const q7_t *inpA=inputA.ptr();
+        const q7_t *inpB=inputB.ptr();
         q7_t *outp=output.ptr();
 
         arm_correlate_q7(inpA, inputA.nbSamples(),
@@ -30,8 +30,8 @@ a double precision computation.
 
     void MISCQ7::test_conv_q7()
     {
-        const q7_t *inpA=inputA.ptr(); 
-        const q7_t *inpB=inputB.ptr(); 
+        const q7_t *inpA=inputA.ptr();
+        const q7_t *inpB=inputB.ptr();
         q7_t *outp=output.ptr();
 
         arm_conv_q7(inpA, inputA.nbSamples(),
@@ -44,13 +44,13 @@ a double precision computation.
     }
 
 
-  
+
     void MISCQ7::setUp(Testing::testID_t id,std::vector<Testing::param_t>& paramsArgs,Client::PatternMgr *mgr)
     {
         (void)paramsArgs;
         switch(id)
         {
-           
+
 
             case MISCQ7::TEST_CORRELATE_Q7_1:
             {
@@ -459,12 +459,12 @@ a double precision computation.
        inputB.reload(MISCQ7::INPUTB_Q7_ID,mgr,nbb);
 
        output.create(ref.nbSamples(),MISCQ7::OUT_Q7_ID,mgr);
-        
+
     }
 
     void MISCQ7::tearDown(Testing::testID_t id,Client::PatternMgr *mgr)
     {
       (void)id;
       output.dump(mgr);
-      
+
     }

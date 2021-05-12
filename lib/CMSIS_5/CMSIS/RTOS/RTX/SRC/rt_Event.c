@@ -167,7 +167,7 @@ rdy:  p_CB->events &= ~event_flags;
       rt_rmv_dly (p_CB);
       p_CB->state   = READY;
 #ifdef __CMSIS_RTOS
-      rt_ret_val2(p_CB, 0x08U/*osEventSignal*/, p_CB->waits); 
+      rt_ret_val2(p_CB, 0x08U/*osEventSignal*/, p_CB->waits);
 #else
       rt_ret_val (p_CB, OS_R_EVT);
 #endif

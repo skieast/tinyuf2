@@ -14,7 +14,7 @@ CFLAGS += \
   -DXIP_EXTERNAL_FLASH=1 \
   -DXIP_BOOT_HEADER_ENABLE=1 \
   -DCFG_TUSB_MCU=OPT_MCU_MIMXRT10XX
-  
+
 # mcu driver cause following warnings
 CFLAGS += -Wno-error=unused-parameter
 

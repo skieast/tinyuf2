@@ -71,8 +71,8 @@ function(writeConfig path)
   list(APPEND output ",${COMPILERVERSION}")
 
   file(WRITE ${path} ${output})
-  
- 
+
+
 endfunction()
 
 option(BENCHMARK "Benchmarking compiled" OFF)
@@ -111,12 +111,12 @@ add_library(TestingLib STATIC)
 add_library(FrameworkLib STATIC)
 
 if (DISABLEFLOAT16)
-    target_compile_definitions(TestingLib PRIVATE DISABLEFLOAT16) 
-    target_compile_definitions(FrameworkLib PRIVATE DISABLEFLOAT16) 
+    target_compile_definitions(TestingLib PRIVATE DISABLEFLOAT16)
+    target_compile_definitions(FrameworkLib PRIVATE DISABLEFLOAT16)
 endif()
 
 if (AUTOVECTORIZE)
-    target_compile_definitions(TestingLib PRIVATE ARM_MATH_AUTOVECTORIZE) 
+    target_compile_definitions(TestingLib PRIVATE ARM_MATH_AUTOVECTORIZE)
 endif()
 
 
@@ -146,7 +146,7 @@ set (NNSRC
   )
 
  if (STANDARDBENCH)
- set(TESTSRC 
+ set(TESTSRC
    Source/Benchmarks/BasicMathsBenchmarksF32.cpp
    Source/Benchmarks/BasicMathsBenchmarksQ31.cpp
    Source/Benchmarks/BasicMathsBenchmarksQ15.cpp
@@ -332,7 +332,7 @@ if (DISTANCE)
   Source/Tests/DistanceTestsU32.cpp)
 endif()
 
-set(TESTSRC 
+set(TESTSRC
      ${BASICMATHSRC}
      ${COMPLEXMATHSRC}
      ${CONTROLLERSRC}
@@ -357,7 +357,7 @@ set(TESTSRC
 
 
 if ((NOT ARMAC5) AND (FLOAT16TESTS) AND ((FLOAT16) OR (MVEF) OR (HELIUM) OR (NEON) OR (NEONEXPERIMENTAL)))
-set(TESTSRC16 
+set(TESTSRC16
   Source/Tests/BasicTestsF16.cpp
   Source/Tests/ComplexTestsF16.cpp
   Source/Tests/InterpolationTestsF16.cpp
@@ -377,7 +377,7 @@ set(TESTSRC16
   Source/Tests/BayesF16.cpp
   )
 endif()
-endif() 
+endif()
 
 target_include_directories(TestingLib PUBLIC Include/Tests)
 
@@ -433,13 +433,13 @@ if (BENCHMARK)
     target_sources(TestingLib PRIVATE ${MICROSRC})
   endif()
 endif()
-  
+
 
 target_sources(FrameworkLib PRIVATE ${FRAMEWORKSRC})
 target_sources(FrameworkLib PRIVATE ${FRAMEWORKMODESRC})
 
 if (DISABLEFLOAT16)
-    target_compile_definitions(FrameworkLib PRIVATE DISABLEFLOAT16) 
+    target_compile_definitions(FrameworkLib PRIVATE DISABLEFLOAT16)
 endif()
 
 if (BENCHMARK)
@@ -557,5 +557,3 @@ if(DOXYGEN_FOUND)
   )
 
 endif(DOXYGEN_FOUND)
-
-

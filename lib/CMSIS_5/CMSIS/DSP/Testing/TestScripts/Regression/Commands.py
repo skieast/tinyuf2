@@ -1,4 +1,4 @@
-import subprocess 
+import subprocess
 import colorama
 from colorama import init,Fore, Back, Style
 import argparse
@@ -28,9 +28,9 @@ DEBUGLIST=[
 "-DDISTANCE=OFF"]
 
 NOTESTFAILED = 0
-MAKEFAILED = 1 
+MAKEFAILED = 1
 TESTFAILED = 2
-FLOWFAILURE = 3 
+FLOWFAILURE = 3
 CALLFAILURE = 4
 
 def setDebugMode():
@@ -70,7 +70,7 @@ def addToRegDb(db,desc,runid):
 
 class TestFlowFailure(Exception):
     def __init__(self,completed):
-        self._errorcode = completed.returncode 
+        self._errorcode = completed.returncode
 
     def errorCode(self):
       return(self._errorcode)
@@ -83,7 +83,7 @@ def check(n):
   if n is not None:
     if n.returncode != 0:
        raise TestFlowFailure(n)
-  else: 
+  else:
     raise CallFailure()
 
 def msg(t):
@@ -193,7 +193,7 @@ class BuildConfig:
     def getTest(self,test):
         return(Test(self,test))
 
-    
+
 
     # Launch cmake command.
     def createCMake(self,configid,flags,benchMode,platform):
@@ -210,7 +210,7 @@ class BuildConfig:
                              "-DPLATFORM=%s" % platform,
                              "-DCONFIGID=%s" % configid
                     ]
-            cmd += flags 
+            cmd += flags
 
             if DEBUGMODE:
               cmd += DEBUGLIST
@@ -218,7 +218,7 @@ class BuildConfig:
             if benchMode:
               cmd += ["-DBENCHMARK=ON"]
               cmd += ["-DWRAPPER=ON"]
-            else: 
+            else:
               cmd += ["-DBENCHMARK=OFF"]
               cmd += ["-DWRAPPER=OFF"]
 
@@ -271,7 +271,7 @@ class BuildConfig:
         src = os.path.join(self.path(),"currentConfig.csv")
         dst = os.path.join(self.archiveResultPath(),os.path.basename(src))
         shutil.copy(src,dst)
-       
+
 
     @contextmanager
     def buildFolder(self):
@@ -427,7 +427,7 @@ class Test:
               return(NOTESTFAILED)
         else:
            return(NOTESTFAILED)
-        
+
 
 
 # Preprocess the test description
@@ -453,10 +453,3 @@ def createDb(sqlite,desc):
     with open("createDb.sql") as db:
         completed = subprocess.run([sqlite, desc],stdin=db, timeout=3600)
     check(completed)
-
-
-
-
-
-
-

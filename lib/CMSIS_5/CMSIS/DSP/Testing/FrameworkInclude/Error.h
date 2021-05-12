@@ -121,7 +121,7 @@ extern void assert_snr_error(unsigned long nb,float32_t pa,float32_t pb, float32
 
 #if !defined (__CC_ARM) && defined(ARM_FLOAT16_SUPPORTED)
 extern void assert_snr_error(unsigned long nb,float16_t pa,float16_t pb, float32_t threshold);
-#endif 
+#endif
 
 extern void assert_snr_error(unsigned long nb,q63_t pa,q63_t pb, float32_t threshold);
 extern void assert_snr_error(unsigned long nb,q31_t pa,q31_t pb, float32_t threshold);
@@ -136,7 +136,7 @@ extern void assert_not_empty(unsigned long nb, AnyPattern<float32_t> &p);
 
 #if !defined( __CC_ARM ) && defined(ARM_FLOAT16_SUPPORTED)
 extern void assert_not_empty(unsigned long nb, AnyPattern<float16_t> &p);
-#endif 
+#endif
 
 extern void assert_not_empty(unsigned long nb, AnyPattern<q63_t> &p);
 extern void assert_not_empty(unsigned long nb, AnyPattern<q31_t> &p);
@@ -167,22 +167,22 @@ namespace Client {
 
 using namespace std;
 
-template <typename T> 
+template <typename T>
 void assert_equal(unsigned long nb,T pa, T pb)
 {
     if (pa != pb)
     {
          throw (Error(EQUAL_ERROR,nb));
     }
-   
+
 };
 
-template <typename T> 
+template <typename T>
 void assert_equal(unsigned long nb,AnyPattern<T> &pa, AnyPattern<T> &pb)
 {
     ASSERT_NOT_EMPTY(pa);
     ASSERT_NOT_EMPTY(pb);
-    
+
     if (pa.nbSamples() != pb.nbSamples())
     {
         throw (Error(EQUAL_ERROR,nb));
@@ -201,7 +201,7 @@ void assert_equal(unsigned long nb,AnyPattern<T> &pa, AnyPattern<T> &pb)
           assert_equal(nb,ptrA[i],ptrB[i]);
        }
        catch(Error &err)
-       {          
+       {
           sprintf(id," (nb=%lu)",i+1);
           strcat(err.details,id);
           throw(err);
@@ -209,7 +209,7 @@ void assert_equal(unsigned long nb,AnyPattern<T> &pa, AnyPattern<T> &pb)
     }
 };
 
-template <typename T> 
+template <typename T>
 void assert_near_equal(unsigned long nb,T pa, T pb, T threshold)
 {
     if (abs(pa - pb) > threshold)
@@ -218,20 +218,20 @@ void assert_near_equal(unsigned long nb,T pa, T pb, T threshold)
     }
 };
 
-template <> 
+template <>
 void assert_near_equal(unsigned long nb,double pa, double pb, double threshold);
-template <> 
+template <>
 void assert_near_equal(unsigned long nb,float32_t pa, float32_t pb, float32_t threshold);
-template <> 
+template <>
 void assert_near_equal(unsigned long nb,q63_t pa, q63_t pb, q63_t threshold);
-template <> 
+template <>
 void assert_near_equal(unsigned long nb,q31_t pa, q31_t pb, q31_t threshold);
-template <> 
+template <>
 void assert_near_equal(unsigned long nb,q15_t pa, q15_t pb, q15_t threshold);
-template <> 
+template <>
 void assert_near_equal(unsigned long nb,q7_t pa, q7_t pb, q7_t threshold);
 
-template <typename T> 
+template <typename T>
 void assert_near_equal(unsigned long nb,AnyPattern<T> &pa, AnyPattern<T> &pb, T threshold)
 {
 
@@ -251,13 +251,13 @@ void assert_near_equal(unsigned long nb,AnyPattern<T> &pa, AnyPattern<T> &pb, T 
 
     for(i=0; i < pa.nbSamples(); i++)
     {
-       
+
        try
        {
           assert_near_equal(nb,ptrA[i],ptrB[i],threshold);
        }
        catch(Error &err)
-       {          
+       {
           sprintf(id," (nb=%lu)",i+1);
           strcat(err.details,id);
           throw(err);

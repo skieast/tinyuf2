@@ -23,7 +23,7 @@
  * Version 1.0
  *    Initial Release
  *---------------------------------------------------------------------------*/
- 
+
 #include "RTE_Components.h"
 #include CMSIS_device_header
 #include "IncidentLog_s.h"
@@ -35,7 +35,7 @@ __NO_RETURN void PerformReset (void)    {
   SCB->AIRCR = ( SCB->AIRCR & ~SCB_AIRCR_VECTKEY_Msk ) |
                ( 0x05FAUL << SCB_AIRCR_VECTKEY_Pos ) | SCB_AIRCR_SYSRESETREQ_Msk ;
 
-	// code should never reach this (however FVP Model does not reset!)  
+	// code should never reach this (however FVP Model does not reset!)
   while(1)   {
     __NOP() ;
   }
@@ -56,12 +56,12 @@ static volatile uint32_t stacked_psr;
 void hard_fault_handler_c (uint32_t *hardfault_args) {
   IncidentReason_t Reason;
   uint8_t Flags ;
-  
+
   stacked_r0  = hardfault_args[0];
   stacked_r1  = hardfault_args[1];
   stacked_r2  = hardfault_args[2];
   stacked_r3  = hardfault_args[3];
-  
+
   stacked_r12 = hardfault_args[4];
   stacked_lr  = hardfault_args[5];
   stacked_pc  = hardfault_args[6];
@@ -75,7 +75,7 @@ void hard_fault_handler_c (uint32_t *hardfault_args) {
     Flags |= IS_SECURE ;
   }
   else if (SCB->CFSR & SCB_CFSR_STKOF_Msk)  {
-    /* UsageFault, stack overflow */ 
+    /* UsageFault, stack overflow */
     Reason = IR_STKOF ;
     Flags |= IS_SECURE ;
   }
@@ -86,7 +86,7 @@ void hard_fault_handler_c (uint32_t *hardfault_args) {
   }
   /* AIRCR.BFHFNMINS  not set, so also non-secure faults end here */
   else if (SCB_NS->CFSR & SCB_CFSR_STKOF_Msk)  {
-    /* UsageFault, stack overflow */ 
+    /* UsageFault, stack overflow */
     Reason = IR_STKOF ;
   }
   else if (SCB_NS->CFSR & SCB_CFSR_DIVBYZERO_Msk)  {
@@ -98,11 +98,11 @@ void hard_fault_handler_c (uint32_t *hardfault_args) {
   {
     Reason = IR_UNKNOW;
   }
-  
+
   LogIncident (Reason, stacked_pc, Flags) ;
   PerformReset ();
 
-// code should never reach this (Fast Model does not reset!)  
+// code should never reach this (Fast Model does not reset!)
   while (1)  {
     __NOP( ) ;
   }
