@@ -1142,5 +1142,3 @@ try:
 
 finally:
      c.close()
-
-

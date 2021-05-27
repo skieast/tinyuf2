@@ -134,4 +134,3 @@ Notes
  - test data used for the tests is used as provided by DSP Concepts.
 
  - some tests run for a very long time before they finish. This is expected
-

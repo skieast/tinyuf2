@@ -30,7 +30,3 @@ def getCycles(t):
       except StopIteration:
         dbgCnt = 0
         return(0)
-
-
-
-

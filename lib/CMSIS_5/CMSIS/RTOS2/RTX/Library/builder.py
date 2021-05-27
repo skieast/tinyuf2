@@ -53,4 +53,3 @@ def create():
   builder.addFilter([ filterIAR ])
 
   return builder
-

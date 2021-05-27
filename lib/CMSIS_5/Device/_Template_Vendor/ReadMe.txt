@@ -60,4 +60,3 @@ Note:
   Template files (i.e. startup_Device.s, system_Device.c) are application
   specific and therefore expected to be copied into the application project
   folder prior to use!
-

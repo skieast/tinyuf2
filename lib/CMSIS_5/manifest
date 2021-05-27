@@ -50,4 +50,3 @@ glob:
  - CMSIS/DoxyGen/Doxygen_Templates/search.css: CMSIS/Documentation/DSP/html/search/search.css
  - CMSIS/DoxyGen/Doxygen_Templates/search.css: CMSIS/Documentation/DAP/html/search/search.css
  - CMSIS/DoxyGen/Doxygen_Templates/search.css: CMSIS/Documentation/NN/html/search/search.css
-

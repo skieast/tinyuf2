@@ -68,4 +68,3 @@ CMSIS-Core (Cortex-M) violates the following MISRA-C:2012 rules:
 - Advisory Rule 19.1, Declaration before \#include.<br>
   Violated since Interrupt Number Definition Type (IRQn_Type) must be defined before including the core header file.
  */
-

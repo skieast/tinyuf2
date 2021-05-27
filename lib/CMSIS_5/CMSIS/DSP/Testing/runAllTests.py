@@ -314,4 +314,3 @@ for t in config["TOOLCHAINS"]:
 
 logFailedBuild(args.r,failedBuild)
 sys.exit(testFailed)
-

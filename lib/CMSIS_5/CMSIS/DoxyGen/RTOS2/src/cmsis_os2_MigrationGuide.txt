@@ -184,4 +184,3 @@ Generally there are no longer os*Def macros to declare OS objects.
 - The Mail Queue RTOS v1 functions have been deprecated. Use the functionality of the Message Queue instead. Differences are
   listed under \ref mig_msgQueue.
 */
-

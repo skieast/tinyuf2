@@ -887,6 +887,3 @@ class CodeGen:
             includeFile.write("#endif\n")
           driverFile.write("};\n")
           driverFile.write("#endif\n")
-
-
-
